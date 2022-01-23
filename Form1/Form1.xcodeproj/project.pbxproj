@@ -14,6 +14,13 @@
 		64B8AEB3279DADD200BF47C5 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEB2279DADD200BF47C5 /* DataProvider.swift */; };
 		64B8AEB6279DAFA000BF47C5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 64B8AEB5279DAFA000BF47C5 /* Realm */; };
 		64B8AEB8279DAFA000BF47C5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64B8AEB7279DAFA000BF47C5 /* RealmSwift */; };
+		64B8AEBB279DAFF500BF47C5 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */; };
+		64B8AEBE279DB03400BF47C5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBD279DB03400BF47C5 /* TodayViewModel.swift */; };
+		64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBF279DB04600BF47C5 /* TodayUIView.swift */; };
+		64B8AEC2279DB06200BF47C5 /* TodayDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC1279DB06200BF47C5 /* TodayDataManager.swift */; };
+		64B8AEC5279DB09600BF47C5 /* TodayContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC4279DB09600BF47C5 /* TodayContext.swift */; };
+		64B8AEC7279DB0C300BF47C5 /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */; };
+		64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +30,13 @@
 		64B8AEA9279DA3E000BF47C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		64B8AEB0279DA4EF00BF47C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		64B8AEB2279DADD200BF47C5 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
+		64B8AEBD279DB03400BF47C5 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		64B8AEBF279DB04600BF47C5 /* TodayUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUIView.swift; sourceTree = "<group>"; };
+		64B8AEC1279DB06200BF47C5 /* TodayDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDataManager.swift; sourceTree = "<group>"; };
+		64B8AEC4279DB09600BF47C5 /* TodayContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayContext.swift; sourceTree = "<group>"; };
+		64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
+		64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModelTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +73,8 @@
 			children = (
 				64B8AEA2279DA3DC00BF47C5 /* Form1App.swift */,
 				64B8AEB0279DA4EF00BF47C5 /* ContentView.swift */,
-				64B8AEB2279DADD200BF47C5 /* DataProvider.swift */,
+				64B8AEBC279DB02200BF47C5 /* Screens */,
+				64B8AEB9279DAFD500BF47C5 /* DataLayer */,
 				64B8AEA6279DA3E000BF47C5 /* Assets.xcassets */,
 				64B8AEA8279DA3E000BF47C5 /* Preview Content */,
 			);
@@ -72,6 +87,52 @@
 				64B8AEA9279DA3E000BF47C5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		64B8AEB9279DAFD500BF47C5 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				64B8AEC8279DB0E200BF47C5 /* DataModels */,
+				64B8AEC9279DB0EF00BF47C5 /* DataProvider */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		64B8AEBC279DB02200BF47C5 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				64B8AEC3279DB06B00BF47C5 /* Today */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		64B8AEC3279DB06B00BF47C5 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				64B8AEBD279DB03400BF47C5 /* TodayViewModel.swift */,
+				64B8AEBF279DB04600BF47C5 /* TodayUIView.swift */,
+				64B8AEC1279DB06200BF47C5 /* TodayDataManager.swift */,
+				64B8AEC4279DB09600BF47C5 /* TodayContext.swift */,
+				64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */,
+				64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		64B8AEC8279DB0E200BF47C5 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		64B8AEC9279DB0EF00BF47C5 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				64B8AEB2279DADD200BF47C5 /* DataProvider.swift */,
+				64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */,
+			);
+			path = DataProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +213,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B8AEC2279DB06200BF47C5 /* TodayDataManager.swift in Sources */,
+				64B8AEBB279DAFF500BF47C5 /* RealmDataProvider.swift in Sources */,
 				64B8AEB3279DADD200BF47C5 /* DataProvider.swift in Sources */,
+				64B8AEC5279DB09600BF47C5 /* TodayContext.swift in Sources */,
+				64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */,
+				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
+				64B8AEC7279DB0C300BF47C5 /* TodayCoordinator.swift in Sources */,
+				64B8AEBE279DB03400BF47C5 /* TodayViewModel.swift in Sources */,
 				64B8AEB1279DA4EF00BF47C5 /* ContentView.swift in Sources */,
 				64B8AEA3279DA3DC00BF47C5 /* Form1App.swift in Sources */,
 			);
