@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct TodayDestinationContext: DestinationContext {
+    var destinationIdentifier: DestinationIdentifier { "TodayDestinationContext" }
+}

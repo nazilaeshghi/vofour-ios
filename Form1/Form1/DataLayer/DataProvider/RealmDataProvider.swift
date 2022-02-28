@@ -8,10 +8,11 @@
 
 import Foundation
 
-class ReqalmDataProvider: DataProvider {
-    func addTast() {
-    }
-    
-    func fetchTasks() {
-    }
-}
+//class ReqalmDataProvider: DataProvider {
+//    func addTast() {
+//    }
+//    
+//    func fetchTasks() -> [TaskDataModel] {
+//        return [RealmTaskDataModel()]
+//    }
+//}

@@ -8,14 +8,29 @@
 
 import SwiftUI
 
-struct TodayUIView: View {
+struct TodayView: View {
+    
+    @ObservedObject var viewModel: TodayViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(viewModel.title)
+            Button {
+                viewModel.changeTitle(to: "yoooooo")
+            } label: {
+                Text("ChangeText")
+            }
+        }
     }
 }
 
-struct TodayUIView_Previews: PreviewProvider {
+struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayUIView()
+        let dataManager = MockTodayDataManagable()
+        TodayView(viewModel: TodayViewModel(dataManager: dataManager))
     }
+}
+
+struct MockTodayDataManagable: TodayDataManagable {
+    
 }

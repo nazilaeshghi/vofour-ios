@@ -10,5 +10,5 @@ import Foundation
 
 protocol DataProvider {
     func addTast()
-    func fetchTasks()
+    func fetchTasks() -> [TaskDataModel]
 }

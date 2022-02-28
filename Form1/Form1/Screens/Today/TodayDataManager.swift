@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol TodayDataManagable {}
+
+class TodayDataManager: TodayDataManagable {
+}

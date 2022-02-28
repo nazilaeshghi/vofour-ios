@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class TodayViewModel: ObservableObject {
+    private let dataManager: TodayDataManagable
+    
+    init(dataManager: TodayDataManagable) {
+        self.dataManager = dataManager
+    }
+    
+    @Published var title: String = "This is Today"
+    
+    func changeTitle(to value: String) {
+        self.title = value
+    }
+}
