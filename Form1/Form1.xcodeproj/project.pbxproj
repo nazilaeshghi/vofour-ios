@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640B8E0C27CECDB000177ADF /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E0B27CECDB000177ADF /* ProgressBar.swift */; };
+		640B8E0F27CECE1F00177ADF /* LabelDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E0E27CECE1F00177ADF /* LabelDisplayModel.swift */; };
+		640B8E1127CECE5A00177ADF /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1027CECE5A00177ADF /* LabelStyle.swift */; };
+		640B8E1427CECEB300177ADF /* PublicTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1327CECEB300177ADF /* PublicTheme.swift */; };
+		640B8E1627CECF2100177ADF /* CardTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1527CECF2100177ADF /* CardTitleStackView.swift */; };
+		640B8E1927CECF6B00177ADF /* CardDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1827CECF6B00177ADF /* CardDisplayModel.swift */; };
+		640B8E1C27CECFA700177ADF /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1B27CECFA700177ADF /* TextExtensions.swift */; };
 		6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */; };
 		647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F227AC203F00C70874 /* CoordinatorRegistration.swift */; };
 		647F26F527AC214D00C70874 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F427AC214D00C70874 /* Destination.swift */; };
@@ -37,7 +44,7 @@
 		64B8AEC7279DB0C300BF47C5 /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */; };
 		64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */; };
 		64D7467227B8C918006A0C1C /* CardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D7467127B8C918006A0C1C /* CardUIView.swift */; };
-		64D7467427B8CFD8006A0C1C /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D7467327B8CFD8006A0C1C /* ColorExtention.swift */; };
+		64D7467427B8CFD8006A0C1C /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D7467327B8CFD8006A0C1C /* ColorExtentions.swift */; };
 		64D7467927B8D451006A0C1C /* Vazir-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64D7467627B8D451006A0C1C /* Vazir-Medium.ttf */; };
 		64D7467A27B8D451006A0C1C /* Vazir-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64D7467727B8D451006A0C1C /* Vazir-Regular.ttf */; };
 		64D7467B27B8D451006A0C1C /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64D7467827B8D451006A0C1C /* Vazir-Light.ttf */; };
@@ -45,6 +52,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		640B8E0B27CECDB000177ADF /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		640B8E0E27CECE1F00177ADF /* LabelDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDisplayModel.swift; sourceTree = "<group>"; };
+		640B8E1027CECE5A00177ADF /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
+		640B8E1327CECEB300177ADF /* PublicTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTheme.swift; sourceTree = "<group>"; };
+		640B8E1527CECF2100177ADF /* CardTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTitleStackView.swift; sourceTree = "<group>"; };
+		640B8E1827CECF6B00177ADF /* CardDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayModel.swift; sourceTree = "<group>"; };
+		640B8E1B27CECFA700177ADF /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataModel.swift; sourceTree = "<group>"; };
 		647F26F227AC203F00C70874 /* CoordinatorRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorRegistration.swift; sourceTree = "<group>"; };
 		647F26F427AC214D00C70874 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
@@ -74,7 +88,7 @@
 		64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModelTransformer.swift; sourceTree = "<group>"; };
 		64D7467127B8C918006A0C1C /* CardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUIView.swift; sourceTree = "<group>"; };
-		64D7467327B8CFD8006A0C1C /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
+		64D7467327B8CFD8006A0C1C /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
 		64D7467627B8D451006A0C1C /* Vazir-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Medium.ttf"; sourceTree = "<group>"; };
 		64D7467727B8D451006A0C1C /* Vazir-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Regular.ttf"; sourceTree = "<group>"; };
 		64D7467827B8D451006A0C1C /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
@@ -95,6 +109,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		640B8E0D27CECE0900177ADF /* DisplayModels */ = {
+			isa = PBXGroup;
+			children = (
+				640B8E0E27CECE1F00177ADF /* LabelDisplayModel.swift */,
+				640B8E1827CECF6B00177ADF /* CardDisplayModel.swift */,
+			);
+			path = DisplayModels;
+			sourceTree = "<group>";
+		};
+		640B8E1A27CECF9200177ADF /* ViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				64D7467327B8CFD8006A0C1C /* ColorExtentions.swift */,
+				640B8E1B27CECFA700177ADF /* TextExtensions.swift */,
+			);
+			path = ViewExtensions;
+			sourceTree = "<group>";
+		};
+		640B8E1D27CECFDD00177ADF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				64D7467C27B8D4B8006A0C1C /* ScaledFont.swift */,
+				640B8E1027CECE5A00177ADF /* LabelStyle.swift */,
+				640B8E1327CECEB300177ADF /* PublicTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		647F293B27AF1E9B00C70874 /* Report */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,8 +215,9 @@
 				64B8AEA2279DA3DC00BF47C5 /* Form1App.swift */,
 				647F283427AEC9B000C70874 /* AppCoordinator.swift */,
 				64B8AEB0279DA4EF00BF47C5 /* AppTabView.swift */,
-				64D7467327B8CFD8006A0C1C /* ColorExtention.swift */,
-				64D7467C27B8D4B8006A0C1C /* ScaledFont.swift */,
+				640B8E1D27CECFDD00177ADF /* Theme */,
+				640B8E1A27CECF9200177ADF /* ViewExtensions */,
+				640B8E0D27CECE0900177ADF /* DisplayModels */,
 				64D7467527B8D441006A0C1C /* Fonts */,
 				64D7467027B8C8F4006A0C1C /* UIComponents */,
 				647F294527AF23E100C70874 /* ForFuture */,
@@ -250,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				64D7467127B8C918006A0C1C /* CardUIView.swift */,
+				640B8E0B27CECDB000177ADF /* ProgressBar.swift */,
+				640B8E1527CECF2100177ADF /* CardTitleStackView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -346,24 +391,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B8AEC2279DB06200BF47C5 /* TodayDataManager.swift in Sources */,
+				640B8E0F27CECE1F00177ADF /* LabelDisplayModel.swift in Sources */,
 				6487E6AA27B4B9E300A6A37E /* TaskDetailDataManager.swift in Sources */,
 				64D7467227B8C918006A0C1C /* CardUIView.swift in Sources */,
+				640B8E1627CECF2100177ADF /* CardTitleStackView.swift in Sources */,
 				6487E6A427B4B94A00A6A37E /* TaskDetailCoordinator.swift in Sources */,
 				647F26F727AC266600C70874 /* Presentation.swift in Sources */,
 				64B8AEBB279DAFF500BF47C5 /* RealmDataProvider.swift in Sources */,
+				640B8E1927CECF6B00177ADF /* CardDisplayModel.swift in Sources */,
 				64D7467D27B8D4B8006A0C1C /* ScaledFont.swift in Sources */,
 				647F294227AF1F4F00C70874 /* HomeCoordinator.swift in Sources */,
 				64B8AEB3279DADD200BF47C5 /* DataProvider.swift in Sources */,
 				64B8AEC5279DB09600BF47C5 /* TodayContext.swift in Sources */,
-				64D7467427B8CFD8006A0C1C /* ColorExtention.swift in Sources */,
+				64D7467427B8CFD8006A0C1C /* ColorExtentions.swift in Sources */,
 				64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */,
 				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
 				64B8AEC7279DB0C300BF47C5 /* TodayCoordinator.swift in Sources */,
 				647F294427AF1FBC00C70874 /* HomeView.swift in Sources */,
+				640B8E0C27CECDB000177ADF /* ProgressBar.swift in Sources */,
 				647F294927AF247300C70874 /* HomeDataManager.swift in Sources */,
 				64B8AEBE279DB03400BF47C5 /* TodayViewModel.swift in Sources */,
 				647F293A27AEFAB700C70874 /* AppTabView.swift in Sources */,
 				6487E6A627B4B95A00A6A37E /* TaskDetailView.swift in Sources */,
+				640B8E1127CECE5A00177ADF /* LabelStyle.swift in Sources */,
+				640B8E1C27CECFA700177ADF /* TextExtensions.swift in Sources */,
 				6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */,
 				6487E6AC27B4B9F400A6A37E /* TaskDetailContext.swift in Sources */,
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
@@ -372,6 +423,7 @@
 				64B8AEA3279DA3DC00BF47C5 /* Form1App.swift in Sources */,
 				647F294727AF245000C70874 /* HomeDestinationContext.swift in Sources */,
 				647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */,
+				640B8E1427CECEB300177ADF /* PublicTheme.swift in Sources */,
 				6487E6A827B4B9CF00A6A37E /* TaskDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

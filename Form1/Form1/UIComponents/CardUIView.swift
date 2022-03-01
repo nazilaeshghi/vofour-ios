@@ -8,45 +8,35 @@
 
 import SwiftUI
 
-struct PublicTheme {
-    static let cornerRaduis : CGFloat = 16
-}
-
 struct CardUIView: View {
-    
-    let viewModel: CardViewModel
+    @State private (set) var viewModel: CardDisplayModel
     
     var body: some View {
-        VStack {
-            HStack {
+        GeometryReader { geometry in
+            ZStack {
+                ProgressBar(value: $viewModel.progress,
+                            color: viewModel.background)
+                    .frame(height: geometry.size.height)
+                
                 HStack {
-                    let imageName =  viewModel.state == .done ? "checkmark" : "plus"
-                    Image(systemName: imageName)
-                        .foregroundColor(.white)
-                    Text(viewModel.count)
-                        .scaledFont(style: .title2)
-                }
-                
-                Spacer()
-                
-                VStack {
+                    CardTitleStackView(title: viewModel.title,
+                                       subtitle: viewModel.subtitle)
+                    
+                    Spacer()
+                    
                     HStack {
-                        Spacer()
-                        Text(viewModel.title)
-                            .scaledFont(style: .title)
-                    }
-                            
-                    HStack {
-                        Spacer()
-                        Text(viewModel.subtitle)
-                            .scaledFont(style: .subtitle)
+                        Text(viewModel.count.plainText)
+                            .applyStyle(style: viewModel.count.labelStyle)
+                        
+                        let imageName =  viewModel.state == .done ? "checkmark" : "plus"
+                        Image(systemName: imageName)
                             .foregroundColor(.white)
                     }
                 }
+                .padding()
             }
-            .padding()
-            .background(viewModel.background)
             .cornerRadius(PublicTheme.cornerRaduis)
+            .padding()
         }
     }
 }
@@ -54,30 +44,18 @@ struct CardUIView: View {
 struct CardUIView_Previews: PreviewProvider {
     static var previews: some View {
         CardUIView(viewModel: CardMockGenerator.sample1())
+            .environment(\.layoutDirection, .rightToLeft)
     }
-}
-
-struct CardViewModel {
-    let title: String
-    let subtitle: String
-    let count: String
-    let background: Color
-    let state: CardState
-}
-
-enum CardState {
-    case wip
-    case done
-    case over
 }
 
 struct CardMockGenerator {
     
-    static func sample1() -> CardViewModel {
-        return CardViewModel(title: "نیم ساعت پیاده‌روی",
-                             subtitle: "این هفته: ۴ بار",
-                             count: "۲",
+    static func sample1() -> CardDisplayModel {
+        return CardDisplayModel(title: LabelDisplayModel(plainText: "نیم ساعت پیاده‌روی"),
+                             subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .subtitleStyle),
+                             count: LabelDisplayModel(plainText: "۳", style: .number),
                              background: Color(hex:"EA4C89"),
-                             state: .done)
+                             state: .done,
+                             progress: 0.3)
     }
 }
