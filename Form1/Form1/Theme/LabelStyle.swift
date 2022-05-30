@@ -34,26 +34,18 @@ struct LabelStyle {
     }
     
     static var sectionHeaderStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .medium, textColor: .black)
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: PublicTheme.sectionHeaderColor)
     }
     
     static var searchbarPlaceholderStyle: LabelStyle {
-        return .init(font: .title2, fontFamilty: .light, textColor: .gray)
-    }
-}
-
-
-struct LocalizedString {
-    
-    enum ContextPage {
-        static let header = "ایجاد فعالیت"
-        static let subHeader = "یکی از زمینه‌های زیر را انتخاب کنید."
-        static let searchHeader = "زمینه‌ها"
-        static let searchPlaceHolder = "جستجو"
+        return .init(font: .title2, fontFamilty: .light, textColor: PublicTheme.placeholderTextColor)
     }
     
-    enum SelectgoalPage {
-        static let sectionHeader = "اهداف تعریف شده"
-        static let pageHeader = "انتخاب هدف"
+    static var buttonTitleStyle: LabelStyle {
+        return .init(font: .title2, fontFamilty: .regular, textColor: .white)
+    }
+    
+    static var buttonTitleStyleSecondary: LabelStyle {
+        return .init(font: .title2, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
     }
 }

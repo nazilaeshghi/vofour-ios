@@ -1,0 +1,54 @@
+//
+//  LocalizedString.swift
+//  Form1
+//
+//  Created by Hosseini Zadeh, Morteza on 5/30/22.
+//  Copyright © 2022 Vofour. All rights reserved.
+//
+
+import Foundation
+
+struct LocalizedString {
+    
+    enum ContextPage {
+        static let header = "ایجاد فعالیت"
+        static let subHeader = "یکی از زمینه‌های زیر را انتخاب کنید."
+        static let searchHeader = "زمینه‌ها"
+        static let searchPlaceHolder = "جستجو"
+    }
+    
+    enum SelectGoalPage {
+        static let sectionHeader = "اهداف تعریف شده"
+        static let pageHeader = "انتخاب هدف"
+        static let buttonTitle = "افزودن هدف جدید"
+    }
+    
+    enum TaskCreationStep1 {
+        static let header = "اطلاعات لازم وارد کنید"
+        static let createHabitSegmentTitle = "انجام فعالیت"
+        static let quitHabitSegmentTitle = "ترک فعالیت"
+    }
+    
+    enum Input {
+        static let enterHereTitle = "عنوان فعالیت"
+        static let enterHerePlaceholder = "اینجا وارد کنید"
+        
+        static let obstacleHeader = "پیشگیری"
+        static let obstaclePlaceholder = "چه چیز‌هایی موانع این فعالین هستن؟"
+        
+        static let reasonTitle = "علت انتخاب"
+        static let reasonPlaceholder = "قصد شما چیست؟"
+        
+        static let for100Title = "برای ۱۰۰ شدن چه کاری انجام می‌دهم"
+        
+        static let goalSelectorTitle = "مستقل یا بخشی از هدف دیگر"
+        static let goalSelectorPlaceholder = "انتخاب کنید"
+    }
+    
+    enum Buttons {
+        static let nextStepTimeTitle = "بعدی: اطلاعات زمان"
+        static let previousTitle = "قبلی"
+        static let saveTitle = "ذخیره"
+    }
+    
+}

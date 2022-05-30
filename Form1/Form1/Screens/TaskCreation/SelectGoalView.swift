@@ -13,27 +13,42 @@ struct SelectGoalView: View {
     let defaultItem: SelectGoalDisplayModel
     
     var body: some View {
-        List {
-            
-            Section {
-                SelectGoalCell(item: defaultItem)
-                    .padding([.vertical], 10)
-                    .background(PublicTheme.background)
-            }
-            
-            Section(header: Text(LocalizedString.SelectgoalPage.sectionHeader)
-                        .applyStyle(style: .sectionHeaderStyle)) {
-                ForEach(items, id: \.id) { item in
-                    SelectGoalCell(item: item)
+        VStack {
+            List {
+                Section {
+                    SelectGoalCell(item: defaultItem)
                         .padding([.vertical], 10)
                         .background(PublicTheme.background)
                 }
+                
+                if !items.isEmpty{
+                    Section(header: Text(LocalizedString.SelectGoalPage.sectionHeader)
+                                .applyStyle(style: .sectionHeaderStyle)) {
+                        ForEach(items, id: \.id) { item in
+                            SelectGoalCell(item: item)
+                                .padding([.vertical], 10)
+                                .background(PublicTheme.background)
+                        }
+                    }
+                }
             }
+            .onAppear(perform: {
+                UITableView.appearance().contentInset.top = -35
+                UITableView.appearance().backgroundColor = .clear
+            })
+            .background(PublicTheme.background)
+            
+            Button {
+                
+            } label: {
+                Text(LocalizedString.SelectGoalPage.buttonTitle)
+                    .applyStyle(style: .buttonTitleStyle)
+            }
+            .applyStyle(style: .primary)
+            
+            Spacer()
+            
         }
-        .onAppear(perform: {
-            UITableView.appearance().contentInset.top = -35
-            UITableView.appearance().backgroundColor = .clear
-        })
         .background(PublicTheme.background)
     }
 }

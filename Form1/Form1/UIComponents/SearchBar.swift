@@ -27,6 +27,5 @@ struct SearchBar: View {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(PublicTheme.borderColor, lineWidth: 1)
         )
-
     }
 }
