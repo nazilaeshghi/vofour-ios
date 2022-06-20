@@ -216,8 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				64C5503F28609105000E9F61 /* Select Context */,
-				643D4D712839568B0033C083 /* SelectGoalView.swift */,
-				643D4D73283958030033C083 /* SelectGoalCell.swift */,
+				64C5504228609422000E9F61 /* Select Goal */,
 				64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */,
 				64C4E8B3284BA13600502D88 /* TaskCreationStep2View.swift */,
 				64C4E8BB284CFAA500502D88 /* QuitHabitSteps2.swift */,
@@ -395,6 +394,15 @@
 				64C550402860911F000E9F61 /* SelectContextMock.swift */,
 			);
 			path = "Select Context";
+			sourceTree = "<group>";
+		};
+		64C5504228609422000E9F61 /* Select Goal */ = {
+			isa = PBXGroup;
+			children = (
+				643D4D712839568B0033C083 /* SelectGoalView.swift */,
+				643D4D73283958030033C083 /* SelectGoalCell.swift */,
+			);
+			path = "Select Goal";
 			sourceTree = "<group>";
 		};
 		64D7467027B8C8F4006A0C1C /* UIComponents */ = {

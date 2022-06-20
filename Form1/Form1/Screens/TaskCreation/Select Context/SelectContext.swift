@@ -13,42 +13,53 @@ struct SelectContext: View {
     @State var searchText: String = ""
     
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            
-            VStack(spacing: 14) {
-                HStack {
-                    Text(LocalizedString.ContextPage.subHeader)
-                        .applyStyle(style: LabelStyle.tableHeaderStyle)
-                    Spacer()
-                }
+        NavigationView {
+            VStack(spacing: 20) {
+                Divider()
                 
-                VStack(spacing: 6) {
+                VStack(spacing: 14) {
                     HStack {
-                        Text(LocalizedString.ContextPage.searchHeader)
-                            .applyStyle(style: LabelStyle.smallTitleStyle)
+                        Text(LocalizedString.ContextPage.subHeader)
+                            .applyStyle(style: LabelStyle.tableHeaderStyle)
                         Spacer()
                     }
-                    SearchBar(searchText: $searchText)
-                        .onChange(of: searchText) { newValue in
-                            viewModel.filterContextas(with: searchText)
+                    
+                    VStack(spacing: 6) {
+                        HStack {
+                            Text(LocalizedString.ContextPage.searchHeader)
+                                .applyStyle(style: LabelStyle.smallTitleStyle)
+                            Spacer()
                         }
+                        SearchBar(searchText: $searchText)
+                            .onChange(of: searchText) { newValue in
+                                viewModel.filterContextas(with: searchText)
+                            }
+                    }
+                }
+                .padding([.leading, .trailing], 24)
+                
+                List(viewModel.items, id: \.id) { item in
+                    SelectContextCell(item: item)
+                        .padding([.vertical], 10)
+                        .background(PublicTheme.background)
+                }
+                .onAppear(perform: {
+                    UITableView.appearance().contentInset.top = -35
+                    UITableView.appearance().backgroundColor = .clear
+                    UIScrollView.appearance().keyboardDismissMode = .onDrag
+                })
+            }
+            .background(PublicTheme.background)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(LocalizedString.ContextPage.header)
+                            .applyStyle(style: LabelStyle.number)
+                    }
                 }
             }
-            .padding([.leading, .trailing], 24)
-            
-            List(viewModel.items, id: \.id) { item in
-                SelectContextCell(item: item)
-                    .padding([.vertical], 10)
-                    .background(PublicTheme.background)
-            }
-            .onAppear(perform: {
-                UITableView.appearance().contentInset.top = -35
-                UITableView.appearance().backgroundColor = .clear
-                UIScrollView.appearance().keyboardDismissMode = .onDrag
-            })
         }
-        .background(PublicTheme.background)
     }
 }
 
