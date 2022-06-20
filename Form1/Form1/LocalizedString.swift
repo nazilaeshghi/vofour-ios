@@ -29,6 +29,15 @@ struct LocalizedString {
         static let quitHabitSegmentTitle = "ترک فعالیت"
     }
     
+    enum TaskCreationStep2 {
+        static let header = "اطلاعات لازم وارد کنید"
+        static let repeatitiveActivity = "فعالیت تکرار می‌شود"
+        static let nonRepeatitiveActivity = "فعالیت تکرار نمی‌شود"
+        
+        static let needReminder = "یادآور نیاز دارم"
+        static let dontNeedReminder = "یادآور نیاز ندازم"
+    }
+    
     enum Input {
         static let enterHereTitle = "عنوان فعالیت"
         static let enterHerePlaceholder = "اینجا وارد کنید"
@@ -43,12 +52,25 @@ struct LocalizedString {
         
         static let goalSelectorTitle = "مستقل یا بخشی از هدف دیگر"
         static let goalSelectorPlaceholder = "انتخاب کنید"
+        
+        static let dateSelectoreTitle = "تاریخ فعالیت"
+        
+        static let periodSelectorTitle = "مدت زمان مورد نیاز انتخاب کنید"
+        
+        static let numberOfRepeatTitle = "چندبار در روز؟"
+        
+        static let whichDays = "در چه روز‌هایی از هفته؟"
     }
     
     enum Buttons {
         static let nextStepTimeTitle = "بعدی: اطلاعات زمان"
         static let previousTitle = "قبلی"
         static let saveTitle = "ذخیره"
+    }
+    
+    enum QuitHabitStep2 {
+        static let quitEntirely = "ترک کامل"
+        static let withLimit = "تعیین حد مجاز"
     }
     
 }

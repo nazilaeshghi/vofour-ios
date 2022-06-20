@@ -10,9 +10,17 @@ import Foundation
 import SwiftUI
 
 class AppCoordinator {
-     
+    
+    let dataManager = DataManager(dataProvider: ReqalmDataProvider())
+    
+    init() {
+        dataManager.saveContexts()
+    }
+    
     var rootView: some View {
-        return MainTabView()
+        let contextDataManger = SelectContextDataManager(dataManager: dataManager)
+        let viewModel = SelectContextViewModel(dataManager: contextDataManger)
+        return SelectContext(viewModel: viewModel)
     }
     
     func makeDetailView(context: DestinationContext) -> TaskDetailView? {

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB33FD1DE0000E0C1DC</string>
+		<key>name</key>
+		<string>خود شخصی</string>
+		<key>iconName</key>
+		<string>context_self</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB391E03B0000479AE4</string>
+		<key>name</key>
+		<string>کیفیت ارتباط با خود</string>
+		<key>iconName</key>
+		<string>context_self_relationship</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB36803B40000D364DA</string>
+		<key>name</key>
+		<string>کیفیت رابطه با دیگران</string>
+		<key>iconName</key>
+		<string>context_other_relationship</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB39626AE00002A8F65</string>
+		<key>name</key>
+		<string>دوستان</string>
+		<key>iconName</key>
+		<string>context_friends</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB354AD8D0000FEA496</string>
+		<key>name</key>
+		<string>درآمد</string>
+		<key>iconName</key>
+		<string>context_income</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB305B17F00001B5525</string>
+		<key>name</key>
+		<string>شغل</string>
+		<key>iconName</key>
+		<string>context_job</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB382F3230000C56625</string>
+		<key>name</key>
+		<string>تحصیل</string>
+		<key>iconName</key>
+		<string>context_study</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB32B52B90000892482</string>
+		<key>name</key>
+		<string>سلامتی</string>
+		<key>iconName</key>
+		<string>context_health</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB330315D00002DFCFB</string>
+		<key>name</key>
+		<string>شریک</string>
+		<key>iconName</key>
+		<string>context_associate</string>
+	</dict>
+</array>
+</plist>

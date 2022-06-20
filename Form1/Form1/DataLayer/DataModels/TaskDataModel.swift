@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol TaskDataModel {
     var taskID: String { get }
     var isItQuit: Bool { get }
@@ -36,10 +35,9 @@ protocol WeekDay {
 }
 
 protocol Context {
-    var contextID: String { get }
+    var id: String { get }
     var name: String { get }
     var iconName: String { get }
-    var isActive: Bool { get }
 }
 
 protocol Goal {
@@ -52,8 +50,15 @@ protocol TaskColor {
     var hex: String { get }
 }
 
-struct ContextItemDisplayModel {
-    let id = UUID()
+class ContextItemDisplayModel: ObservableObject {
+
+    init(title: LabelDisplayModel, imageName: String) {
+        self.id = UUID()
+        self.title = title
+        self.imageName = imageName
+    }
+    
+    let id: UUID
     var title: LabelDisplayModel
     var imageName: String
 }
@@ -63,5 +68,13 @@ struct SelectGoalDisplayModel {
     let title: LabelDisplayModel
     let imageName: String = "flag"
     let selected: Bool
+}
+
+class DataEntryDataModel {
+    private (set) var contextId: String?
+    
+    func updateContextId(id: String) {
+        self.contextId = id
+    }
 }
 

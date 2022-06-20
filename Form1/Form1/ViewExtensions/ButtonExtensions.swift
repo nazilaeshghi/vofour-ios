@@ -22,6 +22,12 @@ extension Button {
             .cornerRadius(style.cornerRaduis)
             .frame(height: style.height)
     }
+    
+    func applyNoPaddingStyle(style: ButtonStyle) -> some View {
+        self
+            .foregroundColor(style.textColor)
+            .background(style.backgroundColor)
+    }
 }
 
 struct TwoButtonView: View {

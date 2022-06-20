@@ -45,7 +45,7 @@ struct SegmentedPicker: View {
     private static let SegmentCornerRadius: CGFloat = 12
     private static let ShadowRadius: CGFloat = 4
     private static let SegmentXPadding: CGFloat = 16
-    private static let SegmentYPadding: CGFloat = 4
+    private static let SegmentYPadding: CGFloat = 10
     private static let PickerPadding: CGFloat = 4
     private static let AnimationDuration: Double = 0.1
     
@@ -104,7 +104,7 @@ struct SegmentedPicker: View {
         let isSelected = self.selection == index
         return Text(self.items[index])
         // Dark test for selected segment
-            .scaledFont()
+            .scaledFont(family: .regular, style: .subtitle)
             .foregroundColor(isSelected ? SegmentedPicker.SelectedTextColor: SegmentedPicker.TextColor)
             .lineLimit(1)
             .padding(.vertical, SegmentedPicker.SegmentYPadding)

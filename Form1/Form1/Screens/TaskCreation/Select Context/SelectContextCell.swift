@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SelectContextCell: View {
-    let item: ContextItemDisplayModel
+    @StateObject var item: ContextItemDisplayModel
     
     var body: some View {
         HStack {
@@ -31,23 +31,6 @@ struct SelectContextCell_Previews: PreviewProvider {
     static var previews: some View {
         SelectContextCell(item: SelectContextCellMockGenerator.item)
             .environment(\.layoutDirection, .rightToLeft)
-    }
-}
-
-struct SelectContextCellMockGenerator {
-    
-    static var item: ContextItemDisplayModel {
-        return ContextItemDisplayModel(title: LabelDisplayModel(plainText: "خود شخصی (۲)",
-                                                                style: .smallTitleStyle),
-                                       imageName: "Users_Context")
-    }
-    
-    static var items: [ContextItemDisplayModel] {
-        return [SelectContextCellMockGenerator.item,
-                SelectContextCellMockGenerator.item,
-                SelectContextCellMockGenerator.item,
-                SelectContextCellMockGenerator.item,
-                SelectContextCellMockGenerator.item]
     }
 }
 

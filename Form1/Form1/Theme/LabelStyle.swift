@@ -48,4 +48,8 @@ struct LabelStyle {
     static var buttonTitleStyleSecondary: LabelStyle {
         return .init(font: .title2, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
     }
+    
+    static var operandStyle: LabelStyle {
+        return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
+    }
 }
