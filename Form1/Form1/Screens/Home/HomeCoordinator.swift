@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeCoordinator: Coordinator {
+class HomeCoordinator {
     static var destinationIdentifier: DestinationIdentifier = HomeDestinationContext().destinationIdentifier
     
     private var context: HomeDestinationContext!
@@ -17,13 +17,8 @@ class HomeCoordinator: Coordinator {
         return HomeView()
     }
     
-    required init?(context: DestinationContext) {
-        guard let context = context as? HomeDestinationContext else { return nil }
+    required init(context: HomeDestinationContext) {
         self.context = context
-    }
-    
-    func start(options: PresentationOptions) -> Presentation {
-        .nothing
     }
 }
 

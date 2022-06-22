@@ -18,7 +18,12 @@ class DataManager {
     func saveContexts() {
         dataProvider.saveContexts()
     }
+    
     func fetchContexts() -> [Context] {
         return dataProvider.fetchContexts()
+    }
+    
+    func context(id: String) -> Context? {
+        return dataProvider.findContext(id: id)
     }
 }

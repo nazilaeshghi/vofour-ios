@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TaskDetailCoordinator: Coordinator {
+class TaskDetailCoordinator {
     static var destinationIdentifier: DestinationIdentifier = TodayDestinationContext().destinationIdentifier
     
     private var context: TaskDetailContext?
@@ -18,14 +18,9 @@ class TaskDetailCoordinator: Coordinator {
         return TaskDetailView(viewModel: viewModel)
     }
     
-    required init?(context: DestinationContext) {
-        guard let context = context as? TaskDetailContext else { return nil }
+    required init(context: TaskDetailContext) {
         self.context = context
         let dataManager = TaskDetailDataManager()
         self.viewModel = TaskDetailViewModel(dataManager: dataManager)
-    }
-    
-    func start(options: PresentationOptions) -> Presentation {
-        .nothing
     }
 }

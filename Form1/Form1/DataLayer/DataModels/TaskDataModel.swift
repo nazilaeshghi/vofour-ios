@@ -52,15 +52,17 @@ protocol TaskColor {
 
 class ContextItemDisplayModel: ObservableObject {
 
-    init(title: LabelDisplayModel, imageName: String) {
+    init(title: LabelDisplayModel, imageName: String, contextID: String) {
         self.id = UUID()
         self.title = title
         self.imageName = imageName
+        self.contextID = contextID
     }
     
     let id: UUID
     var title: LabelDisplayModel
     var imageName: String
+    var contextID: String
 }
 
 struct SelectGoalDisplayModel {

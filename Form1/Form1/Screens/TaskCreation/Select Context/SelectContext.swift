@@ -17,6 +17,7 @@ struct SelectContext: View {
             VStack(spacing: 20) {
                 Divider()
                 
+                // Page header, subheader and searchbar
                 VStack(spacing: 14) {
                     HStack {
                         Text(LocalizedString.ContextPage.subHeader)
@@ -36,29 +37,28 @@ struct SelectContext: View {
                             }
                     }
                 }
-                .padding([.leading, .trailing], 24)
+                .padding([.leading, .trailing], 16)
                 
                 List(viewModel.items, id: \.id) { item in
-                    SelectContextCell(item: item)
-                        .padding([.vertical], 10)
-                        .background(PublicTheme.background)
+                    ZStack {
+                        NavigationLink(destination: AppCoordinator.shared.makeTaskCreationStep1View(selectedContextID: item.contextID)) {}
+                        .opacity(0)
+                        
+                        SelectContextCell(item: item)
+                            .background(PublicTheme.background)
+                    }
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
                 }
+                .background(PublicTheme.background)
+                .listStyle(PlainListStyle())
                 .onAppear(perform: {
-                    UITableView.appearance().contentInset.top = -35
-                    UITableView.appearance().backgroundColor = .clear
                     UIScrollView.appearance().keyboardDismissMode = .onDrag
                 })
             }
             .background(PublicTheme.background)
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text(LocalizedString.ContextPage.header)
-                            .applyStyle(style: LabelStyle.number)
-                    }
-                }
-            }
+            .applyToolbarStyle(with: LocalizedString.ContextPage.header)
         }
     }
 }

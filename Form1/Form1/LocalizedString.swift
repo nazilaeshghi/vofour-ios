@@ -24,6 +24,9 @@ struct LocalizedString {
     }
     
     enum TaskCreationStep1 {
+        static func header(context: String) -> String {
+            return "ایجاد فعالیت در زمینه \(context)"
+        }
         static let header = "اطلاعات لازم وارد کنید"
         static let createHabitSegmentTitle = "انجام فعالیت"
         static let quitHabitSegmentTitle = "ترک فعالیت"

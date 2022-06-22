@@ -10,7 +10,8 @@ import Foundation
 
 protocol DataProvider {
     func saveContexts()
-    func addTast()
+    func addTask()
     func fetchTasks() -> [TaskDataModel]
     func fetchContexts() -> [Context]
+    func findContext(id: String) -> Context?
 }

@@ -13,11 +13,11 @@ struct SelectContextCellMockGenerator {
     static var item: ContextItemDisplayModel {
         return ContextItemDisplayModel(title: LabelDisplayModel(plainText: "خود شخصی (۲)",
                                                                 style: .smallTitleStyle),
-                                       imageName: "Users_Context")
+                                       imageName: "Users_Context", contextID: "mockId")
     }
     
     static var context: Context {
-        return DecodableContext(id: "iuytdrthhgjh", name: "خود شحصی", iconName: "context_self")
+        return DecodableContext(id: "iuytdrthhgjh", name: "خود شخصی", iconName: "context_self")
     }
     
     static var contexts: [Context] {

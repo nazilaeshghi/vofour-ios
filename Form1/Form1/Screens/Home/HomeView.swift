@@ -10,17 +10,17 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        NavigationView {
-            VStack {
+//        NavigationView {
+//            VStack {
                 Text("This is home")
-                let detailView = AppCoordinator()
-                    .makeDetailView(with: "mockTaskID")
-                NavigationLink(destination: detailView) {
-                    Text("Task Detail")
-                }
-                .navigationTitle("Home")
-            }
-        }
+//                let detailView = AppCoordinator.shared
+//                    .makeDetailView(with: "mockTaskID")
+//                NavigationLink(destination: detailView) {
+//                    Text("Task Detail")
+//                }
+//                .navigationTitle("Home")
+//            }
+//        }
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 
 class SelectContextViewModel: ObservableObject {
     
-    let dataManager: SelectContextDataManagable
+    private let dataManager: SelectContextDataManagable
     
     init(dataManager: SelectContextDataManagable) {
         self.dataManager = dataManager
@@ -26,7 +26,9 @@ class SelectContextViewModel: ObservableObject {
     private func transformContext(context: Context) -> ContextItemDisplayModel {
         let labelDisplayModel = LabelDisplayModel(plainText: context.name, style: .smallTitleStyle)
         let imageName = context.iconName
-        return ContextItemDisplayModel(title: labelDisplayModel, imageName: imageName)
+        return ContextItemDisplayModel(title: labelDisplayModel,
+                                       imageName: imageName,
+                                       contextID: context.id)
     }
     
     func filterContextas(with text: String) {

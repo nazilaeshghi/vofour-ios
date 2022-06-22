@@ -11,7 +11,7 @@ import SwiftUI
 
 protocol Coordinator {
     static var destinationIdentifier: DestinationIdentifier { get }
-    init?(context: DestinationContext)
+    init(context: DestinationContext)
     func start(options: PresentationOptions) -> Presentation
 }
 

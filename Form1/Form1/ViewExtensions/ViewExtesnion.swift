@@ -23,4 +23,16 @@ extension View {
     func eraseToAnyView() -> AnyView {
         AnyView(self)
     }
+    
+    func applyToolbarStyle(with title: String) -> some View {
+        self
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack(spacing: 0) {
+                        Text(title)
+                            .applyStyle(style: LabelStyle.number)
+                    }
+                }
+            }
+    }
 }

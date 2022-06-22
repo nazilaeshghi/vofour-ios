@@ -68,6 +68,10 @@
 		64C5503C285F7BD2000E9F61 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5503B285F7BD2000E9F61 /* DataManager.swift */; };
 		64C5503E285F8864000E9F61 /* SelectContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5503D285F8864000E9F61 /* SelectContextViewModel.swift */; };
 		64C5504128609120000E9F61 /* SelectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C550402860911F000E9F61 /* SelectContextMock.swift */; };
+		64C5504828609A9F000E9F61 /* TaskCreationStep1Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */; };
+		64C5504A28609ABE000E9F61 /* TaskCreationStep1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */; };
+		64C5504C28609AC6000E9F61 /* TaskCreationStep1DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */; };
+		64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504D28609ADA000E9F61 /* TaskCreationStep1Mock.swift */; };
 		64D7467227B8C918006A0C1C /* CardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D7467127B8C918006A0C1C /* CardUIView.swift */; };
 		64D7467427B8CFD8006A0C1C /* ColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D7467327B8CFD8006A0C1C /* ColorExtentions.swift */; };
 		64D7467927B8D451006A0C1C /* Vazir-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64D7467627B8D451006A0C1C /* Vazir-Medium.ttf */; };
@@ -143,6 +147,10 @@
 		64C5503B285F7BD2000E9F61 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		64C5503D285F8864000E9F61 /* SelectContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextViewModel.swift; sourceTree = "<group>"; };
 		64C550402860911F000E9F61 /* SelectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextMock.swift; sourceTree = "<group>"; };
+		64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1Coordinator.swift; sourceTree = "<group>"; };
+		64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1ViewModel.swift; sourceTree = "<group>"; };
+		64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1DataManager.swift; sourceTree = "<group>"; };
+		64C5504D28609ADA000E9F61 /* TaskCreationStep1Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1Mock.swift; sourceTree = "<group>"; };
 		64D7467127B8C918006A0C1C /* CardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUIView.swift; sourceTree = "<group>"; };
 		64D7467327B8CFD8006A0C1C /* ColorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentions.swift; sourceTree = "<group>"; };
 		64D7467627B8D451006A0C1C /* Vazir-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Medium.ttf"; sourceTree = "<group>"; };
@@ -217,7 +225,7 @@
 			children = (
 				64C5503F28609105000E9F61 /* Select Context */,
 				64C5504228609422000E9F61 /* Select Goal */,
-				64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */,
+				64C5504628609A8B000E9F61 /* TaskCreationStep1 */,
 				64C4E8B3284BA13600502D88 /* TaskCreationStep2View.swift */,
 				64C4E8BB284CFAA500502D88 /* QuitHabitSteps2.swift */,
 				64C4E8B9284CF7C800502D88 /* RepeatView.swift */,
@@ -405,6 +413,18 @@
 			path = "Select Goal";
 			sourceTree = "<group>";
 		};
+		64C5504628609A8B000E9F61 /* TaskCreationStep1 */ = {
+			isa = PBXGroup;
+			children = (
+				64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */,
+				64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */,
+				64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */,
+				64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */,
+				64C5504D28609ADA000E9F61 /* TaskCreationStep1Mock.swift */,
+			);
+			path = TaskCreationStep1;
+			sourceTree = "<group>";
+		};
 		64D7467027B8C8F4006A0C1C /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +562,7 @@
 				640B8E1927CECF6B00177ADF /* CardDisplayModel.swift in Sources */,
 				64D7467D27B8D4B8006A0C1C /* ScaledFont.swift in Sources */,
 				647F294227AF1F4F00C70874 /* HomeCoordinator.swift in Sources */,
+				64C5504828609A9F000E9F61 /* TaskCreationStep1Coordinator.swift in Sources */,
 				64C4E8B6284BADFE00502D88 /* WeekDaysView.swift in Sources */,
 				643D4D722839568B0033C083 /* SelectGoalView.swift in Sources */,
 				64B8AEB3279DADD200BF47C5 /* DataProvider.swift in Sources */,
@@ -551,6 +572,7 @@
 				64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */,
 				643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */,
 				64EA8B27285F651B009027DE /* SelectContextDataManager.swift in Sources */,
+				64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */,
 				643778B4281892560025D3D4 /* SelectContext.swift in Sources */,
 				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
 				64C4E8B8284BB6CF00502D88 /* ChangeRepeatView.swift in Sources */,
@@ -582,9 +604,11 @@
 				64C4E8BA284CF7C800502D88 /* RepeatView.swift in Sources */,
 				6400D6512841C54C005A6F79 /* MultipleLineInputCell.swift in Sources */,
 				64C4E8B4284BA13600502D88 /* TaskCreationStep2View.swift in Sources */,
+				64C5504C28609AC6000E9F61 /* TaskCreationStep1DataManager.swift in Sources */,
 				64D8899128407EE800975536 /* OneLineInputCell.swift in Sources */,
 				647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */,
 				64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */,
+				64C5504A28609ABE000E9F61 /* TaskCreationStep1ViewModel.swift in Sources */,
 				6400D6532844101A005A6F79 /* ViewExtesnion.swift in Sources */,
 				640B8E1427CECEB300177ADF /* PublicTheme.swift in Sources */,
 				64C5504128609120000E9F61 /* SelectContextMock.swift in Sources */,
@@ -800,7 +824,7 @@
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 10.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TodayCoordinator: Coordinator {
+class TodayCoordinator {
     static var destinationIdentifier: DestinationIdentifier = TodayDestinationContext().destinationIdentifier
     
     private var context: TodayDestinationContext?
@@ -18,14 +18,9 @@ class TodayCoordinator: Coordinator {
         return TodayView(viewModel: viewModel)
     }
     
-    required init?(context: DestinationContext) {
-        guard let context = context as? TodayDestinationContext else { return nil }
+    required init(context: TodayDestinationContext) {
         self.context = context
         let dataManager = TodayDataManager()
         self.viewModel = TodayViewModel(dataManager: dataManager)
-    }
-    
-    func start(options: PresentationOptions) -> Presentation {
-        .nothing
     }
 }

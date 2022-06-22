@@ -15,11 +15,13 @@ struct SearchBar: View {
         ZStack {
             Rectangle()
                 .foregroundColor(Color("LightGray"))
+                .background(.white)
             HStack {
                 Image("search-loupe")
                 TextField(LocalizedString.ContextPage.searchPlaceHolder, text: $searchText)
                     .scaledFont(family: .light, style: .title2)
             }
+            .cornerRadius(8)
             .padding(.leading, 13)
         }
         .frame(height: 40)
