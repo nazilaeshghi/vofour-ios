@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct TaskCreationStep1View: View {
+    @Environment(\.dismiss) var dismiss
+    
     @StateObject var viewModel: TaskCreationStep1ViewModel
     @State private var selectedType = 0
     
@@ -52,7 +54,7 @@ struct TaskCreationStep1View: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .applyToolbarStyle(with: viewModel.header())
+            .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss)
         }
         .navigationBarHidden(true)
     }
