@@ -29,11 +29,15 @@ class AppCoordinator {
         return SelectContext(viewModel: viewModel)
     }
     
-    func makeTaskCreationStep1View(selectedContextID: String) -> TaskCreationStep1View {
-        let input = DataEntryDataModel()
-        input.updateContextId(id: selectedContextID)
-        let context = TaskCreationStep1Context(input: input)
+    func makeTaskCreationStep1View() -> TaskCreationStep1View {
+        let context = TaskCreationStep1Context()
         let coordinator = TaskCreationStep1Coordinator(context: context, dataManage: dataManager)
+        return coordinator.destinationView
+    }
+    
+    func makeSelectGoalSheetView() -> SelectGoalView {
+        let context = SelectGoalContext()
+        let coordinator = SelectGoalCoordinator(context: context, dataManage: dataManager)
         return coordinator.destinationView
     }
     

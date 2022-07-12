@@ -11,6 +11,7 @@ import Foundation
 protocol SelectContextDataManagable {
     func fetchListOfContexts() -> [Context]
     func filterContext(text: String) -> [Context]
+    func selectContext(contextID: String)
 }
 
 class SelectContextDataManager: SelectContextDataManagable {
@@ -31,5 +32,9 @@ class SelectContextDataManager: SelectContextDataManagable {
             return cacheContexts
         }
         return cacheContexts.filter { $0.name.contains(text) }
+    }
+    
+    func selectContext(contextID: String) {
+        dataManager.currentInputEntry.updateContextId(id: contextID)
     }
 }

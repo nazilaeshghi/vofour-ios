@@ -10,9 +10,16 @@ import SwiftUI
 
 struct TaskCreationStep1View: View {
     @Environment(\.dismiss) var dismiss
+    @State private var showingSheet = false
     
     @StateObject var viewModel: TaskCreationStep1ViewModel
     @State private var selectedType = 0
+    
+    @State private var titleInputText = ""
+    @State private var preventionInputText = ""
+    @State private var reasonInputText = ""
+    @State private var for100InputText = ""
+    @State private var goalID: String? = nil
     
     private let segmentItems = [
         LocalizedString.TaskCreationStep1.createHabitSegmentTitle,
@@ -32,16 +39,33 @@ struct TaskCreationStep1View: View {
                         }
                         
                         SegmentedPicker(items: segmentItems, selection: $selectedType)
-                        OneLineInputCell(placeholder: LocalizedString.Input.enterHerePlaceholder,
+                            .onChange(of: selectedType) { newValue in
+                                viewModel.update(segemntSelection: newValue)
+                            }
+                        
+                        OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
+                                         placeholder: LocalizedString.Input.enterHerePlaceholder,
                                          title: LocalizedString.Input.enterHereTitle)
-                        SelectorInoutCell(placeholder: LocalizedString.Input.goalSelectorTitle,
+                        
+                        SelectorInoutCell(text: viewModel.selectedGoalTitle,
+                                          placeholder: LocalizedString.Input.goalSelectorTitle,
                                           title: LocalizedString.Input.goalSelectorPlaceholder)
-                        MultipleLineInputCell(placeholder: LocalizedString.Input.obstaclePlaceholder,
+                            .onTapGesture {
+                                showingSheet = true
+                            }
+                        
+                        MultipleLineInputCell(inputText: $preventionInputText.onChange(preventionChanged),
+                                              placeholder: LocalizedString.Input.obstaclePlaceholder,
                                               title: LocalizedString.Input.obstacleHeader)
-                        MultipleLineInputCell(placeholder: LocalizedString.Input.reasonPlaceholder,
+                        
+                        MultipleLineInputCell(inputText: $reasonInputText.onChange(reasonChanged),
+                                              placeholder: LocalizedString.Input.reasonPlaceholder,
                                               title: LocalizedString.Input.reasonTitle)
-                        MultipleLineInputCell(placeholder: LocalizedString.Input.enterHerePlaceholder,
+                        
+                        MultipleLineInputCell(inputText: $for100InputText.onChange(for100Changed),
+                                              placeholder: LocalizedString.Input.enterHerePlaceholder,
                                               title: LocalizedString.Input.for100Title)
+                        
                         Spacer()
                     }
                     .padding()
@@ -49,14 +73,37 @@ struct TaskCreationStep1View: View {
                 Spacer()
                 HStack {
                     TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
-                                  secondaryButtonText: LocalizedString.Buttons.previousTitle)
+                                   secondaryButtonText: LocalizedString.Buttons.previousTitle)
                         .frame(height: 60)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
             .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss)
+            .sheet(isPresented: $showingSheet) {
+                    viewModel.refreshGoalTitle()
+            } content: {
+                AppCoordinator.shared.makeSelectGoalSheetView()
+            }
+
         }
         .navigationBarHidden(true)
+    }
+    
+    
+    func titleChanged(to value: String) {
+        viewModel.updateActivityTitle(title: value)
+    }
+    
+    func reasonChanged(to value: String) {
+        viewModel.updateActivityReason(text: value)
+    }
+    
+    func preventionChanged(to value: String) {
+        viewModel.updateActivityPrevention(text: value)
+    }
+    
+    func for100Changed(to value: String) {
+        viewModel.updateActivityFor100(text: value)
     }
 }
 

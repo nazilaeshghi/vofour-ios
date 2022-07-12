@@ -10,9 +10,7 @@ import Foundation
 
 struct TaskCreationStep1Context: DestinationContext {
     var destinationIdentifier: DestinationIdentifier { "TaskCreationStep1Context" }
-    var input: DataEntryDataModel
 }
-
 
 class TaskCreationStep1Coordinator {
     static var destinationIdentifier: DestinationIdentifier = TodayDestinationContext().destinationIdentifier
@@ -26,7 +24,7 @@ class TaskCreationStep1Coordinator {
     
     required init(context: TaskCreationStep1Context, dataManage: DataManager) {
         self.context = context
-        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManage, input: context.input)
+        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManage)
         self.viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager)
     }
 }

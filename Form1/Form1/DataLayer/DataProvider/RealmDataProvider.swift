@@ -43,6 +43,7 @@ class ReqalmDataProvider: DataProvider {
             ErrorLogger.log(domain: .dataBase, message: "Saving contexts faild, unable to fetch contexts from plist file")
             return
         }
+        
         let contextRealmObjects = decodableContexts.map{ ContextRealm(context: $0) }
         
         do {
@@ -64,6 +65,7 @@ class ReqalmDataProvider: DataProvider {
         return []
     }
     
+    // MARK: - Context
     func fetchContexts() -> [Context] {
         do {
             return try realm().objects(ContextRealm.self).detached
@@ -77,58 +79,40 @@ class ReqalmDataProvider: DataProvider {
         do {
             return try realm().objects(ContextRealm.self).where{ $0.id == id }.first
         } catch let error as NSError {
-            ErrorLogger.log(domain: .dataBase, message: "Fetching context faild, Something went wrong with Realm: \(error.localizedDescription)")
+            ErrorLogger.log(domain: .dataBase, message: "Finding context faild, Something went wrong with Realm: \(error.localizedDescription)")
             return nil
         }
     }
-}
-
-
-protocol DetachableObject: AnyObject {
-    func detached() -> Self
-}
-
-extension Object: DetachableObject {
-    func detached() -> Self {
-        let detached = type(of: self).init()
-        for property in objectSchema.properties {
-            guard let value = value(forKey: property.name) else {
-                continue
-            }
-            if let detachable = value as? DetachableObject {
-                detached.setValue(detachable.detached(), forKey: property.name)
-            } else { // Then it is a primitive
-                detached.setValue(value, forKey: property.name)
-            }
+    
+    // MARK: - Goal
+    func fetchGoals() -> [Goal] {
+        do {
+            return try realm().objects(GoalRealm.self).detached
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Fetching Goals faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return []
         }
-        return detached
     }
-}
-
-extension List: DetachableObject {
-    func detached() -> List<Element> {
-        let result = List<Element>()
-        forEach {
-            if let detachableObject = $0 as? DetachableObject,
-               let element = detachableObject.detached() as? Element {
-                result.append(element)
-            } else { // Then it is a primitive
-                result.append($0)
+    
+    func createGoal(newEntity: Goal) {
+        let goalRealm = GoalRealm(goal: newEntity)
+        
+        do {
+            let realm  = try self.realm()
+            try realm.write {
+                realm.add(goalRealm)
             }
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Saving Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
         }
-        return result
-    }
-}
-
-public extension Sequence where Iterator.Element: Object {
-    
-    var detached: [Element] {
-        return self.map({ $0.detached() })
     }
     
-    
-}
-
-public extension Sequence where Iterator.Element: Object {
-    
+    func findGoal(with id: String) -> Goal? {
+        do {
+            return try realm().objects(GoalRealm.self).where{ $0.id == id }.first
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }

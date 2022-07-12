@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ButtonStyle {
+struct CustomButtonStyle {
     let font: FontStyle
     let fontFamilty: FontFamily
     let textColor: Color
@@ -16,15 +16,15 @@ struct ButtonStyle {
     let height: CGFloat
     let cornerRaduis: CGFloat
     
-    static var primary: ButtonStyle {
+    static var primary: CustomButtonStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: PublicTheme.primaryColor, height: 40, cornerRaduis: PublicTheme.cornerRaduis)
     }
     
-    static var multiplePrimary: ButtonStyle {
+    static var multiplePrimary: CustomButtonStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: PublicTheme.primaryColor, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
     }
     
-    static var multipleSecondary: ButtonStyle {
+    static var multipleSecondary: CustomButtonStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.primaryColor, backgroundColor: .white, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
     }
 }

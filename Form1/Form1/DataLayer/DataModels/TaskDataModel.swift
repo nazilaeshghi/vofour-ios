@@ -34,49 +34,7 @@ protocol WeekDay {
     var name: String { get }
 }
 
-protocol Context {
-    var id: String { get }
-    var name: String { get }
-    var iconName: String { get }
-}
-
-protocol Goal {
-    var goalID: String { get }
-    var title: String { get }
-}
-
 protocol TaskColor {
     var name: String { get }
     var hex: String { get }
 }
-
-class ContextItemDisplayModel: ObservableObject {
-
-    init(title: LabelDisplayModel, imageName: String, contextID: String) {
-        self.id = UUID()
-        self.title = title
-        self.imageName = imageName
-        self.contextID = contextID
-    }
-    
-    let id: UUID
-    var title: LabelDisplayModel
-    var imageName: String
-    var contextID: String
-}
-
-struct SelectGoalDisplayModel {
-    let id = UUID()
-    let title: LabelDisplayModel
-    let imageName: String = "flag"
-    let selected: Bool
-}
-
-class DataEntryDataModel {
-    private (set) var contextId: String?
-    
-    func updateContextId(id: String) {
-        self.contextId = id
-    }
-}
-

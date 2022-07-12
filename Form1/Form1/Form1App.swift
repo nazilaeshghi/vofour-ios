@@ -11,7 +11,7 @@ import SwiftUI
 struct Form1App: App {
     var body: some Scene {
         WindowGroup {
-            AppCoordinator.shared.rootView.environment(\.layoutDirection, .rightToLeft)
+            AppCoordinator.shared.rootView
         }
     }
 }

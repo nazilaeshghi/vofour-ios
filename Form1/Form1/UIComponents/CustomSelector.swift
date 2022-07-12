@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CustomSelector: View {
-    @State var text: String
+    var text: String?
     var placeholder: String
     
     var body: some View {
@@ -18,12 +18,12 @@ struct CustomSelector: View {
                 .foregroundColor(.white)
             
             HStack {
-                if text.isEmpty {
-                    Text(placeholder)
-                        .applyStyle(style: .searchbarPlaceholderStyle)
-                } else{
+                if let text = text {
                     Text(text)
                         .applyStyle(style: .number)
+                } else {
+                    Text(placeholder)
+                        .applyStyle(style: .searchbarPlaceholderStyle)
                 }
                 Spacer()
                 Image("Arrow")

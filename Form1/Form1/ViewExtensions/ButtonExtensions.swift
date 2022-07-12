@@ -14,7 +14,7 @@ enum ButtonType {
 }
 
 extension Button {
-    func applyStyle(style: ButtonStyle) -> some View {
+    func applyStyle(style: CustomButtonStyle) -> some View {
         self
             .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
             .foregroundColor(style.textColor)
@@ -23,7 +23,7 @@ extension Button {
             .frame(height: style.height)
     }
     
-    func applyNoPaddingStyle(style: ButtonStyle) -> some View {
+    func applyNoPaddingStyle(style: CustomButtonStyle) -> some View {
         self
             .foregroundColor(style.textColor)
             .background(style.backgroundColor)

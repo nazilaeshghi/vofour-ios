@@ -21,12 +21,25 @@
 		640B8E1627CECF2100177ADF /* CardTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1527CECF2100177ADF /* CardTitleStackView.swift */; };
 		640B8E1927CECF6B00177ADF /* CardDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1827CECF6B00177ADF /* CardDisplayModel.swift */; };
 		640B8E1C27CECFA700177ADF /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1B27CECFA700177ADF /* TextExtensions.swift */; };
+		642CB192287AFD7A004AF8DA /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB191287AFD7A004AF8DA /* BindingExtension.swift */; };
+		642CB194287C4202004AF8DA /* GoalRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB193287C4202004AF8DA /* GoalRealm.swift */; };
+		642CB196287C42F5004AF8DA /* DetachableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB195287C42F5004AF8DA /* DetachableObject.swift */; };
+		642CB198287C4407004AF8DA /* SelectGoalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB197287C4407004AF8DA /* SelectGoalDataManager.swift */; };
+		642CB19A287C4410004AF8DA /* SelectGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB199287C4410004AF8DA /* SelectGoalViewModel.swift */; };
+		642CB19C287C441F004AF8DA /* SelectGoalMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB19B287C441F004AF8DA /* SelectGoalMock.swift */; };
+		642CB19E287C451D004AF8DA /* DataEntryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB19D287C451D004AF8DA /* DataEntryDataModel.swift */; };
+		642CB1A0287C453D004AF8DA /* ContextDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB19F287C453D004AF8DA /* ContextDataModel.swift */; };
+		642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB1A1287C4573004AF8DA /* GoalDataModel.swift */; };
+		642CB1A4287C4645004AF8DA /* SelectGoalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */; };
 		6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */; };
 		643778B4281892560025D3D4 /* SelectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B3281892560025D3D4 /* SelectContext.swift */; };
 		643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B52818AA230025D3D4 /* SelectContextCell.swift */; };
 		643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B72818BDB40025D3D4 /* SearchBar.swift */; };
 		643D4D722839568B0033C083 /* SelectGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D4D712839568B0033C083 /* SelectGoalView.swift */; };
 		643D4D74283958030033C083 /* SelectGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D4D73283958030033C083 /* SelectGoalCell.swift */; };
+		646A8712287DA48D00E18CE4 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8711287DA48D00E18CE4 /* NewGoalView.swift */; };
+		646A8816287DD53F00E18CE4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8815287DD53F00E18CE4 /* StringExtensions.swift */; };
+		646A891A287E13EB00E18CE4 /* ModalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8919287E13EB00E18CE4 /* ModalHeaderView.swift */; };
 		647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F227AC203F00C70874 /* CoordinatorRegistration.swift */; };
 		647F26F527AC214D00C70874 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F427AC214D00C70874 /* Destination.swift */; };
 		647F26F727AC266600C70874 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F627AC266600C70874 /* Presentation.swift */; };
@@ -42,7 +55,7 @@
 		6487E6A827B4B9CF00A6A37E /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6A727B4B9CF00A6A37E /* TaskDetailViewModel.swift */; };
 		6487E6AA27B4B9E300A6A37E /* TaskDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6A927B4B9E300A6A37E /* TaskDetailDataManager.swift */; };
 		6487E6AC27B4B9F400A6A37E /* TaskDetailContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6AB27B4B9F400A6A37E /* TaskDetailContext.swift */; };
-		64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A7284075A80056EC08 /* ButtonStyle.swift */; };
+		64A8A3A8284075A80056EC08 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A7284075A80056EC08 /* CustomButtonStyle.swift */; };
 		64A8A3AA284075EC0056EC08 /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A9284075EC0056EC08 /* ButtonExtensions.swift */; };
 		64A8A3AE284076CF0056EC08 /* TaskCreationStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */; };
 		64B8AEA3279DA3DC00BF47C5 /* Form1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEA2279DA3DC00BF47C5 /* Form1App.swift */; };
@@ -101,12 +114,25 @@
 		640B8E1527CECF2100177ADF /* CardTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTitleStackView.swift; sourceTree = "<group>"; };
 		640B8E1827CECF6B00177ADF /* CardDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayModel.swift; sourceTree = "<group>"; };
 		640B8E1B27CECFA700177ADF /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
+		642CB191287AFD7A004AF8DA /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
+		642CB193287C4202004AF8DA /* GoalRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRealm.swift; sourceTree = "<group>"; };
+		642CB195287C42F5004AF8DA /* DetachableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetachableObject.swift; sourceTree = "<group>"; };
+		642CB197287C4407004AF8DA /* SelectGoalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalDataManager.swift; sourceTree = "<group>"; };
+		642CB199287C4410004AF8DA /* SelectGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalViewModel.swift; sourceTree = "<group>"; };
+		642CB19B287C441F004AF8DA /* SelectGoalMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalMock.swift; sourceTree = "<group>"; };
+		642CB19D287C451D004AF8DA /* DataEntryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryDataModel.swift; sourceTree = "<group>"; };
+		642CB19F287C453D004AF8DA /* ContextDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataModel.swift; sourceTree = "<group>"; };
+		642CB1A1287C4573004AF8DA /* GoalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataModel.swift; sourceTree = "<group>"; };
+		642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalCoordinator.swift; sourceTree = "<group>"; };
 		6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataModel.swift; sourceTree = "<group>"; };
 		643778B3281892560025D3D4 /* SelectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContext.swift; sourceTree = "<group>"; };
 		643778B52818AA230025D3D4 /* SelectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextCell.swift; sourceTree = "<group>"; };
 		643778B72818BDB40025D3D4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		643D4D712839568B0033C083 /* SelectGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalView.swift; sourceTree = "<group>"; };
 		643D4D73283958030033C083 /* SelectGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalCell.swift; sourceTree = "<group>"; };
+		646A8711287DA48D00E18CE4 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
+		646A8815287DD53F00E18CE4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		646A8919287E13EB00E18CE4 /* ModalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderView.swift; sourceTree = "<group>"; };
 		647F26F227AC203F00C70874 /* CoordinatorRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorRegistration.swift; sourceTree = "<group>"; };
 		647F26F427AC214D00C70874 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		647F26F627AC266600C70874 /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
@@ -121,7 +147,7 @@
 		6487E6A727B4B9CF00A6A37E /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 		6487E6A927B4B9E300A6A37E /* TaskDetailDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailDataManager.swift; sourceTree = "<group>"; };
 		6487E6AB27B4B9F400A6A37E /* TaskDetailContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailContext.swift; sourceTree = "<group>"; };
-		64A8A3A7284075A80056EC08 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		64A8A3A7284075A80056EC08 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		64A8A3A9284075EC0056EC08 /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1View.swift; sourceTree = "<group>"; };
 		64B8AE9F279DA3DC00BF47C5 /* Form1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Form1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,10 +240,20 @@
 			children = (
 				64D7467C27B8D4B8006A0C1C /* ScaledFont.swift */,
 				640B8E1027CECE5A00177ADF /* LabelStyle.swift */,
-				64A8A3A7284075A80056EC08 /* ButtonStyle.swift */,
+				64A8A3A7284075A80056EC08 /* CustomButtonStyle.swift */,
 				640B8E1327CECEB300177ADF /* PublicTheme.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		642CB1A5287C4656004AF8DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				643D4D712839568B0033C083 /* SelectGoalView.swift */,
+				643D4D73283958030033C083 /* SelectGoalCell.swift */,
+				646A8711287DA48D00E18CE4 /* NewGoalView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		643778B22818923C0025D3D4 /* TaskCreation */ = {
@@ -313,6 +349,8 @@
 				64B8AEB0279DA4EF00BF47C5 /* AppTabView.swift */,
 				6400D65B28450BDD005A6F79 /* LocalizedString.swift */,
 				64C55037285F78E4000E9F61 /* ErrorLogger.swift */,
+				642CB191287AFD7A004AF8DA /* BindingExtension.swift */,
+				646A8815287DD53F00E18CE4 /* StringExtensions.swift */,
 				640B8E1D27CECFDD00177ADF /* Theme */,
 				640B8E1A27CECF9200177ADF /* ViewExtensions */,
 				640B8E0D27CECE0900177ADF /* DisplayModels */,
@@ -375,6 +413,9 @@
 			isa = PBXGroup;
 			children = (
 				6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */,
+				642CB19D287C451D004AF8DA /* DataEntryDataModel.swift */,
+				642CB1A1287C4573004AF8DA /* GoalDataModel.swift */,
+				642CB19F287C453D004AF8DA /* ContextDataModel.swift */,
 				64C55039285F7907000E9F61 /* LocalDataProvider.swift */,
 				64C5503B285F7BD2000E9F61 /* DataManager.swift */,
 				64EA8B2B285F6D06009027DE /* ContestsList.plist */,
@@ -388,6 +429,7 @@
 			children = (
 				64B8AEB2279DADD200BF47C5 /* DataProvider.swift */,
 				64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */,
+				642CB195287C42F5004AF8DA /* DetachableObject.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -407,8 +449,11 @@
 		64C5504228609422000E9F61 /* Select Goal */ = {
 			isa = PBXGroup;
 			children = (
-				643D4D712839568B0033C083 /* SelectGoalView.swift */,
-				643D4D73283958030033C083 /* SelectGoalCell.swift */,
+				642CB1A5287C4656004AF8DA /* View */,
+				642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */,
+				642CB197287C4407004AF8DA /* SelectGoalDataManager.swift */,
+				642CB199287C4410004AF8DA /* SelectGoalViewModel.swift */,
+				642CB19B287C441F004AF8DA /* SelectGoalMock.swift */,
 			);
 			path = "Select Goal";
 			sourceTree = "<group>";
@@ -439,6 +484,7 @@
 				6400D65928450B56005A6F79 /* TwoButtonsView.swift */,
 				64C4E8B5284BADFE00502D88 /* WeekDaysView.swift */,
 				64C4E8B7284BB6CF00502D88 /* ChangeRepeatView.swift */,
+				646A8919287E13EB00E18CE4 /* ModalHeaderView.swift */,
 				6400D6582844F852005A6F79 /* Cells */,
 			);
 			path = UIComponents;
@@ -458,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				64EA8B29285F6C2B009027DE /* ContextRealm.swift */,
+				642CB193287C4202004AF8DA /* GoalRealm.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -546,9 +593,11 @@
 			files = (
 				64B8AEC2279DB06200BF47C5 /* TodayDataManager.swift in Sources */,
 				640B8E0F27CECE1F00177ADF /* LabelDisplayModel.swift in Sources */,
+				642CB1A0287C453D004AF8DA /* ContextDataModel.swift in Sources */,
 				643D4D74283958030033C083 /* SelectGoalCell.swift in Sources */,
 				64C55038285F78E4000E9F61 /* ErrorLogger.swift in Sources */,
 				64C5503A285F7907000E9F61 /* LocalDataProvider.swift in Sources */,
+				642CB192287AFD7A004AF8DA /* BindingExtension.swift in Sources */,
 				6487E6AA27B4B9E300A6A37E /* TaskDetailDataManager.swift in Sources */,
 				64D88993284080B700975536 /* CustomTextField.swift in Sources */,
 				64D7467227B8C918006A0C1C /* CardUIView.swift in Sources */,
@@ -560,6 +609,7 @@
 				647F26F727AC266600C70874 /* Presentation.swift in Sources */,
 				64B8AEBB279DAFF500BF47C5 /* RealmDataProvider.swift in Sources */,
 				640B8E1927CECF6B00177ADF /* CardDisplayModel.swift in Sources */,
+				642CB198287C4407004AF8DA /* SelectGoalDataManager.swift in Sources */,
 				64D7467D27B8D4B8006A0C1C /* ScaledFont.swift in Sources */,
 				647F294227AF1F4F00C70874 /* HomeCoordinator.swift in Sources */,
 				64C5504828609A9F000E9F61 /* TaskCreationStep1Coordinator.swift in Sources */,
@@ -570,9 +620,12 @@
 				64D7467427B8CFD8006A0C1C /* ColorExtentions.swift in Sources */,
 				64C4E8BC284CFAA500502D88 /* QuitHabitSteps2.swift in Sources */,
 				64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */,
+				646A891A287E13EB00E18CE4 /* ModalHeaderView.swift in Sources */,
 				643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */,
 				64EA8B27285F651B009027DE /* SelectContextDataManager.swift in Sources */,
+				642CB196287C42F5004AF8DA /* DetachableObject.swift in Sources */,
 				64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */,
+				642CB1A4287C4645004AF8DA /* SelectGoalCoordinator.swift in Sources */,
 				643778B4281892560025D3D4 /* SelectContext.swift in Sources */,
 				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
 				64C4E8B8284BB6CF00502D88 /* ChangeRepeatView.swift in Sources */,
@@ -583,19 +636,26 @@
 				6400D65A28450B56005A6F79 /* TwoButtonsView.swift in Sources */,
 				6400D65C28450BDD005A6F79 /* LocalizedString.swift in Sources */,
 				647F294427AF1FBC00C70874 /* HomeView.swift in Sources */,
+				642CB194287C4202004AF8DA /* GoalRealm.swift in Sources */,
+				642CB19A287C4410004AF8DA /* SelectGoalViewModel.swift in Sources */,
 				640B8E0C27CECDB000177ADF /* ProgressBar.swift in Sources */,
 				64EA8B2A285F6C2B009027DE /* ContextRealm.swift in Sources */,
+				646A8816287DD53F00E18CE4 /* StringExtensions.swift in Sources */,
+				642CB19E287C451D004AF8DA /* DataEntryDataModel.swift in Sources */,
 				647F294927AF247300C70874 /* HomeDataManager.swift in Sources */,
 				64D8898F28407BC800975536 /* SegmentedPicker.swift in Sources */,
 				64B8AEBE279DB03400BF47C5 /* TodayViewModel.swift in Sources */,
+				646A8712287DA48D00E18CE4 /* NewGoalView.swift in Sources */,
 				647F293A27AEFAB700C70874 /* AppTabView.swift in Sources */,
 				6487E6A627B4B95A00A6A37E /* TaskDetailView.swift in Sources */,
 				643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */,
 				640B8E1127CECE5A00177ADF /* LabelStyle.swift in Sources */,
 				640B8E1C27CECFA700177ADF /* TextExtensions.swift in Sources */,
 				6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */,
+				642CB19C287C441F004AF8DA /* SelectGoalMock.swift in Sources */,
 				6487E6AC27B4B9F400A6A37E /* TaskDetailContext.swift in Sources */,
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
+				642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */,
 				647F283527AEC9B000C70874 /* AppCoordinator.swift in Sources */,
 				647F294027AF1F3B00C70874 /* HomeViewModel.swift in Sources */,
 				64B8AEA3279DA3DC00BF47C5 /* Form1App.swift in Sources */,
@@ -607,7 +667,7 @@
 				64C5504C28609AC6000E9F61 /* TaskCreationStep1DataManager.swift in Sources */,
 				64D8899128407EE800975536 /* OneLineInputCell.swift in Sources */,
 				647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */,
-				64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */,
+				64A8A3A8284075A80056EC08 /* CustomButtonStyle.swift in Sources */,
 				64C5504A28609ABE000E9F61 /* TaskCreationStep1ViewModel.swift in Sources */,
 				6400D6532844101A005A6F79 /* ViewExtesnion.swift in Sources */,
 				640B8E1427CECEB300177ADF /* PublicTheme.swift in Sources */,

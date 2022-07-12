@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MultipleLineInputCell: View {
-    @State var searchText = ""
+    @Binding var inputText: String
     var placeholder: String
     var title: String
     
@@ -20,15 +20,18 @@ struct MultipleLineInputCell: View {
                     .applyStyle(style: .sectionHeaderStyle)
                 Spacer()
             }
-            CustomMultiLineTextEditor(text: $searchText,
+            CustomMultiLineTextEditor(text: $inputText,
                                       placeholder: placeholder)
         }
     }
 }
 
 struct MultipleLineInputCell_Previews: PreviewProvider {
+    @State static var inputText: String = ""
+    
     static var previews: some View {
-        MultipleLineInputCell(placeholder: LocalizedString.Input.enterHerePlaceholder,
+        MultipleLineInputCell(inputText: $inputText,
+                              placeholder: LocalizedString.Input.enterHerePlaceholder,
                               title: LocalizedString.Input.enterHereTitle)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))

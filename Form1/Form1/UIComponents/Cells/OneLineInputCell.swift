@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OneLineInputCell: View {
-    @State var searchText = ""
+    @Binding var inputText: String
     var placeholder: String
     var title: String
     
@@ -20,15 +20,18 @@ struct OneLineInputCell: View {
                     .applyStyle(style: .sectionHeaderStyle)
                 Spacer()
             }
-            CustomTextField(text: $searchText,
+            CustomTextField(text: $inputText,
                             placeholder: placeholder)
         }
     }
 }
 
 struct InputCell_Previews: PreviewProvider {
+    @State static var inputText: String = ""
+
     static var previews: some View {
-        OneLineInputCell(placeholder: LocalizedString.Input.enterHerePlaceholder,
+        OneLineInputCell(inputText: $inputText,
+                         placeholder: LocalizedString.Input.enterHerePlaceholder,
                          title: LocalizedString.Input.enterHereTitle)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))

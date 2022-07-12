@@ -34,4 +34,8 @@ class SelectContextViewModel: ObservableObject {
     func filterContextas(with text: String) {
         items = dataManager.filterContext(text: text).map(transformContext)
     }
+    
+    func selectContext(id: String) {
+        dataManager.selectContext(contextID: id)
+    }
 }

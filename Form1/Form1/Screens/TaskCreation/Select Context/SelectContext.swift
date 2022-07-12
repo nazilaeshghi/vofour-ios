@@ -11,54 +11,65 @@ import SwiftUI
 struct SelectContext: View {
     @StateObject var viewModel: SelectContextViewModel
     @State var searchText: String = ""
+    @State var linkIsActive: Bool = false
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                Divider()
+            ZStack {
+                NavigationLink(isActive: $linkIsActive) {
+                    AppCoordinator.shared.makeTaskCreationStep1View()
+                } label: {
+                    EmptyView()
+                }.opacity(0)
                 
-                // Page header, subheader and searchbar
-                VStack(spacing: 14) {
-                    HStack {
-                        Text(LocalizedString.ContextPage.subHeader)
-                            .applyStyle(style: LabelStyle.tableHeaderStyle)
-                        Spacer()
-                    }
+                VStack(spacing: 20) {
+                    Divider()
                     
-                    VStack(spacing: 6) {
+                    // Page header, subheader and searchbar
+                    VStack(spacing: 14) {
                         HStack {
-                            Text(LocalizedString.ContextPage.searchHeader)
-                                .applyStyle(style: LabelStyle.smallTitleStyle)
+                            Text(LocalizedString.ContextPage.subHeader)
+                                .applyStyle(style: LabelStyle.tableHeaderStyle)
                             Spacer()
                         }
-                        SearchBar(searchText: $searchText)
-                            .onChange(of: searchText) { newValue in
-                                viewModel.filterContextas(with: searchText)
-                            }
-                    }
-                }
-                .padding([.leading, .trailing], 16)
-                
-                List(viewModel.items, id: \.id) { item in
-                    ZStack {
-                        NavigationLink(destination: AppCoordinator.shared.makeTaskCreationStep1View(selectedContextID: item.contextID)) {}
-                        .opacity(0)
                         
-                        SelectContextCell(item: item)
-                            .background(PublicTheme.background)
+                        VStack(spacing: 6) {
+                            HStack {
+                                Text(LocalizedString.ContextPage.searchHeader)
+                                    .applyStyle(style: LabelStyle.smallTitleStyle)
+                                Spacer()
+                            }
+                            SearchBar(searchText: $searchText)
+                                .onChange(of: searchText) { newValue in
+                                    viewModel.filterContextas(with: searchText)
+                                }
+                        }
                     }
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+                    .padding([.leading, .trailing], 16)
+                    
+                    List(viewModel.items, id: \.id) { item in
+                        ZStack {
+                            SelectContextCell(item: item)
+                                .background(PublicTheme.background)
+                                .onTapGesture {
+                                    linkIsActive = true
+                                    viewModel.selectContext(id: item.contextID)
+                                }
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                    }
+                    .background(PublicTheme.background)
+                    .listStyle(PlainListStyle())
+                    .onAppear(perform: {
+                        UIScrollView.appearance().keyboardDismissMode = .onDrag
+                    })
                 }
                 .background(PublicTheme.background)
-                .listStyle(PlainListStyle())
-                .onAppear(perform: {
-                    UIScrollView.appearance().keyboardDismissMode = .onDrag
-                })
+                .navigationBarTitleDisplayMode(.inline)
+                .applyToolbarStyle(with: LocalizedString.ContextPage.header)
             }
-            .background(PublicTheme.background)
-            .navigationBarTitleDisplayMode(.inline)
-            .applyToolbarStyle(with: LocalizedString.ContextPage.header)
+            
         }
     }
 }

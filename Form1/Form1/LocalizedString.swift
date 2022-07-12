@@ -21,6 +21,10 @@ struct LocalizedString {
         static let sectionHeader = "اهداف تعریف شده"
         static let pageHeader = "انتخاب هدف"
         static let buttonTitle = "افزودن هدف جدید"
+        static let defaultGoalTitle = "هدف ندارد و مستقل است"
+        static let newGoal = "هدف جدید"
+        static let submitNewGoal = "تایید و افزودن"
+        static let selectGoalPageTitle = "انتخاب هدف"
     }
     
     enum TaskCreationStep1 {

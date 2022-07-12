@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SelectorInoutCell: View {
-    @State var searchText = ""
+    var text: String?
     var placeholder: String
     var title: String
     
@@ -20,7 +20,7 @@ struct SelectorInoutCell: View {
                     .applyStyle(style: .sectionHeaderStyle)
                 Spacer()
             }
-            CustomSelector(text: searchText,
+            CustomSelector(text: text,
                            placeholder: placeholder)
         }
     }

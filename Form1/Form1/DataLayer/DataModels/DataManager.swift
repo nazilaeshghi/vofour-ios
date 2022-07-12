@@ -10,11 +10,13 @@ import Foundation
 
 class DataManager {
     private let dataProvider: DataProvider
+    private(set) var currentInputEntry: DataEntryDataModel = DataEntryDataModel()
     
     init(dataProvider: DataProvider) {
         self.dataProvider = dataProvider
     }
     
+    // MARK: - Context
     func saveContexts() {
         dataProvider.saveContexts()
     }
@@ -25,5 +27,27 @@ class DataManager {
     
     func context(id: String) -> Context? {
         return dataProvider.findContext(id: id)
+    }
+    
+    // MARK: - Goal
+    func fetchGoals() -> [Goal] {
+        return dataProvider.fetchGoals()
+    }
+    
+    func createGoal(title: String) -> String {
+        let id = UUID().uuidString
+        let entity = GoalEntity(id: id, title: title)
+        dataProvider.createGoal(newEntity: entity)
+        currentInputEntry.updateGoalID(with: id)
+        return id
+    }
+    
+    func findGoal(with id: String) -> Goal? {
+        return dataProvider.findGoal(with: id)
+    }
+    
+    func findSelectedGoal() -> Goal? {
+        guard let goalID = currentInputEntry.goalID else { return nil }
+        return dataProvider.findGoal(with: goalID)
     }
 }

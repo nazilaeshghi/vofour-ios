@@ -18,4 +18,13 @@ struct TaskCreationStep1DataManagableMock: TaskCreationStep1DataManagable {
     func getContextName() -> String {
         return "سلامتی"
     }
+    
+    func updateIsActivity(with value: Bool) {}
+    func updateActivityTitle(with value: String) {}
+    func updatePrevention(with value: String) {}
+    func updateReason(with value: String) {}
+    func updateFor100(with value: String) {}
+    func getSelectedGoalID() -> String? { return nil }
+    func getSelectedGoalTitle() -> String? { return nil }
+    let selectedContextID: String = ""
 }

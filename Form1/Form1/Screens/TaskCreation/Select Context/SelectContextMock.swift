@@ -43,5 +43,6 @@ struct SelectContextDataManagableMock: SelectContextDataManagable {
     }
     
     func filterContext(text: String) -> [Context] { return  [] }
+    func selectContext(contextID: String) {}
 }
 

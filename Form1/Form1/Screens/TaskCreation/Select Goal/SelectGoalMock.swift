@@ -1,59 +1,35 @@
 //
-//  SelectGoalCell.swift
+//  SelectGoalMock.swift
 //  Form1
 //
-//  Created by Hosseini Zadeh, Morteza on 5/21/22.
+//  Created by Hosseini Zadeh, Morteza on 2022-07-11.
 //  Copyright © 2022 Vofour. All rights reserved.
 //
 
-import SwiftUI
-
-struct SelectGoalCell: View {
-    let item: SelectGoalDisplayModel
-    
-    var body: some View {
-        HStack {
-            Image(item.imageName)
-            Text(item.title.plainText)
-                .applyStyle(style: item.title.labelStyle)
-            Spacer()
-            Image(item.selected ? "Activated_on" : "Activated_off")
-        }
-        .padding()
-        .overlay(RoundedRectangle(cornerRadius: PublicTheme.cornerRaduis)
-                    .stroke(PublicTheme.borderColor, lineWidth: 1))
-        .listRowSeparator(.hidden)
-        .listRowInsets(EdgeInsets())
-    }
-}
-
-struct SelectGoalCell_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectGoalCell(item: SelectGoalCellMockGenerator.item)
-            .environment(\.layoutDirection, .rightToLeft)
-    }
-}
+import Foundation
 
 struct SelectGoalCellMockGenerator {
-    
     static var item: SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: "مسابقات معماری (۳ فعالیت)",
                                             style: .smallTitleStyle)
-        return SelectGoalDisplayModel(title: titleModel,
+        return SelectGoalDisplayModel(id: "1",
+                                      title: titleModel,
                                       selected: true)
     }
     
     static var unselectedItem: SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: "مسابقات معماری (۳ فعالیت)",
                                             style: .smallTitleStyle)
-        return SelectGoalDisplayModel(title: titleModel,
+        return SelectGoalDisplayModel(id: "2",
+                                      title: titleModel,
                                       selected: false)
     }
     
     static var defaultItem: SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: "هدف ندارد و مستقل است (۲ فعالیت)",
                                             style: .smallTitleStyle)
-        return SelectGoalDisplayModel(title: titleModel,
+        return SelectGoalDisplayModel(id: "-1",
+                                      title: titleModel,
                                       selected: false)
     }
     
@@ -64,4 +40,27 @@ struct SelectGoalCellMockGenerator {
                 SelectGoalCellMockGenerator.item,
                 SelectGoalCellMockGenerator.item]
     }
+    
+    static var goals: [Goal] {
+        return [ GoalEntity(id: "-1", title: "هدف ندارد و مستقل است (۲ فعالیت)"),
+                 GoalEntity(id: "1", title: "مسابقات معماری (۳ فعالیت)"),
+                 GoalEntity(id: "2", title: "مسابقات دومیدانی (۳ فعالیت)")
+        ]
+    }
+}
+
+class SelectGoalDataManagableMock: SelectGoalDataManagable {
+    func selectGoal(with id: String) {}
+    
+    func fetchListOfGoals() -> [Goal] {
+        return SelectGoalCellMockGenerator.goals
+    }
+    
+    func createGoal(title: String) {}
+    
+    func findGoal(with id: String) -> Goal? {
+       return nil
+    }
+    
+    var selectedGoalId: String? = nil
 }

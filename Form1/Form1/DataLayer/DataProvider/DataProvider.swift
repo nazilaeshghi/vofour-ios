@@ -12,6 +12,11 @@ protocol DataProvider {
     func saveContexts()
     func addTask()
     func fetchTasks() -> [TaskDataModel]
+    
     func fetchContexts() -> [Context]
     func findContext(id: String) -> Context?
+    
+    func fetchGoals() -> [Goal]
+    func createGoal(newEntity: Goal)
+    func findGoal(with id: String) -> Goal?
 }
