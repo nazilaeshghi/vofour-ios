@@ -15,7 +15,7 @@ struct RepeatView: View {
     var body: some View {
         VStack (spacing: 24) {
             WeekDaysView(weekDays: $weekDays)
-            ChangeRepeatView(repeatNum: $repeatNum)
+            ChangeRepeatView(repeatNum: $repeatNum, title: LocalizedString.Input.numberOfRepeatTitle)
         }
     }
 }

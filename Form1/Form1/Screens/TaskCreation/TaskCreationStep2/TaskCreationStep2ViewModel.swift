@@ -24,6 +24,10 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var weekDays: [WeekDayObject] = WeekDayBuilder.build()
     @Published var selectedDuration: DurationObject?
     
+    var isItActivity: Bool {
+        return dataManager.isTaskActivity()
+    }
+    
     init(dataManager: TaskCreationStep2DataManagable) {
         self.dataManager = dataManager
         initBinders()
@@ -90,8 +94,8 @@ class TaskCreationStep2ViewModel: ObservableObject {
             ]
         } else {
             return [
-                LocalizedString.TaskCreationStep2.completelyQuit,
-                LocalizedString.TaskCreationStep2.partiallyQuit
+                LocalizedString.QuitHabitStep2.quitEntirely,
+                LocalizedString.QuitHabitStep2.withLimit
             ]
         }
     }

@@ -10,14 +10,11 @@ import SwiftUI
 
 struct ChangeRepeatView: View {
     @Binding var repeatNum: Int
+    let title: String
     
     var body: some View {
         VStack(spacing: 5) {
-            HStack {
-                Text(LocalizedString.Input.numberOfRepeatTitle)
-                    .applyStyle(style: .sectionHeaderStyle)
-                Spacer()
-            }
+            InputCellTitleView(title: title)
             
             HStack {
                 Button {
@@ -29,7 +26,7 @@ struct ChangeRepeatView: View {
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("\(repeatNum) بار")
+                Text("\(repeatNum)".convertToPersian() + "بار")
                     .applyStyle(style: .number)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
@@ -54,7 +51,7 @@ struct ChangeRepeatView: View {
 
 struct RepeaterView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangeRepeatView(repeatNum: .constant(1))
+        ChangeRepeatView(repeatNum: .constant(1), title: LocalizedString.Input.numberOfRepeatTitle)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 mini"))
     }

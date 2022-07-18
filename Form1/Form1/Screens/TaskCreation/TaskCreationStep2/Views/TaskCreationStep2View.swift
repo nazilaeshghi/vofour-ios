@@ -28,21 +28,38 @@ struct TaskCreationStep2View: View {
                         // Date Section
                         SegmentedPicker(items: viewModel.getSegmentItems(), selection: $viewModel.isRepeatable)
                         
-                        if viewModel.isRepeatable == 0  {
-                            TaskCreationViewNonRepeatitive(dateText: viewModel.startDate,
-                                                           durationText: viewModel.selectedDuration?.amount.timeStr,
-                                                           startDateCalendarPresented: $startDateCalendarPresented,
-                                                           durationPresented: $durationPresented)
+                        if viewModel.isItActivity {
+                            if viewModel.isRepeatable == 0  {
+                                TaskCreationViewNonRepeatitive(dateText: viewModel.startDate,
+                                                               durationText: viewModel.selectedDuration?.amount.timeStr,
+                                                               startDateCalendarPresented: $startDateCalendarPresented,
+                                                               durationPresented: $durationPresented)
+                            }
+                            else {
+                                TaskCreationViewRepeatitive(repeatNum: $viewModel.repeatNum,
+                                                            weekDays: $viewModel.weekDays,
+                                                            startDateText: viewModel.startDate,
+                                                            endDateText: viewModel.endDate,
+                                                            durationText: viewModel.selectedDuration?.amount.timeStr,
+                                                            startDateCalendarPresented: $startDateCalendarPresented,
+                                                            endtDateCalendarPresented: $endDateCalendarPresented,
+                                                            durationPresented: $durationPresented)
+                            }
                         }
                         else {
-                            TaskCreationViewRepeatitive(repeatNum: $viewModel.repeatNum,
-                                                        weekDays: $viewModel.weekDays,
-                                                        startDateText: viewModel.startDate,
-                                                        endDateText: viewModel.endDate,
-                                                        durationText: viewModel.selectedDuration?.amount.timeStr,
-                                                        startDateCalendarPresented: $startDateCalendarPresented,
-                                                        endtDateCalendarPresented: $endDateCalendarPresented,
-                                                        durationPresented: $durationPresented)
+                            if viewModel.isRepeatable == 0  {
+                                QuitEntirelyView(startDateText: viewModel.startDate,
+                                                 endDateText: viewModel.endDate,
+                                                 startDateCalendarPresented: $startDateCalendarPresented,
+                                                 endtDateCalendarPresented: $endDateCalendarPresented)
+                            }
+                            else {
+                                QuitWithLimitView(repeatNum: $viewModel.repeatNum,
+                                                  startDateText: viewModel.startDate,
+                                                  endDateText: viewModel.endDate,
+                                                  startDateCalendarPresented: $startDateCalendarPresented,
+                                                  endtDateCalendarPresented: $endDateCalendarPresented)
+                            }
                         }
                         
                         // Color Section
@@ -125,6 +142,30 @@ struct TaskCreationViewNonRepeatitive: View {
     }
 }
 
+struct QuitEntirelyView: View {
+    var startDateText: String?
+    var endDateText: String?
+    
+    @Binding var startDateCalendarPresented: Bool
+    @Binding var endtDateCalendarPresented: Bool
+    
+    var body: some View {
+        VStack (spacing: 24) {
+            SelectorInoutCell(text: startDateText.convertToPersian(),
+                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              title: LocalizedString.Input.startDateSelectoreTitle)
+                .onTapGesture {
+                    startDateCalendarPresented = true
+                }
+            SelectorInoutCell(text: endDateText.convertToPersian(),
+                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              title: LocalizedString.Input.endDateSelectoreTitle)
+                .onTapGesture {
+                    endtDateCalendarPresented = true
+                }
+        }
+    }
+}
 
 struct TaskCreationViewRepeatitive: View {
     @Binding var repeatNum: Int
@@ -160,6 +201,34 @@ struct TaskCreationViewRepeatitive: View {
                     endtDateCalendarPresented = true
                 }
             RepeatView(weekDays: $weekDays, repeatNum: $repeatNum)
+        }
+    }
+}
+
+struct QuitWithLimitView: View {
+    @Binding var repeatNum: Int
+    var startDateText: String?
+    var endDateText: String?
+    
+    @Binding var startDateCalendarPresented: Bool
+    @Binding var endtDateCalendarPresented: Bool
+    
+    var body: some View {
+        VStack (spacing: 24) {
+            SelectorInoutCell(text: startDateText.convertToPersian(),
+                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              title: LocalizedString.Input.startDateSelectoreTitle)
+                .onTapGesture {
+                    startDateCalendarPresented = true
+                }
+            SelectorInoutCell(text: endDateText.convertToPersian(),
+                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              title: LocalizedString.Input.endDateSelectoreTitle)
+                .onTapGesture {
+                    endtDateCalendarPresented = true
+                }
+            
+            ChangeRepeatView(repeatNum: $repeatNum, title: LocalizedString.QuitHabitStep2.numberOfRepeatTitle)
         }
     }
 }

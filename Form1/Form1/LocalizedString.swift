@@ -41,9 +41,6 @@ struct LocalizedString {
         static let repeatitiveActivity = "فعالیت تکرار می‌شود"
         static let nonRepeatitiveActivity = "فعالیت تکرار نمی‌شود"
         
-        static let completelyQuit = "ترک کامل"
-        static let partiallyQuit = "تعیید حد مجاز"
-        
         static let needReminder = "یادآور نیاز دارم"
         static let dontNeedReminder = "یادآور نیاز ندازم"
     }
@@ -85,6 +82,7 @@ struct LocalizedString {
     enum QuitHabitStep2 {
         static let quitEntirely = "ترک کامل"
         static let withLimit = "تعیین حد مجاز"
+        static let numberOfRepeatTitle = "بیش از چندبار این فعالیت را انجام ندهم؟"
     }
     
 }
