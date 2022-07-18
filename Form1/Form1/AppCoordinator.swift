@@ -41,6 +41,11 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
+    func makeTaskCreationStep2View() -> TaskCreationStep2View {
+        let coordinator = TaskCreationStep2Coordinator(dataManage: dataManager)
+        return coordinator.destinationView
+    }
+    
 //    func makeDetailView(context: DestinationContext) -> TaskDetailView? {
 //        let coordinator = TaskDetailCoordinator(context: context)
 //        return coordinator?.destinationView

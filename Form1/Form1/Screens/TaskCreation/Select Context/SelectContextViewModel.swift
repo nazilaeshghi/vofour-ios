@@ -23,7 +23,7 @@ class SelectContextViewModel: ObservableObject {
         items = dataManager.fetchListOfContexts().map(transformContext)
     }
     
-    private func transformContext(context: Context) -> ContextItemDisplayModel {
+    private func transformContext(context: TaskContext) -> ContextItemDisplayModel {
         let labelDisplayModel = LabelDisplayModel(plainText: context.name, style: .smallTitleStyle)
         let imageName = context.iconName
         return ContextItemDisplayModel(title: labelDisplayModel,

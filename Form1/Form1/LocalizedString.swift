@@ -60,7 +60,9 @@ struct LocalizedString {
         static let goalSelectorTitle = "مستقل یا بخشی از هدف دیگر"
         static let goalSelectorPlaceholder = "انتخاب کنید"
         
-        static let dateSelectoreTitle = "تاریخ فعالیت"
+        static let dateSelectoreTitle = "تاریخ انجام فعالیت"
+        static let startDateSelectoreTitle = "تاریخ آغاز"
+        static let endDateSelectoreTitle = "تاریخ پایان"
         
         static let periodSelectorTitle = "مدت زمان مورد نیاز انتخاب کنید"
         

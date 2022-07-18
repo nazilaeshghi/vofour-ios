@@ -28,6 +28,12 @@ extension Button {
             .foregroundColor(style.textColor)
             .background(style.backgroundColor)
     }
+    
+    func applyNoPaddingWithBorderStyle(style: CustomButtonStyle) -> some View {
+        self
+            .foregroundColor(style.textColor)
+            .background(style.backgroundColor)
+    }
 }
 
 struct TwoButtonView: View {

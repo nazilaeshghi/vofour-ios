@@ -45,6 +45,10 @@ struct LabelStyle {
         return .init(font: .title2, fontFamilty: .regular, textColor: .white)
     }
     
+    static var deselectedButtonTitleStyle: LabelStyle {
+        return .init(font: .title2, fontFamilty: .regular, textColor: .black)
+    }
+    
     static var buttonTitleStyleSecondary: LabelStyle {
         return .init(font: .title2, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
     }

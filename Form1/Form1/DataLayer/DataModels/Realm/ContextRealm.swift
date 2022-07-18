@@ -8,13 +8,13 @@
 
 import RealmSwift
 
-@objcMembers class ContextRealm : Object, Context {
+@objcMembers class ContextRealm : Object, TaskContext {
     
     dynamic var id: String = "-"
     dynamic var name: String = "-"
     dynamic var iconName: String = "-"
     
-    convenience init(context: Context) {
+    convenience init(context: TaskContext) {
         self.init()
         self.id = context.id
         self.name = context.name

@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct WeekDaysView: View {
-    
-    let weekDays = ["ش","ی","د","س","چ","پ","ج"]
+    @Binding var weekDays: [WeekDayObject]
+    //@State private var hiddenWeekDays: [WeekDayObject] = WeekDayBuilder.build()
     
     var body: some View {
         VStack(spacing: 5) {
@@ -21,17 +21,34 @@ struct WeekDaysView: View {
             }
             
             HStack(spacing: 10) {
-                    ForEach(weekDays, id: \.self) { day in
-                        Button {
-                            
-                        } label: {
-                            Text(day)
-                                .applyStyle(style: .buttonTitleStyle)
+                    ForEach(weekDays, id: \.id) { day in
+                        if day.selected {
+                            Button {
+                                weekDays[day.index].selected = !day.selected
+                            } label: {
+                                Text(day.name)
+                                    .applyStyle(style: .buttonTitleStyle)
+                            }
+                            .applyNoPaddingStyle(style: .multiplePrimary)
+                            .frame(width: 38, height: 38)
+                            .background(PublicTheme.primaryColor)
+                            .cornerRadius(19)
+                        } else {
+                            Button {
+                                weekDays[day.index].selected = !day.selected
+                            } label: {
+                                Text(day.name)
+                                    .applyStyle(style: .deselectedButtonTitleStyle)
+                            }
+                            .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
+                            .frame(width: 38, height: 38)
+                            .background(.white)
+                            .cornerRadius(19)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 19)
+                                    .stroke(Color(hex: "#d9e0e9"), lineWidth: 1)
+                            )
                         }
-                        .applyNoPaddingStyle(style: .multiplePrimary)
-                        .frame(width: 38, height: 38)
-                        .background(PublicTheme.primaryColor)
-                        .cornerRadius(19)
                     }
             }
         }
@@ -41,15 +58,15 @@ struct WeekDaysView: View {
 struct WeekDaysView_Previews: PreviewProvider {
     static var previews: some View {
 
-        WeekDaysView()
+        WeekDaysView(weekDays: .constant(WeekDayBuilder.build()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 mini"))
         
-        WeekDaysView()
+        WeekDaysView(weekDays: .constant(WeekDayBuilder.build()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
         
-        WeekDaysView()
+        WeekDaysView(weekDays: .constant(WeekDayBuilder.build()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro Max"))
 

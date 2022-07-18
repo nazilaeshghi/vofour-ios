@@ -16,9 +16,17 @@ class DataEntryDataModel {
     private (set) var reason: String?
     private (set) var for100: String?
     private (set) var goalID: String?
+    private (set) var isRepeatable: Bool?
+    private (set) var startDate: Date?
+    private (set) var endDate: Date?
+    private (set) var duration: TimeInterval?
+    private (set) var color: String?
+    private (set) var numberOfRepeat: Int?
+    private (set) var days: [WeekDayObject]?
     
     func updateContextId(id: String) {
         self.contextId = id
+        self.isRepeatable = false
     }
     
     func updateIsActivity(with value: Bool) {
@@ -44,4 +52,33 @@ class DataEntryDataModel {
     func updateGoalID(with value: String) {
         goalID = value
     }
+    
+    func updateIsRepeatable(with value: Bool) {
+        isRepeatable = value
+    }
+    
+    func updateStartDate(with value: Date?) {
+        startDate = value
+    }
+    
+    func updateEndDate(with value: Date?) {
+        endDate = value
+    }
+    
+    func updateduration(with value: TimeInterval) {
+        duration = value
+    }
+    
+    func updateWeekDays(with value: [WeekDayObject]) {
+        days = value
+    }
+    
+    func updateNumberOfRepeat(with value: Int) {
+        numberOfRepeat = value
+    }
+    
+    func updateColor(with value: String) {
+        color = value
+    }
+
 }

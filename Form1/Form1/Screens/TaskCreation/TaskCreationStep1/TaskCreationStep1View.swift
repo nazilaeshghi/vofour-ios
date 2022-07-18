@@ -21,6 +21,8 @@ struct TaskCreationStep1View: View {
     @State private var for100InputText = ""
     @State private var goalID: String? = nil
     
+    @State var nextPagelinkIsActive: Bool = false
+    
     private let segmentItems = [
         LocalizedString.TaskCreationStep1.createHabitSegmentTitle,
         LocalizedString.TaskCreationStep1.quitHabitSegmentTitle
@@ -28,15 +30,19 @@ struct TaskCreationStep1View: View {
     
     var body: some View {
         NavigationView {
+            
             VStack(spacing: 0) {
+                NavigationLink(isActive: $nextPagelinkIsActive) {
+                    AppCoordinator.shared.makeTaskCreationStep2View()
+                } label: {
+                    EmptyView()
+                }.opacity(0)
+                
                 Divider()
                 ScrollView {
                     VStack (spacing: 24) {
-                        HStack {
-                            Text(LocalizedString.ContextPage.subHeader)
-                                .applyStyle(style: LabelStyle.tableHeaderStyle)
-                            Spacer()
-                        }
+                        
+                        TaskStepsHeader(title: LocalizedString.ContextPage.subHeader)
                         
                         SegmentedPicker(items: segmentItems, selection: $selectedType)
                             .onChange(of: selectedType) { newValue in
@@ -73,8 +79,12 @@ struct TaskCreationStep1View: View {
                 Spacer()
                 HStack {
                     TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
-                                   secondaryButtonText: LocalizedString.Buttons.previousTitle)
-                        .frame(height: 60)
+                                   secondaryButtonText: LocalizedString.Buttons.previousTitle,
+                                   primaryAction: {
+                        nextPagelinkIsActive = true
+                    }, secondaryAction: {
+                        dismiss()
+                    }).frame(height: 60)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

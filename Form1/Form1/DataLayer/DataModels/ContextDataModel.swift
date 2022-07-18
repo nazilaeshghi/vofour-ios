@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Context {
+protocol TaskContext {
     var id: String { get }
     var name: String { get }
     var iconName: String { get }

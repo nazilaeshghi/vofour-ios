@@ -66,7 +66,7 @@ class ReqalmDataProvider: DataProvider {
     }
     
     // MARK: - Context
-    func fetchContexts() -> [Context] {
+    func fetchContexts() -> [TaskContext] {
         do {
             return try realm().objects(ContextRealm.self).detached
         } catch let error as NSError {
@@ -75,7 +75,7 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
-    func findContext(id: String) -> Context? {
+    func findContext(id: String) -> TaskContext? {
         do {
             return try realm().objects(ContextRealm.self).where{ $0.id == id }.first
         } catch let error as NSError {

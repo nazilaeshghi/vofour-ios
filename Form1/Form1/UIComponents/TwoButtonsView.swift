@@ -12,11 +12,14 @@ struct TwoButtonsView: View {
     var primaryButtonText: String
     var secondaryButtonText: String
     
+    let primaryAction: () -> Void
+    let secondaryAction: () -> Void
+    
     var body: some View {
         GeometryReader { geometry in
             HStack(spacing: 0) {
                 Button {
-                    
+                    primaryAction()
                 } label: {
                     Spacer()
                     Text(primaryButtonText)
@@ -27,7 +30,7 @@ struct TwoButtonsView: View {
                 .frame(width: (geometry.size.width-40)/3*2)
                 
                 Button {
-                    
+                    secondaryAction()
                 } label: {
                     Spacer()
                     Text(secondaryButtonText)
@@ -45,7 +48,7 @@ struct TwoButtonsView: View {
 
 struct TwoButtonsView_Previews: PreviewProvider {
     static var previews: some View {
-        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle)
+        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {}, secondaryAction: {})
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

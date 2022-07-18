@@ -16,11 +16,11 @@ struct SelectContextCellMockGenerator {
                                        imageName: "Users_Context", contextID: "mockId")
     }
     
-    static var context: Context {
+    static var context: TaskContext {
         return DecodableContext(id: "iuytdrthhgjh", name: "خود شخصی", iconName: "context_self")
     }
     
-    static var contexts: [Context] {
+    static var contexts: [TaskContext] {
         return [
             SelectContextCellMockGenerator.context,
             SelectContextCellMockGenerator.context,
@@ -38,11 +38,11 @@ struct SelectContextCellMockGenerator {
 }
 
 struct SelectContextDataManagableMock: SelectContextDataManagable {
-    func fetchListOfContexts() -> [Context] {
+    func fetchListOfContexts() -> [TaskContext] {
         return SelectContextCellMockGenerator.contexts
     }
     
-    func filterContext(text: String) -> [Context] { return  [] }
+    func filterContext(text: String) -> [TaskContext] { return  [] }
     func selectContext(contextID: String) {}
 }
 

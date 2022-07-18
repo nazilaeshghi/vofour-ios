@@ -9,25 +9,25 @@
 import Foundation
 
 protocol SelectContextDataManagable {
-    func fetchListOfContexts() -> [Context]
-    func filterContext(text: String) -> [Context]
+    func fetchListOfContexts() -> [TaskContext]
+    func filterContext(text: String) -> [TaskContext]
     func selectContext(contextID: String)
 }
 
 class SelectContextDataManager: SelectContextDataManagable {
     private let dataManager: DataManager
-    private var cacheContexts: [Context] = []
+    private var cacheContexts: [TaskContext] = []
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
     }
     
-    func fetchListOfContexts() -> [Context]  {
+    func fetchListOfContexts() -> [TaskContext]  {
         cacheContexts = dataManager.fetchContexts()
         return cacheContexts
     }
     
-    func filterContext(text: String) -> [Context] {
+    func filterContext(text: String) -> [TaskContext] {
         guard !text.trimmingCharacters(in: .whitespaces).isEmpty else {
             return cacheContexts
         }

@@ -24,6 +24,10 @@ struct CustomButtonStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: PublicTheme.primaryColor, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
     }
     
+    static var multipleDeselectedPrimary: CustomButtonStyle {
+        return .init(font: .title, fontFamilty: .regular, textColor: .black, backgroundColor: .white, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
+    }
+    
     static var multipleSecondary: CustomButtonStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.primaryColor, backgroundColor: .white, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
     }

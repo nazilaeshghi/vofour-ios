@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ChangeRepeatView: View {
-    @State var numberRelativeText: String
+    @Binding var repeatNum: Int
     
     var body: some View {
         VStack(spacing: 5) {
@@ -21,7 +21,7 @@ struct ChangeRepeatView: View {
             
             HStack {
                 Button {
-                    
+                    repeatNum = repeatNum + 1
                 } label: {
                     Text("+")
                         .applyStyle(style: .operandStyle)
@@ -29,12 +29,12 @@ struct ChangeRepeatView: View {
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(numberRelativeText)
+                Text("\(repeatNum) بار")
                     .applyStyle(style: .number)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Button {
-                    
+                    repeatNum = ((repeatNum - 1) == 0) ? 1 : (repeatNum - 1)
                 } label: {
                     Text("-")
                         .applyStyle(style: .operandStyle)
@@ -54,7 +54,7 @@ struct ChangeRepeatView: View {
 
 struct RepeaterView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangeRepeatView(numberRelativeText: "ا بار")
+        ChangeRepeatView(repeatNum: .constant(1))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 mini"))
     }

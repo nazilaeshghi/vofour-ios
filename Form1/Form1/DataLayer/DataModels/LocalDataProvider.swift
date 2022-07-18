@@ -36,7 +36,7 @@ class LocalDataProvider {
 }
 
 
-struct DecodableContext: Decodable, Context {
+struct DecodableContext: Decodable, TaskContext {
     let id: String
     let name: String
     let iconName: String
