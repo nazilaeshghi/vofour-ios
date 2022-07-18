@@ -41,6 +41,9 @@ struct LocalizedString {
         static let repeatitiveActivity = "فعالیت تکرار می‌شود"
         static let nonRepeatitiveActivity = "فعالیت تکرار نمی‌شود"
         
+        static let completelyQuit = "ترک کامل"
+        static let partiallyQuit = "تعیید حد مجاز"
+        
         static let needReminder = "یادآور نیاز دارم"
         static let dontNeedReminder = "یادآور نیاز ندازم"
     }
@@ -63,18 +66,20 @@ struct LocalizedString {
         static let dateSelectoreTitle = "تاریخ انجام فعالیت"
         static let startDateSelectoreTitle = "تاریخ آغاز"
         static let endDateSelectoreTitle = "تاریخ پایان"
+        static let durationSelectoreTitle = "مدت زمان"
         
         static let periodSelectorTitle = "مدت زمان مورد نیاز انتخاب کنید"
         
         static let numberOfRepeatTitle = "چندبار در روز؟"
         
         static let whichDays = "در چه روز‌هایی از هفته؟"
+        static let color = "رنگ نمایشی کارت فعالیت"
     }
     
     enum Buttons {
         static let nextStepTimeTitle = "بعدی: اطلاعات زمان"
         static let previousTitle = "قبلی"
-        static let saveTitle = "ذخیره"
+        static let saveTitle = "تایید"
     }
     
     enum QuitHabitStep2 {

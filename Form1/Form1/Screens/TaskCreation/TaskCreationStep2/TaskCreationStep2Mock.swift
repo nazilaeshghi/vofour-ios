@@ -10,6 +10,7 @@ import Foundation
 
 class TaskCreationStep2DataManagableMock: TaskCreationStep2DataManagable {
     func getContextName() -> String { "" }
+    func isTaskActivity() -> Bool { return true }
     func updateTaskType(isRepeatable: Bool) {}
     func updateStartDate(date: Date?) {}
     func updatEndDate(date: Date?) {}

@@ -15,13 +15,6 @@ struct TaskCreationStep2View: View {
     @State private var startDateCalendarPresented = false
     @State private var endDateCalendarPresented = false
     @State private var durationPresented = false
-    @State var calendarDate: Date = Date()
-
-    
-    private let segmentItems = [
-        LocalizedString.TaskCreationStep2.nonRepeatitiveActivity,
-        LocalizedString.TaskCreationStep2.repeatitiveActivity
-    ]
     
     var body: some View {
         NavigationView {
@@ -33,11 +26,11 @@ struct TaskCreationStep2View: View {
                         TaskStepsHeader(title: LocalizedString.TaskCreationStep1.header)
                         
                         // Date Section
-                        SegmentedPicker(items: segmentItems, selection: $viewModel.isRepeatable)
+                        SegmentedPicker(items: viewModel.getSegmentItems(), selection: $viewModel.isRepeatable)
                         
                         if viewModel.isRepeatable == 0  {
                             TaskCreationViewNonRepeatitive(dateText: viewModel.startDate,
-                                                           durationText: viewModel.durationStr,
+                                                           durationText: viewModel.selectedDuration?.amount.timeStr,
                                                            startDateCalendarPresented: $startDateCalendarPresented,
                                                            durationPresented: $durationPresented)
                         }
@@ -46,7 +39,7 @@ struct TaskCreationStep2View: View {
                                                         weekDays: $viewModel.weekDays,
                                                         startDateText: viewModel.startDate,
                                                         endDateText: viewModel.endDate,
-                                                        durationText: viewModel.durationStr,
+                                                        durationText: viewModel.selectedDuration?.amount.timeStr,
                                                         startDateCalendarPresented: $startDateCalendarPresented,
                                                         endtDateCalendarPresented: $endDateCalendarPresented,
                                                         durationPresented: $durationPresented)
@@ -69,30 +62,28 @@ struct TaskCreationStep2View: View {
                         .frame(height: 60)
                 }
             }
-//            .calendarSheet(presented: $startDateCalendarPresented, dateStr: $viewModel.startDate)
-//            .calendarSheet(presented: $endDateCalendarPresented, dateStr: $viewModel.endDate)
-//            .durationSheet(presented: $durationPresented, duration: $viewModel.duration)
-            .bottomSheet(isPresented: $startDateCalendarPresented, contentView: {
-                VStack {
-                    HStack{
-                        Button {
-                            //presented = false
-                           // dateStr = Globals.dateFormatter.string(from: calendarDate)
-                        } label: {
-                            Text(LocalizedString.Buttons.saveTitle)
-                                .applyStyle(style: .buttonTitleStyleSecondary)
-                        }
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
-                    
-                    DatePicker("", selection: $calendarDate, displayedComponents: [.date])
-                        .datePickerStyle(.graphical)
-                        .environment(\.calendar, .init(identifier: .persian))
-                        .environment(\.locale, Locale.init(identifier: "fa"))
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                }
-            })
+            .sheet(isPresented: $startDateCalendarPresented) {
+                
+            } content: {
+                CalendarSheetView(presented: $startDateCalendarPresented,
+                                  dateString: $viewModel.startDate,
+                                  title: LocalizedString.Input.startDateSelectoreTitle)
+            }
+            
+            .sheet(isPresented: $endDateCalendarPresented) {
+            } content: {
+                CalendarSheetView(presented: $endDateCalendarPresented,
+                                  dateString: $viewModel.endDate,
+                                  title: LocalizedString.Input.endDateSelectoreTitle)
+            }
+            
+            .sheet(isPresented: $durationPresented) {
+            } content: {
+                DurationSheetView(presented: $durationPresented,
+                                  selectredDuration: $viewModel.selectedDuration)
+                
+            }
+            
             .navigationBarTitleDisplayMode(.inline)
             .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss)
 
@@ -118,13 +109,13 @@ struct TaskCreationViewNonRepeatitive: View {
     
     var body: some View {
         VStack (spacing: 24) {
-            SelectorInoutCell(text: dateText,
+            SelectorInoutCell(text: dateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.dateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
-            SelectorInoutCell(text: durationText,
+            SelectorInoutCell(text: durationText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)
                 .onTapGesture {
@@ -149,20 +140,20 @@ struct TaskCreationViewRepeatitive: View {
     
     var body: some View {
         VStack (spacing: 24) {
-            SelectorInoutCell(text: durationText,
+            SelectorInoutCell(text: durationText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)
                 .onTapGesture {
                     durationPresented = true
                 }
             
-            SelectorInoutCell(text: startDateText,
+            SelectorInoutCell(text: startDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.startDateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
-            SelectorInoutCell(text: endDateText,
+            SelectorInoutCell(text: endDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.endDateSelectoreTitle)
                 .onTapGesture {

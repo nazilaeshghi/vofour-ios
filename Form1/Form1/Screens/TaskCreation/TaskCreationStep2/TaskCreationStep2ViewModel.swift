@@ -22,8 +22,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var selectedColor = StaticColors.colors.first ?? "#EA4C89"
     @Published var repeatNum: Int = 1
     @Published var weekDays: [WeekDayObject] = WeekDayBuilder.build()
-    @Published var duration: TimeInterval = 0
-    @Published var durationStr: String?
+    @Published var selectedDuration: DurationObject?
     
     init(dataManager: TaskCreationStep2DataManagable) {
         self.dataManager = dataManager
@@ -72,16 +71,9 @@ class TaskCreationStep2ViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        self.$duration
+        self.$selectedDuration
             .sink { [weak self] newValue in
-                self?.dataManager.updatDuration(interval: newValue)
-                if newValue == 0.0 {
-                    self?.durationStr = nil
-                } else {
-                    let time = newValue.getHourAndMin()
-                    self?.durationStr = "\(time.hour)".convertToPersian() + "ساعت" + " " + "\(time.min)".convertToPersian() + "دقیقه"
-                }
-                
+                self?.dataManager.updatDuration(interval: newValue?.amount ?? 0)
             }
             .store(in: &cancellables)
     }
@@ -89,27 +81,18 @@ class TaskCreationStep2ViewModel: ObservableObject {
     func header() -> String {
         return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
     }
-}
-
-extension String {
-    func convertEngNumToPersianNum() -> String{
-        let format = NumberFormatter()
-        format.locale = Locale(identifier: "fa_IR")
-        let number =   format.number(from: self)
-        
-        let faNumber = format.string(from: number!)
-        return faNumber!
-        
-    }
     
-    func convertToPersian() -> String {
-        let numbersDictionary : Dictionary = ["0" : "۰","1" : "۱", "2" : "۲", "3" : "۳", "4" : "۴", "5" : "۵", "6" : "۶", "7" : "۷", "8" : "۸", "9" : "۹"]
-        var str : String = self
-        
-        for (key,value) in numbersDictionary {
-            str =  str.replacingOccurrences(of: key, with: value)
+    func getSegmentItems() -> [String] {
+        if dataManager.isTaskActivity() {
+            return [
+                LocalizedString.TaskCreationStep2.nonRepeatitiveActivity,
+                LocalizedString.TaskCreationStep2.repeatitiveActivity
+            ]
+        } else {
+            return [
+                LocalizedString.TaskCreationStep2.completelyQuit,
+                LocalizedString.TaskCreationStep2.partiallyQuit
+            ]
         }
-        
-        return str
     }
 }

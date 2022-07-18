@@ -15,11 +15,7 @@ struct SelectorInoutCell: View {
     
     var body: some View {
         VStack(spacing: PublicTheme.formInputPadding) {
-            HStack {
-                Text(title)
-                    .applyStyle(style: .sectionHeaderStyle)
-                Spacer()
-            }
+            InputCellTitleView(title: title)
             CustomSelector(text: text,
                            placeholder: placeholder)
         }

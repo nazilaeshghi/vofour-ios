@@ -15,11 +15,7 @@ struct MultipleLineInputCell: View {
     
     var body: some View {
         VStack(spacing: PublicTheme.formInputPadding) {
-            HStack {
-                Text(title)
-                    .applyStyle(style: .sectionHeaderStyle)
-                Spacer()
-            }
+            InputCellTitleView(title: title)
             CustomMultiLineTextEditor(text: $inputText,
                                       placeholder: placeholder)
         }

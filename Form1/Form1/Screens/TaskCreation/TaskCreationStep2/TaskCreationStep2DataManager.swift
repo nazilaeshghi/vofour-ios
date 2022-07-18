@@ -10,6 +10,7 @@ import Foundation
 
 protocol TaskCreationStep2DataManagable {
     func getContextName() -> String
+    func isTaskActivity() -> Bool
     func updateTaskType(isRepeatable: Bool)
     func updateStartDate(date: Date?)
     func updatEndDate(date: Date?)
@@ -29,6 +30,10 @@ class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
     func getContextName() -> String{
         guard let contextId = dataManager.currentInputEntry.contextId else { return "" }
         return dataManager.context(id: contextId)?.name ?? ""
+    }
+    
+    func isTaskActivity() -> Bool {
+        return dataManager.currentInputEntry.isActivity ?? true
     }
     
     func updateTaskType(isRepeatable: Bool) {
