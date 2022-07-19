@@ -13,6 +13,8 @@ struct SelectContext: View {
     @State var searchText: String = ""
     @State var linkIsActive: Bool = false
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -67,7 +69,13 @@ struct SelectContext: View {
                 }
                 .background(PublicTheme.background)
                 .navigationBarTitleDisplayMode(.inline)
-                .applyToolbarStyle(with: LocalizedString.ContextPage.header)
+                .applyToolbarStyle(with: LocalizedString.ContextPage.header, action: {
+                    presentationMode.wrappedValue.dismiss()
+                })
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.cloceClick))
+                { obj in
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
             
         }

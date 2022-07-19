@@ -10,17 +10,14 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-//        NavigationView {
-//            VStack {
-                Text("This is home")
-//                let detailView = AppCoordinator.shared
-//                    .makeDetailView(with: "mockTaskID")
-//                NavigationLink(destination: detailView) {
-//                    Text("Task Detail")
-//                }
-//                .navigationTitle("Home")
-//            }
-//        }
+        ZStack {
+            Color.purple
+                //.ignoresSafeArea()
+            
+            // Your other content here
+            // Other layers will respect the safe area edges
+        }
+        
     }
 }
 

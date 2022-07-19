@@ -85,4 +85,12 @@ struct LocalizedString {
         static let numberOfRepeatTitle = "بیش از چندبار این فعالیت را انجام ندهم؟"
     }
     
+    enum Tabbar {
+        static let home = "خانه"
+        static let booklet = "سررسید"
+        static let activities = "فعالیت‌ها"
+        static let add = ""
+        static let report = "گزارش"
+    }
+    
 }

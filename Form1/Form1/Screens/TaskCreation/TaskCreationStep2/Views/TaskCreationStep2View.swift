@@ -102,7 +102,11 @@ struct TaskCreationStep2View: View {
             }
             
             .navigationBarTitleDisplayMode(.inline)
-            .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss)
+            .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss, closeAction: {
+                NotificationCenter.default.post(name: NSNotification.cloceClick,
+                                                object: nil,
+                                                userInfo: nil)
+            })
 
         }
         .navigationBarHidden(true)

@@ -24,7 +24,7 @@ extension View {
         AnyView(self)
     }
     
-    func applyToolbarStyle(with title: String) -> some View {
+    func applyToolbarStyle(with title: String, action: @escaping () -> Void) -> some View {
         self
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -33,10 +33,18 @@ extension View {
                             .applyStyle(style: LabelStyle.number)
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        action()
+                    } label: {
+                        Image("close")
+                    }
+                }
             }
     }
     
-    func applyToolbarWithBackStyle(with title: String, backAction: DismissAction) -> some View {
+    func applyToolbarWithBackStyle(with title: String, backAction: DismissAction, closeAction: @escaping () -> Void) -> some View {
         return self
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -51,6 +59,14 @@ extension View {
                         backAction()
                     } label: {
                         Image("backButton")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        closeAction()
+                    } label: {
+                        Image("close")
                     }
                 }
             }

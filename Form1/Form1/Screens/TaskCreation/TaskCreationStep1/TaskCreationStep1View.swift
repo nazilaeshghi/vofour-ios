@@ -10,6 +10,8 @@ import SwiftUI
 
 struct TaskCreationStep1View: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var showingSheet = false
     
     @StateObject var viewModel: TaskCreationStep1ViewModel
@@ -88,7 +90,11 @@ struct TaskCreationStep1View: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss)
+            .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss, closeAction: {
+                NotificationCenter.default.post(name: NSNotification.cloceClick,
+                                                object: nil,
+                                                userInfo: nil)
+            })
             .sheet(isPresented: $showingSheet) {
                     viewModel.refreshGoalTitle()
             } content: {

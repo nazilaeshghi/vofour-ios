@@ -42,4 +42,5 @@ enum FontStyle: CGFloat {
     case title = 20
     case title2 = 17
     case subtitle = 14
+    case verySmall = 12
 }

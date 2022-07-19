@@ -19,8 +19,12 @@ class AppCoordinator {
     
     static let shared = AppCoordinator()
     
-    var rootView: some View {
-        return makeSelectContextView()
+//    var rootView: some View {
+//        return makeSelectContextView()
+//    }
+    
+    func makeTabbar() -> some View {
+        return AppTabView()
     }
     
     func makeSelectContextView() -> SelectContext {

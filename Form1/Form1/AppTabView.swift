@@ -8,25 +8,36 @@
 
 import SwiftUI
 
-struct MainTabView: View {
+struct AppTabView: View {
+    @State var selection = 0
+    @State private var tabbarSelection: TabBarItem = .home
+    @State private var showingSheet = false
+    
     var body: some View {
-        TabView {
+        CustomTabbarContainerView(selection: $tabbarSelection) {
+            
             if let homeCoordinator  = HomeCoordinator(context: HomeDestinationContext()),
                let todayCoordinator = TodayCoordinator(context: TodayDestinationContext())
             {
                 homeCoordinator
                     .destinationView
-                    .tabItem {
-                        Image(systemName: "house.fill")
-                        Text("Home")
-                    }
+                    .tabBatItem(tab: .home, selection: $tabbarSelection)
+                
                 todayCoordinator
                     .destinationView
-                    .tabItem {
-                        Image(systemName: "calendar")
-                        Text("Today")
-                    }
-
+                    .tabBatItem(tab: .booklet, selection: $tabbarSelection)
+                
+                todayCoordinator
+                    .destinationView
+                    .tabBatItem(tab: .add, selection: $tabbarSelection)
+                
+                todayCoordinator
+                    .destinationView
+                    .tabBatItem(tab: .activities, selection: $tabbarSelection)
+                
+                todayCoordinator
+                    .destinationView
+                    .tabBatItem(tab: .report, selection: $tabbarSelection)
             }
         }
     }
@@ -34,6 +45,6 @@ struct MainTabView: View {
 
 struct FTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        AppTabView()
     }
 }

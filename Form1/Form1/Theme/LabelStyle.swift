@@ -56,4 +56,8 @@ struct LabelStyle {
     static var operandStyle: LabelStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
     }
+    
+    static var tabbarStyle: LabelStyle {
+        return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
+    }
 }
