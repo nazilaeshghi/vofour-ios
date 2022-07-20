@@ -70,8 +70,12 @@ struct TaskCreationStep2View: View {
                 }
                 Spacer()
                 HStack {
-                    TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
+                    TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
                                    secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {
+                        viewModel.saveTask()
+                        NotificationCenter.default.post(name: NSNotification.cloceClick,
+                                                        object: nil,
+                                                        userInfo: nil)
                         
                     }, secondaryAction: {
                         dismiss()

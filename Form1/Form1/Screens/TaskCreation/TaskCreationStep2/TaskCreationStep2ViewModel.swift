@@ -99,4 +99,8 @@ class TaskCreationStep2ViewModel: ObservableObject {
             ]
         }
     }
+    
+    func saveTask() {
+        dataManager.saveTask()
+    }
 }

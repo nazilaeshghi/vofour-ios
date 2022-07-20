@@ -50,4 +50,14 @@ class DataManager {
         guard let goalID = currentInputEntry.goalID else { return nil }
         return dataProvider.findGoal(with: goalID)
     }
+    
+    // MARK: - Task
+    func saveTask() {
+        dataProvider.saveTask(entry: currentInputEntry)
+    }
+    
+    func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel] {
+        return dataProvider.fetchTaks(weekDay: weekDay, date: date)
+    }
+
 }

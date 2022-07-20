@@ -18,6 +18,7 @@ protocol TaskCreationStep2DataManagable {
     func updateWeekDays(days: [WeekDayObject])
     func updateNumberOfRepeat(int: Int)
     func updateColor(hex: String)
+    func saveTask()
 }
 
 class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
@@ -62,5 +63,9 @@ class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
     
     func updateColor(hex: String) {
         dataManager.currentInputEntry.updateColor(with: hex)
+    }
+    
+    func saveTask() {
+        dataManager.saveTask()
     }
 }

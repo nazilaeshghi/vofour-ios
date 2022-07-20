@@ -77,7 +77,7 @@ class ReqalmDataProvider: DataProvider {
     
     func findContext(id: String) -> TaskContext? {
         do {
-            return try realm().objects(ContextRealm.self).where{ $0.id == id }.first
+            return try realm().objects(ContextRealm.self).where{ $0.id == id }.first?.detached()
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "Finding context faild, Something went wrong with Realm: \(error.localizedDescription)")
             return nil
@@ -109,10 +109,34 @@ class ReqalmDataProvider: DataProvider {
     
     func findGoal(with id: String) -> Goal? {
         do {
-            return try realm().objects(GoalRealm.self).where{ $0.id == id }.first
+            return try realm().objects(GoalRealm.self).where{ $0.id == id }.first?.detached()
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
             return nil
+        }
+    }
+    
+    // MARK: - Task
+    func saveTask(entry: DataEntryDataModel) {
+        let taskRealm = TaskRealm(task: entry)
+        
+        do {
+            let realm  = try self.realm()
+            try realm.write {
+                realm.add(taskRealm)
+            }
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Saving Task faild, Something went wrong with Realm: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel] {
+        
+        do {
+            return try realm().objects(TaskRealm.self).where{ $0.startDate >= date && $0.startDate <= date }.detached
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return []
         }
     }
 }

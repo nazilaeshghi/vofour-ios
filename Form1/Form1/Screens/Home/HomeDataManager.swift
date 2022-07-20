@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+protocol HomeDataManagable {
+    func fetchTasks() -> [TaskDataModel]
+    func fetchTask(date: Date) -> [TaskDataModel]
+}
+
+class HomeDataManager: HomeDataManagable {
+    func fetchTask(date: Date) -> [TaskDataModel] {
+        let weekday = Calendar(identifier: .persian).component(.weekday, from: date)
+        return []
+    }
+    
+    func fetchTasks() -> [TaskDataModel] {
+        return []
+    }
+}

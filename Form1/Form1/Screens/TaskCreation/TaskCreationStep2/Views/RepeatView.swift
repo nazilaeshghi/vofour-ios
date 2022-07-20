@@ -27,25 +27,3 @@ struct RepeatView_Previews: PreviewProvider {
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }
 }
-
-struct WeekDayObject {
-    let index: Int
-    let name: String
-    var selected: Bool
-    let id: String
-}
-
-struct WeekDayBuilder {
-    static func build() -> [WeekDayObject] {
-        return 
-            [
-                WeekDayObject(index: 0, name: "ش", selected: true, id: "week_day_1"),
-                WeekDayObject(index: 1, name: "ی", selected: true, id: "week_day_2"),
-                WeekDayObject(index: 2, name: "د", selected: true, id: "week_day_3"),
-                WeekDayObject(index: 3, name: "س", selected: true, id: "week_day_4"),
-                WeekDayObject(index: 4, name: "چ", selected: true, id: "week_day_5"),
-                WeekDayObject(index: 5, name: "پ", selected: true, id: "week_day_6"),
-                WeekDayObject(index: 6, name: "ج", selected: true, id: "week_day_7")
-            ]
-    }
-}

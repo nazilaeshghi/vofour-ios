@@ -19,4 +19,7 @@ protocol DataProvider {
     func fetchGoals() -> [Goal]
     func createGoal(newEntity: Goal)
     func findGoal(with id: String) -> Goal?
+    
+    func saveTask(entry: DataEntryDataModel)
+    func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel]
 }

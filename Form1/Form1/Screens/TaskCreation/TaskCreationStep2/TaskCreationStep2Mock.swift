@@ -18,4 +18,5 @@ class TaskCreationStep2DataManagableMock: TaskCreationStep2DataManagable {
     func updateWeekDays(days: [WeekDayObject]) {}
     func updateNumberOfRepeat(int: Int) {}
     func updateColor(hex: String) {}
+    func saveTask() {}
 }

@@ -77,6 +77,7 @@ struct LocalizedString {
         static let nextStepTimeTitle = "بعدی: اطلاعات زمان"
         static let previousTitle = "قبلی"
         static let saveTitle = "تایید"
+        static let storeDataTitle = "ذخیره"
     }
     
     enum QuitHabitStep2 {
