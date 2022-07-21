@@ -87,11 +87,11 @@ extension TimeInterval {
     var timeStr: String? {
         let time = self.getHourAndMin()
         if time.min > 0 && time.hour > 0 {
-            return "\(time.hour)".convertToPersian() + "ساعت" + " " + "\(time.min)".convertToPersian() + "دقیقه"
+            return "\(time.hour) ".convertToPersian() + "ساعت" + " " + "\(time.min) ".convertToPersian() + "دقیقه"
         } else if time.hour == 0, time.min > 0 {
-            return "\(time.min)".convertToPersian() + "دقیقه"
+            return "\(time.min) ".convertToPersian() + "دقیقه"
         } else if time.min == 0, time.hour > 0 {
-            return "\(time.hour)".convertToPersian() + "ساعت"
+            return "\(time.hour) ".convertToPersian() + "ساعت"
         }
         else {
             return nil

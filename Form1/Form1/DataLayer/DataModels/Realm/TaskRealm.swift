@@ -18,7 +18,7 @@ import Foundation
     var reason: String?
     var completionMotivations: String?
     var color: String = StaticColors.colors.first!
-    var weekDays: [String] = []
+    //@objc dynamic var weekDays: [String] = []
     var startDate: Date?
     var endDate: Date?
     
@@ -31,9 +31,9 @@ import Foundation
         self.reason = task.reason
         self.completionMotivations = task.for100
         self.color = task.color ?? StaticColors.colors.first!
-        if let days = task.days {
-            self.weekDays = days.map { $0.id }
-        }
+//        if let days = task.days {
+//            self.weekDays = days.map { $0.id }
+//        }
         self.startDate = task.startDate
         self.endDate = task.endDate
     }

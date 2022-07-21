@@ -35,10 +35,11 @@ struct MainTabView: View {
                 todayCoordinator
                     .destinationView
                     .tabItem {
-                        Image(selection == 2 ? "bookletTabbarSelected" : "bookletTabbar")
+                        Image("addTabbar")
                         Text(LocalizedString.Tabbar.add)
                             .applyStyle(style: .tabbarStyle)
                     }.tag(2)
+                    .offset(y: -10)
                 
                 todayCoordinator
                     .destinationView

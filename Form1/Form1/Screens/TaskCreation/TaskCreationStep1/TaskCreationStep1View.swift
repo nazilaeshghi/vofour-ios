@@ -11,6 +11,7 @@ import SwiftUI
 struct TaskCreationStep1View: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
+    @FocusState private var isTextFieldFocused: Bool
     
     @State private var showingSheet = false
     
@@ -78,16 +79,15 @@ struct TaskCreationStep1View: View {
                     }
                     .padding()
                 }
-                Spacer()
-                HStack {
-                    TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
-                                   secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                                   primaryAction: {
-                        nextPagelinkIsActive = true
-                    }, secondaryAction: {
-                        dismiss()
-                    }).frame(height: 60)
-                }
+                .focused($isTextFieldFocused)
+                
+                TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
+                               secondaryButtonText: LocalizedString.Buttons.previousTitle,
+                               primaryAction: {
+                    nextPagelinkIsActive = true
+                }, secondaryAction: {
+                    dismiss()
+                }).frame(height: isTextFieldFocused ? 0 : 60)
             }
             .navigationBarTitleDisplayMode(.inline)
             .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss, closeAction: {

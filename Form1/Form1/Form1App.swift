@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import IQKeyboardManagerSwift
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        return true
+    }
+}
 
 @main
 struct Form1App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
-            //AppCoordinator.shared.rootView
             AppCoordinator.shared.makeTabbar()
         }
     }

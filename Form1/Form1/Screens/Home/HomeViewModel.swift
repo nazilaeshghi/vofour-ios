@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
     @Published var items =  [CardDisplayModel]()
     
     func fetchTasks(date: Date) {
-        let tasks = dataManager.fetchTask(date: <#T##Date#>)
+       // let tasks = dataManager.fetchTask(date: <#T##Date#>)
         
     }
     

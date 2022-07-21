@@ -17,7 +17,7 @@ protocol TaskDataModel {
     var reason: String? { get }
     var completionMotivations: String? { get }
     var color: String { get }
-    var weekDays: [String] { get }
+   // var weekDays: [String] { get }
     var startDate: Date? { get }
     var endDate: Date? { get }
 }
