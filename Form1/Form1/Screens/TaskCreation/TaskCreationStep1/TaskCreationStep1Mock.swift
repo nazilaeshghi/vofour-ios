@@ -8,11 +8,7 @@
 
 import Foundation
 
-struct TaskCreationStep1MockGenerator {
-
-    
-}
-
+struct TaskCreationStep1MockGenerator {}
 
 struct TaskCreationStep1DataManagableMock: TaskCreationStep1DataManagable {
     func getContextName() -> String {

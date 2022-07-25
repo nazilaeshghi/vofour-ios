@@ -10,13 +10,13 @@ import Foundation
 
 class DataEntryDataModel {
     private (set) var contextId: String?
-    private (set) var isActivity: Bool?
+    private (set) var isActivity: Bool = true
     private (set) var activityTitle: String?
     private (set) var prevention: String?
     private (set) var reason: String?
     private (set) var for100: String?
     private (set) var goalID: String?
-    private (set) var isRepeatable: Bool?
+    private (set) var isRepeatable: Bool = false
     private (set) var startDate: Date?
     private (set) var endDate: Date?
     private (set) var duration: TimeInterval?
@@ -81,4 +81,10 @@ class DataEntryDataModel {
         color = value
     }
 
+}
+
+extension Array where Element == WeekDayObject {
+    func getStringRepresentative() -> String {
+        return self.map { $0.id }.joined(separator: ", ")
+    }
 }

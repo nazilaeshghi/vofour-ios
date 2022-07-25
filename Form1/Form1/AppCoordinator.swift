@@ -19,10 +19,6 @@ class AppCoordinator {
     
     static let shared = AppCoordinator()
     
-//    var rootView: some View {
-//        return makeSelectContextView()
-//    }
-    
     func makeTabbar() -> some View {
         return AppTabView()
     }
@@ -50,10 +46,10 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
-//    func makeDetailView(context: DestinationContext) -> TaskDetailView? {
-//        let coordinator = TaskDetailCoordinator(context: context)
-//        return coordinator?.destinationView
-//    }
+    func makeTasksView() -> TodayView? {
+        let coordinator = SelectGoalCoordinator(context: context, dataManage: dataManager)
+        return coordinator?.destinationView
+    }
 //
 //    func makeDetailView(with taskID: String) -> TaskDetailView? {
 //        let destinationContext = TaskDetailContext(taskId: taskID)

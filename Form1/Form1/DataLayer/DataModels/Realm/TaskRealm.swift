@@ -12,30 +12,30 @@ import Foundation
 @objcMembers class TaskRealm : Object, TaskDataModel {
     var taskID: String = "-"
     var title: String = ""
-    var isItQuit: Bool = false
+    var isActivity: Bool = false
     var goalId: String?
     var prevention: String?
     var reason: String?
     var completionMotivations: String?
     var color: String = StaticColors.colors.first!
-    //@objc dynamic var weekDays: [String] = []
     var startDate: Date?
     var endDate: Date?
+    var isRepeatable: Bool = false
+    var weekDays: String = ""
     
     convenience init(task: DataEntryDataModel) {
         self.init()
         self.taskID = UUID().uuidString
-        self.isItQuit = task.isActivity ?? true
+        self.isActivity = task.isActivity ?? false
         self.goalId = task.goalID
         self.prevention = task.prevention
         self.reason = task.reason
         self.completionMotivations = task.for100
         self.color = task.color ?? StaticColors.colors.first!
-//        if let days = task.days {
-//            self.weekDays = days.map { $0.id }
-//        }
+        self.weekDays = (task.days ?? []).getStringRepresentative()
         self.startDate = task.startDate
         self.endDate = task.endDate
+        self.isRepeatable = task.isRepeatable
     }
     
     override class func primaryKey() -> String {

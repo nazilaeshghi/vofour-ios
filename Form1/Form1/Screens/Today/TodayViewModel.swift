@@ -15,9 +15,6 @@ class TodayViewModel: ObservableObject {
         self.dataManager = dataManager
     }
     
-    @Published var title: String = "This is Today"
-    
-    func changeTitle(to value: String) {
-        self.title = value
-    }
+    @Published var cards: [CardDisplayModel] = []
+
 }

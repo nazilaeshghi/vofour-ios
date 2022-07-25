@@ -76,6 +76,49 @@ extension DateFormatter {
     }
 }
 
+extension Date {
+    func getSimpleDate() -> Date? {
+        guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
+            return nil
+        }
+        return date
+    }
+    
+    func getWeekDayID()-> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let weekDay = dateFormatter.string(from: self)
+        switch weekDay {
+        case "Saturday":
+            return "week_day_1"
+        case "Sunday":
+            return "week_day_2"
+        case "Monday":
+            return "week_day_3"
+        case "Tuesday":
+            return "week_day_4"
+        case "Wednesday":
+            return "week_day_5"
+        case "Thursday":
+            return "week_day_6"
+        case "Friday":
+            return "week_day_7"
+        default:
+            return "week_day_1"
+        }
+    }
+}
+
+extension Optional where Wrapped == Date {
+    func getSimpleDate() -> Date? {
+        guard let date = self,
+              let newDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: date)) else {
+                  return nil
+              }
+        return newDate
+    }
+}
+
 extension TimeInterval {
     func getHourAndMin() -> (hour: Int, min: Int) {
         let time = NSInteger(self)
@@ -92,8 +135,7 @@ extension TimeInterval {
             return "\(time.min) ".convertToPersian() + "دقیقه"
         } else if time.min == 0, time.hour > 0 {
             return "\(time.hour) ".convertToPersian() + "ساعت"
-        }
-        else {
+        } else {
             return nil
         }
     }

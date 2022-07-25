@@ -131,9 +131,14 @@ class ReqalmDataProvider: DataProvider {
     }
     
     func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel] {
-        
         do {
-            return try realm().objects(TaskRealm.self).where{ $0.startDate >= date && $0.startDate <= date }.detached
+            return try realm().objects(TaskRealm.self).where {
+                ($0.startDate == date && $0.isRepeatable == false) ||
+                ($0.startDate <= date &&
+                 $0.endDate >= date &&
+                 $0.isRepeatable == true &&
+                 $0.weekDays.contains(weekDay))
+            }.detached
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
             return []

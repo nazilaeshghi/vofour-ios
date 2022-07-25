@@ -13,14 +13,14 @@ struct TodayView: View {
     @ObservedObject var viewModel: TodayViewModel
     
     var body: some View {
-        VStack {
-            Text(viewModel.title)
-            Button {
-                viewModel.changeTitle(to: "yoooooo")
-            } label: {
-                Text("ChangeText")
-            }
-        }
+//        VStack {
+            Text("viewModel.title")
+//            Button {
+//                viewModel.changeTitle(to: "yoooooo")
+//            } label: {
+//                Text("ChangeText")
+//            }
+//        }
     }
 }
 
@@ -32,5 +32,5 @@ struct TodayView_Previews: PreviewProvider {
 }
 
 struct MockTodayDataManagable: TodayDataManagable {
-    
+    func fetchTasks(date: Date) -> [TaskDataModel] { return [] }
 }

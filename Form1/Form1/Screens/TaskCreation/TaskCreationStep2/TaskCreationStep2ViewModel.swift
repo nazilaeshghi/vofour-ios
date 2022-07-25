@@ -30,7 +30,6 @@ class TaskCreationStep2ViewModel: ObservableObject {
     
     init(dataManager: TaskCreationStep2DataManagable) {
         self.dataManager = dataManager
-        initBinders()
     }
     
     func initBinders() {

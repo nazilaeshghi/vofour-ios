@@ -10,16 +10,17 @@ import Foundation
 
 protocol TaskDataModel {
     var taskID: String { get }
-    var isItQuit: Bool { get }
+    var isActivity: Bool { get }
     var title: String { get }
     var goalId: String? { get }
     var prevention: String? { get }
     var reason: String? { get }
     var completionMotivations: String? { get }
     var color: String { get }
-   // var weekDays: [String] { get }
+    var weekDays: String { get }
     var startDate: Date? { get }
     var endDate: Date? { get }
+    var isRepeatable: Bool { get }
 }
 
 protocol Repetition {

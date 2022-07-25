@@ -113,6 +113,9 @@ struct TaskCreationStep2View: View {
             })
 
         }
+        .onAppear(perform: {
+            viewModel.initBinders()
+        })
         .navigationBarHidden(true)
     }
     

@@ -20,7 +20,7 @@ class TodayCoordinator {
     
     required init(context: TodayDestinationContext) {
         self.context = context
-        let dataManager = TodayDataManager()
+        let dataManager = TodayDataManager(dataManager: <#DataManager#>)
         self.viewModel = TodayViewModel(dataManager: dataManager)
     }
 }
