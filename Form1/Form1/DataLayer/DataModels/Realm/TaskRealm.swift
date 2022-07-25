@@ -26,7 +26,7 @@ import Foundation
     convenience init(task: DataEntryDataModel) {
         self.init()
         self.taskID = UUID().uuidString
-        self.isActivity = task.isActivity ?? false
+        self.isActivity = task.isActivity
         self.goalId = task.goalID
         self.prevention = task.prevention
         self.reason = task.reason

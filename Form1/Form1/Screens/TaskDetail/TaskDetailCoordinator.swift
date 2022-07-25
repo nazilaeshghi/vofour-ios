@@ -8,9 +8,7 @@
 
 import Foundation
 
-class TaskDetailCoordinator {
-    static var destinationIdentifier: DestinationIdentifier = TodayDestinationContext().destinationIdentifier
-    
+class TaskDetailCoordinator {    
     private var context: TaskDetailContext?
     private var viewModel: TaskDetailViewModel!
     

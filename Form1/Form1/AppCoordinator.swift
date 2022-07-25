@@ -46,9 +46,9 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
-    func makeTasksView() -> TodayView? {
-        let coordinator = SelectGoalCoordinator(context: context, dataManage: dataManager)
-        return coordinator?.destinationView
+    func makeTasksView() -> TaskListView {
+        let coordinator = TaskListCoordinator(dataManage: dataManager)
+        return coordinator.destinationView
     }
 //
 //    func makeDetailView(with taskID: String) -> TaskDetailView? {

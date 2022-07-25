@@ -12,9 +12,7 @@ struct TaskCreationStep1Context: DestinationContext {
     var destinationIdentifier: DestinationIdentifier { "TaskCreationStep1Context" }
 }
 
-class TaskCreationStep1Coordinator {
-    static var destinationIdentifier: DestinationIdentifier = TodayDestinationContext().destinationIdentifier
-    
+class TaskCreationStep1Coordinator {    
     private var context: TaskCreationStep1Context
     private var viewModel: TaskCreationStep1ViewModel!
     

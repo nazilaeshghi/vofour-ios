@@ -8,9 +8,7 @@
 
 import Foundation
 
-class TaskCreationStep2Coordinator {
-    static var destinationIdentifier: DestinationIdentifier = TodayDestinationContext().destinationIdentifier
-    
+class TaskCreationStep2Coordinator {    
     private var viewModel: TaskCreationStep2ViewModel!
     
     var destinationView: TaskCreationStep2View {

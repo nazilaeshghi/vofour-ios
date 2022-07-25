@@ -17,26 +17,22 @@ struct AppTabView: View {
         CustomTabbarContainerView(selection: $tabbarSelection) {
             
             if let homeCoordinator  = HomeCoordinator(context: HomeDestinationContext()),
-               let todayCoordinator = TodayCoordinator(context: TodayDestinationContext())
+               let taskView = AppCoordinator.shared.makeTasksView()
             {
                 homeCoordinator
                     .destinationView
                     .tabBatItem(tab: .home, selection: $tabbarSelection)
                 
-                todayCoordinator
-                    .destinationView
+                taskView
                     .tabBatItem(tab: .booklet, selection: $tabbarSelection)
                 
-                todayCoordinator
-                    .destinationView
+                taskView
                     .tabBatItem(tab: .add, selection: $tabbarSelection)
                 
-                todayCoordinator
-                    .destinationView
+                taskView
                     .tabBatItem(tab: .activities, selection: $tabbarSelection)
                 
-                todayCoordinator
-                    .destinationView
+                taskView
                     .tabBatItem(tab: .report, selection: $tabbarSelection)
             }
         }

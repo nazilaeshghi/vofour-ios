@@ -81,11 +81,10 @@
 		64B8AEB6279DAFA000BF47C5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 64B8AEB5279DAFA000BF47C5 /* Realm */; };
 		64B8AEB8279DAFA000BF47C5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64B8AEB7279DAFA000BF47C5 /* RealmSwift */; };
 		64B8AEBB279DAFF500BF47C5 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */; };
-		64B8AEBE279DB03400BF47C5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBD279DB03400BF47C5 /* TodayViewModel.swift */; };
-		64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBF279DB04600BF47C5 /* TodayUIView.swift */; };
-		64B8AEC2279DB06200BF47C5 /* TodayDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC1279DB06200BF47C5 /* TodayDataManager.swift */; };
-		64B8AEC5279DB09600BF47C5 /* TodayContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC4279DB09600BF47C5 /* TodayContext.swift */; };
-		64B8AEC7279DB0C300BF47C5 /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */; };
+		64B8AEBE279DB03400BF47C5 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBD279DB03400BF47C5 /* TaskListViewModel.swift */; };
+		64B8AEC0279DB04600BF47C5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEBF279DB04600BF47C5 /* TaskListView.swift */; };
+		64B8AEC2279DB06200BF47C5 /* TaskListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC1279DB06200BF47C5 /* TaskListDataManager.swift */; };
+		64B8AEC7279DB0C300BF47C5 /* TaskListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEC6279DB0C300BF47C5 /* TaskListCoordinator.swift */; };
 		64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */; };
 		64C4E8B4284BA13600502D88 /* TaskCreationStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C4E8B3284BA13600502D88 /* TaskCreationStep2View.swift */; };
 		64C4E8B6284BADFE00502D88 /* WeekDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C4E8B5284BADFE00502D88 /* WeekDaysView.swift */; };
@@ -195,11 +194,10 @@
 		64B8AEB0279DA4EF00BF47C5 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		64B8AEB2279DADD200BF47C5 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
-		64B8AEBD279DB03400BF47C5 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
-		64B8AEBF279DB04600BF47C5 /* TodayUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUIView.swift; sourceTree = "<group>"; };
-		64B8AEC1279DB06200BF47C5 /* TodayDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDataManager.swift; sourceTree = "<group>"; };
-		64B8AEC4279DB09600BF47C5 /* TodayContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayContext.swift; sourceTree = "<group>"; };
-		64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
+		64B8AEBD279DB03400BF47C5 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		64B8AEBF279DB04600BF47C5 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		64B8AEC1279DB06200BF47C5 /* TaskListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListDataManager.swift; sourceTree = "<group>"; };
+		64B8AEC6279DB0C300BF47C5 /* TaskListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCoordinator.swift; sourceTree = "<group>"; };
 		64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModelTransformer.swift; sourceTree = "<group>"; };
 		64C4E8B3284BA13600502D88 /* TaskCreationStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2View.swift; sourceTree = "<group>"; };
 		64C4E8B5284BADFE00502D88 /* WeekDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysView.swift; sourceTree = "<group>"; };
@@ -491,11 +489,10 @@
 		64B8AEC3279DB06B00BF47C5 /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				64B8AEC4279DB09600BF47C5 /* TodayContext.swift */,
-				64B8AEC6279DB0C300BF47C5 /* TodayCoordinator.swift */,
-				64B8AEBF279DB04600BF47C5 /* TodayUIView.swift */,
-				64B8AEBD279DB03400BF47C5 /* TodayViewModel.swift */,
-				64B8AEC1279DB06200BF47C5 /* TodayDataManager.swift */,
+				64B8AEC6279DB0C300BF47C5 /* TaskListCoordinator.swift */,
+				64B8AEBF279DB04600BF47C5 /* TaskListView.swift */,
+				64B8AEBD279DB03400BF47C5 /* TaskListViewModel.swift */,
+				64B8AEC1279DB06200BF47C5 /* TaskListDataManager.swift */,
 				64B8AECA279DB13100BF47C5 /* TodayModelTransformer.swift */,
 			);
 			path = Today;
@@ -701,7 +698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B8AEC2279DB06200BF47C5 /* TodayDataManager.swift in Sources */,
+				64B8AEC2279DB06200BF47C5 /* TaskListDataManager.swift in Sources */,
 				640B8E0F27CECE1F00177ADF /* LabelDisplayModel.swift in Sources */,
 				642CB1A0287C453D004AF8DA /* ContextDataModel.swift in Sources */,
 				643D4D74283958030033C083 /* SelectGoalCell.swift in Sources */,
@@ -729,10 +726,9 @@
 				64C4E8B6284BADFE00502D88 /* WeekDaysView.swift in Sources */,
 				643D4D722839568B0033C083 /* SelectGoalView.swift in Sources */,
 				64B8AEB3279DADD200BF47C5 /* DataProvider.swift in Sources */,
-				64B8AEC5279DB09600BF47C5 /* TodayContext.swift in Sources */,
 				64D7467427B8CFD8006A0C1C /* ColorExtentions.swift in Sources */,
 				64C4E8BC284CFAA500502D88 /* QuitHabitSteps2.swift in Sources */,
-				64B8AEC0279DB04600BF47C5 /* TodayUIView.swift in Sources */,
+				64B8AEC0279DB04600BF47C5 /* TaskListView.swift in Sources */,
 				646A891A287E13EB00E18CE4 /* ModalHeaderView.swift in Sources */,
 				64A1038828820CDF000A6FE2 /* TaskCreationStep2DataManager.swift in Sources */,
 				643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */,
@@ -747,7 +743,7 @@
 				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
 				64C4E8B8284BB6CF00502D88 /* ChangeRepeatView.swift in Sources */,
 				6400D6572844F691005A6F79 /* SelectorInoutCell.swift in Sources */,
-				64B8AEC7279DB0C300BF47C5 /* TodayCoordinator.swift in Sources */,
+				64B8AEC7279DB0C300BF47C5 /* TaskListCoordinator.swift in Sources */,
 				64A8A3AA284075EC0056EC08 /* ButtonExtensions.swift in Sources */,
 				6400D64F2841C3B5005A6F79 /* CustomTextEitor.swift in Sources */,
 				644487F0288646DD0020A758 /* CustomTabbar.swift in Sources */,
@@ -765,7 +761,7 @@
 				64C7727E2885BCAB0066F97B /* DurationSheet.swift in Sources */,
 				647F294927AF247300C70874 /* HomeDataManager.swift in Sources */,
 				64D8898F28407BC800975536 /* SegmentedPicker.swift in Sources */,
-				64B8AEBE279DB03400BF47C5 /* TodayViewModel.swift in Sources */,
+				64B8AEBE279DB03400BF47C5 /* TaskListViewModel.swift in Sources */,
 				646A8712287DA48D00E18CE4 /* NewGoalView.swift in Sources */,
 				6468A73B2889D18C0032DCD1 /* AdaptsToKeyboard.swift in Sources */,
 				647F293A27AEFAB700C70874 /* AppTabView.swift in Sources */,

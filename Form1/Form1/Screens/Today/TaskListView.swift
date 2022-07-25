@@ -1,5 +1,5 @@
 //
-//  TodayUIView.swift
+//  TaskListView.swift
 //  Form1
 //
 //  Created by Hosseini Zadeh, Morteza on 1/23/22.
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct TodayView: View {
+struct TaskListView: View {
     
-    @ObservedObject var viewModel: TodayViewModel
+    @ObservedObject var viewModel: TaskListViewModel
     
     var body: some View {
 //        VStack {
@@ -27,10 +27,10 @@ struct TodayView: View {
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
         let dataManager = MockTodayDataManagable()
-        TodayView(viewModel: TodayViewModel(dataManager: dataManager))
+        TaskListView(viewModel: TaskListViewModel(dataManager: dataManager))
     }
 }
 
-struct MockTodayDataManagable: TodayDataManagable {
+struct MockTodayDataManagable: TaskListDataManagable {
     func fetchTasks(date: Date) -> [TaskDataModel] { return [] }
 }

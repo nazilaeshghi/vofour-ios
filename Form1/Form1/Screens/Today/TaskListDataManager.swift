@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol TodayDataManagable {
+protocol TaskListDataManagable {
     func fetchTasks(date: Date) -> [TaskDataModel]
 }
 
-class TodayDataManager: TodayDataManagable {
+class TaskListDataManager: TaskListDataManagable {
     private let dataManager: DataManager
     
     init(dataManager: DataManager) {

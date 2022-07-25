@@ -34,7 +34,7 @@ class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
     }
     
     func isTaskActivity() -> Bool {
-        return dataManager.currentInputEntry.isActivity ?? true
+        return dataManager.currentInputEntry.isActivity
     }
     
     func updateTaskType(isRepeatable: Bool) {
