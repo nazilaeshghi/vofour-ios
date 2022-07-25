@@ -12,11 +12,9 @@ struct CardUIView: View {
     @State private (set) var viewModel: CardDisplayModel
     
     var body: some View {
-        GeometryReader { geometry in
             ZStack {
                 ProgressBar(value: $viewModel.progress,
                             color: viewModel.background)
-                    .frame(height: geometry.size.height)
                 
                 HStack {
                     CardTitleStackView(title: viewModel.title,
@@ -35,9 +33,8 @@ struct CardUIView: View {
                 }
                 .padding()
             }
+            .frame(height: 70)
             .cornerRadius(PublicTheme.cornerRaduis)
-            .padding()
-        }
     }
 }
 
@@ -49,13 +46,13 @@ struct CardUIView_Previews: PreviewProvider {
 }
 
 struct CardMockGenerator {
-    
     static func sample1() -> CardDisplayModel {
         return CardDisplayModel(title: LabelDisplayModel(plainText: "نیم ساعت پیاده‌روی"),
-                             subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .subtitleStyle),
-                             count: LabelDisplayModel(plainText: "۳", style: .number),
-                             background: Color(hex:"EA4C89"),
-                             state: .done,
-                             progress: 0.3)
+                                subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .subtitleStyle),
+                                count: LabelDisplayModel(plainText: "۳", style: .number),
+                                background: Color(hex:"EA4C89"),
+                                state: .done,
+                                progress: 0.3,
+                                id: "taskID")
     }
 }

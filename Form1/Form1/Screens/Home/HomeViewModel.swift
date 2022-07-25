@@ -34,6 +34,7 @@ class HomeViewModel: ObservableObject {
                                 count: count,
                                 background: Color(hex: task.color),
                                 state: .done,
-                                progress: 0.3)
+                                progress: 0.3,
+                                id: task.taskID)
     }
 }

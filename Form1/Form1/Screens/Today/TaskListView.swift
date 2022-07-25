@@ -9,18 +9,20 @@
 import SwiftUI
 
 struct TaskListView: View {
-    
     @ObservedObject var viewModel: TaskListViewModel
     
     var body: some View {
-//        VStack {
-            Text("viewModel.title")
-//            Button {
-//                viewModel.changeTitle(to: "yoooooo")
-//            } label: {
-//                Text("ChangeText")
-//            }
-//        }
+        List(viewModel.cards, id: \.id) { item in
+            CardUIView(viewModel: item)
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+        }
+        .background(PublicTheme.background)
+        .listStyle(PlainListStyle())
+        .onAppear(perform: {
+            viewModel.getTasks(date: Date())
+            UIScrollView.appearance().keyboardDismissMode = .onDrag
+        })
     }
 }
 
@@ -29,8 +31,4 @@ struct TodayView_Previews: PreviewProvider {
         let dataManager = MockTodayDataManagable()
         TaskListView(viewModel: TaskListViewModel(dataManager: dataManager))
     }
-}
-
-struct MockTodayDataManagable: TaskListDataManagable {
-    func fetchTasks(date: Date) -> [TaskDataModel] { return [] }
 }

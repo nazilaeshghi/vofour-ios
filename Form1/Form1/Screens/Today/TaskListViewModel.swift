@@ -29,9 +29,10 @@ class TaskListViewModel: ObservableObject {
         let displayModel = CardDisplayModel(title: title,
                                             subtitle: subtitle,
                                             count: count,
-                                            background: Color(hex: ""),
+                                            background: Color(hex: taskModel.color),
                                             state: .done,
-                                            progress: 0.3)
+                                            progress: 0.3,
+                                            id: taskModel.taskID)
         return displayModel
     }
 

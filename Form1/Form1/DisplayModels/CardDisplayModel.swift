@@ -15,6 +15,7 @@ struct CardDisplayModel {
     let background: Color
     let state: CardState
     var progress: Float
+    var id: String
 }
 
 enum CardState {
