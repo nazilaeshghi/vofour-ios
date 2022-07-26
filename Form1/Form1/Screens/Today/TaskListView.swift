@@ -10,19 +10,30 @@ import SwiftUI
 
 struct TaskListView: View {
     @ObservedObject var viewModel: TaskListViewModel
+    @State private var selectedDate: Date = Date()
     
     var body: some View {
-        List(viewModel.cards, id: \.id) { item in
-            CardUIView(viewModel: item)
-            .listRowBackground(Color.clear)
-            .listRowSeparator(.hidden)
+        VStack {
+            TaskHeaderView(selectedDate: $selectedDate)
+                .onChange(of: selectedDate) { newValue in
+                    viewModel.getTasks(date: newValue)
+                }
+            
+            List(viewModel.cards, id: \.id) { item in
+                CardUIView(viewModel: item)
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+            }
+            .background(PublicTheme.background)
+            .listStyle(PlainListStyle())
+            .onAppear(perform: {
+                viewModel.getTasks(date: selectedDate)
+                UIScrollView.appearance().keyboardDismissMode = .onDrag
+            })
         }
-        .background(PublicTheme.background)
-        .listStyle(PlainListStyle())
-        .onAppear(perform: {
-            viewModel.getTasks(date: Date())
-            UIScrollView.appearance().keyboardDismissMode = .onDrag
-        })
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.saveClick)) { obj in
+            viewModel.getTasks(date: selectedDate)
+        }
     }
 }
 

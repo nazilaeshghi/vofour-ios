@@ -20,7 +20,8 @@ class TaskListDataManager: TaskListDataManagable {
     }
     
     func fetchTasks(date: Date) -> [TaskDataModel] {
+        guard let changedDate = date.getSimpleDate() else { return [] }
         let dayID = date.getWeekDayID()
-        return dataManager.fetchTaks(weekDay: dayID, date: date)
+        return dataManager.fetchTaks(weekDay: dayID, date: changedDate)
     }
 }

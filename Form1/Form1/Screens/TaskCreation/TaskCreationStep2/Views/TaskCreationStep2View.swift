@@ -73,9 +73,8 @@ struct TaskCreationStep2View: View {
                     TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
                                    secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {
                         viewModel.saveTask()
-                        NotificationCenter.default.post(name: NSNotification.cloceClick,
-                                                        object: nil,
-                                                        userInfo: nil)
+                        NotificationCenter.default.post(name: NSNotification.cloceClick, object: nil)
+                        NotificationCenter.default.post(name: NSNotification.saveClick, object: nil)
                         
                     }, secondaryAction: {
                         dismiss()

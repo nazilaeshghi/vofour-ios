@@ -22,7 +22,7 @@ struct RepeatView: View {
 
 struct RepeatView_Previews: PreviewProvider {
     static var previews: some View {
-        RepeatView(weekDays: .constant(WeekDayBuilder.build()), repeatNum: .constant(1))
+        RepeatView(weekDays: .constant(DateBuilder.buildWeekDays()), repeatNum: .constant(1))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

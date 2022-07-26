@@ -15,8 +15,22 @@ struct WeekDayObject {
     let id: String
 }
 
-struct WeekDayBuilder {
-    static func build() -> [WeekDayObject] {
+struct HeaderDayObject {
+    let index: Int
+    let title: String
+    var selected: Bool
+    let id: String
+    let date: Date
+}
+
+struct DurationObject {
+    let tag: Int
+    let id: String
+    let amount: TimeInterval
+}
+
+struct DateBuilder {
+    static func buildWeekDays() -> [WeekDayObject] {
         return
             [
                 WeekDayObject(index: 0, name: "ش", selected: true, id: "week_day_1"),
@@ -27,6 +41,24 @@ struct WeekDayBuilder {
                 WeekDayObject(index: 5, name: "پ", selected: true, id: "week_day_6"),
                 WeekDayObject(index: 6, name: "ج", selected: true, id: "week_day_7")
             ]
+    }
+    
+    static func make7Days(selectedDate: Date) -> [HeaderDayObject] {
+        let pCalendar = Globals.getPersinaCalendar()
+        
+        let days = pCalendar.daysWithSameWeekOfYear(as: Date())
+        
+        let sevenDays = days.enumerated().map { dayEnum -> HeaderDayObject in
+            let simplifiedDate = dayEnum.element.getSimpleDate() ?? Date()
+            let strDate = String(dayEnum.element.get(.day))
+            let selected = simplifiedDate == selectedDate.getSimpleDate()
+            return HeaderDayObject(index: dayEnum.offset,
+                                   title: strDate.convertToPersian(),
+                                   selected: selected,
+                                   id: "day_\(dayEnum.offset)",
+                                   date: simplifiedDate)
+        }
+        return sevenDays
     }
 }
 

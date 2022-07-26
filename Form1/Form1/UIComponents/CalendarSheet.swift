@@ -31,7 +31,7 @@ struct CalendarSheetView: View {
             
             DatePicker("", selection: $calendarDate, displayedComponents: [.date])
                 .datePickerStyle(.graphical)
-                .environment(\.calendar, .init(identifier: .persian))
+                .environment(\.calendar, Globals.getPersinaCalendar())
                 .environment(\.locale, Locale.init(identifier: "fa"))
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             

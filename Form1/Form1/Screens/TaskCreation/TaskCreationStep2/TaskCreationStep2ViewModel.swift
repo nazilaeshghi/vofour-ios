@@ -21,7 +21,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
     
     @Published var selectedColor = StaticColors.colors.first ?? "#EA4C89"
     @Published var repeatNum: Int = 1
-    @Published var weekDays: [WeekDayObject] = WeekDayBuilder.build()
+    @Published var weekDays: [WeekDayObject] = DateBuilder.buildWeekDays()
     @Published var selectedDuration: DurationObject?
     
     var isItActivity: Bool {

@@ -8,7 +8,7 @@
 		<key>name</key>
 		<string>خود شخصی</string>
 		<key>iconName</key>
-		<string>context_self</string>
+		<string>context_yourself</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -16,19 +16,67 @@
 		<key>name</key>
 		<string>کیفیت ارتباط با خود</string>
 		<key>iconName</key>
-		<string>context_self_relationship</string>
+		<string>context_yourself_relationship_quality</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<string>62AF3CB36803B40000D364DA</string>
 		<key>name</key>
-		<string>کیفیت رابطه با دیگران</string>
+		<string>خانواده</string>
 		<key>iconName</key>
-		<string>context_other_relationship</string>
+		<string>context_family</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<string>62AF3CB39626AE00002A8F65</string>
+		<key>name</key>
+		<string>همسر/یار</string>
+		<key>iconName</key>
+		<string>context_partner</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB354AD8D0000FEA496</string>
+		<key>name</key>
+		<string>کیفیت روابط زناشویی</string>
+		<key>iconName</key>
+		<string>context_partner-relationship_quality</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB305B17F00001B5525</string>
+		<key>name</key>
+		<string>فرزندان</string>
+		<key>iconName</key>
+		<string>context_children</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB382F3230000C56625</string>
+		<key>name</key>
+		<string>فامیل خود</string>
+		<key>iconName</key>
+		<string>context_self_relatives</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB32B52B90000892482</string>
+		<key>name</key>
+		<string>فایل همسر</string>
+		<key>iconName</key>
+		<string>context_partner_relatives</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62AF3CB330315D00002DFCFB</string>
+		<key>name</key>
+		<string>کیفیت رابطه با دیگران</string>
+		<key>iconName</key>
+		<string>context_others_relationship_quality</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a3c97d26186021d07406</string>
 		<key>name</key>
 		<string>دوستان</string>
 		<key>iconName</key>
@@ -36,7 +84,15 @@
 	</dict>
 	<dict>
 		<key>id</key>
-		<string>62AF3CB354AD8D0000FEA496</string>
+		<string>62c0a3de16c54fabd3479e22</string>
+		<key>name</key>
+		<string>همکاران</string>
+		<key>iconName</key>
+		<string>context_colleagues</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a3eab92745b393d09d29</string>
 		<key>name</key>
 		<string>درآمد</string>
 		<key>iconName</key>
@@ -44,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>id</key>
-		<string>62AF3CB305B17F00001B5525</string>
+		<string>62c0a3f9a29faf4b4390b2c7</string>
 		<key>name</key>
 		<string>شغل</string>
 		<key>iconName</key>
@@ -52,15 +108,31 @@
 	</dict>
 	<dict>
 		<key>id</key>
-		<string>62AF3CB382F3230000C56625</string>
+		<string>62c0a451be19775833766e30</string>
 		<key>name</key>
-		<string>تحصیل</string>
+		<string>شریک</string>
 		<key>iconName</key>
-		<string>context_study</string>
+		<string>context_carrier_partner</string>
 	</dict>
 	<dict>
 		<key>id</key>
-		<string>62AF3CB32B52B90000892482</string>
+		<string>62c0a466ae43a28b6b53d3fd</string>
+		<key>name</key>
+		<string>بازنشستگی</string>
+		<key>iconName</key>
+		<string>context_retirement</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a471e2094bcc7a7aa0cf</string>
+		<key>name</key>
+		<string>تحصیل</string>
+		<key>iconName</key>
+		<string>context_education</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a47b8367795ecb96113b</string>
 		<key>name</key>
 		<string>سلامتی</string>
 		<key>iconName</key>
@@ -68,11 +140,171 @@
 	</dict>
 	<dict>
 		<key>id</key>
+		<string>62c0a484b11c94f1c7fa2c09</string>
+		<key>name</key>
+		<string>مشاوره فردی</string>
+		<key>iconName</key>
+		<string>context_therapy</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a3c97d26186021d07406</string>
+		<key>name</key>
+		<string>تغذیه</string>
+		<key>iconName</key>
+		<string>context_nutrition</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a495e5a963562daac869</string>
+		<key>name</key>
+		<string>ورزش</string>
+		<key>iconName</key>
+		<string>context_sport</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a49e764a4946a4f3fc36</string>
+		<key>name</key>
+		<string>خواب</string>
+		<key>iconName</key>
+		<string>context_sleep</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4a73177c12c8e3cbe7e</string>
+		<key>name</key>
+		<string>بیداری</string>
+		<key>iconName</key>
+		<string>context_awakeness</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4b4d48728175eaa4f68</string>
+		<key>name</key>
+		<string>هنر</string>
+		<key>iconName</key>
+		<string>context_art</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4bca3025180fb047b5e</string>
+		<key>name</key>
+		<string>تفریح</string>
+		<key>iconName</key>
+		<string>context_recreation</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4e42aee2f06f9d1e7f9</string>
+		<key>name</key>
+		<string>اجتماع</string>
+		<key>iconName</key>
+		<string>context_community</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4ed86e91452f528c163</string>
+		<key>name</key>
+		<string>فعالیت اجتماعی</string>
+		<key>iconName</key>
+		<string>context_social_activity</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4f637dbd8d5c93fc536</string>
+		<key>name</key>
+		<string>طبیعت</string>
+		<key>iconName</key>
+		<string>context_nature</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a4ff746bae51970a0592</string>
+		<key>name</key>
+		<string>محیط زیست</string>
+		<key>iconName</key>
+		<string>context_enviroment</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a5464cf283f64e080ee3</string>
+		<key>name</key>
+		<string>دین/معنویت</string>
+		<key>iconName</key>
+		<string>context_religion</string>
+	</dict>
+	<dict>
+		<key>id</key>
 		<string>62AF3CB330315D00002DFCFB</string>
 		<key>name</key>
-		<string>شریک</string>
+		<string>خیر اعظم</string>
 		<key>iconName</key>
-		<string>context_associate</string>
+		<string>context_goodness</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a54efacb80d70115da35</string>
+		<key>name</key>
+		<string>تاثیرگذاری</string>
+		<key>iconName</key>
+		<string>context_effectiveness</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a55f2c22eabae6530cf2</string>
+		<key>name</key>
+		<string>جهان هستی</string>
+		<key>iconName</key>
+		<string>context_universe</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a5699e3ed453e90b75e1</string>
+		<key>name</key>
+		<string>سپاس گزاری</string>
+		<key>iconName</key>
+		<string>context_gratefulness</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a57302d46c5bbff5b421</string>
+		<key>name</key>
+		<string>قدردانی</string>
+		<key>iconName</key>
+		<string>context_appreciation</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a57ccfb4d02620d6cffa</string>
+		<key>name</key>
+		<string>خودشناسی</string>
+		<key>iconName</key>
+		<string>context_self_knowledge</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a50d187f20ed242248c8</string>
+		<key>name</key>
+		<string>رویاپردازی</string>
+		<key>iconName</key>
+		<string>context_fantasize</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a5cc2215ee873a398e6b</string>
+		<key>name</key>
+		<string>اشتباه عمدی</string>
+		<key>iconName</key>
+		<string>context_deliberate_mistake</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>62c0a5f31e89bd2ccdcbc071</string>
+		<key>name</key>
+		<string>اضافی</string>
+		<key>iconName</key>
+		<string>context_extra</string>
 	</dict>
 </array>
 </plist>

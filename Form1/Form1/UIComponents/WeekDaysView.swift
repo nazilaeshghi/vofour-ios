@@ -10,7 +10,6 @@ import SwiftUI
 
 struct WeekDaysView: View {
     @Binding var weekDays: [WeekDayObject]
-    //@State private var hiddenWeekDays: [WeekDayObject] = WeekDayBuilder.build()
     
     var body: some View {
         VStack(spacing: 5) {
@@ -58,15 +57,15 @@ struct WeekDaysView: View {
 struct WeekDaysView_Previews: PreviewProvider {
     static var previews: some View {
 
-        WeekDaysView(weekDays: .constant(WeekDayBuilder.build()))
+        WeekDaysView(weekDays: .constant(DateBuilder.buildWeekDays()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 mini"))
         
-        WeekDaysView(weekDays: .constant(WeekDayBuilder.build()))
+        WeekDaysView(weekDays: .constant(DateBuilder.buildWeekDays()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
         
-        WeekDaysView(weekDays: .constant(WeekDayBuilder.build()))
+        WeekDaysView(weekDays: .constant(DateBuilder.buildWeekDays()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro Max"))
 
