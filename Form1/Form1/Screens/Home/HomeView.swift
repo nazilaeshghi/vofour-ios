@@ -9,14 +9,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    let dateHelper = DateHelper()
+    var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
+    
     var body: some View {
-        ZStack {
-            Color.purple
-                //.ignoresSafeArea()
-            
-            // Your other content here
-            // Other layers will respect the safe area edges
+        VStack {
+            HStack {
+                VStack (alignment: .leading){
+                    Text(dateHelper.getPersianRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
+                        .applyStyle(style: .verySmallHeaderStyle)
+                    
+                    Text(dateHelper.getTodayPersianFullDate())
+                        .applyStyle(style: .sectionHeaderStyle)
+                }
+                Spacer()
+            }
         }
+        .padding()
         
     }
 }
@@ -24,5 +33,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environment(\.layoutDirection, .rightToLeft)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }
 }

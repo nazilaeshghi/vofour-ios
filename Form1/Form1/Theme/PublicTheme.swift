@@ -17,6 +17,7 @@ struct PublicTheme {
     static let contextBackgroundColor = Color(hex: "EFF3F6")
     static let background = Color(hex: "FAFBFC")
     static let primaryColor = Color(hex: "1757A6")
+    static let headerSecondaryTextColor = Color(hex: "6E7E91")
     static let borderColor = Color(hex: "D9E0E9")
     static let sectionHeaderColor = Color(hex: "141D2B")
     static let placeholderTextColor = Color(hex: "A0AEBD")

@@ -60,4 +60,8 @@ struct LabelStyle {
     static var tabbarStyle: LabelStyle {
         return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
     }
+    
+    static var verySmallHeaderStyle: LabelStyle {
+        return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.headerSecondaryTextColor)
+    }
 }

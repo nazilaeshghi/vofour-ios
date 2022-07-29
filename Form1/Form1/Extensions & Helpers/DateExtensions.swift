@@ -23,15 +23,8 @@ extension Date {
         return date
     }
     
-    func getPersianSimpleDate() -> Date? {
-        guard let date = Calendar.init(identifier: .persian).date(from: Calendar.init(identifier: .persian).dateComponents([.year, .month, .day], from: self)) else {
-            return nil
-        }
-        return date
-    }
-    
     func getWeekDayID()-> String {
-        let index = Calendar.current.component(.weekday, from: self) // this returns an Int
+        let index = Calendar.current.component(.weekday, from: self)
         
         switch index {
         case 7:
@@ -104,5 +97,19 @@ struct DateHelper {
             return str
         }
         
+    }
+    
+    func getPersianRelativeDate(from startDate: Date?, to endDate: Date?) -> String {
+        guard let startDate = startDate, let endDate = endDate else { return "" }
+        return  "از" + " " + formatter.string(from: startDate) + " " + "تا" + " " + formatter.string(from: endDate)
+    }
+    
+    func getTodayPersianFullDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE d MMM yyyy"
+        dateFormatter.calendar = Globals.getPersinaCalendar()
+        dateFormatter.locale = Locale(identifier: "fa_IR")
+        let monthString = dateFormatter.string(from: Date()).convertToPersian()
+        return monthString
     }
 }
