@@ -14,7 +14,7 @@ struct LabelStyle {
     let textColor: Color
     
     static var titleStyle: LabelStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: .black)
+        return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
     }
     
     static var subtitleStyle: LabelStyle {

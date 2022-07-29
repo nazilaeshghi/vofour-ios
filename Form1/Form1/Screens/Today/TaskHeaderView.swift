@@ -35,6 +35,7 @@ struct TaskHeaderView: View {
                         } label: {
                             Text(day.title)
                                 .applyStyle(style: .buttonTitleStyle)
+                                .background(.clear)
                         }
                         .applyNoPaddingStyle(style: .multiplePrimary)
                         .frame(width: 38, height: 38)
@@ -47,10 +48,11 @@ struct TaskHeaderView: View {
                         } label: {
                             Text(day.title)
                                 .applyStyle(style: .deselectedButtonTitleStyle)
+                                .background(PublicTheme.background)
                         }
                         .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
                         .frame(width: 38, height: 38)
-                        .background(.white)
+                        .background(.clear)
                     }
                 }
                 .frame(maxWidth: .infinity)

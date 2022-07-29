@@ -94,4 +94,8 @@ struct LocalizedString {
         static let report = "گزارش"
     }
     
+    enum Date {
+        static let today = "امروز"
+    }
+    
 }

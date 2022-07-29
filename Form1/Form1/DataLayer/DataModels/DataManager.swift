@@ -52,12 +52,29 @@ class DataManager {
     }
     
     // MARK: - Task
+    func fetchTask(taskID: String) -> TaskDataModel? {
+        return dataProvider.fetchTask(id: taskID)
+    }
+    
     func saveTask() {
         dataProvider.saveTask(entry: currentInputEntry)
     }
     
-    func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel] {
+    // MARK: - Record
+    func saveRecord(record: Record) {
+        dataProvider.saveRecord(record: record)
+    }
+    
+    func updateRecord(recordID: String, count: Int) {
+        dataProvider.updateRecord(recordID: recordID, count: count)
+    }
+    
+    func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel] {
         return dataProvider.fetchTaks(weekDay: weekDay, date: date)
+    }
+    
+    func fetchRecord(taskID: String, date: Date) -> Record? {
+        return dataProvider.fetchRecord(taskID: taskID, date: date)
     }
 
 }

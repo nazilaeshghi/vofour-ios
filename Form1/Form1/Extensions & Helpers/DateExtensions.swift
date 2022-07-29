@@ -23,24 +23,30 @@ extension Date {
         return date
     }
     
+    func getPersianSimpleDate() -> Date? {
+        guard let date = Calendar.init(identifier: .persian).date(from: Calendar.init(identifier: .persian).dateComponents([.year, .month, .day], from: self)) else {
+            return nil
+        }
+        return date
+    }
+    
     func getWeekDayID()-> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        let weekDay = dateFormatter.string(from: self)
-        switch weekDay {
-        case "Saturday":
+        let index = Calendar.current.component(.weekday, from: self) // this returns an Int
+        
+        switch index {
+        case 7:
             return "week_day_1"
-        case "Sunday":
+        case 1:
             return "week_day_2"
-        case "Monday":
+        case 2:
             return "week_day_3"
-        case "Tuesday":
+        case 3:
             return "week_day_4"
-        case "Wednesday":
+        case 4:
             return "week_day_5"
-        case "Thursday":
+        case 5:
             return "week_day_6"
-        case "Friday":
+        case 6:
             return "week_day_7"
         default:
             return "week_day_1"
@@ -65,5 +71,38 @@ extension Optional where Wrapped == Date {
                   return nil
               }
         return newDate
+    }
+}
+
+extension Date {
+    func getPersianRelativeDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.calendar = Globals.getPersinaCalendar()
+        let monthString = dateFormatter.string(from: self)
+        return monthString
+    }
+}
+
+struct DateHelper {
+    let formatter: DateFormatter
+    
+    init() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.calendar = Globals.getPersinaCalendar()
+        dateFormatter.locale = Locale(identifier: "fa_IR")
+        self.formatter = dateFormatter
+    }
+    
+    func getPersianRelativeDate(for date: Date) -> String {
+        if date.getSimpleDate() == Date().getSimpleDate() {
+            let str = LocalizedString.Date.today + " " + formatter.string(from: date)
+            return str
+        } else {
+            let str = formatter.string(from: date)
+            return str
+        }
+        
     }
 }

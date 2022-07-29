@@ -130,18 +130,73 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
-    func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel] {
+    func fetchTask(id: String) -> TaskDataModel? {
         do {
-            return try realm().objects(TaskRealm.self).where {
+            return try realm().objects(TaskRealm.self).where{ $0.taskID == id }.first?.detached()
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel] {
+        do {
+            let tasks =  try realm().objects(TaskRealm.self).where {
                 ($0.startDate == date && $0.isRepeatable == false) ||
                 ($0.startDate <= date &&
                  $0.endDate >= date &&
                  $0.isRepeatable == true &&
                  $0.weekDays.contains(weekDay))
             }.detached
+            let dayRecords = try tasks.map { task -> DailyTaskDataModel in
+                let record = try realm().objects(RecordRealm.self).where {
+                    $0.taskID == task.taskID && $0.date == date
+                }.first?.detached()
+                let dayRecord = DailyTaskDataModel(task: task, record: record)
+                return dayRecord
+            }
+            return dayRecords
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    // MARK: - Record
+    func saveRecord(record: Record) {
+        let recordRealm = RecordRealm(record: record)
+        
+        do {
+            let realm  = try self.realm()
+            try realm.write {
+                realm.add(recordRealm)
+            }
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Saving Record faild, Something went wrong with Realm: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchRecord(taskID: String, date: Date) -> Record? {
+        do {
+            return try realm().objects(RecordRealm.self).where{ $0.taskID == taskID && $0.date == date }.first?.detached()
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func updateRecord(recordID: String, count: Int) {
+        do {
+            let realm  = try self.realm()
+
+            if let record = realm.objects(RecordRealm.self).where({ $0.recordID == recordID }).first {
+                try realm.write {
+                    record.count = record.count + 1
+                }
+            }
+            
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "updating record, Something went wrong with Realm: \(error.localizedDescription)")
         }
     }
 }

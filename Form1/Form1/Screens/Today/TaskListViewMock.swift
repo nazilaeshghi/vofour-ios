@@ -9,7 +9,8 @@
 import Foundation
 
 struct MockTodayDataManagable: TaskListDataManagable {
-    func fetchTasks(date: Date) -> [TaskDataModel] { return [TaskDataModelMock()] }
+    func fetchTasks(date: Date) -> [DailyTaskDataModel] { return [] }
+    func increamentTask(taskID: String, date: Date) {}
 }
 
 struct TaskDataModelMock: TaskDataModel {
@@ -25,4 +26,5 @@ struct TaskDataModelMock: TaskDataModel {
     var startDate: Date?
     var endDate: Date?
     var isRepeatable: Bool = true
+    var numberOfRepeat: Int = 1
 }

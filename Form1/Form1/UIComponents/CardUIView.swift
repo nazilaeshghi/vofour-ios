@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct CardUIView: View {
-    @State private (set) var viewModel: CardDisplayModel
+    @Binding private (set) var viewModel: CardDisplayModel
+    let increamentAction: () -> Void
     
     var body: some View {
             ZStack {
@@ -22,14 +23,15 @@ struct CardUIView: View {
                     
                     Spacer()
                     
-                    HStack {
-                        Text(viewModel.count.plainText)
-                            .applyStyle(style: viewModel.count.labelStyle)
-                        
-                        let imageName =  viewModel.state == .done ? "checkmark" : "plus"
-                        Image(systemName: imageName)
+                    ZStack(alignment: .trailing) {
+                        Image(viewModel.state.iconName)
                             .foregroundColor(.white)
+                        
+                        Button(" ") {
+                            increamentAction()
+                        }.frame(width: 100, height: 70)
                     }
+                    
                 }
                 .padding()
             }
@@ -40,7 +42,7 @@ struct CardUIView: View {
 
 struct CardUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CardUIView(viewModel: CardMockGenerator.sample1())
+        CardUIView(viewModel: .constant(CardMockGenerator.sample1())  , increamentAction: {})
             .environment(\.layoutDirection, .rightToLeft)
     }
 }
@@ -52,7 +54,7 @@ struct CardMockGenerator {
                                 count: LabelDisplayModel(plainText: "۳", style: .number),
                                 background: Color(hex:"EA4C89"),
                                 state: .done,
-                                progress: 0.3,
+                                progress: 1,
                                 id: "taskID")
     }
 }

@@ -9,7 +9,7 @@
 import RealmSwift
 import Foundation
 
-@objcMembers class TaskRealm : Object, TaskDataModel {
+@objcMembers class TaskRealm: Object, TaskDataModel {
     var taskID: String = "-"
     var title: String = ""
     var isActivity: Bool = false
@@ -22,6 +22,7 @@ import Foundation
     var endDate: Date?
     var isRepeatable: Bool = false
     var weekDays: String = ""
+    var numberOfRepeat: Int = 0
     
     convenience init(task: DataEntryDataModel) {
         self.init()
@@ -37,6 +38,7 @@ import Foundation
         self.startDate = task.startDate
         self.endDate = task.endDate
         self.isRepeatable = task.isRepeatable
+        self.numberOfRepeat = task.numberOfRepeat ?? 1
     }
     
     override class func primaryKey() -> String {

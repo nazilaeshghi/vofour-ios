@@ -50,7 +50,7 @@ struct DateBuilder {
         
         let sevenDays = days.enumerated().map { dayEnum -> HeaderDayObject in
             let simplifiedDate = dayEnum.element.getSimpleDate() ?? Date()
-            let strDate = String(dayEnum.element.get(.day))
+            let strDate = String(pCalendar.component(.day, from: dayEnum.element))
             let selected = simplifiedDate == selectedDate.getSimpleDate()
             return HeaderDayObject(index: dayEnum.offset,
                                    title: strDate.convertToPersian(),

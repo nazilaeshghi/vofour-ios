@@ -21,6 +21,7 @@ protocol TaskDataModel {
     var startDate: Date? { get }
     var endDate: Date? { get }
     var isRepeatable: Bool { get }
+    var numberOfRepeat: Int { get }
 }
 
 protocol Repetition {
@@ -40,4 +41,17 @@ protocol WeekDayObj {
 protocol TaskColor {
     var name: String { get }
     var hex: String { get }
+}
+
+protocol Record {
+    var recordID: String { get }
+    var taskID: String { get }
+    var date: Date { get }
+    var count: Int { get }
+    var total: Int { get }
+}
+
+struct DailyTaskDataModel {
+    let task: TaskDataModel
+    let record: Record?
 }

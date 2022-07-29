@@ -21,5 +21,10 @@ protocol DataProvider {
     func findGoal(with id: String) -> Goal?
     
     func saveTask(entry: DataEntryDataModel)
-    func fetchTaks(weekDay: String, date: Date) -> [TaskDataModel]
+    func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel]
+    func fetchTask(id: String) -> TaskDataModel?
+    
+    func saveRecord(record: Record)
+    func fetchRecord(taskID: String, date: Date) -> Record?
+    func updateRecord(recordID: String, count: Int)
 }

@@ -88,3 +88,11 @@ extension Array where Element == WeekDayObject {
         return self.map { $0.id }.joined(separator: ", ")
     }
 }
+
+struct RecordEntry: Record {
+    var recordID: String
+    var taskID: String
+    var date: Date
+    var count: Int
+    var total: Int
+}

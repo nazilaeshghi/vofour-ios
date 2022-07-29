@@ -9,7 +9,8 @@
 import Foundation
 
 protocol TaskListDataManagable {
-    func fetchTasks(date: Date) -> [TaskDataModel]
+    func fetchTasks(date: Date) -> [DailyTaskDataModel]
+    func increamentTask(taskID: String, date: Date)
 }
 
 class TaskListDataManager: TaskListDataManagable {
@@ -19,9 +20,25 @@ class TaskListDataManager: TaskListDataManagable {
         self.dataManager = dataManager
     }
     
-    func fetchTasks(date: Date) -> [TaskDataModel] {
+    func fetchTasks(date: Date) -> [DailyTaskDataModel] {
         guard let changedDate = date.getSimpleDate() else { return [] }
         let dayID = date.getWeekDayID()
         return dataManager.fetchTaks(weekDay: dayID, date: changedDate)
     }
+    
+    func increamentTask(taskID: String, date: Date) {
+        if let rcord = dataManager.fetchRecord(taskID: taskID, date: date) {
+            dataManager.updateRecord(recordID: rcord.recordID, count: rcord.count + 1)
+        }
+        else {
+            guard let task = dataManager.fetchTask(taskID: taskID) else { return }
+            let record = RecordEntry(recordID: UUID().uuidString,
+                                     taskID: taskID,
+                                     date: date,
+                                     count: 1,
+                                     total: task.numberOfRepeat)
+            dataManager.saveRecord(record: record)
+        }
+    }
+
 }

@@ -38,6 +38,7 @@
 		643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B72818BDB40025D3D4 /* SearchBar.swift */; };
 		643D4D722839568B0033C083 /* SelectGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D4D712839568B0033C083 /* SelectGoalView.swift */; };
 		643D4D74283958030033C083 /* SelectGoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D4D73283958030033C083 /* SelectGoalCell.swift */; };
+		643D86452892DB0A0076D884 /* RecordRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D86442892DB0A0076D884 /* RecordRealm.swift */; };
 		644487F0288646DD0020A758 /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644487EF288646DD0020A758 /* CustomTabbar.swift */; };
 		644487F228864F5D0020A758 /* CustomTabbarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644487F128864F5D0020A758 /* CustomTabbarContainerView.swift */; };
 		644487F42886F51C0020A758 /* TabBarItemsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644487F32886F51C0020A758 /* TabBarItemsPreferences.swift */; };
@@ -62,11 +63,11 @@
 		647F294727AF245000C70874 /* HomeDestinationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294627AF245000C70874 /* HomeDestinationContext.swift */; };
 		647F294927AF247300C70874 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294827AF247300C70874 /* HomeDataManager.swift */; };
 		64842BC2288F440D00A4AA2E /* TaskListViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */; };
-		64842BC4288F4A5100A4AA2E /* ContestsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64842BC3288F4A5100A4AA2E /* ContestsList.plist */; };
 		64842BC8288F6FE700A4AA2E /* TaskHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC7288F6FE700A4AA2E /* TaskHeaderView.swift */; };
 		64842BCA2890175D00A4AA2E /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC92890175D00A4AA2E /* CalendarExtensions.swift */; };
 		64842BCC2890178D00A4AA2E /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCB2890178D00A4AA2E /* Globals.swift */; };
 		64842BCE2890185500A4AA2E /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */; };
+		64842BD028901E7600A4AA2E /* ContestsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64842BCF28901E7600A4AA2E /* ContestsList.plist */; };
 		6487E6A427B4B94A00A6A37E /* TaskDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6A327B4B94A00A6A37E /* TaskDetailCoordinator.swift */; };
 		6487E6A627B4B95A00A6A37E /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6A527B4B95A00A6A37E /* TaskDetailView.swift */; };
 		6487E6A827B4B9CF00A6A37E /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6A727B4B9CF00A6A37E /* TaskDetailViewModel.swift */; };
@@ -158,6 +159,7 @@
 		643778B72818BDB40025D3D4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		643D4D712839568B0033C083 /* SelectGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalView.swift; sourceTree = "<group>"; };
 		643D4D73283958030033C083 /* SelectGoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalCell.swift; sourceTree = "<group>"; };
+		643D86442892DB0A0076D884 /* RecordRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRealm.swift; sourceTree = "<group>"; };
 		644487EF288646DD0020A758 /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		644487F128864F5D0020A758 /* CustomTabbarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarContainerView.swift; sourceTree = "<group>"; };
 		644487F32886F51C0020A758 /* TabBarItemsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferences.swift; sourceTree = "<group>"; };
@@ -180,11 +182,11 @@
 		647F294627AF245000C70874 /* HomeDestinationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDestinationContext.swift; sourceTree = "<group>"; };
 		647F294827AF247300C70874 /* HomeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManager.swift; sourceTree = "<group>"; };
 		64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewMock.swift; sourceTree = "<group>"; };
-		64842BC3288F4A5100A4AA2E /* ContestsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContestsList.plist; sourceTree = "<group>"; };
 		64842BC7288F6FE700A4AA2E /* TaskHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHeaderView.swift; sourceTree = "<group>"; };
 		64842BC92890175D00A4AA2E /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		64842BCB2890178D00A4AA2E /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
+		64842BCF28901E7600A4AA2E /* ContestsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContestsList.plist; sourceTree = "<group>"; };
 		6487E6A327B4B94A00A6A37E /* TaskDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailCoordinator.swift; sourceTree = "<group>"; };
 		6487E6A527B4B95A00A6A37E /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		6487E6A727B4B9CF00A6A37E /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
@@ -523,7 +525,7 @@
 				642CB19F287C453D004AF8DA /* ContextDataModel.swift */,
 				64C55039285F7907000E9F61 /* LocalDataProvider.swift */,
 				64C5503B285F7BD2000E9F61 /* DataManager.swift */,
-				64842BC3288F4A5100A4AA2E /* ContestsList.plist */,
+				64842BCF28901E7600A4AA2E /* ContestsList.plist */,
 				64EA8B28285F6C19009027DE /* Realm */,
 			);
 			path = DataModels;
@@ -625,6 +627,7 @@
 				64EA8B29285F6C2B009027DE /* ContextRealm.swift */,
 				642CB193287C4202004AF8DA /* GoalRealm.swift */,
 				644487FD288768F80020A758 /* TaskRealm.swift */,
+				643D86442892DB0A0076D884 /* RecordRealm.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -698,9 +701,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D7467A27B8D451006A0C1C /* Vazir-Regular.ttf in Resources */,
-				64842BC4288F4A5100A4AA2E /* ContestsList.plist in Resources */,
 				64B8AEAA279DA3E000BF47C5 /* Preview Assets.xcassets in Resources */,
 				64D7467B27B8D451006A0C1C /* Vazir-Light.ttf in Resources */,
+				64842BD028901E7600A4AA2E /* ContestsList.plist in Resources */,
 				64B8AEA7279DA3E000BF47C5 /* Assets.xcassets in Resources */,
 				64D7467927B8D451006A0C1C /* Vazir-Medium.ttf in Resources */,
 			);
@@ -796,6 +799,7 @@
 				6487E6AC27B4B9F400A6A37E /* TaskDetailContext.swift in Sources */,
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
 				642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */,
+				643D86452892DB0A0076D884 /* RecordRealm.swift in Sources */,
 				64A1038628820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift in Sources */,
 				64C7727828850D1F0066F97B /* BottomSheetModifier.swift in Sources */,
 				647F283527AEC9B000C70874 /* AppCoordinator.swift in Sources */,

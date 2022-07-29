@@ -16,10 +16,22 @@ struct CardDisplayModel {
     let state: CardState
     var progress: Float
     var id: String
+    var recordID: String?
 }
 
 enum CardState {
     case wip
     case done
-    case over
+    case quit
+    
+    var iconName: String {
+        switch self {
+        case .wip:
+            return "plus"
+        case .done:
+            return "done"
+        case .quit:
+            return "stop"
+        }
+    }
 }

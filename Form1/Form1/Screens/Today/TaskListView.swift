@@ -11,17 +11,24 @@ import SwiftUI
 struct TaskListView: View {
     @ObservedObject var viewModel: TaskListViewModel
     @State private var selectedDate: Date = Date()
+    let dateHelper = DateHelper()
     
     var body: some View {
         VStack {
+            Text(dateHelper.getPersianRelativeDate(for: selectedDate))
+                .applyStyle(style: .titleStyle)
+            
             TaskHeaderView(selectedDate: $selectedDate)
                 .onChange(of: selectedDate) { newValue in
                     viewModel.getTasks(date: newValue)
                 }
             
-            List(viewModel.cards, id: \.id) { item in
-                CardUIView(viewModel: item)
-                    .listRowBackground(Color.clear)
+            List($viewModel.cards, id: \.id) { item in
+                CardUIView(viewModel: item,
+                           increamentAction: {
+                    viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
+                    viewModel.getTasks(date: selectedDate)
+                }).listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
             }
             .background(PublicTheme.background)
@@ -31,6 +38,7 @@ struct TaskListView: View {
                 UIScrollView.appearance().keyboardDismissMode = .onDrag
             })
         }
+        .background(PublicTheme.background)
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.saveClick)) { obj in
             viewModel.getTasks(date: selectedDate)
         }
