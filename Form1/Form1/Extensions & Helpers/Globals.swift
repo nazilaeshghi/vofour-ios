@@ -70,6 +70,7 @@ struct Globals {
     
     static func getPersinaCalendar() -> Calendar {
         var pCalendar = Calendar.init(identifier: .persian)
+        pCalendar.locale = Locale(identifier: "fa_IR")
         pCalendar.firstWeekday = 7
         return pCalendar
     }

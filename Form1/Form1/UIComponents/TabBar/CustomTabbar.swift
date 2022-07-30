@@ -29,7 +29,10 @@ struct CustomTabBarView: View {
                             else {
                                 showingSheet = true
                             }
+                            NotificationCenter.default.post(name: NSNotification.tabClick, object: nil)
+
                         }
+                    
                 }
             }
             .frame(height: 45)

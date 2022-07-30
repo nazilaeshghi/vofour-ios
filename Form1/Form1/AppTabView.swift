@@ -16,11 +16,10 @@ struct AppTabView: View {
     var body: some View {
         CustomTabbarContainerView(selection: $tabbarSelection) {
             
-            if let homeCoordinator  = HomeCoordinator(context: HomeDestinationContext()),
+            if let homeView = AppCoordinator.shared.makeHomeView(),
                let taskView = AppCoordinator.shared.makeTasksView()
             {
-                homeCoordinator
-                    .destinationView
+                homeView
                     .tabBatItem(tab: .home, selection: $tabbarSelection)
                 
                 taskView

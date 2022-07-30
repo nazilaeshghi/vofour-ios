@@ -14,6 +14,7 @@ protocol DataProvider {
     func fetchTasks() -> [TaskDataModel]
     
     func fetchContexts() -> [TaskContext]
+    func fetchHomeContexts() -> [HomeContextDataModel]
     func findContext(id: String) -> TaskContext?
     
     func fetchGoals() -> [Goal]

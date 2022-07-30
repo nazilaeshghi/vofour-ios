@@ -9,17 +9,51 @@
 import Foundation
 
 protocol HomeDataManagable {
-    func fetchTasks() -> [TaskDataModel]
-    func fetchTask(date: Date) -> [TaskDataModel]
+    func fetchContexts() -> [HomeContextDataModel]
+    func fetchTodayProgress() -> Float
+    func fetchWeekProgress() -> Float
 }
 
 class HomeDataManager: HomeDataManagable {
-    func fetchTask(date: Date) -> [TaskDataModel] {
-        let weekday = Calendar(identifier: .persian).component(.weekday, from: date)
-        return []
+    
+    private let dataManager: DataManager
+
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
     }
     
-    func fetchTasks() -> [TaskDataModel] {
-        return []
+    func fetchContexts() -> [HomeContextDataModel] {
+        return dataManager.fetchAllHomeContexts()
+    }
+    
+    func fetchTodayProgress() -> Float {
+        let date = Date().getSimpleDate() ?? Date()
+        let weekDay = date.getWeekDayID()
+        return dataManager.computeDayProgress(weekDay: weekDay, date: date)
+    }
+    
+    func fetchWeekProgress() -> Float {
+        return dataManager.computeWeekProgress()
+    }
+}
+
+struct HomeDataManagerMock: HomeDataManagable {
+    func fetchTodayProgress() -> Float {
+        return 0
+    }
+    
+    func fetchWeekProgress() -> Float {
+        return 0
+    }
+    
+    func fetchContexts() -> [HomeContextDataModel] {
+        return [HomeContextDataModel(context: SelectContextCellMockGenerator.context,
+                                     activityCount: 2),
+                HomeContextDataModel(context: SelectContextCellMockGenerator.context,
+                                             activityCount: 5),
+                HomeContextDataModel(context: SelectContextCellMockGenerator.context,
+                                             activityCount: 3),
+                HomeContextDataModel(context: SelectContextCellMockGenerator.context,
+                                             activityCount: 0)]
     }
 }

@@ -12,13 +12,15 @@ class HomeCoordinator {
     static var destinationIdentifier: DestinationIdentifier = HomeDestinationContext().destinationIdentifier
     
     private var context: HomeDestinationContext!
+    private var viewModel: HomeViewModel!
     
     var destinationView: HomeView {
-        return HomeView()
+        return HomeView(viewModel: self.viewModel)
     }
     
-    required init(context: HomeDestinationContext) {
-        self.context = context
+    required init(dataManage: DataManager) {
+        let innerDataManager = HomeDataManager(dataManager: dataManage)
+        self.viewModel = HomeViewModel(dataManager: innerDataManager)
     }
 }
 

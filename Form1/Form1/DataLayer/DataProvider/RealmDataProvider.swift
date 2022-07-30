@@ -75,6 +75,23 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
+    func fetchHomeContexts() -> [HomeContextDataModel] {
+        do {
+            let contexts = try realm().objects(ContextRealm.self).detached
+            let homeContexts = try contexts.map { context ->  HomeContextDataModel in
+                let activityCount = try realm().objects(TaskRealm.self).where {
+                    $0.contextId == context.id
+                }.count
+               return HomeContextDataModel(context: context, activityCount: activityCount)
+            }
+            return homeContexts
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Fetching Home Contexts faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return []
+        }
+    }
+
+    
     func findContext(id: String) -> TaskContext? {
         do {
             return try realm().objects(ContextRealm.self).where{ $0.id == id }.first?.detached()

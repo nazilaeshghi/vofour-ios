@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol TaskDataModel {
     var taskID: String { get }
@@ -22,6 +23,7 @@ protocol TaskDataModel {
     var endDate: Date? { get }
     var isRepeatable: Bool { get }
     var numberOfRepeat: Int { get }
+    var contextId: String { get }
 }
 
 protocol Repetition {
@@ -54,4 +56,9 @@ protocol Record {
 struct DailyTaskDataModel {
     let task: TaskDataModel
     let record: Record?
+}
+
+struct HomeContextDataModel {
+    let context: TaskContext
+    let activityCount: Int
 }

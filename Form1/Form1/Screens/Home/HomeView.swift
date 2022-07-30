@@ -9,31 +9,127 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var viewModel: HomeViewModel
+    
     let dateHelper = DateHelper()
     var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     
+    let columns = [
+            GridItem(.adaptive(minimum: 120), spacing: 20)
+        ]
+    
     var body: some View {
-        VStack {
-            HStack {
-                VStack (alignment: .leading){
-                    Text(dateHelper.getPersianRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
-                        .applyStyle(style: .verySmallHeaderStyle)
+        ScrollView {
+            VStack (alignment: .leading) {
+                HStack {
+                    VStack{
+                        Text(dateHelper.getPersianRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
+                            .applyStyle(style: .verySmallHeaderStyle)
+                        
+                        Text(dateHelper.getTodayPersianFullDate())
+                            .applyStyle(style: .sectionHeaderStyle)
+                    }
                     
-                    Text(dateHelper.getTodayPersianFullDate())
-                        .applyStyle(style: .sectionHeaderStyle)
+                    Spacer()
+                    
+                    Button(action: {
+                    }, label: {
+                        Image("settings")
+                    })
+                    .frame(width: 30, height: 30)
                 }
+                HomeOverView(todayProgress: viewModel.todayProgress,
+                             weekProgress: viewModel.weekProgress)
+                
+                Text(LocalizedString.Home.contextTitle)
+                    .applyStyle(style: .deselectedButtonTitleStyle)
+                
                 Spacer()
+                
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(viewModel.contexs, id: \.id) { item in
+                        HomeContextCellView(item: item)
+                    }
+                }
+            }
+            .padding(24)
+            .background(PublicTheme.background)
+            .onAppear(perform: {
+                viewModel.fetchData()
+            })
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.saveClick)) { obj in
+                viewModel.fetchData()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.tabClick)) { obj in
+                viewModel.fetchData()
             }
         }
-        .padding()
-        
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        let dataManager = HomeDataManagerMock()
+        let viewModel = HomeViewModel(dataManager: dataManager)
+        HomeView(viewModel: viewModel)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
+    }
+}
+
+struct HomeHeadLineView: View {
+    var todayProgress: Float
+    var weekProgress: Float
+    
+    var body: some View {
+        
+        VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 0) {
+                let today = Int(todayProgress * 100)
+                Text("%\(today)".convertToPersian())
+                    .applyStyle(style: .bigNumberStyle)
+                HStack {
+                    Image("blueDot")
+                    Text(LocalizedString.Home.todayProgress)
+                        .applyStyle(style: .tabbarStyle)
+                }
+            }
+            
+            VStack(alignment: .leading, spacing: 0) {
+                let week = Int(weekProgress * 100)
+                Text("%\(week)".convertToPersian())
+                    .applyStyle(style: .bigGreenNumberStyle)
+                HStack {
+                    Image("greenDot")
+                    Text(LocalizedString.Home.weekProgress)
+                        .applyStyle(style: .verySmallGreenNumberStyle)
+                }
+            }
+        }
+       
+    }
+}
+
+struct HomeOverView: View {
+    var todayProgress: Float
+    var weekProgress: Float
+    
+    var body: some View {
+        HStack (spacing: 20){
+            WeekCircleView(todayProgress: todayProgress,
+                           weekProgress: weekProgress)
+            HomeHeadLineView(todayProgress: todayProgress,
+                             weekProgress: weekProgress)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity,
+               alignment: .topLeading)
+        .padding(24)
+        .background(.white)
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: PublicTheme.inoutTextCornerRadius)
+                .stroke(PublicTheme.borderColor, lineWidth: 1)
+        )
     }
 }

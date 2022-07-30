@@ -39,6 +39,7 @@ enum FontFamily: String {
 }
 
 enum FontStyle: CGFloat {
+    case bigTitle = 22
     case title = 20
     case title2 = 17
     case subtitle = 14

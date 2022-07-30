@@ -13,6 +13,19 @@ struct LabelStyle {
     let fontFamilty: FontFamily
     let textColor: Color
     
+    
+    static var bigNumberStyle: LabelStyle {
+        return .init(font: .bigTitle, fontFamilty: .regular, textColor: PublicTheme.primaryColor)
+    }
+    
+    static var bigGreenNumberStyle: LabelStyle {
+        return .init(font: .bigTitle, fontFamilty: .regular, textColor: PublicTheme.greenColor)
+    }
+    
+    static var verySmallGreenNumberStyle: LabelStyle {
+        return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.greenColor)
+    }
+    
     static var titleStyle: LabelStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
     }
@@ -63,5 +76,9 @@ struct LabelStyle {
     
     static var verySmallHeaderStyle: LabelStyle {
         return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.headerSecondaryTextColor)
+    }
+    
+    static var verySmallCollectionStyle: LabelStyle {
+        return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
     }
 }

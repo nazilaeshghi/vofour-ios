@@ -22,6 +22,7 @@ import Foundation
     var endDate: Date?
     var isRepeatable: Bool = false
     var weekDays: String = ""
+    var contextId: String = "-1"
     var numberOfRepeat: Int = 0
     
     convenience init(task: DataEntryDataModel) {
@@ -39,6 +40,7 @@ import Foundation
         self.endDate = task.endDate
         self.isRepeatable = task.isRepeatable
         self.numberOfRepeat = task.numberOfRepeat ?? 1
+        self.contextId = task.contextId ?? "-1"
     }
     
     override class func primaryKey() -> String {

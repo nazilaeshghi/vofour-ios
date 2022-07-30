@@ -98,4 +98,12 @@ struct LocalizedString {
         static let today = "امروز"
     }
     
+    enum Home {
+        static let activity = "فعالیت"
+        static let contextTitle = "زمینه‌ها"
+        static let add = "افزودن"
+        static let todayProgress = "پیشرفت این هفته"
+        static let weekProgress = "پیشرفت امروز"
+    }
+    
 }

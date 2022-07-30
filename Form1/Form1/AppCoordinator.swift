@@ -50,11 +50,9 @@ class AppCoordinator {
         let coordinator = TaskListCoordinator(dataManage: dataManager)
         return coordinator.destinationView
     }
-//
-//    func makeDetailView(with taskID: String) -> TaskDetailView? {
-//        let destinationContext = TaskDetailContext(taskId: taskID)
-//        let coordinator = TaskDetailCoordinator(context: destinationContext)
-//        return coordinator?.destinationView
-//    }
 
+    func makeHomeView() -> HomeView {
+        let coordinator = HomeCoordinator(dataManage: dataManager)
+        return coordinator.destinationView
+    }
 }

@@ -27,4 +27,5 @@ struct TaskDataModelMock: TaskDataModel {
     var endDate: Date?
     var isRepeatable: Bool = true
     var numberOfRepeat: Int = 1
+    var contextId: String = "-1"
 }

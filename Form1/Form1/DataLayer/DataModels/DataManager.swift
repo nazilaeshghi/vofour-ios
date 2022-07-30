@@ -29,6 +29,10 @@ class DataManager {
         return dataProvider.findContext(id: id)
     }
     
+    func fetchAllHomeContexts() -> [HomeContextDataModel] {
+        return dataProvider.fetchHomeContexts()
+    }
+    
     // MARK: - Goal
     func fetchGoals() -> [Goal] {
         return dataProvider.fetchGoals()
@@ -71,6 +75,28 @@ class DataManager {
     
     func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel] {
         return dataProvider.fetchTaks(weekDay: weekDay, date: date)
+    }
+    
+    func computeDayProgress(weekDay: String, date: Date) -> Float {
+        let dayTasks = dataProvider.fetchTaks(weekDay: weekDay, date: date)
+        let sum = dayTasks.map { model -> Float in
+            if (model.record?.total ?? 0) == 0 {
+                return 0
+            }
+            else {
+               return Float(model.record?.count ?? 0) / Float(model.record?.total ?? 0) }
+            }.reduce(0, +)
+        let progress = sum / Float(dayTasks.count)
+        return progress
+    }
+    
+    func computeWeekProgress() -> Float {
+        let totoalProgress = DateBuilder.make7Days(selectedDate: Date()).map { obj -> Float in
+            let dayID = obj.date.getWeekDayID()
+            return computeDayProgress(weekDay: dayID, date: obj.date)
+        }
+        let progress = totoalProgress.reduce(0, +) / Float(totoalProgress.count)
+        return progress
     }
     
     func fetchRecord(taskID: String, date: Date) -> Record? {

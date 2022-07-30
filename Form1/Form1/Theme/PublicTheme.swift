@@ -22,6 +22,7 @@ struct PublicTheme {
     static let sectionHeaderColor = Color(hex: "141D2B")
     static let placeholderTextColor = Color(hex: "A0AEBD")
     static let segmentBG = Color(hex: "EFF2F9")
+    static let greenColor = Color(hex: "01B7A7")
     static let oneLineTextfieldHeight: CGFloat = 40
     static let multipleLineTextfieldHeight: CGFloat = 80
 }
