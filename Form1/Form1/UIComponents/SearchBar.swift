@@ -14,7 +14,7 @@ struct SearchBar: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(Color("LightGray"))
+                .foregroundColor(.white)
                 .background(.white)
             HStack {
                 Image("search-loupe")

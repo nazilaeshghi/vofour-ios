@@ -27,7 +27,7 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multiplePrimary)
-                .frame(width: (geometry.size.width-40)/3*2)
+                .frame(width: abs((geometry.size.width-40)/3*2))
                 
                 Button {
                     secondaryAction()
@@ -38,7 +38,7 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multipleSecondary)
-                .frame(width: (geometry.size.width-40)/3*1)
+                .frame(width: abs((geometry.size.width-40)/3*1))
 
             }
             .padding(20)
