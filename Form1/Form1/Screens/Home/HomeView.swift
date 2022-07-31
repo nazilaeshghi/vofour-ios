@@ -10,9 +10,10 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
+    @State private var showingSheet = false
     
     let dateHelper = DateHelper()
-    var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
+    @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     
     let columns = [
             GridItem(.adaptive(minimum: 120), spacing: 20)
@@ -22,7 +23,7 @@ struct HomeView: View {
         ScrollView {
             VStack (alignment: .leading) {
                 HStack {
-                    VStack{
+                    VStack (alignment: .leading) {
                         Text(dateHelper.getPersianRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
                             .applyStyle(style: .verySmallHeaderStyle)
                         
@@ -33,6 +34,7 @@ struct HomeView: View {
                     Spacer()
                     
                     Button(action: {
+                        showingSheet = true
                     }, label: {
                         Image("settings")
                     })
@@ -62,6 +64,13 @@ struct HomeView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.tabClick)) { obj in
                 viewModel.fetchData()
+            }
+            .sheet(isPresented: $showingSheet, onDismiss: {
+                viewModel.fetchData()
+                sevenDays = DateBuilder.make7Days(selectedDate: Date())
+                showingSheet = false
+            }) {
+                SettingsView()
             }
         }
     }

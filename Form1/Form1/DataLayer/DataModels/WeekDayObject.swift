@@ -12,7 +12,7 @@ struct WeekDayObject {
     let index: Int
     let name: String
     var selected: Bool
-    let id: String
+    var id: String
 }
 
 struct HeaderDayObject {
@@ -21,6 +21,7 @@ struct HeaderDayObject {
     var selected: Bool
     let id: String
     let date: Date
+    let obj: WeekDayObject
 }
 
 struct DurationObject {
@@ -44,19 +45,22 @@ struct DateBuilder {
     }
     
     static func make7Days(selectedDate: Date) -> [HeaderDayObject] {
-        let pCalendar = Globals.getPersinaCalendar()
-        
+        let pCalendar = DateHelper.getCurrentCalendar()
         let days = pCalendar.daysWithSameWeekOfYear(as: Date())
-        
-        let sevenDays = days.enumerated().map { dayEnum -> HeaderDayObject in
+        let solid7Days = buildWeekDays()
+        let sevenDays = days.enumerated().compactMap { dayEnum -> HeaderDayObject? in
             let simplifiedDate = dayEnum.element.getSimpleDate() ?? Date()
-            let strDate = String(pCalendar.component(.day, from: dayEnum.element))
-            let selected = simplifiedDate == selectedDate.getSimpleDate()
-            return HeaderDayObject(index: dayEnum.offset,
-                                   title: strDate.convertToPersian(),
-                                   selected: selected,
-                                   id: "day_\(dayEnum.offset)",
-                                   date: simplifiedDate)
+            let dateID = simplifiedDate.getWeekDayID()
+            if let foundDate = solid7Days.filter({ $0.id == dateID}).first {
+                let strDate = String(pCalendar.component(.day, from: dayEnum.element))
+                let selected = simplifiedDate == selectedDate.getSimpleDate()
+                return HeaderDayObject(index: dayEnum.offset,
+                                       title: strDate.convertToPersian(),
+                                       selected: selected,
+                                       id: "day_\(dayEnum.offset)",
+                                       date: simplifiedDate,
+                                       obj: foundDate)
+            } else { return nil }
         }
         return sevenDays
     }

@@ -71,19 +71,31 @@ extension Date {
     func getPersianRelativeDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMMM"
-        dateFormatter.calendar = Globals.getPersinaCalendar()
+        dateFormatter.calendar = DateHelper.getCurrentCalendar()
         let monthString = dateFormatter.string(from: self)
         return monthString
     }
 }
 
+enum UserCalendar: String {
+    case persian
+    case gregorian
+}
+
 struct DateHelper {
     let formatter: DateFormatter
+    
+    static let fullDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.calendar = DateHelper.getCurrentCalendar()
+        return formatter
+    }()
     
     init() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMMM"
-        dateFormatter.calendar = Globals.getPersinaCalendar()
+        dateFormatter.calendar = DateHelper.getCurrentCalendar()
         dateFormatter.locale = Locale(identifier: "fa_IR")
         self.formatter = dateFormatter
     }
@@ -107,9 +119,66 @@ struct DateHelper {
     func getTodayPersianFullDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE d MMM yyyy"
-        dateFormatter.calendar = Globals.getPersinaCalendar()
+        dateFormatter.calendar = DateHelper.getCurrentCalendar()
         dateFormatter.locale = Locale(identifier: "fa_IR")
         let monthString = dateFormatter.string(from: Date()).convertToPersian()
         return monthString
+    }
+}
+
+extension DateHelper {
+    
+    static func getCurrentCalendar() -> Calendar {
+        let calendarName = DateHelper.getCurrentCalendarEnum()
+        switch calendarName {
+        case .persian:
+            return DateHelper.getPersinaCalendar()
+        case .gregorian:
+            return DateHelper.getGeorgianCalendar()
+        }
+    }
+    
+    static func getCurrentStartWeekDay() -> Int {
+        if let startDate = UserDefaults.standard.value(forKey: "currentWeekStartDay") as? Int {
+            return startDate
+        }
+        else {
+            UserDefaults.standard.set(7, forKey: "currentWeekStartDay")
+            return 7
+        }
+    }
+    
+    static func changeCurrentWeekStartDayTo(selected: Int) {
+        UserDefaults.standard.set(selected, forKey: "currentWeekStartDay")
+    }
+    
+    static func changeCurrentCalenterTo(selected: UserCalendar) {
+        UserDefaults.standard.set(selected.rawValue, forKey: "currentCalendar")
+    }
+    
+    static func getCurrentCalendarEnum() -> UserCalendar {
+        if let calendarNameStr = UserDefaults.standard.value(forKey: "currentCalendar") as? String,
+           let calendarName = UserCalendar(rawValue: calendarNameStr)
+        {
+            return calendarName
+        }
+        else {
+            UserDefaults.standard.set(UserCalendar.persian.rawValue, forKey: "currentCalendar")
+            return .persian
+        }
+    }
+    
+    private static func getPersinaCalendar() -> Calendar {
+        var pCalendar = Calendar.init(identifier: .persian)
+        pCalendar.locale = Locale(identifier: "fa_IR")
+        pCalendar.firstWeekday = DateHelper.getCurrentStartWeekDay()
+        return pCalendar
+    }
+    
+    private static func getGeorgianCalendar() -> Calendar {
+        var pCalendar = Calendar.init(identifier: .gregorian)
+        pCalendar.locale = Locale(identifier: "fa_IR")
+        pCalendar.firstWeekday = DateHelper.getCurrentStartWeekDay()
+        return pCalendar
     }
 }

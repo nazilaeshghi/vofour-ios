@@ -42,6 +42,9 @@ struct TaskListView: View {
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.saveClick)) { obj in
             viewModel.getTasks(date: selectedDate)
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.settingChange)) { obj in
+            viewModel.getTasks(date: selectedDate)
+        }
     }
 }
 

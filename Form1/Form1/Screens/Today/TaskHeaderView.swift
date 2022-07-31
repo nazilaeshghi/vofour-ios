@@ -9,16 +9,14 @@
 import SwiftUI
 
 struct TaskHeaderView: View {
-    
-    let weekDays: [WeekDayObject] = DateBuilder.buildWeekDays()
     @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     @Binding var selectedDate: Date
     
     var body: some View {
         VStack(spacing: 2) {
             HStack {
-                ForEach(weekDays, id: \.id) { item in
-                    Text(item.name)
+                ForEach(sevenDays, id: \.id) { item in
+                    Text(item.obj.name)
                         .applyStyle(style: .sectionHeaderStyle)
                 }
                 .frame(
@@ -58,6 +56,9 @@ struct TaskHeaderView: View {
                 .frame(maxWidth: .infinity)
             }
             
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.settingChange)) { obj in
+            sevenDays = DateBuilder.make7Days(selectedDate: selectedDate)
         }
     }
     

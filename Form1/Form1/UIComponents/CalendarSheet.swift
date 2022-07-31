@@ -19,7 +19,7 @@ struct CalendarSheetView: View {
         _presented = presented
         _dateStr = dateString
         self.title = title
-        _calendarDate = State(initialValue: Globals.dateFormatter.optionalDate(from: dateString.wrappedValue) ?? Date())
+        _calendarDate = State(initialValue: DateHelper.fullDateFormatter.optionalDate(from: dateString.wrappedValue) ?? Date())
     }
     
     var body: some View {
@@ -31,13 +31,13 @@ struct CalendarSheetView: View {
             
             DatePicker("", selection: $calendarDate, displayedComponents: [.date])
                 .datePickerStyle(.graphical)
-                .environment(\.calendar, Globals.getPersinaCalendar())
+                .environment(\.calendar, DateHelper.getCurrentCalendar())
                 .environment(\.locale, Locale.init(identifier: "fa"))
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             
             Button {
                 presented = false
-                dateStr = Globals.dateFormatter.string(from: calendarDate)
+                dateStr = DateHelper.fullDateFormatter.string(from: calendarDate)
             } label: {
                 Spacer()
                 Text(LocalizedString.Buttons.saveTitle)

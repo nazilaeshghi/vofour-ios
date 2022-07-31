@@ -9,13 +9,6 @@
 import Foundation
 
 struct Globals {
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        formatter.calendar = Calendar(identifier: .persian)
-        return formatter
-    }()
-    
     static func makeDurations() -> [DurationObject] {
         [ DurationObject(tag: 0, id: "du_0", amount: TimeInterval(0.5*60*60)),
           DurationObject(tag: 1, id: "du_1", amount: TimeInterval(1*60*60)),
@@ -66,12 +59,5 @@ struct Globals {
           DurationObject(tag: 46, id: "du_46", amount: TimeInterval(23.5*60*60)),
           DurationObject(tag: 47, id: "du_47", amount: TimeInterval(24*60*60))
         ]
-    }
-    
-    static func getPersinaCalendar() -> Calendar {
-        var pCalendar = Calendar.init(identifier: .persian)
-        pCalendar.locale = Locale(identifier: "fa_IR")
-        pCalendar.firstWeekday = 7
-        return pCalendar
     }
 }

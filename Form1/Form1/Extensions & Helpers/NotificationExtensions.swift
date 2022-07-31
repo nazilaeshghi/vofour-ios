@@ -12,4 +12,5 @@ extension NSNotification {
     static let cloceClick = Notification.Name.init("CloceClick")
     static let saveClick = Notification.Name.init("saveAction")
     static let tabClick = Notification.Name.init("tabChange")
+    static let settingChange = Notification.Name.init("settingChange")
 }
