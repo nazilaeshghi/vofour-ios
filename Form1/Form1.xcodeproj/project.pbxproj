@@ -32,6 +32,9 @@
 		642CB1A0287C453D004AF8DA /* ContextDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB19F287C453D004AF8DA /* ContextDataModel.swift */; };
 		642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB1A1287C4573004AF8DA /* GoalDataModel.swift */; };
 		642CB1A4287C4645004AF8DA /* SelectGoalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */; };
+		642D2B2B2897297F00500670 /* DateExtension_forfuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B2A2897297F00500670 /* DateExtension_forfuture.swift */; };
+		642D2B2D289729AA00500670 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B2C289729AA00500670 /* DateHelper.swift */; };
+		642D2B2F28972A2500500670 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B2E28972A2500500670 /* DateFormatterExtensions.swift */; };
 		6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */; };
 		643778B4281892560025D3D4 /* SelectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B3281892560025D3D4 /* SelectContext.swift */; };
 		643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B52818AA230025D3D4 /* SelectContextCell.swift */; };
@@ -66,7 +69,7 @@
 		64842BC2288F440D00A4AA2E /* TaskListViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */; };
 		64842BC8288F6FE700A4AA2E /* TaskHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC7288F6FE700A4AA2E /* TaskHeaderView.swift */; };
 		64842BCA2890175D00A4AA2E /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC92890175D00A4AA2E /* CalendarExtensions.swift */; };
-		64842BCC2890178D00A4AA2E /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCB2890178D00A4AA2E /* Globals.swift */; };
+		64842BCC2890178D00A4AA2E /* DurarionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCB2890178D00A4AA2E /* DurarionBuilder.swift */; };
 		64842BCE2890185500A4AA2E /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */; };
 		64842BD028901E7600A4AA2E /* ContestsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64842BCF28901E7600A4AA2E /* ContestsList.plist */; };
 		6487E6A427B4B94A00A6A37E /* TaskDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6487E6A327B4B94A00A6A37E /* TaskDetailCoordinator.swift */; };
@@ -155,6 +158,9 @@
 		642CB19F287C453D004AF8DA /* ContextDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataModel.swift; sourceTree = "<group>"; };
 		642CB1A1287C4573004AF8DA /* GoalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataModel.swift; sourceTree = "<group>"; };
 		642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalCoordinator.swift; sourceTree = "<group>"; };
+		642D2B2A2897297F00500670 /* DateExtension_forfuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension_forfuture.swift; sourceTree = "<group>"; };
+		642D2B2C289729AA00500670 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		642D2B2E28972A2500500670 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataModel.swift; sourceTree = "<group>"; };
 		643778B3281892560025D3D4 /* SelectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContext.swift; sourceTree = "<group>"; };
 		643778B52818AA230025D3D4 /* SelectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextCell.swift; sourceTree = "<group>"; };
@@ -187,7 +193,7 @@
 		64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewMock.swift; sourceTree = "<group>"; };
 		64842BC7288F6FE700A4AA2E /* TaskHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHeaderView.swift; sourceTree = "<group>"; };
 		64842BC92890175D00A4AA2E /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
-		64842BCB2890178D00A4AA2E /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		64842BCB2890178D00A4AA2E /* DurarionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurarionBuilder.swift; sourceTree = "<group>"; };
 		64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		64842BCF28901E7600A4AA2E /* ContestsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContestsList.plist; sourceTree = "<group>"; };
 		6487E6A327B4B94A00A6A37E /* TaskDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -317,6 +323,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		642D2B3028972A7300500670 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				64C7727B2885A8AF0066F97B /* DateExtensions.swift */,
+				642D2B2E28972A2500500670 /* DateFormatterExtensions.swift */,
+				642D2B2C289729AA00500670 /* DateHelper.swift */,
+				64842BC92890175D00A4AA2E /* CalendarExtensions.swift */,
+				64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 		643778B22818923C0025D3D4 /* TaskCreation */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,15 +360,13 @@
 		644487FA28875E2C0020A758 /* Extensions & Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				64842BCB2890178D00A4AA2E /* Globals.swift */,
+				64842BCB2890178D00A4AA2E /* DurarionBuilder.swift */,
 				64C55037285F78E4000E9F61 /* ErrorLogger.swift */,
 				642CB191287AFD7A004AF8DA /* BindingExtension.swift */,
-				646A8815287DD53F00E18CE4 /* StringExtensions.swift */,
-				64C7727B2885A8AF0066F97B /* DateExtensions.swift */,
 				64C773822885DABC0066F97B /* CollectionExtension.swift */,
+				646A8815287DD53F00E18CE4 /* StringExtensions.swift */,
 				644487FB28875E9A0020A758 /* NotificationExtensions.swift */,
-				64842BC92890175D00A4AA2E /* CalendarExtensions.swift */,
-				64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */,
+				642D2B3028972A7300500670 /* Date */,
 			);
 			path = "Extensions & Helpers";
 			sourceTree = "<group>";
@@ -397,6 +413,7 @@
 				647F26F427AC214D00C70874 /* Destination.swift */,
 				647F26F627AC266600C70874 /* Presentation.swift */,
 				6468A73A2889D18C0032DCD1 /* AdaptsToKeyboard.swift */,
+				642D2B2A2897297F00500670 /* DateExtension_forfuture.swift */,
 			);
 			path = ForFuture;
 			sourceTree = "<group>";
@@ -732,8 +749,10 @@
 			files = (
 				64B8AEC2279DB06200BF47C5 /* TaskListDataManager.swift in Sources */,
 				640B8E0F27CECE1F00177ADF /* LabelDisplayModel.swift in Sources */,
+				642D2B2D289729AA00500670 /* DateHelper.swift in Sources */,
 				642CB1A0287C453D004AF8DA /* ContextDataModel.swift in Sources */,
 				643D4D74283958030033C083 /* SelectGoalCell.swift in Sources */,
+				642D2B2B2897297F00500670 /* DateExtension_forfuture.swift in Sources */,
 				64C55038285F78E4000E9F61 /* ErrorLogger.swift in Sources */,
 				64C5503A285F7907000E9F61 /* LocalDataProvider.swift in Sources */,
 				642CB192287AFD7A004AF8DA /* BindingExtension.swift in Sources */,
@@ -748,7 +767,7 @@
 				6487E6A427B4B94A00A6A37E /* TaskDetailCoordinator.swift in Sources */,
 				647F26F727AC266600C70874 /* Presentation.swift in Sources */,
 				64B8AEBB279DAFF500BF47C5 /* RealmDataProvider.swift in Sources */,
-				64842BCC2890178D00A4AA2E /* Globals.swift in Sources */,
+				64842BCC2890178D00A4AA2E /* DurarionBuilder.swift in Sources */,
 				644487F62887077A0020A758 /* TabBarItem.swift in Sources */,
 				640B8E1927CECF6B00177ADF /* CardDisplayModel.swift in Sources */,
 				642CB198287C4407004AF8DA /* SelectGoalDataManager.swift in Sources */,
@@ -780,6 +799,7 @@
 				64B8AEC7279DB0C300BF47C5 /* TaskListCoordinator.swift in Sources */,
 				64A8A3AA284075EC0056EC08 /* ButtonExtensions.swift in Sources */,
 				6400D64F2841C3B5005A6F79 /* CustomTextEitor.swift in Sources */,
+				642D2B2F28972A2500500670 /* DateFormatterExtensions.swift in Sources */,
 				644487F0288646DD0020A758 /* CustomTabbar.swift in Sources */,
 				6400D65A28450B56005A6F79 /* TwoButtonsView.swift in Sources */,
 				6400D65C28450BDD005A6F79 /* LocalizedString.swift in Sources */,

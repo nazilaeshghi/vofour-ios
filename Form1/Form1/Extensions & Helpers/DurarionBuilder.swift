@@ -1,5 +1,5 @@
 //
-//  Globals.swift
+//  DurarionBuilder.swift
 //  Form1
 //
 //  Created by Hosseini Zadeh, Morteza on 2022-07-26.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Globals {
+struct DurarionBuilder {
     static func makeDurations() -> [DurationObject] {
         [ DurationObject(tag: 0, id: "du_0", amount: TimeInterval(0.5*60*60)),
           DurationObject(tag: 1, id: "du_1", amount: TimeInterval(1*60*60)),

@@ -13,7 +13,7 @@ struct DurationSheetView: View {
     @Binding var selectredDuration: DurationObject?
     
     @State private var selectedDurationID = 0
-    let durations = Globals.makeDurations()
+    let durations = DurarionBuilder.makeDurations()
     
     init(presented: Binding<Bool>, selectredDuration: Binding<DurationObject?>) {
         _presented = presented
