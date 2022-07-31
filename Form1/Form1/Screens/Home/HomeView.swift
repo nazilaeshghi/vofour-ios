@@ -131,7 +131,6 @@ struct HomeOverView: View {
                            weekProgress: weekProgress)
             HomeHeadLineView(todayProgress: todayProgress,
                              weekProgress: weekProgress)
-            Spacer()
         }
         .frame(maxWidth: .infinity,
                alignment: .topLeading)
