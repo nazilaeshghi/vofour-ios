@@ -50,6 +50,10 @@ struct LabelStyle {
         return .init(font: .subtitle, fontFamilty: .medium, textColor: PublicTheme.sectionHeaderColor)
     }
     
+    static var homeHeaderStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: PublicTheme.homeHeaderColor)
+    }
+    
     static var searchbarPlaceholderStyle: LabelStyle {
         return .init(font: .title2, fontFamilty: .light, textColor: PublicTheme.placeholderTextColor)
     }

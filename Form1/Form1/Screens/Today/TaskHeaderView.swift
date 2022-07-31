@@ -17,7 +17,7 @@ struct TaskHeaderView: View {
             HStack {
                 ForEach(sevenDays, id: \.id) { item in
                     Text(item.obj.name)
-                        .applyStyle(style: .sectionHeaderStyle)
+                        .applyStyle(style: .homeHeaderStyle)
                 }
                 .frame(
                     maxWidth: .infinity,

@@ -15,20 +15,24 @@ struct TaskListView: View {
     
     var body: some View {
         VStack {
+            Spacer(minLength: 20)
             Text(dateHelper.getPersianRelativeDate(for: selectedDate))
                 .applyStyle(style: .titleStyle)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             
             TaskHeaderView(selectedDate: $selectedDate)
                 .onChange(of: selectedDate) { newValue in
                     viewModel.getTasks(date: newValue)
                 }
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
             
             List($viewModel.cards, id: \.id) { item in
                 CardUIView(viewModel: item,
                            increamentAction: {
                     viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
                     viewModel.getTasks(date: selectedDate)
-                }).listRowBackground(Color.clear)
+                })
+                    .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
             }
             .background(PublicTheme.background)

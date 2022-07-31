@@ -73,6 +73,7 @@ struct HomeView: View {
                 SettingsView()
             }
         }
+        .background(PublicTheme.background)
     }
 }
 
@@ -94,8 +95,8 @@ struct HomeHeadLineView: View {
         
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 0) {
-                let today = Int(todayProgress * 100)
-                Text("%\(today)".convertToPersian())
+                let week = Int(weekProgress.isNaN ? 0 : weekProgress * 100)
+                Text("%\(week)".convertToPersian())
                     .applyStyle(style: .bigNumberStyle)
                 HStack {
                     Image("blueDot")
@@ -105,9 +106,10 @@ struct HomeHeadLineView: View {
             }
             
             VStack(alignment: .leading, spacing: 0) {
-                let week = Int(weekProgress * 100)
-                Text("%\(week)".convertToPersian())
+                let today = Int(todayProgress.isNaN ? 0 : todayProgress * 100)
+                Text("%\(today)".convertToPersian())
                     .applyStyle(style: .bigGreenNumberStyle)
+                    
                 HStack {
                     Image("greenDot")
                     Text(LocalizedString.Home.weekProgress)

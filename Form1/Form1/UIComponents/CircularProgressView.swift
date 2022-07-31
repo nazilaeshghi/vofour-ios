@@ -20,7 +20,7 @@ struct CircularProgressView: View {
                     lineWidth: 16
                 )
             Circle()
-                .trim(from: 0, to: CGFloat(progress))
+                .trim(from: 0, to: progress.isNaN ? 0 : CGFloat(progress))
                 .stroke(
                     color,
                     style: StrokeStyle(
@@ -42,11 +42,11 @@ struct WeekCircleView: View {
     
     var body: some View {
         ZStack {
-            CircularProgressView(progress: todayProgress,
+            CircularProgressView(progress: weekProgress,
                                  color: PublicTheme.primaryColor)
                 .frame(width: 144, height: 144)
             
-            CircularProgressView(progress: weekProgress,
+            CircularProgressView(progress: todayProgress,
                                  color: PublicTheme.greenColor)
                 .frame(width: 80, height: 80)
         }

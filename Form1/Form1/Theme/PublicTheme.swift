@@ -20,6 +20,7 @@ struct PublicTheme {
     static let headerSecondaryTextColor = Color(hex: "6E7E91")
     static let borderColor = Color(hex: "D9E0E9")
     static let sectionHeaderColor = Color(hex: "141D2B")
+    static let homeHeaderColor = Color(hex: "646b75")
     static let placeholderTextColor = Color(hex: "A0AEBD")
     static let segmentBG = Color(hex: "EFF2F9")
     static let greenColor = Color(hex: "01B7A7")
