@@ -57,7 +57,7 @@ struct TaskHeaderView: View {
             }
             
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.settingChange)) { obj in
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
             sevenDays = DateBuilder.make7Days(selectedDate: selectedDate)
         }
     }

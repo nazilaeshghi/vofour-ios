@@ -59,15 +59,11 @@ struct HomeView: View {
             .onAppear(perform: {
                 viewModel.fetchData()
             })
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.saveClick)) { obj in
-                viewModel.fetchData()
-            }
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.tabClick)) { obj in
-                viewModel.fetchData()
-            }
-            .sheet(isPresented: $showingSheet, onDismiss: {
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
                 viewModel.fetchData()
                 sevenDays = DateBuilder.make7Days(selectedDate: Date())
+            }
+            .sheet(isPresented: $showingSheet, onDismiss: {
                 showingSheet = false
             }) {
                 SettingsView()

@@ -31,6 +31,7 @@ struct TaskListView: View {
                            increamentAction: {
                     viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
                     viewModel.getTasks(date: selectedDate)
+                    NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
                 })
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
@@ -43,10 +44,7 @@ struct TaskListView: View {
             })
         }
         .background(PublicTheme.background)
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.saveClick)) { obj in
-            viewModel.getTasks(date: selectedDate)
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.settingChange)) { obj in
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
             viewModel.getTasks(date: selectedDate)
         }
     }
