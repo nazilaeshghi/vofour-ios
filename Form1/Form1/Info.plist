@@ -10,5 +10,7 @@
 		<string>Vazir-Medium.ttf</string>
 		<string>Vazir-Regular.ttf</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
