@@ -83,7 +83,7 @@ struct LocalizedString {
     enum QuitHabitStep2 {
         static let quitEntirely = "ترک کامل"
         static let withLimit = "تعیین حد مجاز"
-        static let numberOfRepeatTitle = "بیش از چندبار این فعالیت را انجام ندهم؟"
+        static let numberOfRepeatTitle = "بیش از چندبار در روز این فعالیت را انجام ندهم؟"
     }
     
     enum Tabbar {
@@ -104,6 +104,7 @@ struct LocalizedString {
         static let add = "افزودن"
         static let todayProgress = "پیشرفت این هفته"
         static let weekProgress = "پیشرفت امروز"
+        static let empty = "برای قرار گرفتن در مسیر رشد\n  از اینجا شروع کن"
     }
     
 }

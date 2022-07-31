@@ -95,7 +95,10 @@ class DataManager {
             let dayID = obj.date.getWeekDayID()
             return computeDayProgress(weekDay: dayID, date: obj.date)
         }
-        let progress = totoalProgress.reduce(0, +) / Float(totoalProgress.count)
+        let totalProgress = totoalProgress.reduce(0, { totalResult, progress in
+            return totalResult + (progress.isNaN ? 0 : progress)
+        })
+        let progress = totalProgress / Float(totoalProgress.count)
         return progress
     }
     

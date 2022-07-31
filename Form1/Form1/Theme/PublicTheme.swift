@@ -24,6 +24,7 @@ struct PublicTheme {
     static let placeholderTextColor = Color(hex: "A0AEBD")
     static let segmentBG = Color(hex: "EFF2F9")
     static let greenColor = Color(hex: "01B7A7")
+    static let emptyTextColor = Color(hex: "6e7f91")
     static let oneLineTextfieldHeight: CGFloat = 40
     static let multipleLineTextfieldHeight: CGFloat = 80
 }

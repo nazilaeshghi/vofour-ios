@@ -23,6 +23,7 @@ struct TaskListView: View {
             TaskHeaderView(selectedDate: $selectedDate)
                 .onChange(of: selectedDate) { newValue in
                     viewModel.getTasks(date: newValue)
+                    NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
                 }
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
             
@@ -42,6 +43,9 @@ struct TaskListView: View {
                 viewModel.getTasks(date: selectedDate)
                 UIScrollView.appearance().keyboardDismissMode = .onDrag
             })
+            if viewModel.isEmptyForCurrentDate {
+                TaskListEmtyView()
+            }
         }
         .background(PublicTheme.background)
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
@@ -54,5 +58,22 @@ struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
         let dataManager = MockTodayDataManagable()
         TaskListView(viewModel: TaskListViewModel(dataManager: dataManager))
+    }
+}
+
+
+struct TaskListEmtyView: View {
+    var body: some View {
+        VStack{
+            Spacer()
+            Text(LocalizedString.Home.empty)
+                .applyStyle(style: .homeEmptyStyle)
+                .multilineTextAlignment(.center)
+            
+            Text("👇")
+                .font(.system(size: 38))
+                .multilineTextAlignment(.center)
+        }
+        .padding()
     }
 }
