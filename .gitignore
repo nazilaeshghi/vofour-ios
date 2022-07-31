@@ -135,3 +135,5 @@ Dependencies/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,objective-c,xcode
+Form1/Form1/.DS_Store
+Form1/Form1.xcodeproj/project.xcworkspace/xcuserdata/shosseinizadeh.xcuserdatad/UserInterfaceState.xcuserstate
