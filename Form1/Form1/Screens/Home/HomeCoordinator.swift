@@ -8,10 +8,7 @@
 
 import Foundation
 
-class HomeCoordinator {
-    static var destinationIdentifier: DestinationIdentifier = HomeDestinationContext().destinationIdentifier
-    
-    private var context: HomeDestinationContext!
+class HomeCoordinator {    
     private var viewModel: HomeViewModel!
     
     var destinationView: HomeView {

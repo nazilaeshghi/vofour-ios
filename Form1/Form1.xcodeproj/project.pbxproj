@@ -61,7 +61,6 @@
 		647F294027AF1F3B00C70874 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F293F27AF1F3B00C70874 /* HomeViewModel.swift */; };
 		647F294227AF1F4F00C70874 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294127AF1F4F00C70874 /* HomeCoordinator.swift */; };
 		647F294427AF1FBC00C70874 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294327AF1FBC00C70874 /* HomeView.swift */; };
-		647F294727AF245000C70874 /* HomeDestinationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294627AF245000C70874 /* HomeDestinationContext.swift */; };
 		647F294927AF247300C70874 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294827AF247300C70874 /* HomeDataManager.swift */; };
 		6483727E289597C200712190 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483727D289597C200712190 /* SettingsView.swift */; };
 		64842BC2288F440D00A4AA2E /* TaskListViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */; };
@@ -183,7 +182,6 @@
 		647F293F27AF1F3B00C70874 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		647F294127AF1F4F00C70874 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		647F294327AF1FBC00C70874 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		647F294627AF245000C70874 /* HomeDestinationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDestinationContext.swift; sourceTree = "<group>"; };
 		647F294827AF247300C70874 /* HomeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManager.swift; sourceTree = "<group>"; };
 		6483727D289597C200712190 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewMock.swift; sourceTree = "<group>"; };
@@ -378,7 +376,6 @@
 				647F293F27AF1F3B00C70874 /* HomeViewModel.swift */,
 				647F294127AF1F4F00C70874 /* HomeCoordinator.swift */,
 				64DD210C2894C0FF0009FD08 /* HomeContextCellView.swift */,
-				647F294627AF245000C70874 /* HomeDestinationContext.swift */,
 				647F294827AF247300C70874 /* HomeDataManager.swift */,
 			);
 			path = Home;
@@ -826,7 +823,6 @@
 				647F294027AF1F3B00C70874 /* HomeViewModel.swift in Sources */,
 				64B8AEA3279DA3DC00BF47C5 /* Form1App.swift in Sources */,
 				64C5503C285F7BD2000E9F61 /* DataManager.swift in Sources */,
-				647F294727AF245000C70874 /* HomeDestinationContext.swift in Sources */,
 				64C4E8BA284CF7C800502D88 /* RepeatView.swift in Sources */,
 				644487F42886F51C0020A758 /* TabBarItemsPreferences.swift in Sources */,
 				6400D6512841C54C005A6F79 /* MultipleLineInputCell.swift in Sources */,
