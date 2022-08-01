@@ -15,7 +15,6 @@ enum UserCalendar: String {
 
 
 struct DateHelper {
-    let formatter: DateFormatter
     
     static let fullDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -24,15 +23,12 @@ struct DateHelper {
         return formatter
     }()
     
-    init() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMMM"
-        dateFormatter.calendar = DateHelper.getCurrentCalendar()
-        dateFormatter.locale = Locale(identifier: "fa_IR")
-        self.formatter = dateFormatter
-    }
-    
-    func getPersianRelativeDate(for date: Date) -> String {
+    func getHeaderDate(for date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM"
+        formatter.calendar = DateHelper.getCurrentCalendar()
+        formatter.locale = Locale(identifier: "fa_IR")
+        
         if date.getSimpleDate() == Date().getSimpleDate() {
             let str = LocalizedString.Date.today + " " + formatter.string(from: date)
             return str
@@ -44,6 +40,10 @@ struct DateHelper {
     }
     
     func getPersianRelativeDate(from startDate: Date?, to endDate: Date?) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM"
+        formatter.calendar = DateHelper.getCurrentCalendar()
+        formatter.locale = Locale(identifier: "fa_IR")
         guard let startDate = startDate, let endDate = endDate else { return "" }
         return  "از" + " " + formatter.string(from: startDate) + " " + "تا" + " " + formatter.string(from: endDate)
     }
