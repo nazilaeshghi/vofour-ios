@@ -54,7 +54,7 @@ struct CardMockGenerator {
                                 count: LabelDisplayModel(plainText: "۳", style: .number),
                                 background: Color(hex:"EA4C89"),
                                 state: .done,
-                                progress: 1,
+                                progress: 0.5,
                                 id: "taskID")
     }
 }

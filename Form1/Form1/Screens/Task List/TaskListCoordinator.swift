@@ -12,7 +12,7 @@ class TaskListCoordinator {
     private var viewModel: TaskListViewModel!
     
     var destinationView: TaskListView {
-        return TaskListView(viewModel: viewModel)
+        return TaskListView(viewModel: self.viewModel)
     }
     
     required init(dataManage: DataManager) {

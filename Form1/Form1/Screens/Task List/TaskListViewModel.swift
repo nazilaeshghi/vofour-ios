@@ -20,7 +20,7 @@ class TaskListViewModel: ObservableObject {
     
     func getTasks(date: Date) {
         let tasks = dataManager.fetchTasks(date: date.getSimpleDate() ?? Date())
-        cards = tasks.map { transformDataModels(dayRecord: $0) }
+        cards = tasks.map { TaskListViewModel.transformDataModels(dayRecord: $0) }
         isEmptyForCurrentDate = cards.isEmpty
     }
     
@@ -29,7 +29,7 @@ class TaskListViewModel: ObservableObject {
         getTasks(date: date)
     }
     
-    private func transformDataModels(dayRecord: DailyTaskDataModel) -> CardDisplayModel {
+    static func transformDataModels(dayRecord: DailyTaskDataModel) -> CardDisplayModel {
         let title = LabelDisplayModel(plainText: dayRecord.task.title)
         let subtitleText = String(dayRecord.record?.count ?? 0).convertToPersian() + "/" + String(dayRecord.task.numberOfRepeat).convertToPersian()
         let subtitle = LabelDisplayModel(plainText: subtitleText, style: .subtitleStyle)
@@ -56,7 +56,7 @@ class TaskListViewModel: ObservableObject {
         return displayModel
     }
     
-    private func calculateProgress(dayRecord: DailyTaskDataModel) -> Float {
+    static func calculateProgress(dayRecord: DailyTaskDataModel) -> Float {
         let progress: Float
         if let record = dayRecord.record, dayRecord.task.isActivity {
             let devide = Float(Float(record.count) / Float(record.total))

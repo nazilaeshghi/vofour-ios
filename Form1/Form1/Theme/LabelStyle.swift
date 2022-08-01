@@ -89,4 +89,8 @@ struct LabelStyle {
     static var homeEmptyStyle: LabelStyle {
         return .init(font: .title2, fontFamilty: .regular, textColor: PublicTheme.emptyTextColor)
     }
+    
+    static var hugeTitleStyle: LabelStyle {
+        return .init(font: .hugeTitle, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
+    }
 }

@@ -11,4 +11,5 @@ import Foundation
 struct TaskDetailContext: DestinationContext {
     var destinationIdentifier: DestinationIdentifier { "TaskDetailContext" }
     var taskId: String
+    var selectedDate: Date
 }

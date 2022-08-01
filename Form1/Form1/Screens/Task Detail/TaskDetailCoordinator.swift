@@ -13,12 +13,14 @@ class TaskDetailCoordinator {
     private var viewModel: TaskDetailViewModel!
     
     var destinationView: TaskDetailView {
-        return TaskDetailView(viewModel: viewModel)
+        return TaskDetailView(viewModel: self.viewModel)
     }
     
-    required init(context: TaskDetailContext) {
+    required init(context: TaskDetailContext, dataManage: DataManager) {
         self.context = context
-        let dataManager = TaskDetailDataManager()
+        let dataManager = TaskDetailDataManager(taskID: context.taskId,
+                                                currentDate: context.selectedDate,
+                                                dataManager: dataManage)
         self.viewModel = TaskDetailViewModel(dataManager: dataManager)
     }
 }

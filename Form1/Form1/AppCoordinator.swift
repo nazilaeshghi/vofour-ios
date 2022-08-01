@@ -55,4 +55,9 @@ class AppCoordinator {
         let coordinator = HomeCoordinator(dataManage: dataManager)
         return coordinator.destinationView
     }
+    
+    func makeTaskDetailsView(taskId: String, selectedDate: Date) -> TaskDetailView {
+        let coordinator = TaskDetailCoordinator(context: TaskDetailContext(taskId: taskId, selectedDate: selectedDate), dataManage: dataManager)
+        return coordinator.destinationView
+    }
 }
