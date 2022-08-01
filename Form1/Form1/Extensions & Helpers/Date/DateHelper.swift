@@ -36,7 +36,6 @@ struct DateHelper {
             let str = formatter.string(from: date)
             return str
         }
-        
     }
     
     func getPersianRelativeDate(from startDate: Date?, to endDate: Date?) -> String {

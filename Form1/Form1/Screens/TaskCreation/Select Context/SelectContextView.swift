@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SelectContext: View {
+struct SelectContextView: View {
     @StateObject var viewModel: SelectContextViewModel
     @State var searchText: String = ""
     @State var linkIsActive: Bool = false
@@ -86,7 +86,7 @@ struct SelectContext_Previews: PreviewProvider {
     static var previews: some View {
         let dataManager = SelectContextDataManagableMock()
         let viewModel = SelectContextViewModel(dataManager: dataManager)
-        SelectContext(viewModel: viewModel)
+        SelectContextView(viewModel: viewModel)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

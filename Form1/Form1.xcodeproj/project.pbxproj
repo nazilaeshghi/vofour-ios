@@ -41,7 +41,7 @@
 		642D2B3B28980A9400500670 /* TaskDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B3A28980A9400500670 /* TaskDetailDataManager.swift */; };
 		642D2B3D28980AA200500670 /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B3C28980AA200500670 /* TaskDetailViewModel.swift */; };
 		6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */; };
-		643778B4281892560025D3D4 /* SelectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B3281892560025D3D4 /* SelectContext.swift */; };
+		643778B4281892560025D3D4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B3281892560025D3D4 /* SelectContextView.swift */; };
 		643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B52818AA230025D3D4 /* SelectContextCell.swift */; };
 		643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B72818BDB40025D3D4 /* SearchBar.swift */; };
 		643D4D722839568B0033C083 /* SelectGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D4D712839568B0033C083 /* SelectGoalView.swift */; };
@@ -167,7 +167,7 @@
 		642D2B3A28980A9400500670 /* TaskDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailDataManager.swift; sourceTree = "<group>"; };
 		642D2B3C28980AA200500670 /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 		6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataModel.swift; sourceTree = "<group>"; };
-		643778B3281892560025D3D4 /* SelectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContext.swift; sourceTree = "<group>"; };
+		643778B3281892560025D3D4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
 		643778B52818AA230025D3D4 /* SelectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextCell.swift; sourceTree = "<group>"; };
 		643778B72818BDB40025D3D4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		643D4D712839568B0033C083 /* SelectGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalView.swift; sourceTree = "<group>"; };
@@ -574,7 +574,7 @@
 		64C5503F28609105000E9F61 /* Select Context */ = {
 			isa = PBXGroup;
 			children = (
-				643778B3281892560025D3D4 /* SelectContext.swift */,
+				643778B3281892560025D3D4 /* SelectContextView.swift */,
 				643778B52818AA230025D3D4 /* SelectContextCell.swift */,
 				64EA8B26285F651B009027DE /* SelectContextDataManager.swift */,
 				64C5503D285F8864000E9F61 /* SelectContextViewModel.swift */,
@@ -792,7 +792,7 @@
 				64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */,
 				644487F9288707970020A758 /* MainTabView.swift in Sources */,
 				642CB1A4287C4645004AF8DA /* SelectGoalCoordinator.swift in Sources */,
-				643778B4281892560025D3D4 /* SelectContext.swift in Sources */,
+				643778B4281892560025D3D4 /* SelectContextView.swift in Sources */,
 				64A1038A28820CEA000A6FE2 /* TaskCreationStep2Mock.swift in Sources */,
 				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
 				64C4E8B8284BB6CF00502D88 /* ChangeRepeatView.swift in Sources */,

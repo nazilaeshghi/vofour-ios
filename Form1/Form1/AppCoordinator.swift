@@ -23,10 +23,10 @@ class AppCoordinator {
         return AppTabView()
     }
     
-    func makeSelectContextView() -> SelectContext {
+    func makeSelectContextView() -> SelectContextView {
         let contextDataManger = SelectContextDataManager(dataManager: dataManager)
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
-        return SelectContext(viewModel: viewModel)
+        return SelectContextView(viewModel: viewModel)
     }
     
     func makeTaskCreationStep1View() -> TaskCreationStep1View {
