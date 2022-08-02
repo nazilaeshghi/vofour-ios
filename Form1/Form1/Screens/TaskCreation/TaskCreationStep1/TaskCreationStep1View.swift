@@ -23,8 +23,9 @@ struct TaskCreationStep1View: View {
     @State private var reasonInputText = ""
     @State private var for100InputText = ""
     @State private var goalID: String? = nil
-    
     @State var nextPagelinkIsActive: Bool = false
+    
+    let isFirstPage: Bool
     
     private let segmentItems = [
         LocalizedString.TaskCreationStep1.createHabitSegmentTitle,
@@ -90,11 +91,18 @@ struct TaskCreationStep1View: View {
                 }).frame(height: isTextFieldFocused ? 0 : 60)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss, closeAction: {
+            .applyToolbarWithBackStyle(with: viewModel.header(),
+                                       hideBakcButton: isFirstPage,
+                                       backAction: dismiss,
+                                       closeAction: {
                 NotificationCenter.default.post(name: NSNotification.cloceClick,
                                                 object: nil,
                                                 userInfo: nil)
             })
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.cloceClick))
+            { obj in
+                presentationMode.wrappedValue.dismiss()
+            }
             .sheet(isPresented: $showingSheet) {
                     viewModel.refreshGoalTitle()
             } content: {
@@ -127,7 +135,7 @@ struct TaskCreationStep1View_Previews: PreviewProvider {
     static var previews: some View {
         let dataManager = TaskCreationStep1DataManagableMock()
         let viewModel = TaskCreationStep1ViewModel(dataManager: dataManager)
-        TaskCreationStep1View(viewModel: viewModel)
+        TaskCreationStep1View(viewModel: viewModel, isFirstPage: false)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

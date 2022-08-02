@@ -17,7 +17,7 @@ struct AppTabView: View {
         CustomTabbarContainerView(selection: $tabbarSelection) {
             
             if let homeView = AppCoordinator.shared.makeHomeView(),
-               let taskView = AppCoordinator.shared.makeTasksView()
+               let taskView = AppCoordinator.shared.makeTasksListView()
             {
                 homeView
                     .tabBatItem(tab: .home, selection: $tabbarSelection)

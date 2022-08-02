@@ -44,33 +44,51 @@ extension View {
             }
     }
     
-    func applyToolbarWithBackStyle(with title: String, backAction: DismissAction, closeAction: @escaping () -> Void) -> some View {
-        return self
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack(spacing: 0) {
-                        Text(title)
-                            .applyStyle(style: LabelStyle.number)
+    @ViewBuilder
+    func applyToolbarWithBackStyle(with title: String, hideBakcButton: Bool = false, backAction: DismissAction, closeAction: @escaping () -> Void) -> some View {
+        if hideBakcButton {
+            self.toolbar {
+                    ToolbarItem(placement: .principal) {
+                        VStack(spacing: 0) {
+                            Text(title)
+                                .applyStyle(style: LabelStyle.number)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            closeAction()
+                        } label: {
+                            Image("close")
+                        }
                     }
                 }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        backAction()
-                    } label: {
-                        Image("backButton")
+        } else {
+            self.toolbar {
+                    ToolbarItem(placement: .principal) {
+                        VStack(spacing: 0) {
+                            Text(title)
+                                .applyStyle(style: LabelStyle.number)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            backAction()
+                        } label: {
+                            Image("backButton")
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            closeAction()
+                        } label: {
+                            Image("close")
+                        }
                     }
                 }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        closeAction()
-                    } label: {
-                        Image("close")
-                    }
-                }
-            }
-        
+        }
     }
 }
 

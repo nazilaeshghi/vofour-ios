@@ -10,6 +10,7 @@ import Foundation
 
 struct TaskCreationStep1Context: DestinationContext {
     var destinationIdentifier: DestinationIdentifier { "TaskCreationStep1Context" }
+    var contextID: String?
 }
 
 class TaskCreationStep1Coordinator {    
@@ -17,12 +18,12 @@ class TaskCreationStep1Coordinator {
     private var viewModel: TaskCreationStep1ViewModel!
     
     var destinationView: TaskCreationStep1View {
-        return TaskCreationStep1View(viewModel: self.viewModel)
+        return TaskCreationStep1View(viewModel: self.viewModel, isFirstPage: context.contextID != nil)
     }
     
     required init(context: TaskCreationStep1Context, dataManage: DataManager) {
         self.context = context
-        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManage)
+        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManage, contextID: context.contextID)
         self.viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager)
     }
 }

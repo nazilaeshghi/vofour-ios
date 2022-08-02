@@ -8,9 +8,15 @@
 
 import SwiftUI
 
+extension String: Identifiable {
+    public var id: String { self }
+}
+
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @State private var showingSheet = false
+    @State private var showingTaskCreationSheet = false
+    @State var selectedContextID: String?
     
     let dateHelper = DateHelper()
     @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
@@ -49,8 +55,12 @@ struct HomeView: View {
                 Spacer()
                 
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(viewModel.contexs, id: \.id) { item in
+                    ForEach($viewModel.contexs, id: \.id) { item in
                         HomeContextCellView(item: item)
+                            .onTapGesture {
+                                showingTaskCreationSheet = true
+                                selectedContextID = item.contextID.wrappedValue
+                            }
                     }
                 }
             }
@@ -70,6 +80,11 @@ struct HomeView: View {
             }
         }
         .background(PublicTheme.background)
+        .sheet(item: $selectedContextID) {
+            
+        } content: {  contextID in
+                AppCoordinator.shared.makeTaskCreationStep1View(contextID: contextID)
+        }
     }
 }
 

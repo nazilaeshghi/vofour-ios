@@ -23,14 +23,15 @@ class AppCoordinator {
         return AppTabView()
     }
     
+    // Task Creation
     func makeSelectContextView() -> SelectContextView {
         let contextDataManger = SelectContextDataManager(dataManager: dataManager)
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
         return SelectContextView(viewModel: viewModel)
     }
     
-    func makeTaskCreationStep1View() -> TaskCreationStep1View {
-        let context = TaskCreationStep1Context()
+    func makeTaskCreationStep1View(contextID: String? = nil) -> TaskCreationStep1View {
+        let context = TaskCreationStep1Context(contextID: contextID)
         let coordinator = TaskCreationStep1Coordinator(context: context, dataManage: dataManager)
         return coordinator.destinationView
     }
@@ -46,13 +47,9 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
-    func makeTasksView() -> TaskListView {
+    // Task
+    func makeTasksListView() -> TaskListView {
         let coordinator = TaskListCoordinator(dataManage: dataManager)
-        return coordinator.destinationView
-    }
-
-    func makeHomeView() -> HomeView {
-        let coordinator = HomeCoordinator(dataManage: dataManager)
         return coordinator.destinationView
     }
     
@@ -60,4 +57,12 @@ class AppCoordinator {
         let coordinator = TaskDetailCoordinator(context: TaskDetailContext(taskId: taskId, selectedDate: selectedDate), dataManage: dataManager)
         return coordinator.destinationView
     }
+
+    // Home
+    func makeHomeView() -> HomeView {
+        let coordinator = HomeCoordinator(dataManage: dataManager)
+        return coordinator.destinationView
+    }
+    
+    
 }

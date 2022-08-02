@@ -11,6 +11,8 @@ import Foundation
 struct TaskCreationStep1MockGenerator {}
 
 struct TaskCreationStep1DataManagableMock: TaskCreationStep1DataManagable {
+    var contextID: String?
+    
     func getContextName() -> String {
         return "سلامتی"
     }

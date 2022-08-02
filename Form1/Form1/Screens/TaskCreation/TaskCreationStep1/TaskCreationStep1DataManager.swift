@@ -17,19 +17,25 @@ protocol TaskCreationStep1DataManagable {
     func updateFor100(with value: String)
     func getSelectedGoalID() -> String?
     func getSelectedGoalTitle() -> String?
+    var contextID: String? { get }
 }
 
 class TaskCreationStep1DataManager: TaskCreationStep1DataManagable {
+
     private let dataManager: DataManager
-    
-    init(dataManager: DataManager) {
+
+    private (set) var contextID: String?
+    init(dataManager: DataManager, contextID: String?) {
         self.dataManager = dataManager
-        
+        self.contextID = contextID
         // by default all
         updateIsActivity(with: true)
     }
     
     func getContextName() -> String {
+        if let contextID = contextID {
+            dataManager.currentInputEntry.updateContextId(id: contextID)
+        }
         guard let contextId = dataManager.currentInputEntry.contextId else { return "" }
         return dataManager.context(id: contextId)?.name ?? ""
     }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HomeContextCellView: View {
-    let item: HomeContextItemDisplayModel
+    @Binding var item: HomeContextItemDisplayModel
     var body: some View {
         
         VStack {
@@ -41,11 +41,11 @@ struct HomeContextCellView: View {
 struct HomeContextCellView_Previews: PreviewProvider {
     static var previews: some View {
         HomeContextCellView(
-            item: HomeContextItemDisplayModel(title: LabelDisplayModel(plainText: "درآمد", style: .verySmallCollectionStyle),
+            item: .constant( HomeContextItemDisplayModel(title:  LabelDisplayModel(plainText: "درآمد", style: .verySmallCollectionStyle),
                                               imageName: "",
                                               contextID: "3456",
                                               contextName: LabelDisplayModel(plainText: " ا فعالیت", style: .verySmallHeaderStyle),
-                                              activityCount: 2)
+                                              activityCount: 2))
         )
     }
 }
