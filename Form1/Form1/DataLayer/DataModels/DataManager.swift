@@ -86,20 +86,19 @@ class DataManager {
             else {
                return Float(model.record?.count ?? 0) / Float(model.record?.total ?? 0) }
             }.reduce(0, +)
-        let progress = sum / Float(dayTasks.count)
-        return progress
+        let dayProgress = sum / Float(dayTasks.count)
+        return dayProgress > 1.0 ? 1.0 : dayProgress
     }
     
     func computeWeekProgress() -> Float {
-        let totoalProgress = DateBuilder.make7Days(selectedDate: Date()).map { obj -> Float in
+        let totoalProgresses = DateBuilder.make7Days(selectedDate: Date()).map { obj -> Float in
             let dayID = obj.date.getWeekDayID()
             return computeDayProgress(weekDay: dayID, date: obj.date)
         }
-        let totalProgress = totoalProgress.reduce(0, { totalResult, progress in
-            return totalResult + (progress.isNaN ? 0 : progress)
-        })
-        let progress = totalProgress / Float(totoalProgress.count)
-        return progress
+        let notNanProsesses = totoalProgresses.filter { !$0.isNaN }
+        let totalProgress = notNanProsesses.reduce(0, +)
+        let wekkProgress = totalProgress / Float(notNanProsesses.count)
+        return wekkProgress > 1.0 ? 1.0 : wekkProgress
     }
     
     func fetchRecord(taskID: String, date: Date) -> Record? {

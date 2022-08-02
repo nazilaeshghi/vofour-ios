@@ -11,48 +11,53 @@ import SwiftUI
 struct TaskListView: View {
     @ObservedObject var viewModel: TaskListViewModel
     @State private var selectedDate: Date = Date()
-    let dateHelper = DateHelper()
     @State private var showingDetailSIsActive = false
     @State private var taskID: String = ""
     
+    let dateHelper = DateHelper()
+    
     var body: some View {
-        VStack {
-            Spacer(minLength: 20)
-            Text(dateHelper.getHeaderDate(for: selectedDate))
-                .applyStyle(style: .titleStyle)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-            
-            TaskHeaderView(selectedDate: $selectedDate)
-                .onChange(of: selectedDate) { newValue in
-                    viewModel.getTasks(date: newValue)
-                    NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+        NavigationView {
+            VStack {
+                Spacer(minLength: 20)
+                Text(dateHelper.getHeaderDate(for: selectedDate))
+                    .applyStyle(style: .titleStyle)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                
+                TaskHeaderView(selectedDate: $selectedDate)
+                    .onChange(of: selectedDate) { newValue in
+                        viewModel.getTasks(date: newValue)
+                        NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
+                
+                List($viewModel.cards, id: \.id) { item in
+                    CardUIView(viewModel: item,
+                               increamentAction: {
+                        viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
+                        viewModel.getTasks(date: selectedDate)
+                        NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+                    })
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                 }
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
-            
-            List($viewModel.cards, id: \.id) { item in
-                CardUIView(viewModel: item,
-                           increamentAction: {
-                    viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
-                    viewModel.getTasks(date: selectedDate)
-                    NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
-                })
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
+                .background(PublicTheme.background)
+                .listStyle(PlainListStyle())
+                
+                if viewModel.cards.isEmpty {
+                    TaskListEmtyView()
+                }
             }
-            .background(PublicTheme.background)
-            .listStyle(PlainListStyle())
             .onAppear(perform: {
                 viewModel.getTasks(date: selectedDate)
                 UIScrollView.appearance().keyboardDismissMode = .onDrag
             })
-            if viewModel.isEmptyForCurrentDate {
-                TaskListEmtyView()
+            .background(PublicTheme.background)
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
+                viewModel.getTasks(date: selectedDate)
+                selectedDate = selectedDate
             }
-        }
-        .background(PublicTheme.background)
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
-            viewModel.getTasks(date: selectedDate)
-            selectedDate = selectedDate
+            .navigationBarHidden(true)
         }
     }
 }

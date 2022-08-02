@@ -16,12 +16,10 @@ class TaskListViewModel: ObservableObject {
     }
     
     @Published var cards: [CardDisplayModel] = []
-    var isEmptyForCurrentDate = true
     
     func getTasks(date: Date) {
         let tasks = dataManager.fetchTasks(date: date.getSimpleDate() ?? Date())
         cards = tasks.map { TaskListViewModel.transformDataModels(dayRecord: $0) }
-        isEmptyForCurrentDate = cards.isEmpty
     }
     
     func increamentTask(task: CardDisplayModel, date: Date) {

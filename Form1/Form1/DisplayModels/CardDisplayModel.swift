@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CardDisplayModel {
+struct CardDisplayModel: Identifiable {
     var title: LabelDisplayModel
     var subtitle: LabelDisplayModel
     var count: LabelDisplayModel
