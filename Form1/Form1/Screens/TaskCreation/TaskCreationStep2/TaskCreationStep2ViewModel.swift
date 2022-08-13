@@ -24,7 +24,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var weekDays: [WeekDayObject] = DateBuilder.buildWeekDays()
     @Published var selectedDuration: DurationObject?
     
-    var isItActivity: Bool {
+    var isItCreation: Bool {
         return dataManager.isTaskActivity()
     }
     

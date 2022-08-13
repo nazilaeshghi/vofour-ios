@@ -23,6 +23,7 @@ class DataEntryDataModel {
     private (set) var color: String?
     private (set) var numberOfRepeat: Int?
     private (set) var days: [WeekDayObject]?
+    private (set) var reminders: [TimeInterval] = []
     
     func updateContextId(id: String) {
         self.contextId = id
@@ -80,7 +81,10 @@ class DataEntryDataModel {
     func updateColor(with value: String) {
         color = value
     }
-
+    
+    func updateReminders(reminders: [TimeInterval]) {
+        self.reminders = reminders
+    }
 }
 
 extension Array where Element == WeekDayObject {
