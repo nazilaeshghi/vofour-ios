@@ -35,7 +35,7 @@ struct TaskDetailView: View {
                             Button(action: {
                                 viewModel.decrement()
                             }, label: {
-                                Image("minus_taskDetails")
+                                Image.minus
                             })
                                 .frame(width: 50, height: 50)
                                 .padding(.trailing, 40)
@@ -46,7 +46,7 @@ struct TaskDetailView: View {
                             Button(action: {
                                 viewModel.increment()
                             }, label: {
-                                Image("plus_taskDetails")
+                                Image.plus
                             })
                                 .frame(width: 50, height: 50)
                                 .padding(.leading, 40)

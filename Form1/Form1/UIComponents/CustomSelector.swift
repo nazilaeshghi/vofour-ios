@@ -26,7 +26,7 @@ struct CustomSelector: View {
                         .applyStyle(style: .searchbarPlaceholderStyle)
                 }
                 Spacer()
-                Image("Arrow")
+                Image.arrow
             }
             .padding(.leading, 13)
         }

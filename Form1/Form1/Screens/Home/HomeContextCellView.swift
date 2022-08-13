@@ -22,7 +22,7 @@ struct HomeContextCellView: View {
                 Text(item.contextName.plainText)
                     .applyStyle(style: item.contextName.labelStyle)
                 Spacer()
-                Image("grayPlus")
+                Image.grayPlus
             }
         }
         .padding()

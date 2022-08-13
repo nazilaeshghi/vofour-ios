@@ -17,7 +17,7 @@ struct SelectContextCell: View {
             Text(item.title.plainText)
                 .applyStyle(style: item.title.labelStyle)
             Spacer()
-            Image("Arrow")
+            Image.arrow
         }
         .padding()
         .background(PublicTheme.contextBackgroundColor)

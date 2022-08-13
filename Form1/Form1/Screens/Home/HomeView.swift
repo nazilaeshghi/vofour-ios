@@ -42,7 +42,7 @@ struct HomeView: View {
                     Button(action: {
                         showingSheet = true
                     }, label: {
-                        Image("settings")
+                        Image.settings
                     })
                     .frame(width: 30, height: 30)
                 }
@@ -110,7 +110,7 @@ struct HomeHeadLineView: View {
                 Text("%\(week)".convertToPersian())
                     .applyStyle(style: .bigNumberStyle)
                 HStack {
-                    Image("blueDot")
+                    Image.blueDot
                     Text(LocalizedString.Home.todayProgress)
                         .applyStyle(style: .tabbarStyle)
                 }
@@ -122,7 +122,7 @@ struct HomeHeadLineView: View {
                     .applyStyle(style: .bigGreenNumberStyle)
                     
                 HStack {
-                    Image("greenDot")
+                    Image.greenDot
                     Text(LocalizedString.Home.weekProgress)
                         .applyStyle(style: .verySmallGreenNumberStyle)
                 }

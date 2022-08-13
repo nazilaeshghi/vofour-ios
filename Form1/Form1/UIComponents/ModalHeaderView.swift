@@ -21,7 +21,9 @@ struct ModalHeaderView: View {
                     Spacer()
                     Button(action: {
                         action()
-                    }) { Image("close") }
+                    }) {
+                        Image.closeIcon
+                    }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }
             }

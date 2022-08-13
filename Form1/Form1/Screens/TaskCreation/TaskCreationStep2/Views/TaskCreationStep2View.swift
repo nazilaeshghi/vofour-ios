@@ -26,8 +26,9 @@ struct TaskCreationStep2View: View {
                         TaskStepsHeader(title: LocalizedString.TaskCreationStep1.header)
                         
                         // Date Section
-                        SegmentedPicker(items: viewModel.getSegmentItems(), selection: $viewModel.isRepeatable)
+                        SegmentedPicker(items: viewModel.getTaskRepetitionSegmentItems(), selection: $viewModel.isRepeatable)
                         
+                        // Content
                         switch (viewModel.isItCreation, viewModel.isRepeatable) {
                         case (true, 0):
                             TaskCreationViewNonRepeatitive(dateText: viewModel.startDate,
@@ -59,6 +60,9 @@ struct TaskCreationStep2View: View {
                             EmptyView()
                         }
         
+                        // Reminder
+                        SegmentedPicker(items: viewModel.getReminderSegmentItems(), selection: $viewModel.needReminder)
+
                         // Color Section
                         ColorSelectorView(selectedColor: $viewModel.selectedColor)
                         Spacer()

@@ -14,6 +14,8 @@ class TaskCreationStep2ViewModel: ObservableObject {
     private let dataManager: TaskCreationStep2DataManagable
     
     @Published var isRepeatable: Int = 0
+    @Published var needReminder: Int = 0
+    
     private var cancellables = Set<AnyCancellable>()
     
     @Published var startDate: String?
@@ -23,6 +25,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var repeatNum: Int = 1
     @Published var weekDays: [WeekDayObject] = DateBuilder.buildWeekDays()
     @Published var selectedDuration: DurationObject?
+    @Published var reminders = [TimeInterval]()
     
     var isItCreation: Bool {
         return dataManager.isTaskActivity()
@@ -36,6 +39,14 @@ class TaskCreationStep2ViewModel: ObservableObject {
         self.$isRepeatable
             .sink { [weak self] newValue in
                 self?.dataManager.updateTaskType(isRepeatable: newValue == 0 ? false : true )
+            }
+            .store(in: &cancellables)
+        
+        self.$needReminder
+            .sink { [weak self] newValue in
+                if newValue == 0 {
+                    self?.dataManager.deleteReminders()
+                }
             }
             .store(in: &cancellables)
         
@@ -79,13 +90,19 @@ class TaskCreationStep2ViewModel: ObservableObject {
                 self?.dataManager.updatDuration(interval: newValue?.amount ?? 0)
             }
             .store(in: &cancellables)
+        
+        self.$reminders
+            .sink { [weak self] newValue in
+                self?.dataManager.updateReminder(intervals: newValue)
+            }
+            .store(in: &cancellables)
     }
     
     func header() -> String {
         return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
     }
     
-    func getSegmentItems() -> [String] {
+    func getTaskRepetitionSegmentItems() -> [String] {
         if dataManager.isTaskActivity() {
             return [
                 LocalizedString.TaskCreationStep2.nonRepeatitiveActivity,
@@ -97,6 +114,13 @@ class TaskCreationStep2ViewModel: ObservableObject {
                 LocalizedString.QuitHabitStep2.withLimit
             ]
         }
+    }
+    
+    func getReminderSegmentItems() -> [String] {
+        [
+            LocalizedString.TaskCreationStep2.needReminder,
+            LocalizedString.TaskCreationStep2.dontNeedReminder
+        ]
     }
     
     func saveTask() {

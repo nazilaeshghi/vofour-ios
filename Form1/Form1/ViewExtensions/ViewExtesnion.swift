@@ -38,7 +38,7 @@ extension View {
                     Button {
                         action()
                     } label: {
-                        Image("close")
+                        Image.closeIcon
                     }
                 }
             }
@@ -59,7 +59,7 @@ extension View {
                         Button {
                             closeAction()
                         } label: {
-                            Image("close")
+                            Image.closeIcon
                         }
                     }
                 }
@@ -76,7 +76,7 @@ extension View {
                         Button {
                             backAction()
                         } label: {
-                            Image("backButton")
+                            Image.backArrow
                         }
                     }
                     
@@ -84,7 +84,7 @@ extension View {
                         Button {
                             closeAction()
                         } label: {
-                            Image("close")
+                            Image.closeIcon
                         }
                     }
                 }

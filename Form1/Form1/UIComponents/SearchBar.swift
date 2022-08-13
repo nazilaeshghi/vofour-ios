@@ -17,7 +17,7 @@ struct SearchBar: View {
                 .foregroundColor(.white)
                 .background(.white)
             HStack {
-                Image("search-loupe")
+                Image.search
                 TextField(LocalizedString.ContextPage.searchPlaceHolder, text: $searchText)
                     .scaledFont(family: .light, style: .title2)
             }
