@@ -7,32 +7,37 @@
 //
 
 import SwiftUI
+import SwiftDate
 
 struct ReminderCellView: View {
-    @Binding var title: String
+    @Binding var time: TimeObject
+    let formatter = DateComponentsFormatter()
+    
     let action: () -> Void
     
     var body: some View {
-        HStack {
-            Text(title.convertToPersian())
-                .applyStyle(style: .number)
-            Spacer()
-            Button {
-                action()
-            } label: {
-                Image.closeIcon
+        VStack {
+            HStack {
+                Text(time.representingString.convertToPersian())
+                    .applyStyle(style: .number)
+                Spacer()
+                
+                Button {
+                    action()
+                } label: {
+                    Image.closeIcon
+                }
             }
+            .padding(10)
+            .background(PublicTheme.segmentBG)
+            .cornerRadius(PublicTheme.cornerRaduis)
         }
-        .padding(10)
-        .background(PublicTheme.segmentBG)
-        .cornerRadius(PublicTheme.cornerRaduis)
     }
 }
 
 struct ReminderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderCellView(title: .constant("09:00"), action: {
-            
-        }).environment(\.layoutDirection, .rightToLeft)
+        ReminderCellView(time: .constant(TimeObject(id: "asfaf", hour: 4, minute: 05)), action: {})
+        .environment(\.layoutDirection, .rightToLeft)
     }
 }

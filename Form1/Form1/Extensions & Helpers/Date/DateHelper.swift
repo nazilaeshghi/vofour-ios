@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 enum UserCalendar: String {
     case persian
@@ -58,6 +59,25 @@ struct DateHelper {
 }
 
 extension DateHelper {
+    
+    static func getDate(hour: Int, minute: Int) -> Date {
+        let builtDate = DateInRegion(components: {
+            $0.year = Date().year
+            $0.month = Date().month
+            $0.day = Date().day
+            $0.hour = hour
+            $0.minute = minute
+        }, region: .current)
+        return builtDate?.date ?? Date()
+    }
+    
+    
+    static func setDateRegion() {
+        let myRegion = Region(calendar: DateHelper.getCurrentCalendar(),
+                              zone: Zones.current,
+                              locale: Locales.persian)
+        SwiftDate.defaultRegion = myRegion
+    }
     
     static func getCurrentCalendar() -> Calendar {
         let calendarName = DateHelper.getCurrentCalendarEnum()

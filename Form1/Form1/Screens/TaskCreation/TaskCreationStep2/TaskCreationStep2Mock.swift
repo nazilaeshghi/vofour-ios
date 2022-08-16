@@ -13,7 +13,7 @@ class TaskCreationStep2DataManagableMock: TaskCreationStep2DataManagable {
     func isTaskActivity() -> Bool { return true }
     func updateTaskType(isRepeatable: Bool) {}
     func deleteReminders() {}
-    func updateReminder(intervals: [TimeInterval]) {}
+    func updateReminder(intervals: [TimeObject]) {}
     func updateStartDate(date: Date?) {}
     func updatEndDate(date: Date?) {}
     func updatDuration(interval: TimeInterval) {}

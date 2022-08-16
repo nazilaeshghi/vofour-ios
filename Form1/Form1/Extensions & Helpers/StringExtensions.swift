@@ -8,6 +8,9 @@
 
 import Foundation
 
+extension String: Identifiable {
+    public var id: String { self }
+}
 
 extension String {
   var isBlank: Bool {
@@ -52,4 +55,19 @@ extension Optional where Wrapped == String {
         }
         return str
     }
+}
+
+extension String {
+    init(withInt int: Int, leadingZeros: Int = 2) {
+        self.init(format: "%0\(leadingZeros)d", int)
+    }
+
+    func leadingZeros(_ zeros: Int) -> String {
+        if let int = Int(self) {
+            return String(withInt: int, leadingZeros: zeros)
+        }
+        print("Warning: \(self) is not an Int")
+        return ""
+    }
+    
 }

@@ -13,7 +13,7 @@ protocol TaskCreationStep2DataManagable {
     func isTaskActivity() -> Bool
     func updateTaskType(isRepeatable: Bool)
     func deleteReminders()
-    func updateReminder(intervals: [TimeInterval])
+    func updateReminder(intervals: [TimeObject])
     func updateStartDate(date: Date?)
     func updatEndDate(date: Date?)
     func updatDuration(interval: TimeInterval)
@@ -47,7 +47,7 @@ class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
         dataManager.currentInputEntry.updateReminders(reminders: [])
     }
     
-    func updateReminder(intervals: [TimeInterval]) {
+    func updateReminder(intervals: [TimeObject]) {
         dataManager.currentInputEntry.updateReminders(reminders: intervals)
     }
     

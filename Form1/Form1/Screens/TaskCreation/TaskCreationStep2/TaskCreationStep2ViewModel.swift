@@ -25,7 +25,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var repeatNum: Int = 1
     @Published var weekDays: [WeekDayObject] = DateBuilder.buildWeekDays()
     @Published var selectedDuration: DurationObject?
-    @Published var reminders = [TimeInterval]()
+    @Published var reminders = [TimeObject]()
     
     var isItCreation: Bool {
         return dataManager.isTaskActivity()
@@ -45,6 +45,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
         self.$needReminder
             .sink { [weak self] newValue in
                 if newValue == 0 {
+                    self?.reminders = []
                     self?.dataManager.deleteReminders()
                 }
             }
@@ -114,13 +115,6 @@ class TaskCreationStep2ViewModel: ObservableObject {
                 LocalizedString.QuitHabitStep2.withLimit
             ]
         }
-    }
-    
-    func getReminderSegmentItems() -> [String] {
-        [
-            LocalizedString.TaskCreationStep2.needReminder,
-            LocalizedString.TaskCreationStep2.dontNeedReminder
-        ]
     }
     
     func saveTask() {

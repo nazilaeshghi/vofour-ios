@@ -46,6 +46,10 @@ extension Image {
         Image("plus_taskDetails")
     }
     
+    static var bluePlus: Image {
+        Image("bluePlus")
+    }
+    
     static var minus: Image {
         Image("minus_taskDetails")
     }

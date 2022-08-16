@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-extension String: Identifiable {
-    public var id: String { self }
-}
-
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @State private var showingSheet = false

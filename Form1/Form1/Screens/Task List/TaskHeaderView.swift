@@ -27,7 +27,7 @@ struct TaskHeaderView: View {
             
             HStack {
                 ForEach(sevenDays, id: \.id) { day in
-                    if day.selected {
+                    if day.date.getSimpleDate() == Date().getSimpleDate() {
                         Button {
                             selecDay(index: day.index)
                         } label: {
@@ -41,16 +41,30 @@ struct TaskHeaderView: View {
                         .cornerRadius(19)
                     }
                     else {
-                        Button {
-                            selecDay(index: day.index)
-                        } label: {
-                            Text(day.title)
-                                .applyStyle(style: .deselectedButtonTitleStyle)
-                                .background(PublicTheme.background)
+                        if day.selected {
+                            Button {
+                                selecDay(index: day.index)
+                            } label: {
+                                Text(day.title)
+                                    .applyStyle(style: .deselectedButtonTitleStyle)
+                                    .background(.clear)
+                            }
+                            .frame(width: 38, height: 38)
+                            .background(PublicTheme.primaryLightColor)
+                            .cornerRadius(19)
                         }
-                        .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
-                        .frame(width: 38, height: 38)
-                        .background(.clear)
+                        else {
+                            Button {
+                                selecDay(index: day.index)
+                            } label: {
+                                Text(day.title)
+                                    .applyStyle(style: .deselectedButtonTitleStyle)
+                                    .background(PublicTheme.background)
+                            }
+                            .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
+                            .frame(width: 38, height: 38)
+                            .background(.clear)
+                        }
                     }
                 }
                 .frame(maxWidth: .infinity)

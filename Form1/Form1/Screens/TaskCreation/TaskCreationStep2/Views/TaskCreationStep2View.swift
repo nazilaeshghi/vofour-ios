@@ -60,8 +60,9 @@ struct TaskCreationStep2View: View {
                             EmptyView()
                         }
         
-                        // Reminder
-                        SegmentedPicker(items: viewModel.getReminderSegmentItems(), selection: $viewModel.needReminder)
+                        // Reminder Section
+                        ReminderView(needReminder: $viewModel.needReminder,
+                                     reminders: $viewModel.reminders)
 
                         // Color Section
                         ColorSelectorView(selectedColor: $viewModel.selectedColor)

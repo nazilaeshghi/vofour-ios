@@ -37,3 +37,12 @@ extension Optional where Wrapped == Date {
         return newDate
     }
 }
+
+extension Date {
+    func getHoursMinutes() -> DateComponents {
+        let calendar = DateHelper.getCurrentCalendar()
+        let dateComponents = calendar.dateComponents([.hour,.minute], from: self)
+        return dateComponents
+    }
+}
+

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 struct WeekDayObject {
     let index: Int
@@ -24,10 +25,25 @@ struct HeaderDayObject {
     let obj: WeekDayObject
 }
 
-struct DurationObject {
+struct DurationObject: Identifiable {
     let tag: Int
     let id: String
     let amount: TimeInterval
+}
+
+struct TimeObject: Identifiable {
+    let id: String
+    var hour: Int
+    var minute: Int
+    var representingString: String {
+        let formatter = NumberFormatter()
+        formatter.minimumIntegerDigits = 2
+        return "\(String(withInt: hour)):\(String(withInt: minute))"
+    }
+    
+    static func createObject() -> TimeObject {
+        return TimeObject(id: UUID().uuidString, hour: 9, minute: 0)
+    }
 }
 
 struct DateBuilder {

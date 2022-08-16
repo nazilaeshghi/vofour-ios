@@ -42,7 +42,8 @@ struct LocalizedString {
         static let nonRepeatitiveActivity = "فعالیت تکرار نمی‌شود"
         
         static let needReminder = "یادآور نیاز دارم"
-        static let dontNeedReminder = "یادآور نیاز ندازم"
+        static let dontNeedReminder = "یادآور نیاز ندارم"
+        static let addReminder = "افزودن یادآور"
     }
     
     enum Input {
@@ -64,6 +65,7 @@ struct LocalizedString {
         static let startDateSelectoreTitle = "تاریخ آغاز"
         static let endDateSelectoreTitle = "تاریخ پایان"
         static let durationSelectoreTitle = "مدت زمان"
+        static let reminder = "یادآور"
         
         static let periodSelectorTitle = "مدت زمان مورد نیاز انتخاب کنید"
         
