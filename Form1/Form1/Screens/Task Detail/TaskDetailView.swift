@@ -9,57 +9,64 @@
 import SwiftUI
 
 struct TaskDetailView: View {
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: TaskDetailViewModel
 
     var body: some View {
-        VStack {
-            Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
-                .applyStyle(style: .mediumHeaderStyle)
-            
-            if viewModel.didFetchDate {
-                GeometryReader { geometry in
-                    ZStack {
-                        CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
-                                             color: $viewModel.item.background.wrappedValue)
-                            .padding(.horizontal, 40)
+        
+        NavigationView {
+            VStack {
+                Divider()
+                Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
+                    .applyStyle(style: .mediumHeaderStyle)
+                
+                if viewModel.didFetchDate {
+                    GeometryReader { geometry in
+                        ZStack {
+                            CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
+                                                 color: $viewModel.item.background.wrappedValue)
+                                .padding(.horizontal, 40)
 
-                        HStack {
-                            Button(action: {
-                                viewModel.decrement()
-                            }, label: {
-                                Image.minus
-                            })
-                                .frame(width: 50, height: 50)
-                                .padding(.trailing, 40)
-                            
-                            VStack {
-                                Text($viewModel.item.count.wrappedValue.plainText.convertToPersian())
-                                    .applyStyle(style: .hugeTitleStyle)
-                                Text($viewModel.item.subtitle.wrappedValue.plainText.convertToPersian())
-                                    .applyStyle(style: .lightHeaderStyle)
+                            HStack {
+                                Button(action: {
+                                    viewModel.decrement()
+                                }, label: {
+                                    Image.minus
+                                })
+                                    .frame(width: 50, height: 50)
+                                    .padding(.trailing, 40)
+                                
+                                VStack {
+                                    Text($viewModel.item.count.wrappedValue.plainText.convertToPersian())
+                                        .applyStyle(style: .hugeTitleStyle)
+                                    Text($viewModel.item.subtitle.wrappedValue.plainText.convertToPersian())
+                                        .applyStyle(style: .lightHeaderStyle)
+                                }
+                                
+                                Button(action: {
+                                    viewModel.increment()
+                                }, label: {
+                                    Image.plus
+                                })
+                                    .frame(width: 50, height: 50)
+                                    .padding(.leading, 40)
                             }
-                            
-                            Button(action: {
-                                viewModel.increment()
-                            }, label: {
-                                Image.plus
-                            })
-                                .frame(width: 50, height: 50)
-                                .padding(.leading, 40)
                         }
+                        .frame(width: geometry.size.width, height: geometry.size.width)
+                        .offset(x: 0, y: -20)
+                        Spacer()
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.width)
-                    .offset(x: 0, y: -20)
-                    Spacer()
                 }
             }
+            .onAppear(perform: {
+                viewModel.fetchDetails()
+            })
+            .navigationBarTitleDisplayMode(.inline)
+            .applyToolbarBackStyle(with: viewModel.item?.title.plainText ?? "",
+                                   backAction: dismiss)
         }
-        .onAppear(perform: {
-            viewModel.fetchDetails()
-        })
-        .applyToolbarStyle(with: viewModel.item?.title.plainText ?? "") {
-            
-        }
+        .navigationBarHidden(true)
+        
     }
 }
 

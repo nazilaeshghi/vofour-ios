@@ -19,6 +19,12 @@ struct TaskListView: View {
     var body: some View {
         NavigationView {
             VStack {
+                NavigationLink(isActive: $showingDetailSIsActive) {
+                    AppCoordinator.shared.makeTaskDetailsView(taskId: taskID ?? "", selectedDate: selectedDate)
+                } label: {
+                    EmptyView()
+                }.opacity(0)
+                
                 Spacer(minLength: 20)
                 Text(dateHelper.getHeaderDate(for: selectedDate))
                     .applyStyle(style: .titleStyle)
@@ -60,11 +66,6 @@ struct TaskListView: View {
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
                 viewModel.getTasks(date: selectedDate)
                 selectedDate = selectedDate
-            }
-            .sheet(item: $taskID) {
-                
-            } content: {  taskId in
-                AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
             }
             .navigationBarHidden(true)
         }

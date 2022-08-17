@@ -44,6 +44,26 @@ extension View {
             }
     }
     
+    func applyToolbarBackStyle(with title: String, backAction: DismissAction) -> some View {
+        self
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack(spacing: 0) {
+                        Text(title)
+                            .applyStyle(style: LabelStyle.number)
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        backAction()
+                    } label: {
+                        Image.backArrow
+                    }
+                }
+            }
+    }
+    
     @ViewBuilder
     func applyToolbarWithBackStyle(with title: String, hideBakcButton: Bool = false, backAction: DismissAction, closeAction: @escaping () -> Void) -> some View {
         if hideBakcButton {

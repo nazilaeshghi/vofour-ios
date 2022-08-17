@@ -208,7 +208,7 @@ class ReqalmDataProvider: DataProvider {
 
             if let record = realm.objects(RecordRealm.self).where({ $0.recordID == recordID }).first {
                 try realm.write {
-                    record.count = record.count + 1
+                    record.count = count
                 }
             }
             
