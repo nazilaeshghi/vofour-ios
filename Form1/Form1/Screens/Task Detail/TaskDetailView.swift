@@ -9,27 +9,19 @@
 import SwiftUI
 
 struct TaskDetailView: View {
-    @StateObject var viewModel: TaskDetailViewModel
+    @ObservedObject var viewModel: TaskDetailViewModel
 
     var body: some View {
         VStack {
-            ZStack {
-                VStack {
-                    Text(viewModel.item?.title.plainText ?? "")
-                        .applyStyle(style: viewModel.item?.title.labelStyle ?? .bigNumberStyle)
-                    Divider()
-                }
-                
-            }
-            .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+            Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
+                .applyStyle(style: .mediumHeaderStyle)
             
-            if let item = viewModel.item {
+            if viewModel.didFetchDate {
                 GeometryReader { geometry in
                     ZStack {
-                        CircularProgressView(progress: item.progress ,
-                                             color: item.background)
-                            .padding(.trailing, 40)
-                            .padding(.leading, 40)
+                        CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
+                                             color: $viewModel.item.background.wrappedValue)
+                            .padding(.horizontal, 40)
 
                         HStack {
                             Button(action: {
@@ -40,8 +32,12 @@ struct TaskDetailView: View {
                                 .frame(width: 50, height: 50)
                                 .padding(.trailing, 40)
                             
-                            Text(item.count.plainText)
-                                .applyStyle(style: .hugeTitleStyle)
+                            VStack {
+                                Text($viewModel.item.count.wrappedValue.plainText.convertToPersian())
+                                    .applyStyle(style: .hugeTitleStyle)
+                                Text($viewModel.item.subtitle.wrappedValue.plainText.convertToPersian())
+                                    .applyStyle(style: .lightHeaderStyle)
+                            }
                             
                             Button(action: {
                                 viewModel.increment()
@@ -53,6 +49,7 @@ struct TaskDetailView: View {
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.width)
+                    .offset(x: 0, y: -20)
                     Spacer()
                 }
             }
@@ -60,5 +57,39 @@ struct TaskDetailView: View {
         .onAppear(perform: {
             viewModel.fetchDetails()
         })
+        .applyToolbarStyle(with: viewModel.item?.title.plainText ?? "") {
+            
+        }
     }
+}
+
+struct TaskDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskDetailView(viewModel: TaskDetailViewModel(dataManager: TaskDetailDataMock(), currentDate: Date()))
+            .environment(\.layoutDirection, .rightToLeft)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
+    }
+}
+
+
+struct OnFirstAppearModifier: ViewModifier {
+    let perform:() -> Void
+    @State private var firstTime: Bool = true
+    
+    func body(content: Content) -> some View {
+        content
+            .onAppear{
+                if firstTime{
+                    firstTime = false
+                    self.perform()
+                }
+            }
+    }
+}
+
+
+extension View {
+  func onFirstAppear( perform: @escaping () -> Void ) -> some View {
+    return self.modifier(OnFirstAppearModifier(perform: perform))
+  }
 }

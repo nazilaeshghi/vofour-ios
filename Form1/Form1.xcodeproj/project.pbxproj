@@ -42,6 +42,7 @@
 		642D2B3D28980AA200500670 /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B3C28980AA200500670 /* TaskDetailViewModel.swift */; };
 		6432D3A628ABF3C500B5763A /* ReminerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A528ABF3C500B5763A /* ReminerSheet.swift */; };
 		6432D3A828AC209400B5763A /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A728AC209400B5763A /* ReminderView.swift */; };
+		6432D3AA28AC2BC800B5763A /* TaskDetailDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */; };
 		6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */; };
 		643778B4281892560025D3D4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B3281892560025D3D4 /* SelectContextView.swift */; };
 		643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B52818AA230025D3D4 /* SelectContextCell.swift */; };
@@ -176,6 +177,7 @@
 		642D2B3C28980AA200500670 /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 		6432D3A528ABF3C500B5763A /* ReminerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminerSheet.swift; sourceTree = "<group>"; };
 		6432D3A728AC209400B5763A /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailDataMock.swift; sourceTree = "<group>"; };
 		6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataModel.swift; sourceTree = "<group>"; };
 		643778B3281892560025D3D4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
 		643778B52818AA230025D3D4 /* SelectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextCell.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				642D2B3828980A8F00500670 /* TaskDetailCoordinator.swift */,
 				642D2B3A28980A9400500670 /* TaskDetailDataManager.swift */,
 				642D2B3C28980AA200500670 /* TaskDetailViewModel.swift */,
+				6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */,
 			);
 			path = "Task Detail";
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				643778B82818BDB40025D3D4 /* SearchBar.swift in Sources */,
 				64EA8B27285F651B009027DE /* SelectContextDataManager.swift in Sources */,
 				642CB196287C42F5004AF8DA /* DetachableObject.swift in Sources */,
+				6432D3AA28AC2BC800B5763A /* TaskDetailDataMock.swift in Sources */,
 				644487FE288768F80020A758 /* TaskRealm.swift in Sources */,
 				64EA838A28A94266005ED007 /* AddReminderCellView.swift in Sources */,
 				64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */,

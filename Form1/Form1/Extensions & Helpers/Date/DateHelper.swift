@@ -48,12 +48,12 @@ struct DateHelper {
         return  "از" + " " + formatter.string(from: startDate) + " " + "تا" + " " + formatter.string(from: endDate)
     }
     
-    func getTodayPersianFullDate() -> String {
+    func getFullDatestring(from date: Date = Date()) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE d MMM yyyy"
         dateFormatter.calendar = DateHelper.getCurrentCalendar()
         dateFormatter.locale = Locale(identifier: "fa_IR")
-        let monthString = dateFormatter.string(from: Date()).convertToPersian()
+        let monthString = dateFormatter.string(from: date).convertToPersian()
         return monthString
     }
 }

@@ -10,24 +10,31 @@ import Foundation
 
 class TaskDetailViewModel: ObservableObject {
     
-    @Published var item: CardDisplayModel?
+    @Published var item: CardDisplayModel!
+    let currentDate: Date
+    @Published var didFetchDate: Bool = false
     
     private let dataManager: TaskDetailDataManagable
     
-    init(dataManager: TaskDetailDataManagable) {
+    init(dataManager: TaskDetailDataManagable, currentDate: Date) {
         self.dataManager = dataManager
+        self.currentDate = currentDate
     }
     
     func fetchDetails() {
         guard let task = dataManager.fetchTaskDetail() else { return }
         item = TaskListViewModel.transformDataModels(dayRecord: task)
+        item.subtitle = LabelDisplayModel(plainText: "از " + "\(task.record?.total ?? 0)", style: .subtitleStyle)
+        didFetchDate = true
     }
     
     func increment() {
         dataManager.increment()
+        fetchDetails()
     }
     
     func decrement() {
         dataManager.decrement()
+        fetchDetails()
     }
 }

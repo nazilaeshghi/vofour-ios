@@ -10,9 +10,9 @@ import SwiftUI
 
 struct TaskListView: View {
     @ObservedObject var viewModel: TaskListViewModel
-    @State private var selectedDate: Date = Date()
+    @State private var selectedDate: Date = Date().getSimpleDate() ?? Date()
     @State private var showingDetailSIsActive = false
-    @State private var taskID: String = ""
+    @State private var taskID: String?
     
     let dateHelper = DateHelper()
     
@@ -37,6 +37,10 @@ struct TaskListView: View {
                         viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
                         viewModel.getTasks(date: selectedDate)
                         NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+                    },
+                               detailAction: {
+                        taskID = item.id
+                        showingDetailSIsActive = true
                     })
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
@@ -56,6 +60,11 @@ struct TaskListView: View {
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
                 viewModel.getTasks(date: selectedDate)
                 selectedDate = selectedDate
+            }
+            .sheet(item: $taskID) {
+                
+            } content: {  taskId in
+                AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
             }
             .navigationBarHidden(true)
         }

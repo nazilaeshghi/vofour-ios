@@ -21,6 +21,6 @@ class TaskDetailCoordinator {
         let dataManager = TaskDetailDataManager(taskID: context.taskId,
                                                 currentDate: context.selectedDate,
                                                 dataManager: dataManage)
-        self.viewModel = TaskDetailViewModel(dataManager: dataManager)
+        self.viewModel = TaskDetailViewModel(dataManager: dataManager, currentDate: context.selectedDate)
     }
 }

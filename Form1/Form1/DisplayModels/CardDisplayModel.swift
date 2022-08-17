@@ -12,7 +12,7 @@ struct CardDisplayModel: Identifiable {
     var title: LabelDisplayModel
     var subtitle: LabelDisplayModel
     var count: LabelDisplayModel
-    let background: Color
+    var background: Color
     let state: CardState
     var progress: Float
     var id: String

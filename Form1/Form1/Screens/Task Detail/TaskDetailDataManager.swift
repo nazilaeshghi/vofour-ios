@@ -32,10 +32,23 @@ class TaskDetailDataManager: TaskDetailDataManagable {
     }
     
     func increment() {
-        
+        if let rcord = dataManager.fetchRecord(taskID: taskID, date: currentDate) {
+            dataManager.updateRecord(recordID: rcord.recordID, count: rcord.count + 1)
+        }
+        else {
+            guard let task = dataManager.fetchTask(taskID: taskID) else { return }
+            let record = RecordEntry(recordID: UUID().uuidString,
+                                     taskID: taskID,
+                                     date: currentDate,
+                                     count: 1,
+                                     total: task.numberOfRepeat)
+            dataManager.saveRecord(record: record)
+        }
     }
     
     func decrement() {
-        
+        if let rcord = dataManager.fetchRecord(taskID: taskID, date: currentDate) {
+            dataManager.updateRecord(recordID: rcord.recordID, count: rcord.count - 1)
+        }
     }
 }

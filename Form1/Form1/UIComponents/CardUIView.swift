@@ -11,6 +11,7 @@ import SwiftUI
 struct CardUIView: View {
     @Binding private (set) var viewModel: CardDisplayModel
     let increamentAction: () -> Void
+    let detailAction: () -> Void
     
     var body: some View {
             ZStack {
@@ -23,17 +24,34 @@ struct CardUIView: View {
                     
                     Spacer()
                     
-                    ZStack(alignment: .trailing) {
-                        Image(viewModel.state.iconName)
-                            .foregroundColor(.white)
-                        
-                        Button(" ") {
-                            increamentAction()
-                        }.frame(width: 100, height: 70)
-                    }
+                    Image(viewModel.state.iconName)
+                        .foregroundColor(.white)
                     
                 }
                 .padding()
+                
+                GeometryReader { geometry in
+                    HStack (alignment: .bottom) {
+                        Button(action: {
+                            detailAction()
+                        }, label: {
+                            Text(" ")
+                                .frame(width: geometry.size.width * 0.75)
+                                .frame(height: 70)
+                        })
+                            .buttonStyle(BorderlessButtonStyle())
+                        
+                        Button(action: {
+                            increamentAction()
+                        }, label: {
+                            Text(" ")
+                                .frame(width: geometry.size.width * 0.25)
+                                .frame(height: 70)
+                        })
+                            .buttonStyle(BorderlessButtonStyle())
+                    }
+                }
+                .frame(height: 70)
             }
             .frame(height: 70)
             .cornerRadius(PublicTheme.cornerRaduis)
@@ -42,7 +60,9 @@ struct CardUIView: View {
 
 struct CardUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CardUIView(viewModel: .constant(CardMockGenerator.sample1())  , increamentAction: {})
+        CardUIView(viewModel: .constant(CardMockGenerator.sample1()),
+                   increamentAction: {},
+                   detailAction: {})
             .environment(\.layoutDirection, .rightToLeft)
     }
 }

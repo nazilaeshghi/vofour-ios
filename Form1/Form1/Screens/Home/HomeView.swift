@@ -29,7 +29,7 @@ struct HomeView: View {
                         Text(dateHelper.getPersianRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
                             .applyStyle(style: .verySmallHeaderStyle)
                         
-                        Text(dateHelper.getTodayPersianFullDate())
+                        Text(dateHelper.getFullDatestring())
                             .applyStyle(style: .sectionHeaderStyle)
                     }
                     

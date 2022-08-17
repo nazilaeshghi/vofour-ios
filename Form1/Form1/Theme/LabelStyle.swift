@@ -54,6 +54,14 @@ struct LabelStyle {
         return .init(font: .subtitle, fontFamilty: .medium, textColor: PublicTheme.homeHeaderColor)
     }
     
+    static var mediumHeaderStyle: LabelStyle {
+        return .init(font: .title2, fontFamilty: .medium, textColor: .black)
+    }
+    
+    static var lightHeaderStyle: LabelStyle {
+        return .init(font: .title2, fontFamilty: .light, textColor: .black)
+    }
+    
     static var searchbarPlaceholderStyle: LabelStyle {
         return .init(font: .title2, fontFamilty: .light, textColor: PublicTheme.placeholderTextColor)
     }
