@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @ObservedObject var viewModel: TaskListViewModel
+    @StateObject var viewModel: TaskListViewModel
     @State private var selectedDate: Date = Date().getSimpleDate() ?? Date()
     @State private var showingDetailSIsActive = false
     @State private var taskID: String?

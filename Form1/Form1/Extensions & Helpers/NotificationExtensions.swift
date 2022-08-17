@@ -11,4 +11,5 @@ import Foundation
 extension NSNotification {
     static let cloceClick = Notification.Name.init("CloceClick")
     static let dataChange = Notification.Name.init("dataChange")
+    static let sampleChange = Notification.Name.init("sampleChange")
 }

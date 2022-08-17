@@ -84,8 +84,10 @@ class DataManager {
                 return 0
             }
             else {
-               return Float(model.record?.count ?? 0) / Float(model.record?.total ?? 0) }
-            }.reduce(0, +)
+                let dayCalculate = Float(model.record?.count ?? 0) / Float(model.record?.total ?? 0)
+                return dayCalculate > 1.0 ? 1.0 : dayCalculate
+            }
+        }.reduce(0, +)
         let dayProgress = sum / Float(dayTasks.count)
         return dayProgress > 1.0 ? 1.0 : dayProgress
     }

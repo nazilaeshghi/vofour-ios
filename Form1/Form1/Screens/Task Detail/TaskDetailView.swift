@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TaskDetailView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel: TaskDetailViewModel
+    @StateObject var viewModel: TaskDetailViewModel
 
     var body: some View {
         
@@ -20,7 +20,7 @@ struct TaskDetailView: View {
                 Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
                     .applyStyle(style: .mediumHeaderStyle)
                 
-                if viewModel.didFetchDate {
+                if $viewModel.didFetchDate.wrappedValue {
                     GeometryReader { geometry in
                         ZStack {
                             CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
@@ -54,7 +54,6 @@ struct TaskDetailView: View {
                         }
                         .frame(width: geometry.size.width, height: geometry.size.width)
                         .offset(x: 0, y: -20)
-                        Spacer()
                     }
                 }
             }
@@ -64,7 +63,11 @@ struct TaskDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .applyToolbarBackStyle(with: viewModel.item?.title.plainText ?? "",
                                    backAction: dismiss)
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
+                viewModel.fetchDetails()
+            }
         }
+        
         .navigationBarHidden(true)
         
     }
@@ -76,27 +79,4 @@ struct TaskDetailView_Previews: PreviewProvider {
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }
-}
-
-
-struct OnFirstAppearModifier: ViewModifier {
-    let perform:() -> Void
-    @State private var firstTime: Bool = true
-    
-    func body(content: Content) -> some View {
-        content
-            .onAppear{
-                if firstTime{
-                    firstTime = false
-                    self.perform()
-                }
-            }
-    }
-}
-
-
-extension View {
-  func onFirstAppear( perform: @escaping () -> Void ) -> some View {
-    return self.modifier(OnFirstAppearModifier(perform: perform))
-  }
 }
