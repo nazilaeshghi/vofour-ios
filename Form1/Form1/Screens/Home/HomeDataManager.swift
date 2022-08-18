@@ -27,9 +27,7 @@ class HomeDataManager: HomeDataManagable {
     }
     
     func fetchTodayProgress() -> Float {
-        let date = Date().getSimpleDate() ?? Date()
-        let weekDay = date.getWeekDayID()
-        return dataManager.computeDayProgress(weekDay: weekDay, date: date)
+        return dataManager.computeDayProgress(date: Date())
     }
     
     func fetchWeekProgress() -> Float {

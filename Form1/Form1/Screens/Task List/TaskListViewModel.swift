@@ -16,14 +16,16 @@ class TaskListViewModel: ObservableObject {
     }
     
     @Published var cards: [CardDisplayModel] = []
+    @Published var todayProgress: Float = 0.0
     
     func getTasks(date: Date) {
-        let tasks = dataManager.fetchTasks(date: date.getSimpleDate() ?? Date())
+        let tasks = dataManager.fetchTasks(date: date)
         cards = tasks.map { TaskListViewModel.transformDataModels(dayRecord: $0) }
+        calculateDateProgress(date: date)
     }
     
     func increamentTask(task: CardDisplayModel, date: Date) {
-        dataManager.increamentTask(taskID: task.id, date: date.getSimpleDate() ?? Date())
+        dataManager.increamentTask(taskID: task.id, date: date)
         getTasks(date: date)
     }
     
@@ -73,6 +75,8 @@ class TaskListViewModel: ObservableObject {
         return progress
     }
     
-    
+    private func calculateDateProgress(date: Date) {
+        todayProgress = dataManager.fetchDateProgress(date: date)
+    }
 
 }

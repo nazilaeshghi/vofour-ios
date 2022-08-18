@@ -27,7 +27,7 @@ struct TaskHeaderView: View {
             
             HStack {
                 ForEach(sevenDays, id: \.id) { day in
-                    if day.date.getSimpleDate() == Date().getSimpleDate() {
+                    if day.date.isToday {
                         Button {
                             selecDay(index: day.index)
                         } label: {

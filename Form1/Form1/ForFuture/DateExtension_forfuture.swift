@@ -28,16 +28,6 @@ extension Date {
     }
 }
 
-extension Optional where Wrapped == Date {
-    func getSimpleDate() -> Date? {
-        guard let date = self,
-              let newDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: date)) else {
-                  return nil
-              }
-        return newDate
-    }
-}
-
 extension Date {
     func getHoursMinutes() -> DateComponents {
         let calendar = DateHelper.getCurrentCalendar()

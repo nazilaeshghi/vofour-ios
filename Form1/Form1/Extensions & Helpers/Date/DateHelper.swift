@@ -30,7 +30,7 @@ struct DateHelper {
         formatter.calendar = DateHelper.getCurrentCalendar()
         formatter.locale = Locale(identifier: "fa_IR")
         
-        if date.getSimpleDate() == Date().getSimpleDate() {
+        if date.isToday {
             let str = LocalizedString.Date.today + " " + formatter.string(from: date)
             return str
         } else {
@@ -39,7 +39,7 @@ struct DateHelper {
         }
     }
     
-    func getPersianRelativeDate(from startDate: Date?, to endDate: Date?) -> String {
+    func getRelativeDate(from startDate: Date?, to endDate: Date?) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM"
         formatter.calendar = DateHelper.getCurrentCalendar()

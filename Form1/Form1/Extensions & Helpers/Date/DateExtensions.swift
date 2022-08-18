@@ -9,9 +9,13 @@
 import Foundation
 
 extension Date {
-    func getSimpleDate() -> Date? {
+    var isToday: Bool {
+        return getSimpleDate() == Date().getSimpleDate()
+    }
+        
+    func getSimpleDate() -> Date {
         guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
-            return nil
+            return date
         }
         return date
     }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TaskListView: View {
     @StateObject var viewModel: TaskListViewModel
-    @State private var selectedDate: Date = Date().getSimpleDate() ?? Date()
+    @State private var selectedDate: Date = Date()
     @State private var showingDetailSIsActive = false
     @State private var taskID: String?
     
@@ -26,9 +26,15 @@ struct TaskListView: View {
                 }.opacity(0)
                 
                 Spacer(minLength: 20)
-                Text(dateHelper.getHeaderDate(for: selectedDate))
-                    .applyStyle(style: .titleStyle)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                HStack(alignment: .lastTextBaseline) {
+                    Text(dateHelper.getHeaderDate(for: selectedDate))
+                        .applyStyle(style: .titleStyle)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    
+                    let today = Int(viewModel.todayProgress * 100)
+                    Text("%\(today)".convertToPersian())
+                        .applyStyle(style: .bigGreenNumberStyle)
+                }
                 
                 TaskHeaderView(selectedDate: $selectedDate)
                     .onChange(of: selectedDate) { newValue in

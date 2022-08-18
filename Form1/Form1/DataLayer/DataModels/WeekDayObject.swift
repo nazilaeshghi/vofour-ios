@@ -65,7 +65,7 @@ struct DateBuilder {
         let days = pCalendar.daysWithSameWeekOfYear(as: Date())
         let solid7Days = buildWeekDays()
         let sevenDays = days.enumerated().compactMap { dayEnum -> HeaderDayObject? in
-            let simplifiedDate = dayEnum.element.getSimpleDate() ?? Date()
+            let simplifiedDate = dayEnum.element.getSimpleDate()
             let dateID = simplifiedDate.getWeekDayID()
             if let foundDate = solid7Days.filter({ $0.id == dateID}).first {
                 let strDate = String(pCalendar.component(.day, from: dayEnum.element))

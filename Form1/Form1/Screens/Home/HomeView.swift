@@ -26,7 +26,7 @@ struct HomeView: View {
             VStack (alignment: .leading) {
                 HStack {
                     VStack (alignment: .leading) {
-                        Text(dateHelper.getPersianRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
+                        Text(dateHelper.getRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
                             .applyStyle(style: .verySmallHeaderStyle)
                         
                         Text(dateHelper.getFullDatestring())
@@ -102,7 +102,7 @@ struct HomeHeadLineView: View {
         
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 0) {
-                let week = Int(weekProgress.isNaN ? 0 : weekProgress * 100)
+                let week = Int(weekProgress * 100)
                 Text("%\(week)".convertToPersian())
                     .applyStyle(style: .bigNumberStyle)
                 HStack {
@@ -113,7 +113,7 @@ struct HomeHeadLineView: View {
             }
             
             VStack(alignment: .leading, spacing: 0) {
-                let today = Int(todayProgress.isNaN ? 0 : todayProgress * 100)
+                let today = Int(todayProgress * 100)
                 Text("%\(today)".convertToPersian())
                     .applyStyle(style: .bigGreenNumberStyle)
                     

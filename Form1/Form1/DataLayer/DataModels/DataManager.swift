@@ -74,7 +74,8 @@ class DataManager {
     }
     
     func updateRecord(taskID: String, date: Date, increment: Bool) {
-        if let rcord = fetchRecord(taskID: taskID, date: date) {
+        let simpleDate = date.getSimpleDate()
+        if let rcord = fetchRecord(taskID: taskID, date: simpleDate) {
             if increment {
                 updateRecord(recordID: rcord.recordID, count: rcord.count + 1)
             } else {
@@ -86,19 +87,24 @@ class DataManager {
             guard let task = fetchTask(taskID: taskID) else { return }
             let record = RecordEntry(recordID: UUID().uuidString,
                                      taskID: taskID,
-                                     date: date,
+                                     date: simpleDate,
                                      count: 1,
                                      total: task.numberOfRepeat)
             saveRecord(record: record)
         }
     }
     
-    func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel] {
-        return dataProvider.fetchTaks(weekDay: weekDay, date: date)
+    func fetchTaks(date: Date) -> [DailyTaskDataModel] {
+        let simpleDate = date.getSimpleDate()
+        let dayID = simpleDate.getWeekDayID()
+        return dataProvider.fetchTaks(weekDay: dayID, date: simpleDate)
     }
     
-    func computeDayProgress(weekDay: String, date: Date) -> Float {
-        let dayTasks = dataProvider.fetchTaks(weekDay: weekDay, date: date)
+    func computeDayProgress(date: Date) -> Float {
+        let simpleDate = date.getSimpleDate()
+        let weekDay = simpleDate.getWeekDayID()
+
+        let dayTasks = dataProvider.fetchTaks(weekDay: weekDay, date: simpleDate)
         let sum = dayTasks.map { model -> Float in
             if (model.record?.total ?? 0) == 0 {
                 return 0
@@ -109,22 +115,24 @@ class DataManager {
             }
         }.reduce(0, +)
         let dayProgress = sum / Float(dayTasks.count)
+        guard !dayProgress.isNaN else { return 0 }
         return dayProgress > 1.0 ? 1.0 : dayProgress
     }
     
     func computeWeekProgress() -> Float {
         let totoalProgresses = DateBuilder.make7Days(selectedDate: Date()).map { obj -> Float in
-            let dayID = obj.date.getWeekDayID()
-            return computeDayProgress(weekDay: dayID, date: obj.date)
+            return computeDayProgress(date: obj.date)
         }
         let notNanProsesses = totoalProgresses.filter { !$0.isNaN }
         let totalProgress = notNanProsesses.reduce(0, +)
         let wekkProgress = totalProgress / Float(notNanProsesses.count)
+        guard !wekkProgress.isNaN else { return 0 }
         return wekkProgress > 1.0 ? 1.0 : wekkProgress
     }
     
     func fetchRecord(taskID: String, date: Date) -> Record? {
-        return dataProvider.fetchRecord(taskID: taskID, date: date)
+        let simpleDate = date.getSimpleDate()
+        return dataProvider.fetchRecord(taskID: taskID, date: simpleDate)
     }
 
 }

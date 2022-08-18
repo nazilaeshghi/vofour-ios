@@ -11,6 +11,7 @@ import Foundation
 protocol TaskListDataManagable {
     func fetchTasks(date: Date) -> [DailyTaskDataModel]
     func increamentTask(taskID: String, date: Date)
+    func fetchDateProgress(date: Date) -> Float
 }
 
 class TaskListDataManager: TaskListDataManagable {
@@ -21,13 +22,15 @@ class TaskListDataManager: TaskListDataManagable {
     }
     
     func fetchTasks(date: Date) -> [DailyTaskDataModel] {
-        guard let changedDate = date.getSimpleDate() else { return [] }
-        let dayID = date.getWeekDayID()
-        return dataManager.fetchTaks(weekDay: dayID, date: changedDate)
+        return dataManager.fetchTaks(date: date)
     }
     
     func increamentTask(taskID: String, date: Date) {
         dataManager.updateRecord(taskID: taskID, date: date, increment: true)
+    }
+    
+    func fetchDateProgress(date: Date) -> Float {
+        return dataManager.computeDayProgress(date: date)
     }
 
 }
