@@ -65,12 +65,32 @@ class DataManager {
     }
     
     // MARK: - Record
-    func saveRecord(record: Record) {
+    private func saveRecord(record: Record) {
         dataProvider.saveRecord(record: record)
     }
     
-    func updateRecord(recordID: String, count: Int) {
+    private func updateRecord(recordID: String, count: Int) {
         dataProvider.updateRecord(recordID: recordID, count: count)
+    }
+    
+    func updateRecord(taskID: String, date: Date, increment: Bool) {
+        if let rcord = fetchRecord(taskID: taskID, date: date) {
+            if increment {
+                updateRecord(recordID: rcord.recordID, count: rcord.count + 1)
+            } else {
+                guard (rcord.count - 1) >= 0 else { return }
+                updateRecord(recordID: rcord.recordID, count: rcord.count - 1)
+            }
+        }
+        else {
+            guard let task = fetchTask(taskID: taskID) else { return }
+            let record = RecordEntry(recordID: UUID().uuidString,
+                                     taskID: taskID,
+                                     date: date,
+                                     count: 1,
+                                     total: task.numberOfRepeat)
+            saveRecord(record: record)
+        }
     }
     
     func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel] {

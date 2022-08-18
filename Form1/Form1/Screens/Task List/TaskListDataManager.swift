@@ -27,18 +27,7 @@ class TaskListDataManager: TaskListDataManagable {
     }
     
     func increamentTask(taskID: String, date: Date) {
-        if let rcord = dataManager.fetchRecord(taskID: taskID, date: date) {
-            dataManager.updateRecord(recordID: rcord.recordID, count: rcord.count + 1)
-        }
-        else {
-            guard let task = dataManager.fetchTask(taskID: taskID) else { return }
-            let record = RecordEntry(recordID: UUID().uuidString,
-                                     taskID: taskID,
-                                     date: date,
-                                     count: 1,
-                                     total: task.numberOfRepeat)
-            dataManager.saveRecord(record: record)
-        }
+        dataManager.updateRecord(taskID: taskID, date: date, increment: true)
     }
 
 }
