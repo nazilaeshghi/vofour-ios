@@ -30,11 +30,11 @@ class TaskDetailViewModel: ObservableObject {
     
     func increment() {
         dataManager.increment()
-        NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+        NotificationCenter.sendNotification(for: .dataChange)
     }
     
     func decrement() {
         dataManager.decrement()
-        NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+        NotificationCenter.sendNotification(for: .dataChange)
     }
 }

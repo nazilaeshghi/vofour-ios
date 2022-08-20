@@ -75,8 +75,8 @@ struct TaskCreationStep2View: View {
                     TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
                                    secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {
                         viewModel.saveTask()
-                        NotificationCenter.default.post(name: NSNotification.cloceClick, object: nil)
-                        NotificationCenter.default.post(name: NSNotification.dataChange, object: nil)
+                        NotificationCenter.default.post(name: .cloceClick, object: nil)
+                        NotificationCenter.sendNotification(for: .dataChange)
                         
                     }, secondaryAction: {
                         dismiss()
@@ -102,7 +102,7 @@ struct TaskCreationStep2View: View {
             
             .navigationBarTitleDisplayMode(.inline)
             .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss, closeAction: {
-                NotificationCenter.default.post(name: NSNotification.cloceClick,
+                NotificationCenter.default.post(name: .cloceClick,
                                                 object: nil,
                                                 userInfo: nil)
             })

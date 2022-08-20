@@ -63,7 +63,7 @@ struct TaskDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .applyToolbarBackStyle(with: viewModel.item?.title.plainText ?? "",
                                    backAction: dismiss)
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
+            .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
                 viewModel.fetchDetails()
             }
         }

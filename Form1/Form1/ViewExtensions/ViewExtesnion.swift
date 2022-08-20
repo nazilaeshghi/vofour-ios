@@ -42,6 +42,7 @@ extension View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
     }
     
     func applyToolbarBackStyle(with title: String, backAction: DismissAction) -> some View {
@@ -109,6 +110,12 @@ extension View {
                     }
                 }
         }
+    }
+    
+    func applyBasicCellStyle() -> some View {
+        self
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
     }
 }
 

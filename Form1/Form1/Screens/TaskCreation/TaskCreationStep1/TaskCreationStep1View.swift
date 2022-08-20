@@ -95,11 +95,11 @@ struct TaskCreationStep1View: View {
                                        hideBakcButton: isFirstPage,
                                        backAction: dismiss,
                                        closeAction: {
-                NotificationCenter.default.post(name: NSNotification.cloceClick,
+                NotificationCenter.default.post(name: .cloceClick,
                                                 object: nil,
                                                 userInfo: nil)
             })
-            .onReceive(NotificationCenter.default.publisher(for: NSNotification.cloceClick))
+            .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
             { obj in
                 presentationMode.wrappedValue.dismiss()
             }

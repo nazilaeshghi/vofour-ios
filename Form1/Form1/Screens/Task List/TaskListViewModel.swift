@@ -16,7 +16,7 @@ class TaskListViewModel: ObservableObject {
     }
     
     @Published var cards: [CardDisplayModel] = []
-    @Published var todayProgress: Float = 0.0
+    @Published var todayProgressString: String  = ""
     
     func getTasks(date: Date) {
         let tasks = dataManager.fetchTasks(date: date)
@@ -76,7 +76,9 @@ class TaskListViewModel: ObservableObject {
     }
     
     private func calculateDateProgress(date: Date) {
-        todayProgress = dataManager.fetchDateProgress(date: date)
+        let todayProgress = dataManager.fetchDateProgress(date: date)
+        let today = Int(todayProgress * 100)
+        todayProgressString =  "%\(today)".convertToPersian()
     }
 
 }

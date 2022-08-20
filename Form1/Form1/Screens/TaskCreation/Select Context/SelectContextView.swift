@@ -10,8 +10,8 @@ import SwiftUI
 
 struct SelectContextView: View {
     @StateObject var viewModel: SelectContextViewModel
-    @State var searchText: String = ""
-    @State var linkIsActive: Bool = false
+    @State private var searchText: String = ""
+    @State private var linkIsActive: Bool = false
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,57 +27,32 @@ struct SelectContextView: View {
                 VStack(spacing: 20) {
                     Divider()
                     
-                    // Page header, subheader and searchbar
-                    VStack(spacing: 14) {
-                        HStack {
-                            Text(LocalizedString.ContextPage.subHeader)
-                                .applyStyle(style: LabelStyle.tableHeaderStyle)
-                            Spacer()
+                    SelectContextHeaderView(searchText: $searchText)
+                        .onChange(of: searchText) { newValue in
+                            viewModel.filterContextas(with: searchText)
                         }
-                        
-                        VStack(spacing: 6) {
-                            HStack {
-                                Text(LocalizedString.ContextPage.searchHeader)
-                                    .applyStyle(style: LabelStyle.smallTitleStyle)
-                                Spacer()
-                            }
-                            SearchBar(searchText: $searchText)
-                                .onChange(of: searchText) { newValue in
-                                    viewModel.filterContextas(with: searchText)
-                                }
-                        }
-                    }
-                    .padding([.leading, .trailing], 16)
                     
                     List(viewModel.items, id: \.id) { item in
-                        ZStack {
-                            SelectContextCell(item: item)
-                                .background(PublicTheme.background)
-                                .onTapGesture {
-                                    linkIsActive = true
-                                    viewModel.selectContext(id: item.contextID)
-                                }
-                        }
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                        SelectContextCell(item: item)
+                            .onTapGesture {
+                                linkIsActive = true
+                                viewModel.selectContext(id: item.contextID)
+                            }
+                            .applyBasicCellStyle()
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 16)
                     }
-                    .background(PublicTheme.background)
-                    .listStyle(PlainListStyle())
-                    .onAppear(perform: {
-                        UIScrollView.appearance().keyboardDismissMode = .onDrag
-                    })
+                    .applyListBasicStyle()
                 }
                 .background(PublicTheme.background)
-                .navigationBarTitleDisplayMode(.inline)
                 .applyToolbarStyle(with: LocalizedString.ContextPage.header, action: {
                     presentationMode.wrappedValue.dismiss()
                 })
-                .onReceive(NotificationCenter.default.publisher(for: NSNotification.cloceClick))
+                .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
                 { obj in
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-            
         }
     }
 }
@@ -92,3 +67,27 @@ struct SelectContext_Previews: PreviewProvider {
     }
 }
 
+
+struct SelectContextHeaderView: View {
+    @Binding var searchText: String
+    
+    var body: some View {
+        VStack(spacing: 14) {
+            HStack {
+                Text(LocalizedString.ContextPage.subHeader)
+                    .applyStyle(style: LabelStyle.tableHeaderStyle)
+                Spacer()
+            }
+            
+            VStack(spacing: 6) {
+                HStack {
+                    Text(LocalizedString.ContextPage.searchHeader)
+                        .applyStyle(style: LabelStyle.smallTitleStyle)
+                    Spacer()
+                }
+                SearchBar(searchText: $searchText)
+            }
+        }
+        .padding([.leading, .trailing], 16)
+    }
+}

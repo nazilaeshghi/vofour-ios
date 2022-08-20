@@ -11,9 +11,21 @@ import SwiftUI
 struct TaskHeaderView: View {
     @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     @Binding var selectedDate: Date
+    var todayProgressString: String
     
     var body: some View {
         VStack(spacing: 2) {
+            // Selected date title with progress
+            HStack(alignment: .lastTextBaseline) {
+                Text(DateHelper().getHeaderDate(for: selectedDate))
+                    .applyStyle(style: .titleStyle)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                
+                Text(todayProgressString)
+                    .applyStyle(style: .bigGreenNumberStyle)
+            }
+            
+            // Day titles in week
             HStack {
                 ForEach(sevenDays, id: \.id) { item in
                     Text(item.obj.name)
@@ -25,6 +37,7 @@ struct TaskHeaderView: View {
                 )
             }
             
+            // Dates in week
             HStack {
                 ForEach(sevenDays, id: \.id) { day in
                     if day.date.isToday {
@@ -71,7 +84,7 @@ struct TaskHeaderView: View {
             }
             
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.dataChange)) { obj in
+        .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
             sevenDays = DateBuilder.make7Days(selectedDate: selectedDate)
         }
     }
@@ -93,6 +106,6 @@ struct TaskHeaderView: View {
 
 struct TaskHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskHeaderView(selectedDate: .constant(Date()))
+        TaskHeaderView(selectedDate: .constant(Date()), todayProgressString: "%۲۱")
     }
 }

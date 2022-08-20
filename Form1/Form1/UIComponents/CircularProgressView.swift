@@ -34,21 +34,3 @@ struct CircularProgressView: View {
         }
     }
 }
-
-
-struct WeekCircleView: View {
-    let todayProgress: Float
-    let weekProgress: Float
-    
-    var body: some View {
-        ZStack {
-            CircularProgressView(progress: weekProgress,
-                                 color: PublicTheme.primaryColor)
-                .frame(width: 144, height: 144)
-            
-            CircularProgressView(progress: todayProgress,
-                                 color: PublicTheme.greenColor)
-                .frame(width: 80, height: 80)
-        }
-    }
-}

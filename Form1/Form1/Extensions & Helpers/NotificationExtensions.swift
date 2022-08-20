@@ -7,9 +7,13 @@
 //
 
 import Foundation
+extension Notification.Name {
+    static var cloceClick: Notification.Name { Notification.Name.init("CloceClick") }
+    static var dataChange: Notification.Name { Notification.Name.init("dataChange") }
+}
 
-extension NSNotification {
-    static let cloceClick = Notification.Name.init("CloceClick")
-    static let dataChange = Notification.Name.init("dataChange")
-    static let sampleChange = Notification.Name.init("sampleChange")
+extension NotificationCenter {
+    static func sendNotification(for name: Notification.Name) {
+        NotificationCenter.default.post(name: name, object: nil)
+    }
 }
