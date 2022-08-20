@@ -10,24 +10,22 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
+    
     @State private var showingSheet = false
     @State private var showingTaskCreationSheet = false
-    @State var selectedContextID: String?
     
-    let dateHelper = DateHelper()
-    @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
+    @State private var selectedContextID: String?
+    @State private var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     
-    let columns = [
-            GridItem(.adaptive(minimum: 120), spacing: 20)
-        ]
+    let columns = [GridItem(.adaptive(minimum: 120), spacing: 20)]
     
     var body: some View {
         ScrollView {
             VStack (alignment: .leading) {
                 
-                // Header View
+                // Header and progress overview
                 HomeHeaderView(sevenDays: sevenDays)
-                ProgressOverViewOverView(todayProgress: viewModel.todayProgress,
+                ProgressOverViewOverview(todayProgress: viewModel.todayProgress,
                                          weekProgress: viewModel.weekProgress)
                 
                 // Contexts grid

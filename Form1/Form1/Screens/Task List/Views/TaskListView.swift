@@ -24,13 +24,12 @@ struct TaskListView: View {
                 NavigationLink(isActive: $showingDetailSIsActive) {
                     AppCoordinator.shared.makeTaskDetailsView(taskId: taskID ?? "", selectedDate: selectedDate)
                 } label: { EmptyView() }.opacity(0)
-                
-                Spacer(minLength: 20)
-                
+                                
                 // Week Header
+                Spacer(minLength: 20)
                 TaskHeaderView(selectedDate: $selectedDate,
                                todayProgressString: viewModel.todayProgressString)
-                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
+                Spacer(minLength: 10)
                 
                 // Task List
                 List($viewModel.cards, id: \.id) { item in
@@ -42,13 +41,16 @@ struct TaskListView: View {
                         showingDetailSIsActive = true
                     })
                         .applyBasicCellStyle()
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                 }
                 .applyListBasicStyle()
+                .padding(.vertical, 12)
                 
                 if viewModel.cards.isEmpty {
                     TaskListEmtyView()
                 }
             }
+            .padding(.horizontal, 24)
             .navigationBarHidden(true)
             .background(PublicTheme.background)
             .onAppear(perform: {

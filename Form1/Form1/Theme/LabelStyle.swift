@@ -27,11 +27,11 @@ struct LabelStyle {
     }
     
     static var titleStyle: LabelStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
+        return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.primaryTextColor)
     }
     
     static var subtitleStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .regular, textColor: .white)
+        return .init(font: .subtitle, fontFamilty: .regular, textColor: PublicTheme.secondaryTextColor)
     }
     
     static var number: LabelStyle {
@@ -47,7 +47,7 @@ struct LabelStyle {
     }
     
     static var sectionHeaderStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .medium, textColor: PublicTheme.sectionHeaderColor)
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: PublicTheme.primaryTextColor)
     }
     
     static var homeHeaderStyle: LabelStyle {
@@ -91,7 +91,7 @@ struct LabelStyle {
     }
     
     static var verySmallCollectionStyle: LabelStyle {
-        return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
+        return .init(font: .verySmall, fontFamilty: .regular, textColor: PublicTheme.primaryTextColor)
     }
     
     static var homeEmptyStyle: LabelStyle {
@@ -99,6 +99,6 @@ struct LabelStyle {
     }
     
     static var hugeTitleStyle: LabelStyle {
-        return .init(font: .hugeTitle, fontFamilty: .regular, textColor: PublicTheme.sectionHeaderColor)
+        return .init(font: .hugeTitle, fontFamilty: .regular, textColor: PublicTheme.primaryTextColor)
     }
 }

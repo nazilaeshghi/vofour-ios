@@ -20,7 +20,7 @@ struct PublicTheme {
     static let primaryLightColor = Color(hex: "C2DDFC")
     static let headerSecondaryTextColor = Color(hex: "6E7E91")
     static let borderColor = Color(hex: "D9E0E9")
-    static let sectionHeaderColor = Color(hex: "141D2B")
+    static let primaryTextColor = Color(hex: "141D2B")
     static let homeHeaderColor = Color(hex: "646b75")
     static let placeholderTextColor = Color(hex: "A0AEBD")
     static let segmentBG = Color(hex: "EFF2F9")
@@ -28,4 +28,5 @@ struct PublicTheme {
     static let emptyTextColor = Color(hex: "6e7f91")
     static let oneLineTextfieldHeight: CGFloat = 40
     static let multipleLineTextfieldHeight: CGFloat = 80
+    static let secondaryTextColor = Color(hex: "4B5666")
 }

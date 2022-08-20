@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ProgressOverViewOverView: View {
+struct ProgressOverViewOverview: View {
     var todayProgress: Float
     var weekProgress: Float
     
@@ -33,6 +33,6 @@ struct ProgressOverViewOverView: View {
 
 struct ProgressOverViewOverView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressOverViewOverView(todayProgress: 0.5, weekProgress: 0.6)
+        ProgressOverViewOverview(todayProgress: 0.5, weekProgress: 0.6)
     }
 }
