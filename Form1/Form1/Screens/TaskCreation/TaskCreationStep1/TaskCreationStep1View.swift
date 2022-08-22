@@ -42,17 +42,23 @@ struct TaskCreationStep1View: View {
                     EmptyView()
                 }.opacity(0)
                 
-                Divider()
+                DeviderView()
+
                 ScrollView {
                     VStack (spacing: 24) {
                         
-                        TaskStepsHeader(title: LocalizedString.ContextPage.subHeader)
+                        TaskStepsHeader(title: LocalizedString.TaskCreationStep1.header)
                         
                         SegmentedPicker(items: segmentItems, selection: $selectedType)
                             .onChange(of: selectedType) { newValue in
                                 viewModel.update(segemntSelection: newValue)
                             }
-                        
+                    }
+                    
+                    Spacer()
+                        .frame(height: 32)
+                    
+                    VStack(spacing: 32) {
                         OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
                                          placeholder: LocalizedString.Input.enterHerePlaceholder,
                                          title: LocalizedString.Input.enterHereTitle)
@@ -76,11 +82,16 @@ struct TaskCreationStep1View: View {
                                               placeholder: LocalizedString.Input.enterHerePlaceholder,
                                               title: LocalizedString.Input.for100Title)
                         
-                        Spacer()
                     }
-                    .padding()
+                }
+                .applyBasicViewStyle()
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    Spacer().frame(height: 24)
                 }
                 .focused($isTextFieldFocused)
+                
+                Spacer()
+                    .frame(height: 32)
                 
                 TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
                                secondaryButtonText: LocalizedString.Buttons.previousTitle,
@@ -88,9 +99,12 @@ struct TaskCreationStep1View: View {
                     nextPagelinkIsActive = true
                 }, secondaryAction: {
                     dismiss()
-                }).frame(height: isTextFieldFocused ? 0 : 60)
+                })
+                    .applyBasicViewStyle()
+                    .frame(height: isTextFieldFocused ? 0 : 60)
+                
+
             }
-            .navigationBarTitleDisplayMode(.inline)
             .applyToolbarWithBackStyle(with: viewModel.header(),
                                        hideBakcButton: isFirstPage,
                                        backAction: dismiss,
@@ -99,6 +113,7 @@ struct TaskCreationStep1View: View {
                                                 object: nil,
                                                 userInfo: nil)
             })
+            .background(PublicTheme.background)
             .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
             { obj in
                 presentationMode.wrappedValue.dismiss()

@@ -55,6 +55,7 @@ struct CardUIView: View {
             }
             .frame(height: 70)
             .cornerRadius(PublicTheme.cornerRaduis)
+            .applyBasicCellStyle()
     }
 }
 

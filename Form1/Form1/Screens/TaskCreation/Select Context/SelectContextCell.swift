@@ -22,8 +22,7 @@ struct SelectContextCell: View {
         .padding()
         .background(PublicTheme.contextBackgroundColor)
         .cornerRadius(PublicTheme.cornerRaduis)
-        .listRowSeparator(.hidden)
-        .listRowInsets(EdgeInsets())
+        .applyBasicCellStyle()
     }
 }
 

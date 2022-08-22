@@ -13,12 +13,12 @@ extension View {
         when shouldShow: Bool,
         alignment: Alignment = .leading,
         @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
+            
+            ZStack(alignment: alignment) {
+                placeholder().opacity(shouldShow ? 1 : 0)
+                self
+            }
         }
-    }
     
     func eraseToAnyView() -> AnyView {
         AnyView(self)
@@ -41,6 +41,7 @@ extension View {
                         Image.closeIcon
                     }
                 }
+                
             }
             .navigationBarTitleDisplayMode(.inline)
     }
@@ -68,24 +69,27 @@ extension View {
     @ViewBuilder
     func applyToolbarWithBackStyle(with title: String, hideBakcButton: Bool = false, backAction: DismissAction, closeAction: @escaping () -> Void) -> some View {
         if hideBakcButton {
-            self.toolbar {
-                    ToolbarItem(placement: .principal) {
-                        VStack(spacing: 0) {
-                            Text(title)
-                                .applyStyle(style: LabelStyle.number)
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            closeAction()
-                        } label: {
-                            Image.closeIcon
-                        }
+            self
+                .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack(spacing: 0) {
+                        Text(title)
+                            .applyStyle(style: LabelStyle.number)
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        closeAction()
+                    } label: {
+                        Image.closeIcon
+                    }
+                }
+            }
+                .navigationBarTitleDisplayMode(.inline)
         } else {
-            self.toolbar {
+            self
+                .toolbar {
                     ToolbarItem(placement: .principal) {
                         VStack(spacing: 0) {
                             Text(title)
@@ -109,6 +113,7 @@ extension View {
                         }
                     }
                 }
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
     
@@ -116,6 +121,13 @@ extension View {
         self
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+    }
+    
+    func applyBasicViewStyle() -> some View {
+        self
+            .padding(.horizontal, 24)
+            .background(PublicTheme.background)
     }
 }
 

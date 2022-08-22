@@ -17,7 +17,7 @@ struct TwoButtonsView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            HStack(spacing: 0) {
+            HStack(spacing: 16) {
                 Button {
                     primaryAction()
                 } label: {
@@ -27,7 +27,7 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multiplePrimary)
-                .frame(width: abs((geometry.size.width-40)/3*2))
+                .frame(width: abs((geometry.size.width-16)/3*2))
                 
                 Button {
                     secondaryAction()
@@ -38,10 +38,11 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multipleSecondary)
-                .frame(width: abs((geometry.size.width-40)/3*1))
-
+                .frame(width: abs((geometry.size.width-16)/3*1))
+                
             }
-            .padding(20)
+            
+            .frame(maxWidth: .infinity)
         }
     }
 }

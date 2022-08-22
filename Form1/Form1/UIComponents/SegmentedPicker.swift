@@ -86,7 +86,6 @@ struct SegmentedPicker: View {
                 }
             }
         }
-        .padding(SegmentedPicker.PickerPadding)
         .background(SegmentedPicker.BackgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: SegmentedPicker.SegmentCornerRadius))
     }

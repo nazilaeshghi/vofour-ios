@@ -40,8 +40,6 @@ struct TaskListView: View {
                         taskID = item.id
                         showingDetailSIsActive = true
                     })
-                        .applyBasicCellStyle()
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                 }
                 .applyListBasicStyle()
                 .padding(.vertical, 12)
@@ -50,9 +48,8 @@ struct TaskListView: View {
                     TaskListEmtyView()
                 }
             }
-            .padding(.horizontal, 24)
+            .applyBasicViewStyle()
             .navigationBarHidden(true)
-            .background(PublicTheme.background)
             .onAppear(perform: {
                 viewModel.getTasks(date: selectedDate)
             })

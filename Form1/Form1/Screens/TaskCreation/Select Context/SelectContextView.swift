@@ -24,34 +24,36 @@ struct SelectContextView: View {
                     EmptyView()
                 }.opacity(0)
                 
-                VStack(spacing: 20) {
-                    Divider()
+                VStack {
+                    DeviderView()
+                    Spacer()
+                        .frame(height: 24)
                     
-                    SelectContextHeaderView(searchText: $searchText)
-                        .onChange(of: searchText) { newValue in
-                            viewModel.filterContextas(with: searchText)
-                        }
-                    
-                    List(viewModel.items, id: \.id) { item in
-                        SelectContextCell(item: item)
-                            .onTapGesture {
-                                linkIsActive = true
-                                viewModel.selectContext(id: item.contextID)
+                    VStack(spacing: 24) {
+                        SelectContextHeaderView(searchText: $searchText)
+                            .onChange(of: searchText) { newValue in
+                                viewModel.filterContextas(with: searchText)
                             }
-                            .applyBasicCellStyle()
-                            .padding(.vertical, 5)
-                            .padding(.horizontal, 16)
+                        
+                        List(viewModel.items, id: \.id) { item in
+                            SelectContextCell(item: item)
+                                .onTapGesture {
+                                    linkIsActive = true
+                                    viewModel.selectContext(id: item.contextID)
+                                }
+                        }
+                        .applyListBasicStyle()
                     }
-                    .applyListBasicStyle()
+                    .applyBasicViewStyle()
                 }
-                .background(PublicTheme.background)
-                .applyToolbarStyle(with: LocalizedString.ContextPage.header, action: {
-                    presentationMode.wrappedValue.dismiss()
-                })
-                .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
-                { obj in
-                    presentationMode.wrappedValue.dismiss()
-                }
+            }
+            .background(PublicTheme.background)
+            .applyToolbarStyle(with: LocalizedString.ContextPage.header, action: {
+                presentationMode.wrappedValue.dismiss()
+            })
+            .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
+            { obj in
+                presentationMode.wrappedValue.dismiss()
             }
         }
     }
@@ -88,6 +90,17 @@ struct SelectContextHeaderView: View {
                 SearchBar(searchText: $searchText)
             }
         }
-        .padding([.leading, .trailing], 16)
+    }
+}
+
+
+struct DeviderView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Divider()
+            EmptyView()
+                .background(.clear)
+        }
+        .background(PublicTheme.background)
     }
 }
