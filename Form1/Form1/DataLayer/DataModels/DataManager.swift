@@ -105,6 +105,8 @@ class DataManager {
         let weekDay = simpleDate.getWeekDayID()
 
         let dayTasks = dataProvider.fetchTaks(weekDay: weekDay, date: simpleDate)
+        guard dayTasks.count > 0 else { return 1.0 }
+        
         let sum = dayTasks.map { model -> Float in
             if (model.record?.total ?? 0) == 0 {
                 return 0
@@ -114,16 +116,19 @@ class DataManager {
                 return dayCalculate > 1.0 ? 1.0 : dayCalculate
             }
         }.reduce(0, +)
-        let dayProgress = sum / Float(dayTasks.count)
-        guard !dayProgress.isNaN else { return 0 }
-        return dayProgress > 1.0 ? 1.0 : dayProgress
+        var dayProgress = sum / Float(dayTasks.count)
+        if dayProgress.isNaN { dayProgress = 0 }
+        if dayProgress > 1.0  { dayProgress = 1.0 }
+        return dayProgress
     }
     
     func computeWeekProgress() -> Float {
-        let totoalProgresses = DateBuilder.make7Days(selectedDate: Date()).map { obj -> Float in
-            return computeDayProgress(date: obj.date)
+        let totoalProgresses = DateBuilder.make7Days(selectedDate: Date()).map {
+            return computeDayProgress(date: $0.date)
         }
-        let notNanProsesses = totoalProgresses.filter { !$0.isNaN }
+        let notNanProsesses = totoalProgresses
+            .filter { !$0.isNaN }
+        
         let totalProgress = notNanProsesses.reduce(0, +)
         let wekkProgress = totalProgress / Float(notNanProsesses.count)
         guard !wekkProgress.isNaN else { return 0 }
