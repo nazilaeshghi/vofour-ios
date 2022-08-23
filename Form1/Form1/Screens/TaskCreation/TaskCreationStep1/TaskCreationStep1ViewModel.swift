@@ -7,10 +7,18 @@
 //
 
 import Foundation
+import Combine
 
 class TaskCreationStep1ViewModel: ObservableObject {
     private let dataManager: TaskCreationStep1DataManagable
+    
     @Published private(set) var selectedGoalTitle: String?
+    @Published var titleInputText: String = ""
+    @Published var preventionInputText = ""
+    @Published var reasonInputText = ""
+    @Published var for100InputText = ""
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(dataManager: TaskCreationStep1DataManagable) {
         self.dataManager = dataManager
@@ -21,24 +29,34 @@ class TaskCreationStep1ViewModel: ObservableObject {
         return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
     }
     
+    func initBinders() {
+        $titleInputText
+            .sink { [dataManager] newValue in
+                dataManager.updateActivityTitle(with: newValue)
+            }
+            .store(in: &cancellables)
+        
+        $preventionInputText
+            .sink { [dataManager] newValue in
+                dataManager.updatePrevention(with: newValue)
+            }
+            .store(in: &cancellables)
+        
+        $reasonInputText
+            .sink { [dataManager] newValue in
+                dataManager.updateReason(with: newValue)
+            }
+            .store(in: &cancellables)
+        
+        $for100InputText
+            .sink { [dataManager] newValue in
+                dataManager.updateFor100(with: newValue)
+            }
+            .store(in: &cancellables)
+    }
+    
     func update(segemntSelection: Int) {
         dataManager.updateIsActivity(with: segemntSelection == 0)
-    }
-    
-    func updateActivityTitle(title: String) {
-        dataManager.updateActivityTitle(with: title)
-    }
-    
-    func updateActivityPrevention(text: String) {
-        dataManager.updatePrevention(with: text)
-    }
-    
-    func updateActivityReason(text: String) {
-        dataManager.updateReason(with: text)
-    }
-    
-    func updateActivityFor100(text: String) {
-        dataManager.updateFor100(with: text)
     }
     
     func getSelectedGoalID() -> String? {

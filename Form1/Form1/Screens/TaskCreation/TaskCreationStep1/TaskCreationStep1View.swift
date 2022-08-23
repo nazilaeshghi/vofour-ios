@@ -18,10 +18,6 @@ struct TaskCreationStep1View: View {
     @StateObject var viewModel: TaskCreationStep1ViewModel
     @State private var selectedType = 0
     
-    @State private var titleInputText = ""
-    @State private var preventionInputText = ""
-    @State private var reasonInputText = ""
-    @State private var for100InputText = ""
     @State private var goalID: String? = nil
     @State var nextPagelinkIsActive: Bool = false
     
@@ -59,7 +55,7 @@ struct TaskCreationStep1View: View {
                         .frame(height: 32)
                     
                     VStack(spacing: 32) {
-                        OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
+                        OneLineInputCell(inputText: $viewModel.titleInputText,
                                          placeholder: LocalizedString.Input.enterHerePlaceholder,
                                          title: LocalizedString.Input.enterHereTitle)
                         
@@ -70,15 +66,15 @@ struct TaskCreationStep1View: View {
                                 showingSheet = true
                             }
                         
-                        MultipleLineInputCell(inputText: $preventionInputText.onChange(preventionChanged),
+                        MultipleLineInputCell(inputText: $viewModel.preventionInputText,
                                               placeholder: LocalizedString.Input.obstaclePlaceholder,
                                               title: LocalizedString.Input.obstacleHeader)
                         
-                        MultipleLineInputCell(inputText: $reasonInputText.onChange(reasonChanged),
+                        MultipleLineInputCell(inputText: $viewModel.reasonInputText,
                                               placeholder: LocalizedString.Input.reasonPlaceholder,
                                               title: LocalizedString.Input.reasonTitle)
                         
-                        MultipleLineInputCell(inputText: $for100InputText.onChange(for100Changed),
+                        MultipleLineInputCell(inputText: $viewModel.for100InputText,
                                               placeholder: LocalizedString.Input.enterHerePlaceholder,
                                               title: LocalizedString.Input.for100Title)
                         
@@ -125,24 +121,10 @@ struct TaskCreationStep1View: View {
             }
 
         }
+        .onAppear(perform: {
+            viewModel.initBinders()
+        })
         .navigationBarHidden(true)
-    }
-    
-    
-    func titleChanged(to value: String) {
-        viewModel.updateActivityTitle(title: value)
-    }
-    
-    func reasonChanged(to value: String) {
-        viewModel.updateActivityReason(text: value)
-    }
-    
-    func preventionChanged(to value: String) {
-        viewModel.updateActivityPrevention(text: value)
-    }
-    
-    func for100Changed(to value: String) {
-        viewModel.updateActivityFor100(text: value)
     }
 }
 
