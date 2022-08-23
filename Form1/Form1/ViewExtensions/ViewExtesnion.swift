@@ -127,7 +127,7 @@ extension View {
     func applyBasicViewStyle() -> some View {
         self
             .padding(.horizontal, 24)
-            .background(PublicTheme.background)
+            .background(PublicTheme.background.ignoresSafeArea())
     }
 }
 

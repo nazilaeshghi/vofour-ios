@@ -24,12 +24,10 @@ struct SelectContextView: View {
                     EmptyView()
                 }.opacity(0)
                 
-                VStack {
+                VStack(spacing: 24) {
                     DeviderView()
-                    Spacer()
-                        .frame(height: 24)
                     
-                    VStack(spacing: 24) {
+                    Group {
                         SelectContextHeaderView(searchText: $searchText)
                             .onChange(of: searchText) { newValue in
                                 viewModel.filterContextas(with: searchText)
@@ -98,9 +96,8 @@ struct DeviderView: View {
     var body: some View {
         VStack(spacing: 20) {
             Divider()
-            EmptyView()
-                .background(.clear)
         }
-        .background(PublicTheme.background)
+        .background(PublicTheme.background.ignoresSafeArea())
     }
 }
+
