@@ -15,7 +15,7 @@ struct TaskCreationViewNonRepeatitive: View {
     @Binding var durationPresented: Bool
     
     var body: some View {
-        VStack (spacing: 24) {
+        VStack(spacing: PublicTheme.vSpace){
             SelectorInoutCell(text: dateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.dateSelectoreTitle)
@@ -45,7 +45,7 @@ struct TaskCreationViewRepeatitive: View {
     @Binding var durationPresented: Bool
     
     var body: some View {
-        VStack (spacing: 24) {
+        VStack (spacing: PublicTheme.vSpace) {
             SelectorInoutCell(text: durationText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)

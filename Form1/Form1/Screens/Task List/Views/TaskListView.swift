@@ -26,10 +26,12 @@ struct TaskListView: View {
                 } label: { EmptyView() }.opacity(0)
                                 
                 // Week Header
-                Spacer(minLength: 20)
+                VerticalSpaceView(space: .header)
+                
                 TaskHeaderView(selectedDate: $selectedDate,
                                todayProgressString: viewModel.todayProgressString)
-                Spacer(minLength: 10)
+                
+                VerticalSpaceView(space: .header)
                 
                 // Task List
                 List($viewModel.cards, id: \.id) { item in
@@ -42,8 +44,10 @@ struct TaskListView: View {
                     })
                 }
                 .applyListBasicStyle()
-                .padding(.vertical, 12)
                 
+                VerticalSpaceView(space: .header)
+                
+                // Show empty state
                 if viewModel.cards.isEmpty {
                     TaskListEmtyView()
                 }

@@ -16,9 +16,15 @@ struct HomeHeadLineView: View {
         
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 0) {
-                let week = Int(weekProgress * 100)
-                Text("%\(week)".convertToPersian())
-                    .applyStyle(style: .bigNumberStyle)
+                
+                if let week = Int(weekProgress * 100), week >= 0 {
+                    Text("%\(week)".convertToPersian())
+                        .applyStyle(style: .bigNumberStyle)
+                } else {
+                    Text("---")
+                        .applyStyle(style: .bigNumberStyle)
+                }
+                
                 HStack {
                     Image.blueDot
                     Text(LocalizedString.Home.todayProgress)
@@ -27,9 +33,14 @@ struct HomeHeadLineView: View {
             }
             
             VStack(alignment: .leading, spacing: 0) {
-                let today = Int(todayProgress * 100)
-                Text("%\(today)".convertToPersian())
-                    .applyStyle(style: .bigGreenNumberStyle)
+                
+                if let today = Int(todayProgress * 100), today >= 0 {
+                    Text("%\(today)".convertToPersian())
+                        .applyStyle(style: .bigGreenNumberStyle)
+                } else {
+                    Text("---")
+                        .applyStyle(style: .bigNumberStyle)
+                }
                     
                 HStack {
                     Image.greenDot

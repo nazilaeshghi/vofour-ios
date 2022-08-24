@@ -21,11 +21,11 @@ struct ProgressOverViewOverview: View {
         }
         .frame(maxWidth: .infinity,
                alignment: .topLeading)
-        .padding(24)
+        .padding(PublicTheme.hPadding)
         .background(.white)
         .cornerRadius(10)
         .overlay(
-            RoundedRectangle(cornerRadius: PublicTheme.inoutTextCornerRadius)
+            RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
                 .stroke(PublicTheme.borderColor, lineWidth: 1)
         )
     }

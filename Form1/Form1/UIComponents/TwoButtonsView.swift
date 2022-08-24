@@ -11,9 +11,9 @@ import SwiftUI
 struct TwoButtonsView: View {
     var primaryButtonText: String
     var secondaryButtonText: String
-    
+
+    let dismiss: DismissAction
     let primaryAction: () -> Void
-    let secondaryAction: () -> Void
     
     var body: some View {
         GeometryReader { geometry in
@@ -30,7 +30,7 @@ struct TwoButtonsView: View {
                 .frame(width: abs((geometry.size.width-16)/3*2))
                 
                 Button {
-                    secondaryAction()
+                    dismiss()
                 } label: {
                     Spacer()
                     Text(secondaryButtonText)
@@ -48,8 +48,10 @@ struct TwoButtonsView: View {
 }
 
 struct TwoButtonsView_Previews: PreviewProvider {
+    @Environment(\.dismiss) static var dismiss
+
     static var previews: some View {
-        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {}, secondaryAction: {})
+        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, dismiss: dismiss, primaryAction: {})
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

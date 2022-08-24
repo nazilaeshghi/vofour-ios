@@ -105,7 +105,7 @@ class DataManager {
         let weekDay = simpleDate.getWeekDayID()
 
         let dayTasks = dataProvider.fetchTaks(weekDay: weekDay, date: simpleDate)
-        guard dayTasks.count > 0 else { return 1.0 }
+        guard dayTasks.count > 0 else { return -1.0 }
         
         let sum = dayTasks.map { model -> Float in
             if (model.record?.total ?? 0) == 0 {
@@ -127,7 +127,9 @@ class DataManager {
             return computeDayProgress(date: $0.date)
         }
         let notNanProsesses = totoalProgresses
-            .filter { !$0.isNaN }
+            .filter { !$0.isNaN && $0 >= 0 }
+        
+        guard !notNanProsesses.isEmpty else { return -1.0 }
         
         let totalProgress = notNanProsesses.reduce(0, +)
         let wekkProgress = totalProgress / Float(notNanProsesses.count)

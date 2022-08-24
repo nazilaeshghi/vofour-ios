@@ -9,10 +9,7 @@
 import SwiftUI
 
 struct PublicTheme {
-    static let cornerRaduis: CGFloat = 16
-    static let multiButtonCornerRaduis: CGFloat = 8
-    static let inoutTextCornerRadius: CGFloat = 8
-    static let formInputPadding: CGFloat = 4
+    // Color
     static let disabledColor = Color(hex: "BBC7D3")
     static let contextBackgroundColor = Color(hex: "EFF3F6")
     static let background = Color(hex: "FAFBFC")
@@ -26,7 +23,23 @@ struct PublicTheme {
     static let segmentBG = Color(hex: "EFF2F9")
     static let greenColor = Color(hex: "01B7A7")
     static let emptyTextColor = Color(hex: "6e7f91")
+    static let secondaryTextColor = Color(hex: "4B5666")
+
+    // Corner raduis
+    static let cornerRaduis: CGFloat = 16
+    static let multiButtonCornerRaduis: CGFloat = 8
+    static let inputTextCornerRadius: CGFloat = 8
+    
+    // Height
     static let oneLineTextfieldHeight: CGFloat = 40
     static let multipleLineTextfieldHeight: CGFloat = 80
-    static let secondaryTextColor = Color(hex: "4B5666")
+    
+    // Space
+    static let vSpace: CGFloat = 32
+    static let vHeaderSpace: CGFloat = 24
+    
+    // Pading
+    static let hPadding: CGFloat = 24
+    static let formInputPadding: CGFloat = 4
+    static let scrollViewPadding: CGFloat = 24
 }

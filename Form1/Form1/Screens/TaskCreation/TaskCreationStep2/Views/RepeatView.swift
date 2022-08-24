@@ -13,7 +13,7 @@ struct RepeatView: View {
     @Binding var repeatNum: Int
     
     var body: some View {
-        VStack (spacing: 24) {
+        VStack (spacing: PublicTheme.vSpace) {
             WeekDaysView(weekDays: $weekDays)
             ChangeRepeatView(repeatNum: $repeatNum, title: LocalizedString.Input.numberOfRepeatTitle)
         }

@@ -23,7 +23,7 @@ struct CustomMultiLineTextEditor: View {
         }
         .frame(height: PublicTheme.multipleLineTextfieldHeight)
         .overlay(
-            RoundedRectangle(cornerRadius: PublicTheme.inoutTextCornerRadius)
+            RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
                 .stroke(PublicTheme.borderColor, lineWidth: 1)
         )
     }

@@ -32,7 +32,7 @@ struct CustomSelector: View {
         }
         .frame(height: PublicTheme.oneLineTextfieldHeight)
         .overlay(
-            RoundedRectangle(cornerRadius: PublicTheme.inoutTextCornerRadius)
+            RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
                 .stroke(PublicTheme.borderColor, lineWidth: 1)
         )
     }

@@ -78,7 +78,7 @@ class TaskListViewModel: ObservableObject {
     private func calculateDateProgress(date: Date) {
         let todayProgress = dataManager.fetchDateProgress(date: date)
         let today = Int(todayProgress * 100)
-        todayProgressString =  "%\(today)".convertToPersian()
+        todayProgressString = today >= 0 ? "%\(today)".convertToPersian() : ""
     }
 
 }

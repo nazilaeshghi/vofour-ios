@@ -24,7 +24,7 @@ struct SelectContextView: View {
                     EmptyView()
                 }.opacity(0)
                 
-                VStack(spacing: 24) {
+                VStack(spacing: PublicTheme.vHeaderSpace) {
                     DeviderView()
                     
                     Group {
@@ -45,7 +45,7 @@ struct SelectContextView: View {
                     .applyBasicViewStyle()
                 }
             }
-            .background(PublicTheme.background)
+            .applyBackgroundColor()
             .applyToolbarStyle(with: LocalizedString.ContextPage.header, action: {
                 presentationMode.wrappedValue.dismiss()
             })

@@ -30,7 +30,7 @@ struct HomeContextCellView: View {
         .cornerRadius(16)
         .if(item.activityCount == 0, transform: { view in
             view.overlay(
-                RoundedRectangle(cornerRadius: PublicTheme.inoutTextCornerRadius)
+                RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
                     .stroke(PublicTheme.borderColor, lineWidth: 1)
             )
         })

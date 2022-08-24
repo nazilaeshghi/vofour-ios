@@ -126,8 +126,41 @@ extension View {
     
     func applyBasicViewStyle() -> some View {
         self
-            .padding(.horizontal, 24)
+            .padding(.horizontal, PublicTheme.hPadding)
+            .applyBackgroundColor()
+    }
+    
+    func applyBackgroundColor() -> some View {
+        self
             .background(PublicTheme.background.ignoresSafeArea())
+    }
+    
+    func applyScrollViewPadding(top: Bool = true, bottom: Bool = true ) -> some View {
+        self
+            .if(top) { view in
+                view.safeAreaInset(edge: .top, spacing: 0) {
+                    Spacer().frame(height: PublicTheme.scrollViewPadding)
+                }
+            }
+            .if(bottom) { view in
+                view.safeAreaInset(edge: .bottom, spacing: 0) {
+                    Spacer().frame(height: PublicTheme.scrollViewPadding)
+                }
+            }
+    }
+    
+    func applyHScrollViewPadding(left: Bool = true, right: Bool = true ) -> some View {
+        self
+            .if(left) { view in
+                view.safeAreaInset(edge: .leading, spacing: PublicTheme.scrollViewPadding) {
+                    Spacer().frame(height: PublicTheme.scrollViewPadding)
+                }
+            }
+            .if(right) { view in
+                view.safeAreaInset(edge: .trailing, spacing: PublicTheme.scrollViewPadding) {
+                    Spacer().frame(height: PublicTheme.scrollViewPadding)
+                }
+            }
     }
 }
 

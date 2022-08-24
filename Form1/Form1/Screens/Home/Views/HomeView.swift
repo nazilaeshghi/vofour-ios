@@ -17,7 +17,7 @@ struct HomeView: View {
     @State private var selectedContextID: String?
     @State private var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     
-    let columns = [GridItem(.adaptive(minimum: 120), spacing: 20)]
+    let columns = [GridItem(.adaptive(minimum: 120), spacing: 16)]
     
     var body: some View {
         ScrollView {
@@ -34,7 +34,7 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                LazyVGrid(columns: columns, spacing: 20) {
+                LazyVGrid(columns: columns, spacing: 16) {
                     ForEach($viewModel.contexs, id: \.id) { item in
                         HomeContextCellView(item: item)
                             .onTapGesture {
@@ -44,8 +44,8 @@ struct HomeView: View {
                     }
                 }
             }
-            .padding(24)
-            .background(PublicTheme.background)
+            .applyBasicViewStyle()
+            .applyScrollViewPadding()
             .onAppear(perform: {
                 viewModel.fetchData()
             })
@@ -53,7 +53,6 @@ struct HomeView: View {
                 viewModel.fetchData()
                 sevenDays = DateBuilder.make7Days(selectedDate: Date())
             }
-            
         }
         .background(PublicTheme.background)
         .sheet(item: $selectedContextID) { contextID in

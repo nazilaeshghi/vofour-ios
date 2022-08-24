@@ -20,6 +20,8 @@
 		6402879628B17E0800FCE2C8 /* HomeHeadLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402879528B17E0800FCE2C8 /* HomeHeadLineView.swift */; };
 		6402879828B17E6A00FCE2C8 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402879728B17E6A00FCE2C8 /* HomeHeaderView.swift */; };
 		6402879A28B17EEE00FCE2C8 /* WeekCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402879928B17EEE00FCE2C8 /* WeekCircleView.swift */; };
+		6402889628B5583700FCE2C8 /* TaskCreationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402889528B5583700FCE2C8 /* TaskCreationHeader.swift */; };
+		6402889928B5617F00FCE2C8 /* VerticalSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402889828B5617F00FCE2C8 /* VerticalSpaceView.swift */; };
 		640B8E0C27CECDB000177ADF /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E0B27CECDB000177ADF /* ProgressBar.swift */; };
 		640B8E0F27CECE1F00177ADF /* LabelDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E0E27CECE1F00177ADF /* LabelDisplayModel.swift */; };
 		640B8E1127CECE5A00177ADF /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B8E1027CECE5A00177ADF /* LabelStyle.swift */; };
@@ -161,6 +163,8 @@
 		6402879528B17E0800FCE2C8 /* HomeHeadLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeadLineView.swift; sourceTree = "<group>"; };
 		6402879728B17E6A00FCE2C8 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		6402879928B17EEE00FCE2C8 /* WeekCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCircleView.swift; sourceTree = "<group>"; };
+		6402889528B5583700FCE2C8 /* TaskCreationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationHeader.swift; sourceTree = "<group>"; };
+		6402889828B5617F00FCE2C8 /* VerticalSpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSpaceView.swift; sourceTree = "<group>"; };
 		640B8E0B27CECDB000177ADF /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		640B8E0E27CECE1F00177ADF /* LabelDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDisplayModel.swift; sourceTree = "<group>"; };
 		640B8E1027CECE5A00177ADF /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
@@ -330,6 +334,15 @@
 				6402879528B17E0800FCE2C8 /* HomeHeadLineView.swift */,
 				6402879728B17E6A00FCE2C8 /* HomeHeaderView.swift */,
 				6402879928B17EEE00FCE2C8 /* WeekCircleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6402889728B5585000FCE2C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */,
+				6402889528B5583700FCE2C8 /* TaskCreationHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -657,7 +670,7 @@
 		64C5504628609A8B000E9F61 /* TaskCreationStep1 */ = {
 			isa = PBXGroup;
 			children = (
-				64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */,
+				6402889728B5585000FCE2C8 /* Views */,
 				64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */,
 				64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */,
 				64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */,
@@ -695,6 +708,7 @@
 				64A932FE28A7D50F006E1988 /* TaskStepsHeader.swift */,
 				64EA837B28A7E44A005ED007 /* ReminderCellView.swift */,
 				64EA838928A94266005ED007 /* AddReminderCellView.swift */,
+				6402889828B5617F00FCE2C8 /* VerticalSpaceView.swift */,
 				644487F7288707810020A758 /* TabBar */,
 				64C7727F2885BCC50066F97B /* CustomButtomSheet */,
 				6400D6582844F852005A6F79 /* Cells */,
@@ -881,6 +895,7 @@
 				64842BC2288F440D00A4AA2E /* TaskListViewMock.swift in Sources */,
 				642CB194287C4202004AF8DA /* GoalRealm.swift in Sources */,
 				642CB19A287C4410004AF8DA /* SelectGoalViewModel.swift in Sources */,
+				6402889628B5583700FCE2C8 /* TaskCreationHeader.swift in Sources */,
 				6402879128B15D3E00FCE2C8 /* TaskListEmtyView.swift in Sources */,
 				640B8E0C27CECDB000177ADF /* ProgressBar.swift in Sources */,
 				64EA8B2A285F6C2B009027DE /* ContextRealm.swift in Sources */,
@@ -911,6 +926,7 @@
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
 				642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */,
 				643D86452892DB0A0076D884 /* RecordRealm.swift in Sources */,
+				6402889928B5617F00FCE2C8 /* VerticalSpaceView.swift in Sources */,
 				64A1038628820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift in Sources */,
 				64C7727828850D1F0066F97B /* BottomSheetModifier.swift in Sources */,
 				6402879A28B17EEE00FCE2C8 /* WeekCircleView.swift in Sources */,

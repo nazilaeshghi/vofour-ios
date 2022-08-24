@@ -18,72 +18,74 @@ struct TaskCreationStep2View: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Divider()
+            VStack(spacing: 0) {
+                DeviderView()
+                
                 ScrollView {
-                    VStack (spacing: 24) {
-                        // Header section
-                        TaskStepsHeader(title: LocalizedString.TaskCreationStep1.header)
-                        
-                        // Date Section
-                        SegmentedPicker(items: viewModel.getTaskRepetitionSegmentItems(), selection: $viewModel.isRepeatable)
-                        
-                        // Content
-                        switch (viewModel.isItCreation, viewModel.isRepeatable) {
-                        case (true, 0):
-                            TaskCreationViewNonRepeatitive(dateText: viewModel.startDate,
-                                                           durationText: viewModel.selectedDuration?.amount.timeStr,
-                                                           startDateCalendarPresented: $startDateCalendarPresented,
-                                                           durationPresented: $durationPresented)
-                        case (true, 1):
-                            TaskCreationViewRepeatitive(repeatNum: $viewModel.repeatNum,
-                                                        weekDays: $viewModel.weekDays,
-                                                        startDateText: viewModel.startDate,
-                                                        endDateText: viewModel.endDate,
-                                                        durationText: viewModel.selectedDuration?.amount.timeStr,
-                                                        startDateCalendarPresented: $startDateCalendarPresented,
-                                                        endtDateCalendarPresented: $endDateCalendarPresented,
-                                                        durationPresented: $durationPresented)
-                        case (false, 0):
-                            QuitEntirelyView(startDateText: viewModel.startDate,
-                                             endDateText: viewModel.endDate,
-                                             startDateCalendarPresented: $startDateCalendarPresented,
-                                             endtDateCalendarPresented: $endDateCalendarPresented)
-                        case (false, 1):
-                            QuitWithLimitView(repeatNum: $viewModel.repeatNum,
-                                              startDateText: viewModel.startDate,
-                                              endDateText: viewModel.endDate,
-                                              startDateCalendarPresented: $startDateCalendarPresented,
-                                              endtDateCalendarPresented: $endDateCalendarPresented)
-                            
-                        default:
-                            EmptyView()
-                        }
-        
-                        // Reminder Section
-                        ReminderView(needReminder: $viewModel.needReminder,
-                                     reminders: $viewModel.reminders)
+                    Group {
+                        VerticalSpaceView(space: .header)
 
-                        // Color Section
-                        ColorSelectorView(selectedColor: $viewModel.selectedColor)
-                        Spacer()
-                    }
-                    .padding()
-                }
-                Spacer()
-                HStack {
-                    TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
-                                   secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {
-                        viewModel.saveTask()
-                        NotificationCenter.default.post(name: .cloceClick, object: nil)
-                        NotificationCenter.sendNotification(for: .dataChange)
+                        TaskCreationHeader(title: LocalizedString.TaskCreationStep2.header,
+                                           items: viewModel.repetitionSegmentItems(),
+                                           selectedType: $viewModel.isRepeatable)
                         
-                    }, secondaryAction: {
-                        dismiss()
-                    })
-                        .frame(height: 60)
+                        VerticalSpaceView(space: .inlineForm)
+                            
+                        VStack(spacing: PublicTheme.vSpace){
+                            // Content
+                            switch (viewModel.isItCreation, viewModel.isRepeatable) {
+                            case (true, 0):
+                                TaskCreationViewNonRepeatitive(dateText: viewModel.startDate,
+                                                               durationText: viewModel.selectedDuration?.amount.timeStr,
+                                                               startDateCalendarPresented: $startDateCalendarPresented,
+                                                               durationPresented: $durationPresented)
+                            case (true, 1):
+                                TaskCreationViewRepeatitive(repeatNum: $viewModel.repeatNum,
+                                                            weekDays: $viewModel.weekDays,
+                                                            startDateText: viewModel.startDate,
+                                                            endDateText: viewModel.endDate,
+                                                            durationText: viewModel.selectedDuration?.amount.timeStr,
+                                                            startDateCalendarPresented: $startDateCalendarPresented,
+                                                            endtDateCalendarPresented: $endDateCalendarPresented,
+                                                            durationPresented: $durationPresented)
+                            case (false, 0):
+                                QuitEntirelyView(startDateText: viewModel.startDate,
+                                                 endDateText: viewModel.endDate,
+                                                 startDateCalendarPresented: $startDateCalendarPresented,
+                                                 endtDateCalendarPresented: $endDateCalendarPresented)
+                            case (false, 1):
+                                QuitWithLimitView(repeatNum: $viewModel.repeatNum,
+                                                  startDateText: viewModel.startDate,
+                                                  endDateText: viewModel.endDate,
+                                                  startDateCalendarPresented: $startDateCalendarPresented,
+                                                  endtDateCalendarPresented: $endDateCalendarPresented)
+                                
+                            default:
+                                EmptyView()
+                            }
+                            
+                            // Reminder Section
+                            ReminderView(needReminder: $viewModel.needReminder,
+                                         reminders: $viewModel.reminders)
+                            
+                            // Color Section
+                            ColorSelectorView(selectedColor: $viewModel.selectedColor)
+                        }
+                        
+                        VerticalSpaceView(space: .header)
+                    }
+                    .applyBasicViewStyle()
                 }
+                
+                TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
+                               secondaryButtonText: LocalizedString.Buttons.previousTitle,
+                               dismiss: dismiss,
+                               primaryAction: saveAction)
+                    .frame(height: 60)
+                    .applyBasicViewStyle()
             }
+            .applyBackgroundColor()
+
             .sheet(isPresented: $startDateCalendarPresented, content: {
                 CalendarSheetView(presented: $startDateCalendarPresented,
                                   dateString: $viewModel.startDate,
@@ -99,19 +101,22 @@ struct TaskCreationStep2View: View {
                                   selectredDuration: $viewModel.selectedDuration)
                 
             })
-            
-            .navigationBarTitleDisplayMode(.inline)
             .applyToolbarWithBackStyle(with: viewModel.header(), backAction: dismiss, closeAction: {
                 NotificationCenter.default.post(name: .cloceClick,
                                                 object: nil,
                                                 userInfo: nil)
             })
-
         }
         .onAppear(perform: {
             viewModel.initBinders()
         })
         .navigationBarHidden(true)
+    }
+    
+    func saveAction() {
+        viewModel.saveTask()
+        NotificationCenter.default.post(name: .cloceClick, object: nil)
+        NotificationCenter.sendNotification(for: .dataChange)
     }
     
 }

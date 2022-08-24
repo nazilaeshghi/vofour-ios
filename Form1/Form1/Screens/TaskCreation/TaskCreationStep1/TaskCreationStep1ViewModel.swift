@@ -13,6 +13,7 @@ class TaskCreationStep1ViewModel: ObservableObject {
     private let dataManager: TaskCreationStep1DataManagable
     
     @Published private(set) var selectedGoalTitle: String?
+    @Published var selectedType = 0
     @Published var titleInputText: String = ""
     @Published var preventionInputText = ""
     @Published var reasonInputText = ""
@@ -53,10 +54,12 @@ class TaskCreationStep1ViewModel: ObservableObject {
                 dataManager.updateFor100(with: newValue)
             }
             .store(in: &cancellables)
-    }
-    
-    func update(segemntSelection: Int) {
-        dataManager.updateIsActivity(with: segemntSelection == 0)
+        
+        $selectedType
+            .sink { [dataManager] newValue in
+                dataManager.updateIsActivity(with: newValue == 0)
+            }
+            .store(in: &cancellables)
     }
     
     func getSelectedGoalID() -> String? {

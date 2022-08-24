@@ -103,7 +103,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
         return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
     }
     
-    func getTaskRepetitionSegmentItems() -> [String] {
+    func repetitionSegmentItems() -> [String] {
         if dataManager.isTaskActivity() {
             return [
                 LocalizedString.TaskCreationStep2.nonRepeatitiveActivity,
