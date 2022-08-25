@@ -15,7 +15,7 @@ struct TaskCreationViewNonRepeatitive: View {
     @Binding var durationPresented: Bool
     
     var body: some View {
-        VStack(spacing: PublicTheme.vSpace){
+        VStack(spacing: PublicTheme.vSpace) {
             SelectorInoutCell(text: dateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.dateSelectoreTitle)

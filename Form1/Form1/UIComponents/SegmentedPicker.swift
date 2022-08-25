@@ -38,15 +38,13 @@ struct SizeAwareViewModifier: ViewModifier {
 struct SegmentedPicker: View {
     private static let ActiveSegmentColor: Color = PublicTheme.primaryColor
     private static let BackgroundColor: Color = PublicTheme.segmentBG
-    private static let ShadowColor: Color = Color.black.opacity(0.2)
     private static let TextColor: Color = PublicTheme.primaryColor
     private static let SelectedTextColor: Color = .white
     
-    private static let SegmentCornerRadius: CGFloat = 12
-    private static let ShadowRadius: CGFloat = 4
-    private static let SegmentXPadding: CGFloat = 16
-    private static let SegmentYPadding: CGFloat = 10
-    private static let PickerPadding: CGFloat = 4
+    private static let SegmentCornerRadius: CGFloat = PublicTheme.inputTextCornerRadius
+    private static let xPadding: CGFloat = 16
+    private static let yPadding: CGFloat = 8
+    private static let pickerPadding: CGFloat = 4
     private static let AnimationDuration: Double = 0.1
     
     // Stores the size of a segment, used to create the active segment rect
@@ -60,7 +58,6 @@ struct SegmentedPicker: View {
         if !isInitialized { return EmptyView().eraseToAnyView() }
         return RoundedRectangle(cornerRadius: SegmentedPicker.SegmentCornerRadius)
             .foregroundColor(SegmentedPicker.ActiveSegmentColor)
-            .shadow(color: SegmentedPicker.ShadowColor, radius: SegmentedPicker.ShadowRadius)
             .frame(width: self.segmentSize.width, height: self.segmentSize.height)
             .offset(x: self.computeActiveSegmentHorizontalOffset(), y: 0)
             .animation(Animation.linear(duration: SegmentedPicker.AnimationDuration))
@@ -86,13 +83,14 @@ struct SegmentedPicker: View {
                 }
             }
         }
+        .padding(SegmentedPicker.pickerPadding)
         .background(SegmentedPicker.BackgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: SegmentedPicker.SegmentCornerRadius))
     }
     
     // Helper method to compute the offset based on the selected index
     private func computeActiveSegmentHorizontalOffset() -> CGFloat {
-        CGFloat(self.selection) * (self.segmentSize.width + SegmentedPicker.SegmentXPadding / 2)
+        CGFloat(self.selection) * (self.segmentSize.width + SegmentedPicker.xPadding / 2)
     }
     
     // Gets text view for the segment
@@ -106,10 +104,9 @@ struct SegmentedPicker: View {
             .scaledFont(family: .regular, style: .subtitle)
             .foregroundColor(isSelected ? SegmentedPicker.SelectedTextColor: SegmentedPicker.TextColor)
             .lineLimit(1)
-            .padding(.vertical, SegmentedPicker.SegmentYPadding)
-            .padding(.horizontal, SegmentedPicker.SegmentXPadding)
+            .padding(.vertical, SegmentedPicker.yPadding)
+            .padding(.horizontal, SegmentedPicker.xPadding)
             .frame(minWidth: 0, maxWidth: .infinity)
-        // Watch for the size of the
             .modifier(SizeAwareViewModifier(viewSize: self.$segmentSize))
             .onTapGesture { self.onItemTap(index: index) }
             .eraseToAnyView()

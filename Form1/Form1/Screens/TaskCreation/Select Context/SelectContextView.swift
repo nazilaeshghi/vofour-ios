@@ -72,14 +72,14 @@ struct SelectContextHeaderView: View {
     @Binding var searchText: String
     
     var body: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: PublicTheme.vHeaderSpace) {
             HStack {
                 Text(LocalizedString.ContextPage.subHeader)
                     .applyStyle(style: LabelStyle.tableHeaderStyle)
                 Spacer()
             }
             
-            VStack(spacing: 6) {
+            VStack(spacing: PublicTheme.inputCellSpacing) {
                 HStack {
                     Text(LocalizedString.ContextPage.searchHeader)
                         .applyStyle(style: LabelStyle.smallTitleStyle)
@@ -88,16 +88,6 @@ struct SelectContextHeaderView: View {
                 SearchBar(searchText: $searchText)
             }
         }
-    }
-}
-
-
-struct DeviderView: View {
-    var body: some View {
-        VStack(spacing: 20) {
-            Divider()
-        }
-        .background(PublicTheme.background.ignoresSafeArea())
     }
 }
 

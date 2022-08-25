@@ -18,7 +18,7 @@ struct TaskCreationStep2View: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
+            VStack(spacing: .zero) {
                 DeviderView()
                 
                 ScrollView {
@@ -31,7 +31,7 @@ struct TaskCreationStep2View: View {
                         
                         VerticalSpaceView(space: .inlineForm)
                             
-                        VStack(spacing: PublicTheme.vSpace){
+                        VStack(spacing: PublicTheme.vSpace) {
                             // Content
                             switch (viewModel.isItCreation, viewModel.isRepeatable) {
                             case (true, 0):
@@ -76,13 +76,14 @@ struct TaskCreationStep2View: View {
                     }
                     .applyBasicViewStyle()
                 }
+               Spacer()
                 
                 TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
                                secondaryButtonText: LocalizedString.Buttons.previousTitle,
                                dismiss: dismiss,
                                primaryAction: saveAction)
-                    .frame(height: 60)
                     .applyBasicViewStyle()
+                
             }
             .applyBackgroundColor()
 

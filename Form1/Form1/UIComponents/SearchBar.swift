@@ -21,12 +21,12 @@ struct SearchBar: View {
                 TextField(LocalizedString.ContextPage.searchPlaceHolder, text: $searchText)
                     .scaledFont(family: .light, style: .title2)
             }
-            .cornerRadius(8)
+            .cornerRadius(PublicTheme.inputTextCornerRadius)
             .padding(.leading, 13)
         }
         .frame(height: 40)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
                 .stroke(PublicTheme.borderColor, lineWidth: 1)
         )
     }

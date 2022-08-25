@@ -13,13 +13,13 @@ struct CustomTabbarContainerView<Content: View>: View {
     let content: Content
     @State private var tabs: [TabBarItem] = []
     
-    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content){
+    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
         self._selection = selection
         self.content = content()
     }
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: .zero) {
             ZStack {
                 content
             }

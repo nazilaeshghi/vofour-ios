@@ -18,7 +18,7 @@ struct ProgressBar: View {
                 .frame(width: geometry.size.width , height: geometry.size.height)
                 .foregroundColor(PublicTheme.disabledColor)
             
-            let progressValue = min(CGFloat(self.value)*geometry.size.width, geometry.size.width)
+            let progressValue = min(CGFloat(self.value) * geometry.size.width, geometry.size.width)
             
             Rectangle().frame(width: progressValue,
                               height: geometry.size.height)

@@ -82,26 +82,3 @@ struct SelectGoalView_Previews: PreviewProvider {
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }
 }
-
-struct PrimarySubmitButton: View {
-    let title: String
-    let action: () -> Void
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Button {
-                action()
-            } label: {
-                Spacer()
-                Text(title)
-                    .applyStyle(style: .buttonTitleStyle)
-                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 40)
-                Spacer()
-            }
-            .applyStyle(style: .multiplePrimary)
-            
-        }
-        .padding(20)
-        .frame(height: 48)
-    }
-}

@@ -37,9 +37,18 @@ struct PublicTheme {
     // Space
     static let vSpace: CGFloat = 32
     static let vHeaderSpace: CGFloat = 24
+    static let inputCellSpacing: CGFloat = 6
+    static let collectionSpace: CGFloat = 16
+    static let miniCollectionSpace: CGFloat = 12
+    static let textsSpacing: CGFloat = 8
     
     // Pading
     static let hPadding: CGFloat = 24
     static let formInputPadding: CGFloat = 4
     static let scrollViewPadding: CGFloat = 24
+    static let buttonSpacing: CGFloat = 16
+    static let containerPadding: CGFloat = 16
+
+    static let circleSize: CGFloat = 38
+    static let buttonHeight: CGFloat = 48
 }

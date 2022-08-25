@@ -14,7 +14,7 @@ struct MultipleLineInputCell: View {
     var title: String
     
     var body: some View {
-        VStack(spacing: PublicTheme.formInputPadding) {
+        VStack(spacing: PublicTheme.inputCellSpacing) {
             InputCellTitleView(title: title)
             CustomMultiLineTextEditor(text: $inputText,
                                       placeholder: placeholder)

@@ -13,7 +13,7 @@ struct ProgressOverViewOverview: View {
     var weekProgress: Float
     
     var body: some View {
-        HStack (spacing: 20){
+        HStack (spacing: PublicTheme.containerPadding) {
             WeekCircleView(todayProgress: todayProgress,
                            weekProgress: weekProgress)
             HomeHeadLineView(todayProgress: todayProgress,
@@ -21,9 +21,9 @@ struct ProgressOverViewOverview: View {
         }
         .frame(maxWidth: .infinity,
                alignment: .topLeading)
-        .padding(PublicTheme.hPadding)
+        .padding(PublicTheme.containerPadding)
         .background(.white)
-        .cornerRadius(10)
+        .cornerRadius(PublicTheme.inputTextCornerRadius)
         .overlay(
             RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
                 .stroke(PublicTheme.borderColor, lineWidth: 1)

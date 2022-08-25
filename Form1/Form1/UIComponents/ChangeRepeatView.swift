@@ -13,7 +13,7 @@ struct ChangeRepeatView: View {
     let title: String
     
     var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: PublicTheme.inputCellSpacing) {
             InputCellTitleView(title: title)
             
             HStack {

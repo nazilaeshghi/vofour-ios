@@ -27,7 +27,7 @@ struct HomeContextCellView: View {
         }
         .padding()
         .background(item.activityCount != 0 ? .white : PublicTheme.background)
-        .cornerRadius(16)
+        .cornerRadius(PublicTheme.cornerRaduis)
         .if(item.activityCount == 0, transform: { view in
             view.overlay(
                 RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)

@@ -28,7 +28,7 @@ struct TaskCreationStep1View: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
+            VStack(spacing: .zero) {
                 NavigationLink(isActive: $showingNextPage) {
                     AppCoordinator.shared.makeTaskCreationStep2View()
                 } label: {
@@ -47,7 +47,7 @@ struct TaskCreationStep1View: View {
                         
                         VerticalSpaceView(space: .inlineForm)
                         
-                        VStack(spacing: PublicTheme.vSpace){
+                        VStack(spacing: PublicTheme.vSpace) {
                             OneLineInputCell(inputText: $viewModel.titleInputText,
                                              placeholder: LocalizedString.Input.enterHerePlaceholder,
                                              title: LocalizedString.Input.enterHereTitle)
@@ -84,7 +84,7 @@ struct TaskCreationStep1View: View {
                                secondaryButtonText: LocalizedString.Buttons.previousTitle,
                                dismiss: dismiss,
                                primaryAction: { showingNextPage = true })
-                    .frame(height: isTextFieldFocused ? 0 : 60)
+                    .frame(height: isTextFieldFocused ? 0 : PublicTheme.buttonHeight + (PublicTheme.buttonSpacing * 2))
                     .applyBasicViewStyle()
             }
             .applyToolbarWithBackStyle(with: viewModel.header(),

@@ -16,9 +16,9 @@ struct CustomTabBarView: View {
     @State private var showingSheet = false
 
     var body: some View  {
-        VStack(spacing: 0){
+        VStack(spacing: .zero) {
             Spacer()
-                .frame(height: 8)
+                .frame(height: PublicTheme.textsSpacing)
             HStack {
                 ForEach(tabs, id: \.self) { tab in
                     tabView(tab: tab)
@@ -59,7 +59,7 @@ struct CustomTabBarView_Preview: PreviewProvider {
 
 extension CustomTabBarView {
     private func tabView(tab: TabBarItem) -> some View {
-        VStack(spacing: 0) {
+        VStack(spacing: .zero) {
             if tab.tag == 2 {
                 Image(tab.iconName)
                     .offset(y: -16)

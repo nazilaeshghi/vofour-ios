@@ -15,22 +15,31 @@ struct CircularProgressView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(
+                .strokeBorder(
                     PublicTheme.contextBackgroundColor,
                     lineWidth: 16
                 )
+                
             Circle()
                 .trim(from: 0, to: progress.isNaN ? 0 : CGFloat(progress))
                 .stroke(
                     color,
-                    style: StrokeStyle(
+                    style: StrokeStyle (
                         lineWidth: 16,
-                        lineCap: .round
+                        lineCap: .round,
+                        miterLimit: 5
                     )
                 )
                 .rotationEffect(.degrees(-270))
                 .animation(.easeOut, value: progress)
-            
+                .padding(8)
         }
+    }
+}
+
+
+struct CircularProgressView_Previews: PreviewProvider {
+    static var previews: some View {
+        CircularProgressView(progress: 0.75, color: .red)
     }
 }

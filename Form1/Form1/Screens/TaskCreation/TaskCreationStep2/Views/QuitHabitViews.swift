@@ -16,7 +16,7 @@ struct QuitEntirelyView: View {
     @Binding var endtDateCalendarPresented: Bool
     
     var body: some View {
-        VStack(spacing: PublicTheme.vSpace){
+        VStack(spacing: PublicTheme.vSpace) {
             SelectorInoutCell(text: startDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.startDateSelectoreTitle)
@@ -42,7 +42,7 @@ struct QuitWithLimitView: View {
     @Binding var endtDateCalendarPresented: Bool
     
     var body: some View {
-        VStack(spacing: PublicTheme.vSpace){
+        VStack(spacing: PublicTheme.vSpace) {
             SelectorInoutCell(text: startDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.startDateSelectoreTitle)

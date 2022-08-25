@@ -13,6 +13,8 @@ struct TaskHeaderView: View {
     @Binding var selectedDate: Date
     var todayProgressString: String
     
+    let circleSize: CGFloat = PublicTheme.circleSize
+    
     var body: some View {
         VStack(spacing: 2) {
             // Selected date title with progress
@@ -49,9 +51,9 @@ struct TaskHeaderView: View {
                                 .background(.clear)
                         }
                         .applyNoPaddingStyle(style: .multiplePrimary)
-                        .frame(width: 38, height: 38)
+                        .frame(width: circleSize, height: circleSize)
                         .background(PublicTheme.primaryColor)
-                        .cornerRadius(19)
+                        .cornerRadius(circleSize/2)
                     }
                     else {
                         if day.selected {
@@ -62,9 +64,9 @@ struct TaskHeaderView: View {
                                     .applyStyle(style: .deselectedButtonTitleStyle)
                                     .background(.clear)
                             }
-                            .frame(width: 38, height: 38)
+                            .frame(width: circleSize, height: circleSize)
                             .background(PublicTheme.primaryLightColor)
-                            .cornerRadius(19)
+                            .cornerRadius(circleSize/2)
                         }
                         else {
                             Button {
@@ -75,7 +77,7 @@ struct TaskHeaderView: View {
                                     .background(PublicTheme.background)
                             }
                             .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
-                            .frame(width: 38, height: 38)
+                            .frame(width: circleSize, height: circleSize)
                             .background(.clear)
                         }
                     }

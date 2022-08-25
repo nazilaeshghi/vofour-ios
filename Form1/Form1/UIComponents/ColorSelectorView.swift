@@ -12,19 +12,21 @@ struct ColorSelectorView: View {
     @Binding var selectedColor: String
     
     let colors = StaticColors.colors
+    let circleSize: CGFloat = PublicTheme.circleSize
+    let overlaySize: CGFloat = 42
     
     var body: some View {
         VStack(spacing: PublicTheme.formInputPadding) {
             InputCellTitleView(title: LocalizedString.Input.color)
             
             ScrollView(.horizontal) {
-                HStack(spacing: 5) {
+                HStack(spacing: PublicTheme.miniCollectionSpace) {
                     ForEach(colors.reversed(), id: \.self) { item in
                         ZStack {
                             Button("") {}
-                            .frame(width: 38, height: 38)
+                            .frame(width: circleSize, height: circleSize)
                             .background(Color(hex: item))
-                            .cornerRadius(19)
+                            .cornerRadius(circleSize/2)
                             .onTapGesture {
                                 selectedColor = item
                             }
@@ -33,10 +35,10 @@ struct ColorSelectorView: View {
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
+                                        RoundedRectangle(cornerRadius: overlaySize/2)
                                             .stroke(Color(hex: "#0b2959"), lineWidth: 2)
                                     )
-                                    .frame(width: 42, height: 42)
+                                    .frame(width: overlaySize, height: overlaySize)
                                     .padding(3)
                                     .background(.clear)
                                     .disabled(true)

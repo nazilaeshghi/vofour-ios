@@ -28,7 +28,7 @@ extension View {
         self
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    VStack(spacing: 0) {
+                    VStack(spacing: .zero) {
                         Text(title)
                             .applyStyle(style: LabelStyle.number)
                     }
@@ -50,7 +50,7 @@ extension View {
         self
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    VStack(spacing: 0) {
+                    VStack(spacing: .zero) {
                         Text(title)
                             .applyStyle(style: LabelStyle.number)
                     }
@@ -72,7 +72,7 @@ extension View {
             self
                 .toolbar {
                 ToolbarItem(placement: .principal) {
-                    VStack(spacing: 0) {
+                    VStack(spacing: .zero) {
                         Text(title)
                             .applyStyle(style: LabelStyle.number)
                     }
@@ -91,7 +91,7 @@ extension View {
             self
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        VStack(spacing: 0) {
+                        VStack(spacing: .zero) {
                             Text(title)
                                 .applyStyle(style: LabelStyle.number)
                         }
@@ -138,12 +138,12 @@ extension View {
     func applyScrollViewPadding(top: Bool = true, bottom: Bool = true ) -> some View {
         self
             .if(top) { view in
-                view.safeAreaInset(edge: .top, spacing: 0) {
+                view.safeAreaInset(edge: .top, spacing: .zero) {
                     Spacer().frame(height: PublicTheme.scrollViewPadding)
                 }
             }
             .if(bottom) { view in
-                view.safeAreaInset(edge: .bottom, spacing: 0) {
+                view.safeAreaInset(edge: .bottom, spacing: .zero) {
                     Spacer().frame(height: PublicTheme.scrollViewPadding)
                 }
             }

@@ -14,10 +14,10 @@ struct TwoButtonsView: View {
 
     let dismiss: DismissAction
     let primaryAction: () -> Void
-    
+        
     var body: some View {
         GeometryReader { geometry in
-            HStack(spacing: 16) {
+            HStack(spacing: PublicTheme.buttonSpacing) {
                 Button {
                     primaryAction()
                 } label: {
@@ -27,7 +27,7 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multiplePrimary)
-                .frame(width: abs((geometry.size.width-16)/3*2))
+                .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 3 * 2))
                 
                 Button {
                     dismiss()
@@ -38,12 +38,12 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multipleSecondary)
-                .frame(width: abs((geometry.size.width-16)/3*1))
-                
+                .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 3 * 1))
             }
-            
-            .frame(maxWidth: .infinity)
+            .frame(height: PublicTheme.buttonHeight, alignment: .center)
         }
+        .frame(height: PublicTheme.buttonHeight, alignment: .center)
+        .padding(.vertical, PublicTheme.buttonSpacing)
     }
 }
 

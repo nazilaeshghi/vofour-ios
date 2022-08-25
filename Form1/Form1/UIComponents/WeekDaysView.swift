@@ -10,16 +10,17 @@ import SwiftUI
 
 struct WeekDaysView: View {
     @Binding var weekDays: [WeekDayObject]
+    let circleSize: CGFloat = PublicTheme.circleSize
     
     var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: PublicTheme.inputCellSpacing) {
             HStack {
                 Text(LocalizedString.Input.whichDays)
                     .applyStyle(style: .sectionHeaderStyle)
                 Spacer()
             }
             
-            HStack(spacing: 10) {
+            HStack(spacing: PublicTheme.miniCollectionSpace) {
                     ForEach(weekDays, id: \.id) { day in
                         if day.selected {
                             Button {
@@ -29,9 +30,9 @@ struct WeekDaysView: View {
                                     .applyStyle(style: .buttonTitleStyle)
                             }
                             .applyNoPaddingStyle(style: .multiplePrimary)
-                            .frame(width: 38, height: 38)
+                            .frame(width: circleSize, height: circleSize)
                             .background(PublicTheme.primaryColor)
-                            .cornerRadius(19)
+                            .cornerRadius(circleSize/2)
                         } else {
                             Button {
                                 weekDays[day.index].selected = !day.selected
@@ -40,12 +41,12 @@ struct WeekDaysView: View {
                                     .applyStyle(style: .deselectedButtonTitleStyle)
                             }
                             .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
-                            .frame(width: 38, height: 38)
+                            .frame(width: circleSize, height: circleSize)
                             .background(.white)
-                            .cornerRadius(19)
+                            .cornerRadius(circleSize/2)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 19)
-                                    .stroke(Color(hex: "#d9e0e9"), lineWidth: 1)
+                                RoundedRectangle(cornerRadius: circleSize/2)
+                                    .stroke(PublicTheme.borderColor, lineWidth: 1)
                             )
                         }
                     }
