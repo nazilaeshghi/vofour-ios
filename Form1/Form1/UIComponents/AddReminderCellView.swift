@@ -12,7 +12,7 @@ struct AddReminderCellView: View {
     var body: some View {
         HStack {
             Text(LocalizedString.TaskCreationStep2.addReminder)
-                .applyStyle(style: .tableHeaderStyle)
+                .applyStyle(style: .primaryMediumTitle)
             Spacer()
             Image.bluePlus
         }

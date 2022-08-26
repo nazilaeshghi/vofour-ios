@@ -36,7 +36,7 @@ struct MyTabItem: View {
         VStack {
             Image(selection == 0 ? item.selectedIconName : item.iconName)
             Text(item.title)
-                .applyStyle(style: .tabbarStyle)
+                .applyStyle(style: .primaryRegularBody)
         }
     }
 }

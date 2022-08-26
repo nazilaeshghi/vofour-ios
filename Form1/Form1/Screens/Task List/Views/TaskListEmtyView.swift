@@ -13,7 +13,7 @@ struct TaskListEmtyView: View {
         VStack{
             Spacer()
             Text(LocalizedString.Home.empty)
-                .applyStyle(style: .homeEmptyStyle)
+                .applyStyle(style: .emptyRegularTitle)
                 .multilineTextAlignment(.center)
             
             Text("👇")

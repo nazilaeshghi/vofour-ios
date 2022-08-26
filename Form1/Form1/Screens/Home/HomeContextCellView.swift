@@ -39,10 +39,10 @@ struct HomeContextCellView: View {
 struct HomeContextCellView_Previews: PreviewProvider {
     static var previews: some View {
         HomeContextCellView(
-            item: .constant( HomeContextItemDisplayModel(title:  LabelDisplayModel(plainText: "درآمد", style: .verySmallCollectionStyle),
+            item: .constant( HomeContextItemDisplayModel(title:  LabelDisplayModel(plainText: "درآمد", style: .regularBody),
                                               imageName: "",
                                               contextID: "3456",
-                                              contextName: LabelDisplayModel(plainText: " ا فعالیت", style: .verySmallHeaderStyle),
+                                              contextName: LabelDisplayModel(plainText: " ا فعالیت", style: .secondaryRegularBody),
                                               activityCount: 2))
         )
     }

@@ -25,7 +25,7 @@ struct TaskDetailView: View {
                             VStack(spacing: 40) {
                                 
                                 Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
-                                    .applyStyle(style: .mediumHeaderStyle)
+                                    .applyStyle(style: .mediumTitle)
                                 
                                 // Progress view
                                 ZStack {
@@ -142,7 +142,7 @@ struct TaskDetailsRowView: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(title)
-                .applyStyle(style: .secondaryTableHeaderStyle)
+                .applyStyle(style: .mediumSubtitle)
                 .layoutPriority(1)
             
             CustomLineShapeWithAlignment(stratPoint: .trailing, endPoint: .leading)
@@ -151,7 +151,7 @@ struct TaskDetailsRowView: View {
                 .frame(minWidth: 20)
             
             Text(value)
-                .applyStyle(style: .smallTitleStyle)
+                .applyStyle(style: .regularSubtitle)
                 .layoutPriority(1)
         }
     }

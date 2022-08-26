@@ -20,18 +20,18 @@ struct TaskHeaderView: View {
             // Selected date title with progress
             HStack(alignment: .lastTextBaseline) {
                 Text(DateHelper().getHeaderDate(for: selectedDate))
-                    .applyStyle(style: .mediumTitle)
+                    .applyStyle(style: .regularMediumTitle)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 
                 Text(todayProgressString)
-                    .applyStyle(style: .largTitleWithGreenColor)
+                    .applyStyle(style: .greenRegularLargTitle)
             }
             
             // Day titles in week
             HStack {
                 ForEach(sevenDays, id: \.id) { item in
                     Text(item.obj.name)
-                        .applyStyle(style: .homeHeaderStyle)
+                        .applyStyle(style: .headerMediumSubtitle)
                 }
                 .frame(
                     maxWidth: .infinity,
@@ -47,7 +47,7 @@ struct TaskHeaderView: View {
                             selecDay(index: day.index)
                         } label: {
                             Text(day.title)
-                                .applyStyle(style: .brightButtonTitle)
+                                .applyStyle(style: .brightRegularTitle)
                                 .background(.clear)
                         }
                         .applyNoPaddingStyle(style: .multiplePrimary)
@@ -61,7 +61,7 @@ struct TaskHeaderView: View {
                                 selecDay(index: day.index)
                             } label: {
                                 Text(day.title)
-                                    .applyStyle(style: .deselectedButtonTitleStyle)
+                                    .applyStyle(style: .regularTitle)
                                     .background(.clear)
                             }
                             .frame(width: circleSize, height: circleSize)
@@ -73,7 +73,7 @@ struct TaskHeaderView: View {
                                 selecDay(index: day.index)
                             } label: {
                                 Text(day.title)
-                                    .applyStyle(style: .deselectedButtonTitleStyle)
+                                    .applyStyle(style: .regularTitle)
                                     .background(Color.background)
                             }
                             .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)

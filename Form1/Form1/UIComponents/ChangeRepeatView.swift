@@ -21,7 +21,7 @@ struct ChangeRepeatView: View {
                     repeatNum = repeatNum + 1
                 } label: {
                     Text("+")
-                        .applyStyle(style: .primaryMediumTitle)
+                        .applyStyle(style: .primaryRegularMediumTitle)
                 }
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -34,7 +34,7 @@ struct ChangeRepeatView: View {
                     repeatNum = ((repeatNum - 1) == 0) ? 1 : (repeatNum - 1)
                 } label: {
                     Text("-")
-                        .applyStyle(style: .primaryMediumTitle)
+                        .applyStyle(style: .primaryRegularMediumTitle)
                 }
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 15))
                 .frame(maxWidth: .infinity, alignment: .trailing)

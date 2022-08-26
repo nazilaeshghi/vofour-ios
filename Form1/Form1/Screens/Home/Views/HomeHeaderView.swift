@@ -17,10 +17,10 @@ struct HomeHeaderView: View {
         HStack {
             VStack (alignment: .leading) {
                 Text(dateHelper.getRelativeDate(from: sevenDays.first?.date, to: sevenDays.last?.date))
-                    .applyStyle(style: .verySmallHeaderStyle)
+                    .applyStyle(style: .secondaryRegularBody)
                 
                 Text(dateHelper.getFullDatestring())
-                    .applyStyle(style: .sectionHeaderStyle)
+                    .applyStyle(style: .mediumSubtitle)
             }
             
             Spacer()

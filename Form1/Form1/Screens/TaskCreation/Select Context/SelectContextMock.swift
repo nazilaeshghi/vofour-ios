@@ -12,7 +12,7 @@ struct SelectContextCellMockGenerator {
     
     static var item: ContextItemDisplayModel {
         return ContextItemDisplayModel(title: LabelDisplayModel(plainText: "خود شخصی (۲)",
-                                                                style: .smallTitleStyle),
+                                                                style: .regularSubtitle),
                                        imageName: "Users_Context", contextID: "mockId")
     }
     

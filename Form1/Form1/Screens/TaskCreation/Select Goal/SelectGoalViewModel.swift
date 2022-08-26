@@ -25,7 +25,7 @@ class SelectGoalViewModel: ObservableObject {
         let rawGoals = dataManager.fetchListOfGoals()
         let goalDisplayModels = rawGoals.map { goal -> SelectGoalDisplayModel in
             let titleModel = LabelDisplayModel(plainText: goal.title,
-                                               style: .smallTitleStyle)
+                                               style: .regularSubtitle)
             return SelectGoalDisplayModel(id: goal.id,
                                           title: titleModel,
                                           selected: dataManager.selectedGoalId == goal.id ? true : false)
@@ -36,7 +36,7 @@ class SelectGoalViewModel: ObservableObject {
     
     private static func getDefaultGoal() -> SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: LocalizedString.SelectGoalPage.defaultGoalTitle,
-                                           style: .smallTitleStyle)
+                                           style: .regularSubtitle)
         return SelectGoalDisplayModel(id: "-1",
                                       title: titleModel,
                                       selected: false)

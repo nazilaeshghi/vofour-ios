@@ -66,7 +66,7 @@ extension CustomTabBarView {
             } else {
                 Image(selection.tag == tab.tag ? tab.selectedIconName : tab.iconName)
                 Text(tab.title)
-                    .applyStyle(style: .tabbarStyle)
+                    .applyStyle(style: .primaryRegularBody)
             }
         }
         .frame(height: 40)

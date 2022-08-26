@@ -36,7 +36,7 @@ struct SelectGoalView: View {
                 
                 if !viewModel.items.isEmpty {
                     Section(header: Text(LocalizedString.SelectGoalPage.sectionHeader)
-                                .applyStyle(style: .sectionHeaderStyle)) {
+                                .applyStyle(style: .mediumSubtitle)) {
                         ForEach(viewModel.items, id: \.id) { item in
                             SelectGoalCell(item: item)
                                 .padding([.vertical], 10)

@@ -16,7 +16,7 @@ struct InputCellTitleView: View {
     var body: some View {
         HStack {
             Text(title)
-                .applyStyle(style: .sectionHeaderStyle)
+                .applyStyle(style: .mediumSubtitle)
             Spacer()
         }
     }

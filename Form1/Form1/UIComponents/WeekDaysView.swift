@@ -16,7 +16,7 @@ struct WeekDaysView: View {
         VStack(spacing: PublicTheme.inputCellSpacing) {
             HStack {
                 Text(LocalizedString.Input.whichDays)
-                    .applyStyle(style: .sectionHeaderStyle)
+                    .applyStyle(style: .mediumSubtitle)
                 Spacer()
             }
             
@@ -27,7 +27,7 @@ struct WeekDaysView: View {
                                 weekDays[day.index].selected = !day.selected
                             } label: {
                                 Text(day.name)
-                                    .applyStyle(style: .brightButtonTitle)
+                                    .applyStyle(style: .brightRegularTitle)
                             }
                             .applyNoPaddingStyle(style: .multiplePrimary)
                             .frame(width: circleSize, height: circleSize)
@@ -38,7 +38,7 @@ struct WeekDaysView: View {
                                 weekDays[day.index].selected = !day.selected
                             } label: {
                                 Text(day.name)
-                                    .applyStyle(style: .deselectedButtonTitleStyle)
+                                    .applyStyle(style: .regularTitle)
                             }
                             .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
                             .frame(width: circleSize, height: circleSize)

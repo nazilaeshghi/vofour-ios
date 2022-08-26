@@ -31,7 +31,7 @@ struct DurationSheetView: View {
             Picker("Color Scheme", selection: $selectedDurationID) {
                 ForEach(durations, id: \.id) { durationItem in
                     Text(durationItem.amount.timeStr ?? "")
-                        .applyStyle(style: .deselectedButtonTitleStyle)
+                        .applyStyle(style: .regularTitle)
                         .tag(durationItem.tag)
                 }
             }
@@ -43,7 +43,7 @@ struct DurationSheetView: View {
             } label: {
                 Spacer()
                 Text(LocalizedString.Buttons.saveTitle)
-                    .applyStyle(style: .brightButtonTitle)
+                    .applyStyle(style: .brightRegularTitle)
                 Spacer()
             }
             .applyStyle(style: .multiplePrimary)

@@ -19,16 +19,16 @@ struct HomeHeadLineView: View {
                 
                 if let week = Int(weekProgress * 100), week >= 0 {
                     Text("%\(week)".convertToPersian())
-                        .applyStyle(style: .primaryLargTitle)
+                        .applyStyle(style: .primaryRegularLargTitle)
                 } else {
                     Text("---")
-                        .applyStyle(style: .primaryLargTitle)
+                        .applyStyle(style: .primaryRegularLargTitle)
                 }
                 
                 HStack {
                     Image.blueDot
                     Text(LocalizedString.Home.todayProgress)
-                        .applyStyle(style: .tabbarStyle)
+                        .applyStyle(style: .primaryRegularBody)
                 }
             }
             
@@ -36,16 +36,16 @@ struct HomeHeadLineView: View {
                 
                 if let today = Int(todayProgress * 100), today >= 0 {
                     Text("%\(today)".convertToPersian())
-                        .applyStyle(style: .largTitleWithGreenColor)
+                        .applyStyle(style: .greenRegularLargTitle)
                 } else {
                     Text("---")
-                        .applyStyle(style: .largTitleWithGreenColor)
+                        .applyStyle(style: .greenRegularLargTitle)
                 }
                     
                 HStack {
                     Image.greenDot
                     Text(LocalizedString.Home.weekProgress)
-                        .applyStyle(style: .verySmallGreenNumberStyle)
+                        .applyStyle(style: .greenRegularBody)
                 }
             }
         }

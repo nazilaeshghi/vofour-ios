@@ -27,15 +27,15 @@ class HomeViewModel: ObservableObject {
     }
     
     private func transformContexts(model: HomeContextDataModel) -> HomeContextItemDisplayModel {
-        let title = LabelDisplayModel(plainText: model.context.name, style: .verySmallCollectionStyle)
+        let title = LabelDisplayModel(plainText: model.context.name, style: .regularBody)
         let subtitle: LabelDisplayModel
         if model.activityCount > 0 {
             subtitle = LabelDisplayModel(plainText: "\(model.activityCount) \(LocalizedString.Home.activity)".convertToPersian(),
-                                         style: .verySmallHeaderStyle)
+                                         style: .secondaryRegularBody)
         }
         else {
             subtitle = LabelDisplayModel(plainText: LocalizedString.Home.add,
-                                         style: .verySmallHeaderStyle)
+                                         style: .secondaryRegularBody)
         }
         return HomeContextItemDisplayModel(title: title,
                                            imageName: model.context.iconName,

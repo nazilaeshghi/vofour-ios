@@ -71,7 +71,7 @@ struct CardUIView_Previews: PreviewProvider {
 struct CardMockGenerator {
     static func sample1() -> CardDisplayModel {
         return CardDisplayModel(title: LabelDisplayModel(plainText: "نیم ساعت پیاده‌روی"),
-                                subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .subtitleStyle),
+                                subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .secondaryRegularSubtitle),
                                 count: LabelDisplayModel(plainText: "۳", style: .regularTitle),
                                 background: Color(hex:"EA4C89"),
                                 state: .done,

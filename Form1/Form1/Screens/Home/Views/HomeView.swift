@@ -30,7 +30,7 @@ struct HomeView: View {
                 
                 // Contexts grid
                 Text(LocalizedString.Home.contextTitle)
-                    .applyStyle(style: .deselectedButtonTitleStyle)
+                    .applyStyle(style: .regularTitle)
                 
                 Spacer()
                 

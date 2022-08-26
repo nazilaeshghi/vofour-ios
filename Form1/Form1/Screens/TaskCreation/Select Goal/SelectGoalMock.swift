@@ -11,7 +11,7 @@ import Foundation
 struct SelectGoalCellMockGenerator {
     static var item: SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: "مسابقات معماری (۳ فعالیت)",
-                                            style: .smallTitleStyle)
+                                            style: .regularSubtitle)
         return SelectGoalDisplayModel(id: "1",
                                       title: titleModel,
                                       selected: true)
@@ -19,7 +19,7 @@ struct SelectGoalCellMockGenerator {
     
     static var unselectedItem: SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: "مسابقات معماری (۳ فعالیت)",
-                                            style: .smallTitleStyle)
+                                            style: .regularSubtitle)
         return SelectGoalDisplayModel(id: "2",
                                       title: titleModel,
                                       selected: false)
@@ -27,7 +27,7 @@ struct SelectGoalCellMockGenerator {
     
     static var defaultItem: SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: "هدف ندارد و مستقل است (۲ فعالیت)",
-                                            style: .smallTitleStyle)
+                                            style: .regularSubtitle)
         return SelectGoalDisplayModel(id: "-1",
                                       title: titleModel,
                                       selected: false)

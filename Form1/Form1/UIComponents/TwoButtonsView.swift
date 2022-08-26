@@ -23,7 +23,7 @@ struct TwoButtonsView: View {
                 } label: {
                     Spacer()
                     Text(primaryButtonText)
-                        .applyStyle(style: .brightButtonTitle)
+                        .applyStyle(style: .brightRegularTitle)
                     Spacer()
                 }
                 .applyStyle(style: .multiplePrimary)
@@ -34,7 +34,7 @@ struct TwoButtonsView: View {
                 } label: {
                     Spacer()
                     Text(secondaryButtonText)
-                        .applyStyle(style: .buttonTitleStyleSecondary)
+                        .applyStyle(style: .primaryTitle)
                     Spacer()
                 }
                 .applyStyle(style: .multipleSecondary)

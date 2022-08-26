@@ -32,7 +32,7 @@ class TaskListViewModel: ObservableObject {
     static func transformDataModels(dayRecord: DailyTaskDataModel) -> CardDisplayModel {
         let title = LabelDisplayModel(plainText: dayRecord.task.title)
         let subtitleText = String(dayRecord.record?.count ?? 0).convertToPersian() + "/" + String(dayRecord.task.numberOfRepeat).convertToPersian()
-        let subtitle = LabelDisplayModel(plainText: subtitleText, style: .subtitleStyle)
+        let subtitle = LabelDisplayModel(plainText: subtitleText, style: .secondaryRegularSubtitle)
         let count = LabelDisplayModel(plainText: String(dayRecord.record?.count ?? 0), style: .regularTitle)
         
         let progress = calculateProgress(dayRecord: dayRecord)

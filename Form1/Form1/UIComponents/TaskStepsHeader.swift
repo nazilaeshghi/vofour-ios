@@ -13,7 +13,7 @@ struct TaskStepsHeader: View {
     var body: some View {
         HStack {
             Text(title)
-                .applyStyle(style: .tableHeaderStyle)
+                .applyStyle(style: .primaryMediumTitle)
             Spacer()
         }
     }
