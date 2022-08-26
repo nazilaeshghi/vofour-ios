@@ -46,6 +46,10 @@ struct LabelStyle {
         return .init(font: .title2, fontFamilty: .medium, textColor: .primaryColor)
     }
     
+    static var secondaryTableHeaderStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
+    }
+    
     static var sectionHeaderStyle: LabelStyle {
         return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
     }

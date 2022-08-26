@@ -11,7 +11,7 @@ import SwiftUI
 extension Text {
     func applyStyle(style: LabelStyle) -> some View {
         self
-            .scaledFont(style: style.font)
+            .scaledFont(family: style.fontFamilty, style: style.font)
             .foregroundColor(style.textColor)
     }
 }

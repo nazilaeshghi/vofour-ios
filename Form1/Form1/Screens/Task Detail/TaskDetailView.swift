@@ -11,25 +11,26 @@ import SwiftUI
 struct TaskDetailView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: TaskDetailViewModel
-
+    
     var body: some View {
         
         NavigationView {
             VStack {
-                
                 DeviderView()
-                
+                VerticalSpaceView(space: .header)
+
                 Group {
-                    Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
-                        .applyStyle(style: .mediumHeaderStyle)
-                    
                     if $viewModel.didFetchDate.wrappedValue {
                         GeometryReader { geometry in
-                            VStack {
+                            VStack(spacing: 40) {
+                                
+                                Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
+                                    .applyStyle(style: .mediumHeaderStyle)
+                                
+                                // Progress view
                                 ZStack {
                                     CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
                                                          color: $viewModel.item.background.wrappedValue)
-                                        .padding(.horizontal, 40)
                                     
                                     HStack {
                                         Button(action: {
@@ -54,34 +55,13 @@ struct TaskDetailView: View {
                                             .frame(width: 50, height: 50)
                                     }
                                 }
-                                .frame(width: geometry.size.width, height: geometry.size.width)
-                                .offset(x: 0, y: -20)
+                                .frame(width: geometry.size.width * 0.7, height: geometry.size.width * 0.7)
                                 
-                                
+                                // Details
                                 VStack(spacing: PublicTheme.collectionSpace) {
-                                    HStack {
-                                        Text(LocalizedString.TaskDetail.taskTypeTitle)
-                                        CustomLineShapeWithAlignment(stratPoint: .leading, endPoint: .trailing)
-                                                        .stroke(style: StrokeStyle(lineWidth: 1.0, dash: [5]))
-                                                        .frame(height: 1.0)
-                                        Text(viewModel.activityType)
-                                    }
-                                    
-                                    HStack {
-                                        Text(LocalizedString.TaskDetail.contextTitle)
-                                        CustomLineShapeWithAlignment(stratPoint: .leading, endPoint: .trailing)
-                                                        .stroke(style: StrokeStyle(lineWidth: 1.0, dash: [5]))
-                                                        .frame(height: 1.0)
-                                        Text(viewModel.contextName)
-                                    }
-                                    
-                                    HStack {
-                                        Text(LocalizedString.TaskDetail.goalTitle)
-                                        CustomLineShapeWithAlignment(stratPoint: .leading, endPoint: .trailing)
-                                                        .stroke(style: StrokeStyle(lineWidth: 1.0, dash: [5]))
-                                                        .frame(height: 1.0)
-                                        Text(viewModel.goalName)
-                                    }
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.taskTypeTitle, value: viewModel.activityType)
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.contextTitle, value: viewModel.contextName)
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle, value: viewModel.goalName)
                                 }
                             }
                         }
@@ -109,7 +89,7 @@ struct TaskDetailView_Previews: PreviewProvider {
         TaskDetailView(viewModel: TaskDetailViewModel(dataManager: TaskDetailDataMock(), currentDate: Date()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
-.previewInterfaceOrientation(.portraitUpsideDown)
+            .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }
 
@@ -140,9 +120,8 @@ struct CustomLineShapeWithAlignment: Shape {
         case .bottomTrailing: return CGPoint(x: rect.maxX, y: rect.maxY)
         default: return CGPoint(x: rect.minX, y: rect.minY)
         }
-        
     }
-
+    
     func path(in rect: CGRect) -> Path {
         
         Path { path in
@@ -154,4 +133,27 @@ struct CustomLineShapeWithAlignment: Shape {
         
     }
     
+}
+
+
+struct TaskDetailsRowView: View {
+    let title: String
+    let value: String
+    
+    var body: some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text(title)
+                .applyStyle(style: .secondaryTableHeaderStyle)
+                .layoutPriority(1)
+            
+            CustomLineShapeWithAlignment(stratPoint: .leading, endPoint: .trailing)
+                .stroke(Color.primaryTextColor, style: StrokeStyle(lineWidth: 1.0, dash: [4]))
+                .frame(height: 1.0)
+                .frame(minWidth: 20)
+            
+            Text(value)
+                .applyStyle(style: .smallTitleStyle)
+                .layoutPriority(1)
+        }
+    }
 }
