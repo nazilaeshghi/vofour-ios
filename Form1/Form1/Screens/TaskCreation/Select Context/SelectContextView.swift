@@ -75,14 +75,14 @@ struct SelectContextHeaderView: View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
             HStack {
                 Text(LocalizedString.ContextPage.subHeader)
-                    .applyStyle(style: LabelStyle.tableHeaderStyle)
+                    .applyStyle(style: .tableHeaderStyle)
                 Spacer()
             }
             
             VStack(spacing: PublicTheme.inputCellSpacing) {
                 HStack {
                     Text(LocalizedString.ContextPage.searchHeader)
-                        .applyStyle(style: LabelStyle.smallTitleStyle)
+                        .applyStyle(style: .smallTitleStyle)
                     Spacer()
                 }
                 SearchBar(searchText: $searchText)

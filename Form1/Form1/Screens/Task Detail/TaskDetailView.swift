@@ -33,25 +33,16 @@ struct TaskDetailView: View {
                                                          color: $viewModel.item.background.wrappedValue)
                                     
                                     HStack {
-                                        Button(action: {
-                                            viewModel.decrement()
-                                        }, label: {
-                                            Image.minus
-                                        })
+                                        
+                                        Button(action: increment, label: { Image.plus })
                                             .frame(width: 50, height: 50)
                                         
                                         VStack {
-                                            Text($viewModel.item.count.wrappedValue.plainText.convertToPersian())
-                                                .applyStyle(style: .hugeTitleStyle)
-                                            Text($viewModel.item.subtitle.wrappedValue.plainText.convertToPersian())
-                                                .applyStyle(style: .lightHeaderStyle)
+                                            TextView(model: viewModel.item.count)
+                                            TextView(model: viewModel.item.subtitle)
                                         }
                                         
-                                        Button(action: {
-                                            viewModel.increment()
-                                        }, label: {
-                                            Image.plus
-                                        })
+                                        Button(action: decrement, label: { Image.minus })
                                             .frame(width: 50, height: 50)
                                     }
                                 }
@@ -81,6 +72,14 @@ struct TaskDetailView: View {
             }
         }
         .navigationBarHidden(true)
+    }
+    
+    func decrement() {
+        viewModel.decrement()
+    }
+    
+    func increment() {
+        viewModel.increment()
     }
 }
 

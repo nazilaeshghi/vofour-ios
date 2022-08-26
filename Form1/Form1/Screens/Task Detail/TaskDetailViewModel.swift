@@ -27,7 +27,13 @@ class TaskDetailViewModel: ObservableObject {
     func fetchDetails() {
         guard let task = dataManager.fetchTaskDetail() else { return }
         item = TaskListViewModel.transformDataModels(dayRecord: task)
-        item.subtitle = LabelDisplayModel(plainText: "از " + "\(task.record?.total ?? 0)", style: .subtitleStyle)
+        
+        let subtitleStr = "از " + "\(task.record?.total ?? 0)"
+        item.subtitle = LabelDisplayModel(plainText: subtitleStr.convertToPersian(), style: .lightHeaderStyle)
+        
+        item.count.labelStyle = .hugeTitleStyle
+        item.count.plainText =  item.count.plainText.convertToPersian()
+        
         activityType = task.task.isActivity ? LocalizedString.TaskDetail.create : LocalizedString.TaskDetail.quit
         contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
         goalName = dataManager.fetchGoal(id: task.task.goalId ?? "")?.title ?? LocalizedString.TaskDetail.independent

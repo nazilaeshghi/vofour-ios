@@ -9,8 +9,8 @@
 import Foundation
 
 struct LabelDisplayModel {
-    let plainText: String
-    let labelStyle: LabelStyle
+    var plainText: String
+    var labelStyle: LabelStyle
     
     init(plainText: String,
          style: LabelStyle = .titleStyle) {

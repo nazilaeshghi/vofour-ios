@@ -16,7 +16,7 @@ struct ModalHeaderView: View {
         VStack {
             ZStack {
                 Text(title)
-                    .applyStyle(style: LabelStyle.number)
+                    .applyStyle(style: .number)
                 HStack {
                     Spacer()
                     Button(action: {

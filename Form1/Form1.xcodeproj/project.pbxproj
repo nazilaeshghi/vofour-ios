@@ -83,6 +83,7 @@
 		647F294927AF247300C70874 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294827AF247300C70874 /* HomeDataManager.swift */; };
 		648331D928B7CC0B00FDDB9E /* DeviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648331D828B7CC0B00FDDB9E /* DeviderView.swift */; };
 		648331DB28B7CD5300FDDB9E /* PrimarySubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648331DA28B7CD5300FDDB9E /* PrimarySubmitButton.swift */; };
+		648332D628B92C9500FDDB9E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648332D528B92C9500FDDB9E /* TextView.swift */; };
 		6483727E289597C200712190 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6483727D289597C200712190 /* SettingsView.swift */; };
 		64842BC2288F440D00A4AA2E /* TaskListViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */; };
 		64842BC8288F6FE700A4AA2E /* TaskHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BC7288F6FE700A4AA2E /* TaskHeaderView.swift */; };
@@ -226,6 +227,7 @@
 		647F294827AF247300C70874 /* HomeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManager.swift; sourceTree = "<group>"; };
 		648331D828B7CC0B00FDDB9E /* DeviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviderView.swift; sourceTree = "<group>"; };
 		648331DA28B7CD5300FDDB9E /* PrimarySubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySubmitButton.swift; sourceTree = "<group>"; };
+		648332D528B92C9500FDDB9E /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		6483727D289597C200712190 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		64842BC1288F440D00A4AA2E /* TaskListViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewMock.swift; sourceTree = "<group>"; };
 		64842BC7288F6FE700A4AA2E /* TaskHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHeaderView.swift; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 				6402889828B5617F00FCE2C8 /* VerticalSpaceView.swift */,
 				648331D828B7CC0B00FDDB9E /* DeviderView.swift */,
 				648331DA28B7CD5300FDDB9E /* PrimarySubmitButton.swift */,
+				648332D528B92C9500FDDB9E /* TextView.swift */,
 				644487F7288707810020A758 /* TabBar */,
 				64C7727F2885BCC50066F97B /* CustomButtomSheet */,
 				6400D6582844F852005A6F79 /* Cells */,
@@ -846,6 +849,7 @@
 				64C5503E285F8864000E9F61 /* SelectContextViewModel.swift in Sources */,
 				640B8E1627CECF2100177ADF /* CardTitleStackView.swift in Sources */,
 				6400D6552844F4CB005A6F79 /* CustomSelector.swift in Sources */,
+				648332D628B92C9500FDDB9E /* TextView.swift in Sources */,
 				64A8A3AE284076CF0056EC08 /* TaskCreationStep1View.swift in Sources */,
 				64FD2C0E2881BC9A007EC203 /* ColorSelectorView.swift in Sources */,
 				647F26F727AC266600C70874 /* Presentation.swift in Sources */,

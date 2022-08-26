@@ -14,13 +14,11 @@ struct HomeContextCellView: View {
         
         VStack {
             HStack {
-                Text(item.title.plainText)
-                    .applyStyle(style: item.title.labelStyle)
+                TextView(model: item.title)
                 Spacer()
             }
             HStack {
-                Text(item.contextName.plainText)
-                    .applyStyle(style: item.contextName.labelStyle)
+                TextView(model: item.contextName)
                 Spacer()
                 Image.grayPlus
             }

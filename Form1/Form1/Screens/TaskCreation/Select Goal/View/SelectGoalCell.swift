@@ -14,8 +14,7 @@ struct SelectGoalCell: View {
     var body: some View {
         HStack {
             Image(item.imageName)
-            Text(item.title.plainText)
-                .applyStyle(style: item.title.labelStyle)
+            TextView(model: item.title)
             Spacer()
             Image(item.selected ? "Activated_on" : "Activated_off")
         }

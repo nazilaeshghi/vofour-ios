@@ -15,14 +15,12 @@ struct CardTitleStackView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(title.plainText)
-                    .applyStyle(style: title.labelStyle)
+                TextView(model: title)
                 Spacer()
             }
             
             HStack {
-                Text(subtitle.plainText)
-                    .applyStyle(style: subtitle.labelStyle)
+                TextView(model: subtitle)
                 Spacer()
             }
         }
