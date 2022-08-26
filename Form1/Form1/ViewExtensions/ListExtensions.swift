@@ -11,7 +11,7 @@ import SwiftUI
 extension List {
     func applyListBasicStyle() -> some View {
         self
-            .background(PublicTheme.background)
+            .background(Color.background)
             .listStyle(PlainListStyle())
             .onAppear(perform: {
                 UIScrollView.appearance().keyboardDismissMode = .onDrag

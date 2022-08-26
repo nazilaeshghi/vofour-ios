@@ -29,7 +29,7 @@ struct ReminderCellView: View {
                 }
             }
             .padding(10)
-            .background(PublicTheme.segmentBG)
+            .background(Color.segmentBG)
             .cornerRadius(PublicTheme.cornerRaduis)
         }
     }

@@ -12,6 +12,9 @@ class TaskDetailDataMock: TaskDetailDataManagable {
     func fetchTaskDetail() -> DailyTaskDataModel? {
         return DailyTaskDataModel(task: TaskDataModelMock(), record: RecordEntry(recordID: "", taskID: "", date: Date(), count: 2, total: 5))
     }
+    func fetchContext(id: String) -> TaskContext? { SelectContextCellMockGenerator.context }
+    
+    func fetchGoal(id: String) -> Goal? { SelectGoalCellMockGenerator.goals.first }
     
     func increment() {}
     

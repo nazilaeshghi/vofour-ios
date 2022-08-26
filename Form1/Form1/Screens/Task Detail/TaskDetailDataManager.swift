@@ -10,6 +10,8 @@ import Foundation
 
 protocol TaskDetailDataManagable {
     func fetchTaskDetail() -> DailyTaskDataModel?
+    func fetchContext(id: String) -> TaskContext?
+    func fetchGoal(id: String) -> Goal?
     func increment()
     func decrement()
 }
@@ -29,6 +31,14 @@ class TaskDetailDataManager: TaskDetailDataManagable {
         guard let task = dataManager.fetchTask(taskID: taskID) else { return nil }
         let record = dataManager.fetchRecord(taskID: taskID, date: currentDate)
         return DailyTaskDataModel(task: task, record: record)
+    }
+    
+    func fetchContext(id: String) -> TaskContext? {
+        return dataManager.context(id: id)
+    }
+    
+    func fetchGoal(id: String) -> Goal? {
+        return dataManager.findGoal(with: id)
     }
     
     func increment() {

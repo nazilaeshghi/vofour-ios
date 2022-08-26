@@ -31,7 +31,7 @@ struct WeekDaysView: View {
                             }
                             .applyNoPaddingStyle(style: .multiplePrimary)
                             .frame(width: circleSize, height: circleSize)
-                            .background(PublicTheme.primaryColor)
+                            .background(Color.primaryColor)
                             .cornerRadius(circleSize/2)
                         } else {
                             Button {
@@ -46,7 +46,7 @@ struct WeekDaysView: View {
                             .cornerRadius(circleSize/2)
                             .overlay(
                                 RoundedRectangle(cornerRadius: circleSize/2)
-                                    .stroke(PublicTheme.borderColor, lineWidth: 1)
+                                    .stroke(Color.borderColor, lineWidth: 1)
                             )
                         }
                     }

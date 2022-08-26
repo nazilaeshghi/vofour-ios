@@ -16,7 +16,7 @@ struct CircularProgressView: View {
         ZStack {
             Circle()
                 .strokeBorder(
-                    PublicTheme.contextBackgroundColor,
+                    Color.contextBackgroundColor,
                     lineWidth: 16
                 )
                 

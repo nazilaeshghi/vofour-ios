@@ -95,7 +95,7 @@ struct TaskCreationStep1View: View {
                                                 object: nil,
                                                 userInfo: nil)
             })
-            .background(PublicTheme.background)
+            .background(.background)
             .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
             { obj in
                 presentationMode.wrappedValue.dismiss()

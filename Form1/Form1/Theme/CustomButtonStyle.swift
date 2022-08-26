@@ -17,11 +17,11 @@ struct CustomButtonStyle {
     let cornerRaduis: CGFloat
     
     static var primary: CustomButtonStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: PublicTheme.primaryColor, height: 40, cornerRaduis: PublicTheme.cornerRaduis)
+        return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: .primaryColor, height: 40, cornerRaduis: PublicTheme.cornerRaduis)
     }
     
     static var multiplePrimary: CustomButtonStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: PublicTheme.primaryColor, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
+        return .init(font: .title, fontFamilty: .regular, textColor: .white, backgroundColor: .primaryColor, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
     }
     
     static var multipleDeselectedPrimary: CustomButtonStyle {
@@ -29,6 +29,6 @@ struct CustomButtonStyle {
     }
     
     static var multipleSecondary: CustomButtonStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: PublicTheme.primaryColor, backgroundColor: .clear, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
+        return .init(font: .title, fontFamilty: .regular, textColor: .primaryColor, backgroundColor: .clear, height: 32, cornerRaduis: PublicTheme.multiButtonCornerRaduis)
     }
 }

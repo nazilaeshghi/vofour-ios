@@ -132,7 +132,7 @@ extension View {
     
     func applyBackgroundColor() -> some View {
         self
-            .background(PublicTheme.background.ignoresSafeArea())
+            .background(Color.background.ignoresSafeArea())
     }
     
     func applyScrollViewPadding(top: Bool = true, bottom: Bool = true ) -> some View {

@@ -54,7 +54,7 @@ struct HomeView: View {
                 sevenDays = DateBuilder.make7Days(selectedDate: Date())
             }
         }
-        .background(PublicTheme.background)
+        .background(.background)
         .sheet(item: $selectedContextID) { contextID in
             AppCoordinator.shared.makeTaskCreationStep1View(contextID: contextID)
         }

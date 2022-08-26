@@ -13,6 +13,6 @@ struct DeviderView: View {
         VStack() {
             Divider()
         }
-        .background(PublicTheme.background.ignoresSafeArea())
+        .background(Color.background.ignoresSafeArea())
     }
 }

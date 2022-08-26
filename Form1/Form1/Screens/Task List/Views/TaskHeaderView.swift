@@ -52,7 +52,7 @@ struct TaskHeaderView: View {
                         }
                         .applyNoPaddingStyle(style: .multiplePrimary)
                         .frame(width: circleSize, height: circleSize)
-                        .background(PublicTheme.primaryColor)
+                        .background(Color.primaryColor)
                         .cornerRadius(circleSize/2)
                     }
                     else {
@@ -65,7 +65,7 @@ struct TaskHeaderView: View {
                                     .background(.clear)
                             }
                             .frame(width: circleSize, height: circleSize)
-                            .background(PublicTheme.primaryLightColor)
+                            .background(Color.primaryLightColor)
                             .cornerRadius(circleSize/2)
                         }
                         else {
@@ -74,7 +74,7 @@ struct TaskHeaderView: View {
                             } label: {
                                 Text(day.title)
                                     .applyStyle(style: .deselectedButtonTitleStyle)
-                                    .background(PublicTheme.background)
+                                    .background(Color.background)
                             }
                             .applyNoPaddingWithBorderStyle(style: .multipleDeselectedPrimary)
                             .frame(width: circleSize, height: circleSize)

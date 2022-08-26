@@ -20,7 +20,7 @@ struct SelectContextCell: View {
             Image.arrow
         }
         .padding()
-        .background(PublicTheme.contextBackgroundColor)
+        .background(Color.contextBackgroundColor)
         .cornerRadius(PublicTheme.cornerRaduis)
         .applyBasicCellStyle()
     }

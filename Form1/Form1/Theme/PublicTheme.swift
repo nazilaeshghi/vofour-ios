@@ -8,23 +8,24 @@
 
 import SwiftUI
 
-struct PublicTheme {
-    // Color
-    static let disabledColor = Color(hex: "BBC7D3")
-    static let contextBackgroundColor = Color(hex: "EFF3F6")
-    static let background = Color(hex: "FAFBFC")
-    static let primaryColor = Color(hex: "1757A6")
-    static let primaryLightColor = Color(hex: "C2DDFC")
-    static let headerSecondaryTextColor = Color(hex: "6E7E91")
-    static let borderColor = Color(hex: "D9E0E9")
-    static let primaryTextColor = Color(hex: "141D2B")
-    static let homeHeaderColor = Color(hex: "646b75")
-    static let placeholderTextColor = Color(hex: "A0AEBD")
-    static let segmentBG = Color(hex: "EFF2F9")
-    static let greenColor = Color(hex: "01B7A7")
-    static let emptyTextColor = Color(hex: "6e7f91")
-    static let secondaryTextColor = Color(hex: "4B5666")
+extension Color {
+    static var disabledColor: Color { return Color(hex: "BBC7D3") }
+    static var contextBackgroundColor: Color { return Color(hex: "EFF3F6") }
+    static var background: Color { return Color(hex: "FAFBFC") }
+    static var primaryColor: Color { return Color(hex: "1757A6") }
+    static var primaryLightColor: Color { return Color(hex: "C2DDFC") }
+    static var headerSecondaryTextColor: Color { return Color(hex: "6E7E91") }
+    static var borderColor: Color { return Color(hex: "D9E0E9") }
+    static var primaryTextColor: Color { return Color(hex: "141D2B") }
+    static var homeHeaderColor: Color { return Color(hex: "646b75") }
+    static var placeholderTextColor: Color { return Color(hex: "A0AEBD") }
+    static var segmentBG: Color { return Color(hex: "EFF2F9") }
+    static var greenColor: Color { return Color(hex: "01B7A7") }
+    static var emptyTextColor: Color { return Color(hex: "6e7f91") }
+    static var secondaryTextColor: Color { return Color(hex: "4B5666") }
+}
 
+struct PublicTheme {
     // Corner raduis
     static let cornerRaduis: CGFloat = 16
     static let multiButtonCornerRaduis: CGFloat = 8

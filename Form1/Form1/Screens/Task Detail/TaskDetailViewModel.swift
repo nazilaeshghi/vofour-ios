@@ -13,6 +13,9 @@ class TaskDetailViewModel: ObservableObject {
     @Published var item: CardDisplayModel!
     let currentDate: Date
     @Published var didFetchDate: Bool = false
+    @Published var activityType: String = ""
+    @Published var contextName: String = ""
+    @Published var goalName: String = ""
     
     private let dataManager: TaskDetailDataManagable
     
@@ -25,6 +28,9 @@ class TaskDetailViewModel: ObservableObject {
         guard let task = dataManager.fetchTaskDetail() else { return }
         item = TaskListViewModel.transformDataModels(dayRecord: task)
         item.subtitle = LabelDisplayModel(plainText: "از " + "\(task.record?.total ?? 0)", style: .subtitleStyle)
+        activityType = task.task.isActivity ? LocalizedString.TaskDetail.create : LocalizedString.TaskDetail.quit
+        contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
+        goalName = dataManager.fetchGoal(id: task.task.goalId ?? "")?.title ?? LocalizedString.TaskDetail.independent
         didFetchDate = true
     }
     

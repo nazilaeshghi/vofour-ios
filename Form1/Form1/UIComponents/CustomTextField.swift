@@ -29,7 +29,7 @@ struct CustomTextField: View {
         .frame(height: PublicTheme.oneLineTextfieldHeight)
         .overlay(
             RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
-                .stroke(PublicTheme.borderColor, lineWidth: 1)
+                .stroke(Color.borderColor, lineWidth: 1)
         )
     }
 }

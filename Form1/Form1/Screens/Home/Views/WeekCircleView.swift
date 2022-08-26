@@ -15,11 +15,11 @@ struct WeekCircleView: View {
     var body: some View {
         ZStack {
             CircularProgressView(progress: weekProgress,
-                                 color: PublicTheme.primaryColor)
+                                 color: .primaryColor)
                 .frame(width: 144, height: 144)
             
             CircularProgressView(progress: todayProgress,
-                                 color: PublicTheme.greenColor)
+                                 color: .greenColor)
                 .frame(width: 80, height: 80)
         }
     }

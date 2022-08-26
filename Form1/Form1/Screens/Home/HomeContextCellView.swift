@@ -26,12 +26,12 @@ struct HomeContextCellView: View {
             }
         }
         .padding()
-        .background(item.activityCount != 0 ? .white : PublicTheme.background)
+        .background(item.activityCount != 0 ? .white : .background)
         .cornerRadius(PublicTheme.cornerRaduis)
         .if(item.activityCount == 0, transform: { view in
             view.overlay(
                 RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
-                    .stroke(PublicTheme.borderColor, lineWidth: 1)
+                    .stroke(Color.borderColor, lineWidth: 1)
             )
         })
         

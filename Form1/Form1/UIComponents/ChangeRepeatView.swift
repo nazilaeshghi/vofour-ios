@@ -43,7 +43,7 @@ struct ChangeRepeatView: View {
             .frame(height: 40)
             .overlay(
                 RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
-                    .stroke(PublicTheme.borderColor, lineWidth: 1)
+                    .stroke(Color.borderColor, lineWidth: 1)
             )
         }
     }

@@ -35,7 +35,7 @@ struct CustomTabBarView: View {
             }
             .frame(height: 45)
         }
-        .background(PublicTheme.background.ignoresSafeArea(edges: .bottom))
+        .background(Color.background.ignoresSafeArea(edges: .bottom))
         .sheet(isPresented: $showingSheet) {
             
         } content: {

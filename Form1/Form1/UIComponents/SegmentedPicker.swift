@@ -36,9 +36,9 @@ struct SizeAwareViewModifier: ViewModifier {
     }
 }
 struct SegmentedPicker: View {
-    private static let ActiveSegmentColor: Color = PublicTheme.primaryColor
-    private static let BackgroundColor: Color = PublicTheme.segmentBG
-    private static let TextColor: Color = PublicTheme.primaryColor
+    private static let ActiveSegmentColor: Color = .primaryColor
+    private static let BackgroundColor: Color = .segmentBG
+    private static let TextColor: Color = .primaryColor
     private static let SelectedTextColor: Color = .white
     
     private static let SegmentCornerRadius: CGFloat = PublicTheme.inputTextCornerRadius
