@@ -18,10 +18,9 @@ struct TaskHeaderView: View {
     var body: some View {
         VStack(spacing: 2) {
             // Selected date title with progress
-            HStack(alignment: .lastTextBaseline) {
+            HStack(alignment: .center) {
                 Text(DateHelper().getHeaderDate(for: selectedDate))
                     .applyStyle(style: .regularMediumTitle)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 
                 Text(todayProgressString)
                     .applyStyle(style: .greenRegularLargTitle)
