@@ -26,7 +26,7 @@ struct HomeContextCellView: View {
             }
         }
         .padding()
-        .background(item.activityCount != 0 ? .white : .background)
+        .background(item.activityCount != 0 ? .white : Color.background)
         .cornerRadius(PublicTheme.cornerRaduis)
         .if(item.activityCount == 0, transform: { view in
             view.overlay(

@@ -27,7 +27,7 @@ struct SelectGoalView: View {
                 Section {
                     SelectGoalCell(item: viewModel.defaultItem)
                         .padding([.vertical], 10)
-                        .background(.background)
+                        .background(Color.background)
                         .onTapGesture {
                             viewModel.selectGoal(goalID: viewModel.defaultItem.id)
                             presentationMode.wrappedValue.dismiss()
@@ -40,7 +40,7 @@ struct SelectGoalView: View {
                         ForEach(viewModel.items, id: \.id) { item in
                             SelectGoalCell(item: item)
                                 .padding([.vertical], 10)
-                                .background(.background)
+                                .background(Color.background)
                                 .onTapGesture {
                                     viewModel.selectGoal(goalID: item.id)
                                     presentationMode.wrappedValue.dismiss()
@@ -53,7 +53,7 @@ struct SelectGoalView: View {
                 UITableView.appearance().contentInset.top = -35
                 UITableView.appearance().backgroundColor = .clear
             })
-            .background(.background)
+            .background(Color.background)
             
             PrimarySubmitButton(title: LocalizedString.SelectGoalPage.buttonTitle, action: {
                 showingSheet = true
@@ -68,7 +68,7 @@ struct SelectGoalView: View {
             Spacer()
             
         }
-        .background(.background)
+        .background(Color.background)
         .environment(\.layoutDirection, .rightToLeft)
     }
 }

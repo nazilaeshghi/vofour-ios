@@ -146,7 +146,7 @@ struct TaskDetailsRowView: View {
                 .applyStyle(style: .secondaryTableHeaderStyle)
                 .layoutPriority(1)
             
-            CustomLineShapeWithAlignment(stratPoint: .leading, endPoint: .trailing)
+            CustomLineShapeWithAlignment(stratPoint: .trailing, endPoint: .leading)
                 .stroke(Color.primaryTextColor, style: StrokeStyle(lineWidth: 1.0, dash: [4]))
                 .frame(height: 1.0)
                 .frame(minWidth: 20)
