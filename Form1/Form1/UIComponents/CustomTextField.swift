@@ -18,7 +18,7 @@ struct CustomTextField: View {
                 .foregroundColor(.white)
             HStack {
                 TextField("", text: $text)
-                    .scaledFont(family: .light, style: .title2)
+                    .scaledFont(family: .light, style: .title)
                     .placeholder(when: text.isEmpty) {
                         Text(placeholder)
                             .applyStyle(style: .searchbarPlaceholderStyle)

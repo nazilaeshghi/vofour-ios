@@ -23,7 +23,7 @@ struct ScaledFont: ViewModifier {
 @available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
 extension View {
     
-    func scaledFont(family: FontFamily = .regular, style: FontStyle = .title2) -> some View {
+    func scaledFont(family: FontFamily = .regular, style: FontStyle = .title) -> some View {
         return self.modifier(ScaledFont(name: family.rawValue, size: style.rawValue))
     }
     
@@ -41,8 +41,8 @@ enum FontFamily: String {
 enum FontStyle: CGFloat {
     case hugeTitle = 37
     case bigTitle = 22
-    case title = 20
-    case title2 = 17
+    case header = 20
+    case title = 17
     case subtitle = 14
-    case verySmall = 12
+    case body = 12
 }

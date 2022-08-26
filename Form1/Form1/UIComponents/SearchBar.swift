@@ -19,7 +19,7 @@ struct SearchBar: View {
             HStack {
                 Image.search
                 TextField(LocalizedString.ContextPage.searchPlaceHolder, text: $searchText)
-                    .scaledFont(family: .light, style: .title2)
+                    .scaledFont(family: .light, style: .title)
             }
             .cornerRadius(PublicTheme.inputTextCornerRadius)
             .padding(.leading, 13)
