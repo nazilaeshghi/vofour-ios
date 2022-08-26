@@ -14,24 +14,23 @@ enum ButtonType {
 }
 
 extension Button {
-    func applyStyle(style: CustomButtonStyle) -> some View {
+    func applyStyle(style: ButtonStyle) -> some View {
         self
             .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
-            .foregroundColor(style.textColor)
+            .foregroundColor(style.labelStyle.textColor)
             .background(style.backgroundColor)
             .cornerRadius(style.cornerRaduis)
-            .frame(height: style.height)
     }
     
-    func applyNoPaddingStyle(style: CustomButtonStyle) -> some View {
+    func applyNoPaddingStyle(style: ButtonStyle) -> some View {
         self
-            .foregroundColor(style.textColor)
+            .foregroundColor(style.labelStyle.textColor)
             .background(style.backgroundColor)
     }
     
-    func applyNoPaddingWithBorderStyle(style: CustomButtonStyle) -> some View {
+    func applyNoPaddingWithBorderStyle(style: ButtonStyle) -> some View {
         self
-            .foregroundColor(style.textColor)
+            .foregroundColor(style.labelStyle.textColor)
             .background(style.backgroundColor)
     }
 }

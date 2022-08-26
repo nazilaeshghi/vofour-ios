@@ -96,7 +96,7 @@
 		64A1038A28820CEA000A6FE2 /* TaskCreationStep2Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */; };
 		64A1038C28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038B28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift */; };
 		64A1038E28849908000A6FE2 /* CalendarSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038D28849908000A6FE2 /* CalendarSheet.swift */; };
-		64A8A3A8284075A80056EC08 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A7284075A80056EC08 /* CustomButtonStyle.swift */; };
+		64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A7284075A80056EC08 /* ButtonStyle.swift */; };
 		64A8A3AA284075EC0056EC08 /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A9284075EC0056EC08 /* ButtonExtensions.swift */; };
 		64A8A3AE284076CF0056EC08 /* TaskCreationStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */; };
 		64A932FF28A7D50F006E1988 /* TaskStepsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A932FE28A7D50F006E1988 /* TaskStepsHeader.swift */; };
@@ -240,7 +240,7 @@
 		64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2Mock.swift; sourceTree = "<group>"; };
 		64A1038B28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2Coordinator.swift; sourceTree = "<group>"; };
 		64A1038D28849908000A6FE2 /* CalendarSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSheet.swift; sourceTree = "<group>"; };
-		64A8A3A7284075A80056EC08 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		64A8A3A7284075A80056EC08 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		64A8A3A9284075EC0056EC08 /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		64A8A3AD284076CF0056EC08 /* TaskCreationStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1View.swift; sourceTree = "<group>"; };
 		64A932FE28A7D50F006E1988 /* TaskStepsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStepsHeader.swift; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 			children = (
 				64D7467C27B8D4B8006A0C1C /* ScaledFont.swift */,
 				640B8E1027CECE5A00177ADF /* LabelStyle.swift */,
-				64A8A3A7284075A80056EC08 /* CustomButtonStyle.swift */,
+				64A8A3A7284075A80056EC08 /* ButtonStyle.swift */,
 				640B8E1327CECEB300177ADF /* PublicTheme.swift */,
 				64EA837D28A7F986005ED007 /* ImageIcons.swift */,
 			);
@@ -958,7 +958,7 @@
 				6444880028876DC80020A758 /* WeekDayObject.swift in Sources */,
 				64D8899128407EE800975536 /* OneLineInputCell.swift in Sources */,
 				647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */,
-				64A8A3A8284075A80056EC08 /* CustomButtonStyle.swift in Sources */,
+				64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */,
 				6483727E289597C200712190 /* SettingsView.swift in Sources */,
 				64C5504A28609ABE000E9F61 /* TaskCreationStep1ViewModel.swift in Sources */,
 				64842BCE2890185500A4AA2E /* TimeIntervalExtension.swift in Sources */,

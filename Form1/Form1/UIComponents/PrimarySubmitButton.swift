@@ -20,14 +20,11 @@ struct PrimarySubmitButton: View {
                 Spacer()
                 Text(title)
                     .applyStyle(style: .brightRegularTitle)
-                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 40)
                 Spacer()
             }
             .applyStyle(style: .multiplePrimary)
-            
         }
-        .padding(20)
-        .frame(height: 48)
+        .frame(height: PublicTheme.buttonHeight)
     }
 }
 

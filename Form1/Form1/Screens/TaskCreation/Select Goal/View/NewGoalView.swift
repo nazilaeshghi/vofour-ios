@@ -34,7 +34,6 @@ struct NewGoalView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
         }
-        .environment(\.layoutDirection, .rightToLeft)
     }
     
     func titleChanged(to value: String) {

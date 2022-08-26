@@ -21,8 +21,6 @@ struct SelectGoalCell: View {
         .padding()
         .overlay(RoundedRectangle(cornerRadius: PublicTheme.cornerRaduis)
                     .stroke(Color.borderColor, lineWidth: 1))
-        .listRowSeparator(.hidden)
-        .listRowInsets(EdgeInsets())
     }
 }
 

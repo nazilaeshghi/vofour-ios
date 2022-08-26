@@ -27,7 +27,7 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multiplePrimary)
-                .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 3 * 2))
+                .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 4 * 3))
                 
                 Button {
                     dismiss()
@@ -38,7 +38,7 @@ struct TwoButtonsView: View {
                     Spacer()
                 }
                 .applyStyle(style: .multipleSecondary)
-                .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 3 * 1))
+                .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 4))
             }
             .frame(height: PublicTheme.buttonHeight, alignment: .center)
         }

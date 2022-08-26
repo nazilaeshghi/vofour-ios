@@ -37,6 +37,10 @@ struct LabelStyle {
         return .init(font: .mediumTitle, fontFamilty: .regular, textColor: .primaryTextColor)
     }
     
+    static var lightRegularMediumTitle: LabelStyle {
+        return .init(font: .mediumTitle, fontFamilty: .regular, textColor: .white)
+    }
+    
     // Title
     static var lightTitle: LabelStyle {
         return .init(font: .title, fontFamilty: .light, textColor: .primaryTextColor)

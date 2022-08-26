@@ -17,21 +17,21 @@ struct SelectGoalView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
+        
+        VStack(spacing: .zero) {
             Spacer()
             ModalHeaderView(title: LocalizedString.SelectGoalPage.selectGoalPageTitle) {
                 presentationMode.wrappedValue.dismiss()
             }
-           
+
             List {
                 Section {
                     SelectGoalCell(item: viewModel.defaultItem)
-                        .padding([.vertical], 10)
-                        .background(Color.background)
                         .onTapGesture {
                             viewModel.selectGoal(goalID: viewModel.defaultItem.id)
                             presentationMode.wrappedValue.dismiss()
                         }
+                        .applyBasicCellStyle()
                 }
                 
                 if !viewModel.items.isEmpty {
@@ -39,37 +39,38 @@ struct SelectGoalView: View {
                                 .applyStyle(style: .mediumSubtitle)) {
                         ForEach(viewModel.items, id: \.id) { item in
                             SelectGoalCell(item: item)
-                                .padding([.vertical], 10)
-                                .background(Color.background)
                                 .onTapGesture {
                                     viewModel.selectGoal(goalID: item.id)
                                     presentationMode.wrappedValue.dismiss()
                                 }
+                                .applyBasicCellStyle()
                         }
                     }
                 }
             }
-            .onAppear(perform: {
-                UITableView.appearance().contentInset.top = -35
-                UITableView.appearance().backgroundColor = .clear
-            })
-            .background(Color.background)
+            .applyListBasicStyle()
+            .applyBasicViewStyle()
+            .applyScrollViewPadding()
             
+            Spacer()
+
             PrimarySubmitButton(title: LocalizedString.SelectGoalPage.buttonTitle, action: {
                 showingSheet = true
             })
-                .sheet(isPresented: $showingSheet) {
-                    if let title = newGoalTitle {
-                        viewModel.addGoal(title: title)
-                    }
-                } content: {
-                    NewGoalView(goalName: $newGoalTitle, isPresented: $showingSheet)
-                }
-            Spacer()
-            
+                .frame(height: PublicTheme.buttonHeight)
+            .applyBasicViewStyle()
         }
         .background(Color.background)
-        .environment(\.layoutDirection, .rightToLeft)
+        .sheet(isPresented: $showingSheet) {
+            if let title = newGoalTitle {
+                viewModel.addGoal(title: title)
+            }
+        } content: {
+            NewGoalView(goalName: $newGoalTitle, isPresented: $showingSheet)
+        }
+        .onAppear(perform: {
+            UITableView.appearance().backgroundColor = .clear
+        })
     }
 }
 
