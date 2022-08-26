@@ -27,7 +27,7 @@ struct WeekDaysView: View {
                                 weekDays[day.index].selected = !day.selected
                             } label: {
                                 Text(day.name)
-                                    .applyStyle(style: .buttonTitleStyle)
+                                    .applyStyle(style: .brightButtonTitle)
                             }
                             .applyNoPaddingStyle(style: .multiplePrimary)
                             .frame(width: circleSize, height: circleSize)

@@ -30,7 +30,7 @@ extension View {
                 ToolbarItem(placement: .principal) {
                     VStack(spacing: .zero) {
                         Text(title)
-                            .applyStyle(style: .number)
+                            .applyStyle(style: .regularTitle)
                     }
                 }
                 
@@ -52,7 +52,7 @@ extension View {
                 ToolbarItem(placement: .principal) {
                     VStack(spacing: .zero) {
                         Text(title)
-                            .applyStyle(style: .number)
+                            .applyStyle(style: .regularTitle)
                     }
                 }
                 
@@ -74,7 +74,7 @@ extension View {
                 ToolbarItem(placement: .principal) {
                     VStack(spacing: .zero) {
                         Text(title)
-                            .applyStyle(style: .number)
+                            .applyStyle(style: .regularTitle)
                     }
                 }
                 
@@ -93,7 +93,7 @@ extension View {
                     ToolbarItem(placement: .principal) {
                         VStack(spacing: .zero) {
                             Text(title)
-                                .applyStyle(style: .number)
+                                .applyStyle(style: .regularTitle)
                         }
                     }
                     

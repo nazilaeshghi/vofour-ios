@@ -13,64 +13,44 @@ struct LabelStyle {
     let fontFamilty: FontFamily
     let textColor: Color
     
-    
-    static var bigNumberStyle: LabelStyle {
-        return .init(font: .bigTitle, fontFamilty: .regular, textColor: .primaryColor)
+    // Giant
+    static var hugeTitleStyle: LabelStyle {
+        return .init(font: .giantTitle, fontFamilty: .regular, textColor: .primaryTextColor)
     }
     
-    static var bigGreenNumberStyle: LabelStyle {
-        return .init(font: .bigTitle, fontFamilty: .regular, textColor: .greenColor)
+    // Larg title
+    static var primaryLargTitle: LabelStyle {
+        return .init(font: .largeTitle, fontFamilty: .regular, textColor: .primaryColor)
     }
     
-    static var verySmallGreenNumberStyle: LabelStyle {
-        return .init(font: .body, fontFamilty: .regular, textColor: .greenColor)
+    static var largTitleWithGreenColor: LabelStyle {
+        return .init(font: .largeTitle, fontFamilty: .regular, textColor: .greenColor)
     }
     
-    static var titleStyle: LabelStyle {
-        return .init(font: .header, fontFamilty: .regular, textColor: .primaryTextColor)
+
+    // Medium
+    static var primaryMediumTitle: LabelStyle {
+        return .init(font: .mediumTitle, fontFamilty: .regular, textColor: .primaryColor)
     }
     
-    static var subtitleStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .regular, textColor: .secondaryTextColor)
+    static var mediumTitle: LabelStyle {
+        return .init(font: .mediumTitle, fontFamilty: .regular, textColor: .primaryTextColor)
     }
     
-    static var number: LabelStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: .primaryTextColor)
-    }
-    
-    static var smallTitleStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .regular, textColor: .primaryTextColor)
-    }
-    
-    static var tableHeaderStyle: LabelStyle {
-        return .init(font: .title, fontFamilty: .medium, textColor: .primaryColor)
-    }
-    
-    static var secondaryTableHeaderStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
-    }
-    
-    static var sectionHeaderStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
-    }
-    
-    static var homeHeaderStyle: LabelStyle {
-        return .init(font: .subtitle, fontFamilty: .medium, textColor: .homeHeaderColor)
-    }
-    
-    static var mediumHeaderStyle: LabelStyle {
-        return .init(font: .title, fontFamilty: .medium, textColor: .primaryTextColor)
-    }
-    
-    static var lightHeaderStyle: LabelStyle {
+    // Title
+    static var lightTitle: LabelStyle {
         return .init(font: .title, fontFamilty: .light, textColor: .primaryTextColor)
     }
     
-    static var searchbarPlaceholderStyle: LabelStyle {
+    static var lightTitlePlaceholder: LabelStyle {
         return .init(font: .title, fontFamilty: .light, textColor: .placeholderTextColor)
     }
     
-    static var buttonTitleStyle: LabelStyle {
+    static var regularTitle: LabelStyle {
+        return .init(font: .title, fontFamilty: .regular, textColor: .primaryTextColor)
+    }
+    
+    static var brightButtonTitle: LabelStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .white)
     }
     
@@ -82,8 +62,42 @@ struct LabelStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .primaryColor)
     }
     
-    static var operandStyle: LabelStyle {
-        return .init(font: .header, fontFamilty: .regular, textColor: .primaryColor)
+    static var homeEmptyStyle: LabelStyle {
+        return .init(font: .title, fontFamilty: .regular, textColor: .emptyTextColor)
+    }
+    
+    static var tableHeaderStyle: LabelStyle {
+        return .init(font: .title, fontFamilty: .medium, textColor: .primaryColor)
+    }
+    
+    static var mediumHeaderStyle: LabelStyle {
+        return .init(font: .title, fontFamilty: .medium, textColor: .primaryTextColor)
+    }
+    
+    // Subtitle
+    static var smallTitleStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .regular, textColor: .primaryTextColor)
+    }
+    
+    static var sectionHeaderStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
+    }
+    
+    static var subtitleStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .regular, textColor: .secondaryTextColor)
+    }
+    
+    static var secondaryTableHeaderStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
+    }
+    
+    static var homeHeaderStyle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: .homeHeaderColor)
+    }
+    
+    // Body
+    static var verySmallGreenNumberStyle: LabelStyle {
+        return .init(font: .body, fontFamilty: .regular, textColor: .greenColor)
     }
     
     static var tabbarStyle: LabelStyle {
@@ -96,13 +110,5 @@ struct LabelStyle {
     
     static var verySmallCollectionStyle: LabelStyle {
         return .init(font: .body, fontFamilty: .regular, textColor: .primaryTextColor)
-    }
-    
-    static var homeEmptyStyle: LabelStyle {
-        return .init(font: .title, fontFamilty: .regular, textColor: .emptyTextColor)
-    }
-    
-    static var hugeTitleStyle: LabelStyle {
-        return .init(font: .hugeTitle, fontFamilty: .regular, textColor: .primaryTextColor)
     }
 }

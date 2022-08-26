@@ -19,7 +19,7 @@ struct PrimarySubmitButton: View {
             } label: {
                 Spacer()
                 Text(title)
-                    .applyStyle(style: .buttonTitleStyle)
+                    .applyStyle(style: .brightButtonTitle)
                     .frame(minWidth: 100, maxWidth: .infinity, minHeight: 40)
                 Spacer()
             }

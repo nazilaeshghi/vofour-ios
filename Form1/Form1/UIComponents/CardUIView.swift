@@ -72,7 +72,7 @@ struct CardMockGenerator {
     static func sample1() -> CardDisplayModel {
         return CardDisplayModel(title: LabelDisplayModel(plainText: "نیم ساعت پیاده‌روی"),
                                 subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .subtitleStyle),
-                                count: LabelDisplayModel(plainText: "۳", style: .number),
+                                count: LabelDisplayModel(plainText: "۳", style: .regularTitle),
                                 background: Color(hex:"EA4C89"),
                                 state: .done,
                                 progress: 0.5,

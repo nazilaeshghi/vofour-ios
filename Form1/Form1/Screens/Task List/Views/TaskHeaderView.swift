@@ -20,11 +20,11 @@ struct TaskHeaderView: View {
             // Selected date title with progress
             HStack(alignment: .lastTextBaseline) {
                 Text(DateHelper().getHeaderDate(for: selectedDate))
-                    .applyStyle(style: .titleStyle)
+                    .applyStyle(style: .mediumTitle)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 
                 Text(todayProgressString)
-                    .applyStyle(style: .bigGreenNumberStyle)
+                    .applyStyle(style: .largTitleWithGreenColor)
             }
             
             // Day titles in week
@@ -47,7 +47,7 @@ struct TaskHeaderView: View {
                             selecDay(index: day.index)
                         } label: {
                             Text(day.title)
-                                .applyStyle(style: .buttonTitleStyle)
+                                .applyStyle(style: .brightButtonTitle)
                                 .background(.clear)
                         }
                         .applyNoPaddingStyle(style: .multiplePrimary)

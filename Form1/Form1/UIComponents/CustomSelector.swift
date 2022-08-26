@@ -20,10 +20,10 @@ struct CustomSelector: View {
             HStack {
                 if let text = text {
                     Text(text)
-                        .applyStyle(style: .number)
+                        .applyStyle(style: .regularTitle)
                 } else {
                     Text(placeholder)
-                        .applyStyle(style: .searchbarPlaceholderStyle)
+                        .applyStyle(style: .lightTitlePlaceholder)
                 }
                 Spacer()
                 Image.arrow

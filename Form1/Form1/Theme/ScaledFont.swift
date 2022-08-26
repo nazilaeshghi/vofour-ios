@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
 struct ScaledFont: ViewModifier {
     @Environment(\.sizeCategory) var sizeCategory
     var name: String
@@ -34,14 +33,14 @@ extension View {
 
 enum FontFamily: String {
     case light = "Vazir-Light"
-    case medium = "Vazir-Medium"
     case regular = "Vazir-Regular"
+    case medium = "Vazir-Medium"
 }
 
 enum FontStyle: CGFloat {
-    case hugeTitle = 37
-    case bigTitle = 22
-    case header = 20
+    case giantTitle = 37
+    case largeTitle = 22
+    case mediumTitle = 20
     case title = 17
     case subtitle = 14
     case body = 12

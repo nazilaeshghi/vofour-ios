@@ -41,7 +41,7 @@ struct CalendarSheetView: View {
             } label: {
                 Spacer()
                 Text(LocalizedString.Buttons.saveTitle)
-                    .applyStyle(style: .buttonTitleStyle)
+                    .applyStyle(style: .brightButtonTitle)
                 Spacer()
             }
             .applyStyle(style: .multiplePrimary)

@@ -21,7 +21,7 @@ struct CustomTextField: View {
                     .scaledFont(family: .light, style: .title)
                     .placeholder(when: text.isEmpty) {
                         Text(placeholder)
-                            .applyStyle(style: .searchbarPlaceholderStyle)
+                            .applyStyle(style: .lightTitlePlaceholder)
                     }
             }
             .padding(.leading, 13)

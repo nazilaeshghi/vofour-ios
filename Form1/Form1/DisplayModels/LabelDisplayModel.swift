@@ -13,7 +13,7 @@ struct LabelDisplayModel {
     var labelStyle: LabelStyle
     
     init(plainText: String,
-         style: LabelStyle = .titleStyle) {
+         style: LabelStyle = .mediumTitle) {
         self.plainText = plainText
         self.labelStyle = style
     }

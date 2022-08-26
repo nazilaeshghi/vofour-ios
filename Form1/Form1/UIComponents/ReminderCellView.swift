@@ -19,7 +19,7 @@ struct ReminderCellView: View {
         VStack {
             HStack {
                 Text(time.representingString.convertToPersian())
-                    .applyStyle(style: .number)
+                    .applyStyle(style: .regularTitle)
                 Spacer()
                 
                 Button {

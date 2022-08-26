@@ -21,20 +21,20 @@ struct ChangeRepeatView: View {
                     repeatNum = repeatNum + 1
                 } label: {
                     Text("+")
-                        .applyStyle(style: .operandStyle)
+                        .applyStyle(style: .primaryMediumTitle)
                 }
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("\(repeatNum)".convertToPersian() + "بار")
-                    .applyStyle(style: .number)
+                    .applyStyle(style: .regularTitle)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Button {
                     repeatNum = ((repeatNum - 1) == 0) ? 1 : (repeatNum - 1)
                 } label: {
                     Text("-")
-                        .applyStyle(style: .operandStyle)
+                        .applyStyle(style: .primaryMediumTitle)
                 }
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 15))
                 .frame(maxWidth: .infinity, alignment: .trailing)

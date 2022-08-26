@@ -29,7 +29,7 @@ class TaskDetailViewModel: ObservableObject {
         item = TaskListViewModel.transformDataModels(dayRecord: task)
         
         let subtitleStr = "از " + "\(task.record?.total ?? 0)"
-        item.subtitle = LabelDisplayModel(plainText: subtitleStr.convertToPersian(), style: .lightHeaderStyle)
+        item.subtitle = LabelDisplayModel(plainText: subtitleStr.convertToPersian(), style: .lightTitle)
         
         item.count.labelStyle = .hugeTitleStyle
         item.count.plainText =  item.count.plainText.convertToPersian()

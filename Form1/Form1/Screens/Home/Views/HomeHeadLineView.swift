@@ -19,10 +19,10 @@ struct HomeHeadLineView: View {
                 
                 if let week = Int(weekProgress * 100), week >= 0 {
                     Text("%\(week)".convertToPersian())
-                        .applyStyle(style: .bigNumberStyle)
+                        .applyStyle(style: .primaryLargTitle)
                 } else {
                     Text("---")
-                        .applyStyle(style: .bigNumberStyle)
+                        .applyStyle(style: .primaryLargTitle)
                 }
                 
                 HStack {
@@ -36,10 +36,10 @@ struct HomeHeadLineView: View {
                 
                 if let today = Int(todayProgress * 100), today >= 0 {
                     Text("%\(today)".convertToPersian())
-                        .applyStyle(style: .bigGreenNumberStyle)
+                        .applyStyle(style: .largTitleWithGreenColor)
                 } else {
                     Text("---")
-                        .applyStyle(style: .bigGreenNumberStyle)
+                        .applyStyle(style: .largTitleWithGreenColor)
                 }
                     
                 HStack {
