@@ -12,8 +12,10 @@ struct TwoButtonsView: View {
     var primaryButtonText: String
     var secondaryButtonText: String
 
-    let dismiss: () -> Void
     let primaryAction: () -> Void
+    let secondaryAction: () -> Void
+    
+    let destructive: Bool
         
     var body: some View {
         GeometryReader { geometry in
@@ -30,11 +32,11 @@ struct TwoButtonsView: View {
                 .frame(width: abs((geometry.size.width - PublicTheme.buttonSpacing) / 4 * 3))
                 
                 Button {
-                    dismiss()
+                    secondaryAction()
                 } label: {
                     Spacer()
                     Text(secondaryButtonText)
-                        .applyStyle(style: .primaryTitle)
+                        .applyStyle(style: destructive ? .destructiveTitle : .primaryTitle)
                     Spacer()
                 }
                 .applyStyle(style: .multipleSecondary)
@@ -50,7 +52,7 @@ struct TwoButtonsView: View {
 struct TwoButtonsView_Previews: PreviewProvider {
 
     static var previews: some View {
-        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, dismiss: {}, primaryAction: {})
+        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, primaryAction: {}, secondaryAction: {}, destructive: false)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

@@ -84,8 +84,9 @@ struct TaskCreationStep1View: View {
                 if shouldShowFooter {
                     TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
                                    secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                                   dismiss: dismissAction,
-                                   primaryAction: primaryAction)
+                                   primaryAction: primaryAction,
+                                   secondaryAction: dismissAction,
+                                   destructive: false)
                         .applyBasicViewStyle()
                 }
             }

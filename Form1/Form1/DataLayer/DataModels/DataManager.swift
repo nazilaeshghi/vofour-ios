@@ -64,6 +64,10 @@ class DataManager {
         dataProvider.saveTask(entry: currentInputEntry)
     }
     
+    func deleteTask(id: String) {
+        dataProvider.deleteTask(id: id)
+    }
+    
     // MARK: - Record
     private func saveRecord(record: Record) {
         dataProvider.saveRecord(record: record)

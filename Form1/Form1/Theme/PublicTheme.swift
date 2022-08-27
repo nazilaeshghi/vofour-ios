@@ -23,6 +23,7 @@ extension Color {
     static var greenColor: Color { return Color(hex: "01B7A7") }
     static var emptyTextColor: Color { return Color(hex: "6e7f91") }
     static var secondaryTextColor: Color { return Color(hex: "4B5666") }
+    static var destructiveColor: Color { return Color(hex: "F03738") }
 }
 
 struct PublicTheme {

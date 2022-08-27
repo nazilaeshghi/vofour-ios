@@ -14,6 +14,7 @@ protocol TaskDetailDataManagable {
     func fetchGoal(id: String) -> Goal?
     func increment()
     func decrement()
+    func deleteTask()
 }
 
 class TaskDetailDataManager: TaskDetailDataManagable {
@@ -47,5 +48,9 @@ class TaskDetailDataManager: TaskDetailDataManagable {
     
     func decrement() {
         dataManager.updateRecord(taskID: taskID, date: currentDate, increment: false)
+    }
+    
+    func deleteTask() {
+        dataManager.deleteTask(id: taskID)
     }
 }

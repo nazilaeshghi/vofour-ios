@@ -62,6 +62,10 @@ struct LabelStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .primaryColor)
     }
     
+    static var destructiveTitle: LabelStyle {
+        return .init(font: .title, fontFamilty: .regular, textColor: .destructiveColor)
+    }
+    
     static var emptyRegularTitle: LabelStyle {
         return .init(font: .title, fontFamilty: .regular, textColor: .emptyTextColor)
     }

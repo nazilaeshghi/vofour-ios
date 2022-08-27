@@ -20,5 +20,5 @@ class TaskDetailDataMock: TaskDetailDataManagable {
     
     func decrement() {}
     
-    
+    func deleteTask() {}
 }

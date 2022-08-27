@@ -119,6 +119,9 @@ struct LocalizedString {
         static let goalTitle = "هدف"
         static let editButton = "ویرایش"
         static let deleteButton = "حذف"
+        static let deleteAlertTitle = "حذف فعالیت"
+        static let deletealertSubtitle = "در صورت حذف فعالیت امکان بازیایی آن نیست"
+        static let cancel = "لغو"
     }
     
 }

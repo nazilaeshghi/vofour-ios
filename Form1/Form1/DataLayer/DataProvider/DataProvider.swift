@@ -24,6 +24,7 @@ protocol DataProvider {
     func saveTask(entry: DataEntryDataModel)
     func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel]
     func fetchTask(id: String) -> TaskDataModel?
+    func deleteTask(id: String)
     
     func saveRecord(record: Record)
     func fetchRecord(taskID: String, date: Date) -> Record?

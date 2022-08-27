@@ -11,6 +11,7 @@ import SwiftUI
 struct TaskDetailView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: TaskDetailViewModel
+    @State var showDeleteAlert: Bool = false
     
     var body: some View {
         NavigationView {
@@ -52,8 +53,9 @@ struct TaskDetailView: View {
                             
                             TwoButtonsView(primaryButtonText: LocalizedString.TaskDetail.editButton,
                                            secondaryButtonText: LocalizedString.TaskDetail.deleteButton,
-                                           dismiss: {},
-                                           primaryAction: editAction)
+                                           primaryAction: editAction,
+                                           secondaryAction: deleteAction,
+                                           destructive: true)
                         }
                     }
                     .applyBasicViewStyle()
@@ -64,6 +66,21 @@ struct TaskDetailView: View {
             .applyToolbarBackStyle(with: viewModel.item?.title.plainText ?? "",
                                    backAction: dismiss)
             .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { _ in refreshData() }
+            .alert(isPresented: $showDeleteAlert, content: {
+                Alert(
+                    title: Text(LocalizedString.TaskDetail.deleteAlertTitle),
+                    message: Text(LocalizedString.TaskDetail.deletealertSubtitle),
+                    primaryButton:
+                            .default(Text(LocalizedString.TaskDetail.cancel), action: {
+                                showDeleteAlert = false
+                            }),
+                    secondaryButton:
+                            .destructive(Text(LocalizedString.TaskDetail.deleteButton), action: {
+                                viewModel.deleteTask()
+                                dismiss()
+                            })
+                )
+            })
         }
         .navigationBarHidden(true)
     }
@@ -81,7 +98,7 @@ struct TaskDetailView: View {
     }
     
     func deleteAction() {
-        
+        showDeleteAlert = true
     }
     
     func editAction() {

@@ -80,8 +80,9 @@ struct TaskCreationStep2View: View {
                 
                 TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
                                secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                               dismiss: dismissAction,
-                               primaryAction: saveAction)
+                               primaryAction: saveAction,
+                               secondaryAction: dismissAction,
+                               destructive: false)
                     .applyBasicViewStyle()
                 
             }

@@ -179,6 +179,20 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
+    func deleteTask(id: String) {
+        do {
+            let realm  = try self.realm()
+            let tasks = realm.objects(TaskRealm.self).where { $0.taskID == id }
+            let records = realm.objects(RecordRealm.self).where { $0.taskID == id }
+            try realm.write {
+                realm.delete(tasks)
+                realm.delete(records)
+            }
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "deleting record, Something went wrong with Realm: \(error.localizedDescription)")
+        }
+    }
+    
     // MARK: - Record
     func saveRecord(record: Record) {
         let recordRealm = RecordRealm(record: record)

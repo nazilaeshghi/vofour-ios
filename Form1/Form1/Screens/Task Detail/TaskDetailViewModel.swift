@@ -49,4 +49,9 @@ class TaskDetailViewModel: ObservableObject {
         dataManager.decrement()
         NotificationCenter.sendNotification(for: .dataChange)
     }
+    
+    func deleteTask() {
+        dataManager.deleteTask()
+        NotificationCenter.sendNotification(for: .dataChange)
+    }
 }
