@@ -19,18 +19,11 @@ struct TaskListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
-                // Navigation Link
-//                NavigationLink(isActive: $showingDetailSIsActive) {
-//                    AppCoordinator.shared.makeTaskDetailsView(taskId: taskID ?? "", selectedDate: selectedDate)
-//                } label: { EmptyView() }.opacity(0)
                                 
                 // Week Header
                 VerticalSpaceView(space: .header)
-                
                 TaskHeaderView(selectedDate: $selectedDate,
                                todayProgressString: viewModel.todayProgressString)
-                
                 VerticalSpaceView(space: .header)
                 
                 // Task List
@@ -65,14 +58,9 @@ struct TaskListView: View {
                 viewModel.getTasks(date: newValue)
                 NotificationCenter.sendNotification(for: .dataChange)
             }
-            .fullScreenCover(item: $taskID) {
-                
-            } content: { taskId in
-                
+            .fullScreenCover(item: $taskID) {} content: { taskId in
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
-
             }
-
         }
     }
 }
