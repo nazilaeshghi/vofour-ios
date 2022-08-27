@@ -44,5 +44,6 @@ struct SelectContextDataManagableMock: SelectContextDataManagable {
     
     func filterContext(text: String) -> [TaskContext] { return  [] }
     func selectContext(contextID: String) {}
+    func fetchTaskCount(for contextId: String) -> Int { return 0 }
 }
 

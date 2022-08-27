@@ -68,6 +68,10 @@ class DataManager {
         dataProvider.deleteTask(id: id)
     }
     
+    func fetchTaskCount(for contextID: String) -> Int {
+        return dataProvider.fetchTaskCount(for: contextID)
+    }
+    
     // MARK: - Record
     private func saveRecord(record: Record) {
         dataProvider.saveRecord(record: record)

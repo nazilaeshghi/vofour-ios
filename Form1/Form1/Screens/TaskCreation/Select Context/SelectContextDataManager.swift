@@ -12,6 +12,7 @@ protocol SelectContextDataManagable {
     func fetchListOfContexts() -> [TaskContext]
     func filterContext(text: String) -> [TaskContext]
     func selectContext(contextID: String)
+    func fetchTaskCount(for contextId: String) -> Int
 }
 
 class SelectContextDataManager: SelectContextDataManagable {
@@ -36,5 +37,9 @@ class SelectContextDataManager: SelectContextDataManagable {
     
     func selectContext(contextID: String) {
         dataManager.currentInputEntry.updateContextId(id: contextID)
+    }
+    
+    func fetchTaskCount(for contextId: String) -> Int {
+        return dataManager.fetchTaskCount(for: contextId)
     }
 }

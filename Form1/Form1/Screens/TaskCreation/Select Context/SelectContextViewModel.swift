@@ -24,7 +24,9 @@ class SelectContextViewModel: ObservableObject {
     }
     
     private func transformContext(context: TaskContext) -> ContextItemDisplayModel {
-        let labelDisplayModel = LabelDisplayModel(plainText: context.name, style: .regularSubtitle)
+        let taskCount = dataManager.fetchTaskCount(for: context.id)
+        let title = taskCount > 0 ? ("\(context.name)" + " " + "(" + "\(taskCount)" + ")") : context.name
+        let labelDisplayModel = LabelDisplayModel(plainText: title.convertToPersian(), style: .regularSubtitle)
         let imageName = context.iconName
         return ContextItemDisplayModel(title: labelDisplayModel,
                                        imageName: imageName,

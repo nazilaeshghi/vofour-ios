@@ -101,6 +101,15 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
+    func fetchTaskCount(for contextID: String) -> Int {
+        do {
+            return try realm().objects(TaskRealm.self).where{ $0.contextId == contextID }.detached.count
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return 0
+        }
+    }
+    
     // MARK: - Goal
     func fetchGoals() -> [Goal] {
         do {
