@@ -12,6 +12,7 @@ struct CustomTabbarContainerView<Content: View>: View {
     @Binding var selection: TabBarItem
     let content: Content
     @State private var tabs: [TabBarItem] = []
+    @State private var showTabbar: Bool = true
     
     public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
         self._selection = selection
@@ -40,4 +41,8 @@ struct CustomTabbarContainerView_Previews: PreviewProvider {
             Color.red
         }
     }
+}
+
+final class UserData: ObservableObject {
+  @Published var showFullScreen = false
 }

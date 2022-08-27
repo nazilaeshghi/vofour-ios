@@ -13,63 +13,57 @@ struct TaskDetailView: View {
     @StateObject var viewModel: TaskDetailViewModel
     
     var body: some View {
-        
         NavigationView {
             VStack {
                 DeviderView()
                 VerticalSpaceView(space: .header)
-
-                Group {
-                    if $viewModel.didFetchDate.wrappedValue {
-                        GeometryReader { geometry in
-                            VStack(spacing: 40) {
+                
+                if $viewModel.didFetchDate.wrappedValue {
+                    GeometryReader { geometry in
+                        VStack(spacing: PublicTheme.vSpace2) {
+                            
+                            // Date
+                            Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
+                                .applyStyle(style: .mediumTitle)
+                            
+                            // Progress view
+                            ZStack {
+                                CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
+                                                     color: $viewModel.item.background.wrappedValue)
                                 
-                                Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
-                                    .applyStyle(style: .mediumTitle)
-                                
-                                // Progress view
-                                ZStack {
-                                    CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
-                                                         color: $viewModel.item.background.wrappedValue)
-                                    
-                                    HStack {
-                                        
-                                        Button(action: increment, label: { Image.plus })
-                                            .frame(width: 50, height: 50)
-                                        
-                                        VStack {
-                                            TextView(model: viewModel.item.count)
-                                            TextView(model: viewModel.item.subtitle)
-                                        }
-                                        
-                                        Button(action: decrement, label: { Image.minus })
-                                            .frame(width: 50, height: 50)
-                                    }
-                                }
-                                .frame(width: geometry.size.width * 0.7, height: geometry.size.width * 0.7)
-                                
-                                // Details
-                                VStack(spacing: PublicTheme.collectionSpace) {
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.taskTypeTitle, value: viewModel.activityType)
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.contextTitle, value: viewModel.contextName)
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle, value: viewModel.goalName)
-                                }
+                                TaskDetailsOperandView(increment: increment,
+                                                       decrement: decrement,
+                                                       countLabel: viewModel.item.count,
+                                                       totalLabel: viewModel.item.subtitle)
                             }
+                            .frame(width: geometry.size.width * 0.7, height: geometry.size.width * 0.7)
+                            
+                            // Details
+                            VStack(spacing: PublicTheme.collectionSpace) {
+                                TaskDetailsRowView(title: LocalizedString.TaskDetail.taskTypeTitle,
+                                                   value: viewModel.activityType)
+                                TaskDetailsRowView(title: LocalizedString.TaskDetail.contextTitle,
+                                                   value: viewModel.contextName)
+                                TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle,
+                                                   value: viewModel.goalName)
+                            }
+                            
+                            Spacer()
+                            
+                            TwoButtonsView(primaryButtonText: LocalizedString.TaskDetail.editButton,
+                                           secondaryButtonText: LocalizedString.TaskDetail.deleteButton,
+                                           dismiss: {},
+                                           primaryAction: editAction)
                         }
                     }
+                    .applyBasicViewStyle()
                 }
-                .applyBasicViewStyle()
             }
             .applyBackgroundColor()
-            .onAppear(perform: {
-                viewModel.fetchDetails()
-            })
-            .navigationBarTitleDisplayMode(.inline)
+            .onAppear(perform: refreshData)
             .applyToolbarBackStyle(with: viewModel.item?.title.plainText ?? "",
                                    backAction: dismiss)
-            .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
-                viewModel.fetchDetails()
-            }
+            .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { _ in refreshData() }
         }
         .navigationBarHidden(true)
     }
@@ -81,59 +75,28 @@ struct TaskDetailView: View {
     func increment() {
         viewModel.increment()
     }
+    
+    func refreshData() {
+        viewModel.fetchDetails()
+    }
+    
+    func deleteAction() {
+        
+    }
+    
+    func editAction() {
+        
+    }
 }
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
         TaskDetailView(viewModel: TaskDetailViewModel(dataManager: TaskDetailDataMock(), currentDate: Date()))
             .environment(\.layoutDirection, .rightToLeft)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
             .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }
-
-
-struct CustomLineShapeWithAlignment: Shape {
-    
-    let stratPoint: Alignment
-    let endPoint: Alignment
-    
-    init(stratPoint: Alignment, endPoint: Alignment) {
-        self.stratPoint = stratPoint
-        self.endPoint = endPoint
-    }
-    
-    private func cgPointTranslator(alignment: Alignment, rect: CGRect) -> CGPoint {
-        
-        switch alignment {
-        case .topLeading: return CGPoint(x: rect.minX, y: rect.minY)
-        case .top: return CGPoint(x: rect.midX, y: rect.minY)
-        case .topTrailing: return CGPoint(x: rect.maxX, y: rect.minY)
-            
-        case .leading: return CGPoint(x: rect.minX, y: rect.midY)
-        case .center: return CGPoint(x: rect.midX, y: rect.midY)
-        case .trailing: return CGPoint(x: rect.maxX, y: rect.midY)
-            
-        case .bottomLeading: return CGPoint(x: rect.minX, y: rect.maxY)
-        case .bottom: return CGPoint(x: rect.midX, y: rect.maxY)
-        case .bottomTrailing: return CGPoint(x: rect.maxX, y: rect.maxY)
-        default: return CGPoint(x: rect.minX, y: rect.minY)
-        }
-    }
-    
-    func path(in rect: CGRect) -> Path {
-        
-        Path { path in
-            
-            path.move(to: cgPointTranslator(alignment: stratPoint, rect: rect))
-            path.addLine(to: cgPointTranslator(alignment: endPoint, rect: rect))
-            
-        }
-        
-    }
-    
-}
-
 
 struct TaskDetailsRowView: View {
     let title: String
@@ -153,6 +116,29 @@ struct TaskDetailsRowView: View {
             Text(value)
                 .applyStyle(style: .regularSubtitle)
                 .layoutPriority(1)
+        }
+    }
+}
+
+struct TaskDetailsOperandView: View {
+    let increment: () -> Void
+    let decrement: () -> Void
+    
+    let countLabel: LabelDisplayModel
+    let totalLabel: LabelDisplayModel
+    
+    var body: some View {
+        HStack {
+            Button(action: increment, label: { Image.plus })
+                .frame(width: 50, height: 50)
+            
+            VStack {
+                TextView(model: countLabel)
+                TextView(model: totalLabel)
+            }
+            
+            Button(action: decrement, label: { Image.minus })
+                .frame(width: 50, height: 50)
         }
     }
 }

@@ -13,10 +13,21 @@ struct MyCustomTabBarView: View {
     @State var selection: Int = 0
     
     var body: some View {
-        VStack {
-            
-            HStack {
-                
+        NavigationView {
+            TabView {
+                if let homeView = AppCoordinator.shared.makeHomeView(),
+                   let taskView = AppCoordinator.shared.makeTasksListView()
+                {
+                    homeView
+                        .tabItem {
+                            Label("Menu", systemImage: "list.dash")
+                        }
+                    
+                    taskView
+                        .tabItem {
+                            Label("Order", systemImage: "square.and.pencil")
+                        }
+                }
             }
         }
     }

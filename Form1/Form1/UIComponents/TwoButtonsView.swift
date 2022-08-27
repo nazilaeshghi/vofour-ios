@@ -12,7 +12,7 @@ struct TwoButtonsView: View {
     var primaryButtonText: String
     var secondaryButtonText: String
 
-    let dismiss: DismissAction
+    let dismiss: () -> Void
     let primaryAction: () -> Void
         
     var body: some View {
@@ -48,10 +48,9 @@ struct TwoButtonsView: View {
 }
 
 struct TwoButtonsView_Previews: PreviewProvider {
-    @Environment(\.dismiss) static var dismiss
 
     static var previews: some View {
-        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, dismiss: dismiss, primaryAction: {})
+        TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle, secondaryButtonText: LocalizedString.Buttons.previousTitle, dismiss: {}, primaryAction: {})
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

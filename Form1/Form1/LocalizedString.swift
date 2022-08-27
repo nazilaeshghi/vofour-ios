@@ -111,12 +111,14 @@ struct LocalizedString {
     
     
     enum TaskDetail {
-        static let create  = "ایجاد"
-        static let quit  = "ترک"
+        static let create = "ایجاد"
+        static let quit = "ترک"
         static let independent = "مستقل"
-        static let taskTypeTitle  = "نوع فعالیت"
-        static let contextTitle  = "زمینه"
-        static let goalTitle  = "هدف"
+        static let taskTypeTitle = "نوع فعالیت"
+        static let contextTitle = "زمینه"
+        static let goalTitle = "هدف"
+        static let editButton = "ویرایش"
+        static let deleteButton = "حذف"
     }
     
 }

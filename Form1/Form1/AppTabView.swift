@@ -15,31 +15,32 @@ struct AppTabView: View {
     
     var body: some View {
         CustomTabbarContainerView(selection: $tabbarSelection) {
+            AppCoordinator.shared.makeHomeView()
+                .tabBatItem(tab: .home, selection: $tabbarSelection)
             
-            if let homeView = AppCoordinator.shared.makeHomeView(),
-               let taskView = AppCoordinator.shared.makeTasksListView()
-            {
-                homeView
-                    .tabBatItem(tab: .home, selection: $tabbarSelection)
-                
-                taskView
-                    .tabBatItem(tab: .booklet, selection: $tabbarSelection)
-                
-                taskView
-                    .tabBatItem(tab: .add, selection: $tabbarSelection)
-                
-                taskView
-                    .tabBatItem(tab: .activities, selection: $tabbarSelection)
-                
-                taskView
-                    .tabBatItem(tab: .report, selection: $tabbarSelection)
-            }
+            AppCoordinator.shared.makeTasksListView()
+                .tabBatItem(tab: .booklet, selection: $tabbarSelection)
+            
+            AddViewEmptyView()
+                .tabBatItem(tab: .add, selection: $tabbarSelection)
+            
+            AddViewEmptyView()
+                .tabBatItem(tab: .activities, selection: $tabbarSelection)
+            
+            AddViewEmptyView()
+                .tabBatItem(tab: .report, selection: $tabbarSelection)
         }
     }
 }
 
-struct FTabView_Previews: PreviewProvider {
+struct AppTabView_Previews: PreviewProvider {
     static var previews: some View {
         AppTabView()
+    }
+}
+
+struct AddViewEmptyView: View {
+    var body: some View {
+        Text("")
     }
 }

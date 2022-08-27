@@ -16,4 +16,8 @@ extension NotificationCenter {
     static func sendNotification(for name: Notification.Name) {
         NotificationCenter.default.post(name: name, object: nil)
     }
+    
+    static func sendNotification(for name: Notification.Name, userInfo: [AnyHashable : Any]) {
+        NotificationCenter.default.post(name: name, object: nil, userInfo: userInfo)
+    }
 }

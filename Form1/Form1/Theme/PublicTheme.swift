@@ -37,6 +37,7 @@ struct PublicTheme {
     
     // Space
     static let vSpace: CGFloat = 32
+    static let vSpace2: CGFloat = 40
     static let vHeaderSpace: CGFloat = 24
     static let inputCellSpacing: CGFloat = 6
     static let collectionSpace: CGFloat = 16

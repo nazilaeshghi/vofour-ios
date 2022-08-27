@@ -84,8 +84,8 @@ struct TaskCreationStep1View: View {
                 if shouldShowFooter {
                     TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
                                    secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                                   dismiss: dismiss,
-                                   primaryAction: { showingNextPage = true })
+                                   dismiss: dismissAction,
+                                   primaryAction: primaryAction)
                         .applyBasicViewStyle()
                 }
             }
@@ -121,8 +121,12 @@ struct TaskCreationStep1View: View {
                                         userInfo: nil)
     }
     
-    func <#name#>(<#parameters#>) -> <#return type#> {
-        <#function body#>
+    func primaryAction() {
+        showingNextPage = true
+    }
+    
+    func dismissAction() {
+        dismiss()
     }
 }
 

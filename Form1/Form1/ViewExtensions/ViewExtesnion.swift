@@ -64,6 +64,7 @@ extension View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
     }
     
     @ViewBuilder

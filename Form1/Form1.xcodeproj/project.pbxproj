@@ -91,6 +91,7 @@
 		64842BCC2890178D00A4AA2E /* DurarionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCB2890178D00A4AA2E /* DurarionBuilder.swift */; };
 		64842BCE2890185500A4AA2E /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */; };
 		64842BD028901E7600A4AA2E /* ContestsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64842BCF28901E7600A4AA2E /* ContestsList.plist */; };
+		649F07D728B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F07D628B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift */; };
 		64A1038628820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038528820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift */; };
 		64A1038828820CDF000A6FE2 /* TaskCreationStep2DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038728820CDF000A6FE2 /* TaskCreationStep2DataManager.swift */; };
 		64A1038A28820CEA000A6FE2 /* TaskCreationStep2Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */; };
@@ -235,6 +236,7 @@
 		64842BCB2890178D00A4AA2E /* DurarionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurarionBuilder.swift; sourceTree = "<group>"; };
 		64842BCD2890185500A4AA2E /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		64842BCF28901E7600A4AA2E /* ContestsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContestsList.plist; sourceTree = "<group>"; };
+		649F07D628B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLineShapeWithAlignment.swift; sourceTree = "<group>"; };
 		64A1038528820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2ViewModel.swift; sourceTree = "<group>"; };
 		64A1038728820CDF000A6FE2 /* TaskCreationStep2DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2DataManager.swift; sourceTree = "<group>"; };
 		64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2Mock.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				648331D828B7CC0B00FDDB9E /* DeviderView.swift */,
 				648331DA28B7CD5300FDDB9E /* PrimarySubmitButton.swift */,
 				648332D528B92C9500FDDB9E /* TextView.swift */,
+				649F07D628B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift */,
 				644487F7288707810020A758 /* TabBar */,
 				64C7727F2885BCC50066F97B /* CustomButtomSheet */,
 				6400D6582844F852005A6F79 /* Cells */,
@@ -946,6 +949,7 @@
 				647F294027AF1F3B00C70874 /* HomeViewModel.swift in Sources */,
 				64B8AEA3279DA3DC00BF47C5 /* Form1App.swift in Sources */,
 				64C5503C285F7BD2000E9F61 /* DataManager.swift in Sources */,
+				649F07D728B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift in Sources */,
 				64C4E8BA284CF7C800502D88 /* RepeatView.swift in Sources */,
 				648331D928B7CC0B00FDDB9E /* DeviderView.swift in Sources */,
 				644487F42886F51C0020A758 /* TabBarItemsPreferences.swift in Sources */,

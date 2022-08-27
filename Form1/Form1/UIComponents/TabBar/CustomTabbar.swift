@@ -30,13 +30,18 @@ struct CustomTabBarView: View {
                                 showingSheet = true
                             }
                         }
-                    
                 }
             }
             .frame(height: 45)
         }
         .background(Color.background.ignoresSafeArea(edges: .bottom))
-        .sheet(isPresented: $showingSheet) {
+        .shadow(
+            color: Color.gray.opacity(0.2),
+            radius: 6,
+            x: 0,
+            y: 0
+        )
+        .fullScreenCover(isPresented: $showingSheet) {
             
         } content: {
             AppCoordinator.shared.makeSelectContextView()
@@ -79,4 +84,21 @@ extension CustomTabBarView {
     }
 }
 
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
 

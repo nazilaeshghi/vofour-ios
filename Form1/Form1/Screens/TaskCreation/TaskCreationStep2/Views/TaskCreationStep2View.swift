@@ -80,7 +80,7 @@ struct TaskCreationStep2View: View {
                 
                 TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
                                secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                               dismiss: dismiss,
+                               dismiss: dismissAction,
                                primaryAction: saveAction)
                     .applyBasicViewStyle()
                 
@@ -120,6 +120,9 @@ struct TaskCreationStep2View: View {
         NotificationCenter.sendNotification(for: .dataChange)
     }
     
+    func dismissAction() {
+        dismiss()
+    }
 }
 
 struct TaskCreationStep2View_Previews: PreviewProvider {
