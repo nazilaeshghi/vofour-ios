@@ -23,17 +23,20 @@ struct NewGoalView: View {
                 isPresented = false
             }
             
-            VStack {
-                OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
-                                 placeholder: LocalizedString.Input.enterHerePlaceholder,
-                                 title: "")
-                Spacer()
-                PrimarySubmitButton(title: LocalizedString.SelectGoalPage.submitNewGoal, action: {
-                    isPresented = false
-                })
+            Group {
+                VStack {
+                    OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
+                                     placeholder: LocalizedString.Input.enterHerePlaceholder,
+                                     title: "")
+                    Spacer()
+                    PrimarySubmitButton(title: LocalizedString.SelectGoalPage.submitNewGoal, action: {
+                        isPresented = false
+                    })
+                }
             }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+            .applyBasicViewStyle()
         }
+        .applyBackgroundColor()
     }
     
     func titleChanged(to value: String) {

@@ -18,6 +18,7 @@ struct TaskCreationStep1View: View {
     
     @State private var showingNextPage: Bool = false
     @State private var showingGoalSheet = false
+    @State private var shouldShowFooter: Bool = true
     
     let isFirstPage: Bool
     
@@ -80,36 +81,48 @@ struct TaskCreationStep1View: View {
                 .applyBackgroundColor()
                 .focused($isTextFieldFocused)
                 
-                TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
-                               secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                               dismiss: dismiss,
-                               primaryAction: { showingNextPage = true })
-                    .frame(height: isTextFieldFocused ? 0 : PublicTheme.buttonHeight + (PublicTheme.buttonSpacing * 2))
-                    .applyBasicViewStyle()
+                if shouldShowFooter {
+                    TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
+                                   secondaryButtonText: LocalizedString.Buttons.previousTitle,
+                                   dismiss: dismiss,
+                                   primaryAction: { showingNextPage = true })
+                        .applyBasicViewStyle()
+                }
             }
+            .background(Color.background)
             .applyToolbarWithBackStyle(with: viewModel.header(),
                                        hideBakcButton: isFirstPage,
                                        backAction: dismiss,
-                                       closeAction: {
-                NotificationCenter.default.post(name: .cloceClick,
-                                                object: nil,
-                                                userInfo: nil)
+                                       closeAction: closeAction)
+            .onChange(of: isTextFieldFocused, perform: { a in
+                withAnimation(.easeIn(duration: 0.1)) { shouldShowFooter.toggle() }
             })
-            .background(Color.background)
             .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
-            { obj in
-                presentationMode.wrappedValue.dismiss()
-            }
-            .sheet(isPresented: $showingGoalSheet) {
-                viewModel.refreshGoalTitle()
-            } content: {
-                AppCoordinator.shared.makeSelectGoalSheetView()
-            }
+            { _ in presentationMode.wrappedValue.dismiss() }
+            .sheet(isPresented: $showingGoalSheet, onDismiss: refreshTitle, content: makeSelectGoalView)
         }
         .onAppear(perform: {
             viewModel.initBinders()
         })
         .navigationBarHidden(true)
+    }
+    
+    func refreshTitle() {
+        viewModel.refreshGoalTitle()
+    }
+    
+    func makeSelectGoalView() -> some View {
+        return AppCoordinator.shared.makeSelectGoalSheetView()
+    }
+    
+    func closeAction() {
+        NotificationCenter.default.post(name: .cloceClick,
+                                        object: nil,
+                                        userInfo: nil)
+    }
+    
+    func <#name#>(<#parameters#>) -> <#return type#> {
+        <#function body#>
     }
 }
 

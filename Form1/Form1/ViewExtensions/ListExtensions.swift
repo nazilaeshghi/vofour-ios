@@ -14,7 +14,7 @@ extension List {
             .background(Color.background)
             .listStyle(PlainListStyle())
             .onAppear(perform: {
-                UIScrollView.appearance().keyboardDismissMode = .onDrag
+                UIScrollView.appearance().keyboardDismissMode = .interactive
             })
     }
 }
