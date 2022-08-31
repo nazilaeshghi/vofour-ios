@@ -17,11 +17,19 @@ enum UserCalendar: String {
 
 struct DateHelper {
     
-    static let fullDateFormatter: DateFormatter = {
+    static let generalDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         formatter.calendar = DateHelper.getCurrentCalendar()
         return formatter
+    }()
+    
+    static let fullDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE d MMM yyyy"
+        dateFormatter.calendar = DateHelper.getCurrentCalendar()
+        dateFormatter.locale = Locale(identifier: "fa_IR")
+        return dateFormatter
     }()
     
     func getHeaderDate(for date: Date) -> String {
@@ -49,11 +57,7 @@ struct DateHelper {
     }
     
     func getFullDatestring(from date: Date = Date()) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE d MMM yyyy"
-        dateFormatter.calendar = DateHelper.getCurrentCalendar()
-        dateFormatter.locale = Locale(identifier: "fa_IR")
-        let monthString = dateFormatter.string(from: date).convertToPersian()
+        let monthString = DateHelper.fullDateFormatter.string(from: date).convertToPersian()
         return monthString
     }
 }

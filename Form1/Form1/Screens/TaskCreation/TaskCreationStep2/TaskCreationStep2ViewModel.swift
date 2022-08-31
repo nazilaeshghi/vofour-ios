@@ -53,14 +53,14 @@ class TaskCreationStep2ViewModel: ObservableObject {
         
         self.$startDate
             .sink { [weak self] newValue in
-                let date = DateHelper.fullDateFormatter.optionalDate(from: newValue)
+                let date = DateHelper.generalDateFormatter.optionalDate(from: newValue)
                 self?.dataManager.updateStartDate(date: date)
             }
             .store(in: &cancellables)
         
         self.$endDate
             .sink { [weak self] newValue in
-                let date = DateHelper.fullDateFormatter.optionalDate(from: newValue)
+                let date = DateHelper.generalDateFormatter.optionalDate(from: newValue)
                 self?.dataManager.updatEndDate(date: date)
             }
             .store(in: &cancellables)
