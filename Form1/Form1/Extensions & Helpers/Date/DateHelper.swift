@@ -32,11 +32,16 @@ struct DateHelper {
         return dateFormatter
     }()
     
-    func getHeaderDate(for date: Date) -> String {
+    static let dayInmonthFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM"
         formatter.calendar = DateHelper.getCurrentCalendar()
         formatter.locale = Locale(identifier: "fa_IR")
+        return formatter
+    }()
+    
+    func getHeaderDate(for date: Date) -> String {
+        let formatter = DateHelper.dayInmonthFormatter
         
         if date.isToday {
             let str = LocalizedString.Date.today + " " + formatter.string(from: date)
@@ -48,10 +53,7 @@ struct DateHelper {
     }
     
     func getRelativeDate(from startDate: Date?, to endDate: Date?) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMMM"
-        formatter.calendar = DateHelper.getCurrentCalendar()
-        formatter.locale = Locale(identifier: "fa_IR")
+        let formatter = DateHelper.dayInmonthFormatter
         guard let startDate = startDate, let endDate = endDate else { return "" }
         return  "از" + " " + formatter.string(from: startDate) + " " + "تا" + " " + formatter.string(from: endDate)
     }
