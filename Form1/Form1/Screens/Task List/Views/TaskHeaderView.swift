@@ -43,7 +43,7 @@ struct TaskHeaderView: View {
                 ForEach(sevenDays, id: \.id) { day in
                     if day.date.isToday {
                         Button {
-                            selecDay(index: day.index)
+                            selectDay(index: day.index)
                         } label: {
                             Text(day.title)
                                 .applyStyle(style: .brightRegularTitle)
@@ -57,7 +57,7 @@ struct TaskHeaderView: View {
                     else {
                         if day.selected {
                             Button {
-                                selecDay(index: day.index)
+                                selectDay(index: day.index)
                             } label: {
                                 Text(day.title)
                                     .applyStyle(style: .regularTitle)
@@ -69,7 +69,7 @@ struct TaskHeaderView: View {
                         }
                         else {
                             Button {
-                                selecDay(index: day.index)
+                                selectDay(index: day.index)
                             } label: {
                                 Text(day.title)
                                     .applyStyle(style: .regularTitle)
@@ -90,7 +90,7 @@ struct TaskHeaderView: View {
         }
     }
     
-    func selecDay(index: Int) {
+    func selectDay(index: Int) {
         sevenDays[index].selected = true
         resetOtherDays(except: index)
         selectedDate = sevenDays[index].date

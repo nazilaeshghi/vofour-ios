@@ -10,6 +10,7 @@ import SwiftUI
 
 class TaskListViewModel: ObservableObject {
     private let dataManager: TaskListDataManagable
+    var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     
     init(dataManager: TaskListDataManagable) {
         self.dataManager = dataManager
@@ -79,6 +80,20 @@ class TaskListViewModel: ObservableObject {
         let todayProgress = dataManager.fetchDateProgress(date: date)
         let today = Int(todayProgress * 100)
         todayProgressString = today >= 0 ? "%\(today)".convertToPersian() : ""
+    }
+    
+    func nextDate(for currentDate: Date) -> Date? {
+        for (index, item) in sevenDays.enumerated() {
+            if item.date == currentDate.getSimpleDate(), let nextDay = sevenDays[safe: index + 1]?.date { return nextDay.date }
+        }
+        return nil
+    }
+    
+    func previousDate(for currentDate: Date) -> Date? {
+        for (index, item) in sevenDays.enumerated() {
+            if item.date == currentDate.getSimpleDate(), let previousDay = sevenDays[safe: index - 1]?.date { return previousDay.date }
+        }
+        return nil
     }
 
 }
