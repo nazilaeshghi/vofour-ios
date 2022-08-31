@@ -14,6 +14,7 @@ struct TaskHeaderView: View {
     var todayProgressString: String
     
     let circleSize: CGFloat = PublicTheme.circleSize
+    let headerHeight: CGFloat = 36
     
     var body: some View {
         VStack(spacing: 2) {
@@ -25,6 +26,7 @@ struct TaskHeaderView: View {
                 Text(todayProgressString)
                     .applyStyle(style: .greenRegularLargTitle)
             }
+            .frame(height: headerHeight)
             
             // Day titles in week
             HStack {

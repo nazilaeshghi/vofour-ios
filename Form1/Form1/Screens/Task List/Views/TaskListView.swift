@@ -26,23 +26,22 @@ struct TaskListView: View {
                                todayProgressString: viewModel.todayProgressString)
                 VerticalSpaceView(space: .header)
                 
-                // Task List
-                List($viewModel.cards, id: \.id) { item in
-                    CardUIView(viewModel: item, increamentAction: {
-                        viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
-                        NotificationCenter.sendNotification(for: .dataChange)
-                    }, detailAction: {
-                        taskID = item.id
-                        showingDetailSIsActive = true
-                    })
-                }
-                .applyListBasicStyle()
-                
-                VerticalSpaceView(space: .header)
-                
                 // Show empty state
                 if viewModel.cards.isEmpty {
                     TaskListEmtyView()
+                }
+                else {
+                    // Task List
+                    List($viewModel.cards, id: \.id) { item in
+                        CardUIView(viewModel: item, increamentAction: {
+                            viewModel.increamentTask(task: item.wrappedValue, date: selectedDate)
+                            NotificationCenter.sendNotification(for: .dataChange)
+                        }, detailAction: {
+                            taskID = item.id
+                            showingDetailSIsActive = true
+                        })
+                    }
+                    .applyListBasicStyle()
                 }
             }
             .applyBasicViewStyle()
