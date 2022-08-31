@@ -13,11 +13,11 @@ class TaskCreationStep1ViewModel: ObservableObject {
     private let dataManager: TaskCreationStep1DataManagable
     
     @Published private(set) var selectedGoalTitle: String?
-    @Published var selectedType = 0
+    @Published var selectedType: Int = 0
     @Published var titleInputText: String = ""
-    @Published var preventionInputText = ""
-    @Published var reasonInputText = ""
-    @Published var for100InputText = ""
+    @Published var preventionInputText: String = ""
+    @Published var reasonInputText: String = ""
+    @Published var for100InputText: String = ""
     
     private var cancellables = Set<AnyCancellable>()
     

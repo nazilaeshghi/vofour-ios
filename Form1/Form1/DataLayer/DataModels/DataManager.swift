@@ -62,6 +62,7 @@ class DataManager {
     
     func saveTask() {
         dataProvider.saveTask(entry: currentInputEntry)
+        currentInputEntry = DataEntryDataModel()
     }
     
     func deleteTask(id: String) {

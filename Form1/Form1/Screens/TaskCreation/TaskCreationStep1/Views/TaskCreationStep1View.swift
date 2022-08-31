@@ -17,7 +17,7 @@ struct TaskCreationStep1View: View {
     @StateObject var viewModel: TaskCreationStep1ViewModel
     
     @State private var showingNextPage: Bool = false
-    @State private var showingGoalSheet = false
+    @State private var showingGoalSheet: Bool = false
     @State private var shouldShowFooter: Bool = true
     
     let isFirstPage: Bool
