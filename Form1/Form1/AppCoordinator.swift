@@ -24,7 +24,10 @@ class AppCoordinator {
     }
     
     // Task Creation
-    func makeSelectContextView() -> SelectContextView {
+    func makeSelectContextView(taskId: String? = nil) -> SelectContextView {
+        if let taskId = taskId {
+            dataManager.startEditTask(taskId: taskId)
+        }
         let contextDataManger = SelectContextDataManager(dataManager: dataManager)
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
         return SelectContextView(viewModel: viewModel)

@@ -16,15 +16,17 @@ protocol TaskContext {
 
 class ContextItemDisplayModel: ObservableObject {
 
-    init(title: LabelDisplayModel, imageName: String, contextID: String) {
+    init(title: LabelDisplayModel, imageName: String, contextID: String, isSelected: Bool) {
         self.id = UUID()
         self.title = title
         self.imageName = imageName
         self.contextID = contextID
+        self.isSelected = isSelected
     }
     
     let id: UUID
     var title: LabelDisplayModel
     var imageName: String
     var contextID: String
+    var isSelected: Bool
 }

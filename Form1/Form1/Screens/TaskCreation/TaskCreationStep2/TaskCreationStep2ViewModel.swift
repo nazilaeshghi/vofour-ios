@@ -120,4 +120,8 @@ class TaskCreationStep2ViewModel: ObservableObject {
     func saveTask() {
         dataManager.saveTask()
     }
+    
+    func reset() {
+        dataManager.resetDataEntry()
+    }
 }

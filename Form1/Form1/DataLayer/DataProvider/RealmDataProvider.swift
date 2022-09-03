@@ -165,7 +165,7 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
-    func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel] {
+    func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel] {
         do {
             let tasks =  try realm().objects(TaskRealm.self).where {
                 ($0.startDate == date && $0.isRepeatable == false) ||

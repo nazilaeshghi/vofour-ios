@@ -8,56 +8,89 @@
 
 import Foundation
 
-protocol TaskCreationStep1DataManagable {
+protocol TaskCreationStep1DataManagable: BaseDataManagable {
     func getContextName() -> String
+    
+    func getIsActivity() ->  Bool
     func updateIsActivity(with value: Bool)
+    
+    func getActivityTitle() -> String
     func updateActivityTitle(with value: String)
+    
+    func getPrevention() -> String
     func updatePrevention(with value: String)
+    
+    func getReason() -> String
     func updateReason(with value: String)
+    
+    func getFor100() -> String
     func updateFor100(with value: String)
+    
     func getSelectedGoalID() -> String?
     func getSelectedGoalTitle() -> String?
     var contextID: String? { get }
 }
 
 class TaskCreationStep1DataManager: TaskCreationStep1DataManagable {
-
-    private let dataManager: DataManager
+    internal let dataManager: DataManager
 
     private (set) var contextID: String?
+    
     init(dataManager: DataManager, contextID: String?) {
         self.dataManager = dataManager
         self.contextID = contextID
         // by default all
         updateIsActivity(with: true)
-    }
-    
-    func getContextName() -> String {
         if let contextID = contextID {
             dataManager.currentInputEntry.updateContextId(id: contextID)
         }
-        guard let contextId = dataManager.currentInputEntry.contextId else { return "" }
-        return dataManager.context(id: contextId)?.name ?? ""
     }
     
+    func getContextName() -> String {
+        var currentContextID: String
+        if let contextID = contextID {
+            currentContextID = contextID
+            return dataManager.context(id: contextID)?.name ?? ""
+        }
+        else {
+            currentContextID = dataManager.currentInputEntry.contextId ?? ""
+        }
+        return dataManager.context(id: currentContextID)?.name ?? ""
+    }
+    
+    func getIsActivity() -> Bool {
+        return dataManager.currentInputEntry.isActivity
+    }
     func updateIsActivity(with value: Bool) {
         dataManager.currentInputEntry.updateIsActivity(with: value)
     }
     
+    func getActivityTitle() -> String {
+        return dataManager.currentInputEntry.activityTitle ?? ""
+    }
     func updateActivityTitle(with value: String) {
         dataManager.currentInputEntry.updateTitle(with: value)
     }
     
+    func getPrevention() -> String {
+        return dataManager.currentInputEntry.prevention ?? ""
+    }
     func updatePrevention(with value: String) {
         dataManager.currentInputEntry.updatePrevention(with: value)
     }
     
+    func getReason() -> String {
+        return dataManager.currentInputEntry.reason ?? ""
+    }
     func updateReason(with value: String) {
         dataManager.currentInputEntry.updateReason(with: value)
     }
     
+    func getFor100() -> String {
+        return dataManager.currentInputEntry.completionMotivations ?? ""
+    }
     func updateFor100(with value: String) {
-        dataManager.currentInputEntry.updateFor100(with: value)
+        dataManager.currentInputEntry.updateCompletionMotivations(with: value)
     }
     
     func getSelectedGoalID() -> String? {

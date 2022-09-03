@@ -60,7 +60,7 @@ struct TaskListView: View {
             .fullScreenCover(item: $taskID) {} content: { taskId in
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
             }
-            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .gesture(DragGesture(minimumDistance: 10)
                         .onEnded({ value in
                 if value.translation.width < 0 {
                     guard let nextDate = viewModel.nextDate(for: selectedDate) else { return }

@@ -22,7 +22,7 @@ class TaskListDataManager: TaskListDataManagable {
     }
     
     func fetchTasks(date: Date) -> [DailyTaskDataModel] {
-        return dataManager.fetchTaks(date: date)
+        return dataManager.fetchDailyTasks(for: date)
     }
     
     func increamentTask(taskID: String, date: Date) {

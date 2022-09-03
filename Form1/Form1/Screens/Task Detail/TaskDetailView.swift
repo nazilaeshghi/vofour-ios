@@ -12,6 +12,7 @@ struct TaskDetailView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: TaskDetailViewModel
     @State var showDeleteAlert: Bool = false
+    @State private var showingTaskCreationSheet = false
     
     var body: some View {
         NavigationView {
@@ -81,6 +82,11 @@ struct TaskDetailView: View {
                             })
                 )
             })
+            .sheet(isPresented: $showingTaskCreationSheet, onDismiss: {
+                showingTaskCreationSheet = false
+            }, content: {
+                AppCoordinator.shared.makeSelectContextView(taskId: viewModel.item.id)
+            })
         }
         .navigationBarHidden(true)
     }
@@ -102,7 +108,7 @@ struct TaskDetailView: View {
     }
     
     func editAction() {
-        
+        showingTaskCreationSheet = true
     }
 }
 

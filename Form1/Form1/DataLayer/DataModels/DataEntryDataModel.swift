@@ -9,12 +9,13 @@
 import Foundation
 
 class DataEntryDataModel {
+    private (set) var taskID: String?
     private (set) var contextId: String?
     private (set) var isActivity: Bool = true
     private (set) var activityTitle: String?
     private (set) var prevention: String?
     private (set) var reason: String?
-    private (set) var for100: String?
+    private (set) var completionMotivations: String?
     private (set) var goalID: String?
     private (set) var isRepeatable: Bool = false
     private (set) var startDate: Date?
@@ -30,6 +31,10 @@ class DataEntryDataModel {
         self.isRepeatable = false
     }
     
+    func updateTaskId(id: String) {
+        self.taskID = id
+    }
+    
     func updateIsActivity(with value: Bool) {
         self.isActivity = value
     }
@@ -38,19 +43,19 @@ class DataEntryDataModel {
         activityTitle = value
     }
     
-    func updatePrevention(with value: String) {
+    func updatePrevention(with value: String?) {
         prevention = value
     }
     
-    func updateReason(with value: String) {
+    func updateReason(with value: String?) {
         reason = value
     }
     
-    func updateFor100(with value: String) {
-        for100 = value
+    func updateCompletionMotivations(with value: String?) {
+        completionMotivations = value
     }
     
-    func updateGoalID(with value: String) {
+    func updateGoalID(with value: String?) {
         goalID = value
     }
     
@@ -74,6 +79,17 @@ class DataEntryDataModel {
         days = value
     }
     
+    func updateWeekDays(with value: String) {
+        let splitedDays = value.components(separatedBy: ",")
+        var builtWeekDays = DateBuilder.buildWeekDays()
+        for day in builtWeekDays {
+            if splitedDays.contains("") {
+                builtWeekDays[day.index].selected = false
+            }
+        }
+        updateWeekDays(with: builtWeekDays)
+    }
+    
     func updateNumberOfRepeat(with value: Int) {
         numberOfRepeat = value
     }
@@ -85,11 +101,42 @@ class DataEntryDataModel {
     func updateReminders(reminders: [TimeObject]) {
         self.reminders = reminders
     }
+    
+    func updateReminders(with value: String) {
+        let splitedTimes = value.components(separatedBy: ",")
+        var reminderTimes: [TimeObject] = []
+        for time in splitedTimes {
+            if let hourStr = time.components(separatedBy: "").first,
+               let minuteStr = time.components(separatedBy: "").last,
+               let hour = Int(hourStr),
+               let minute = Int(minuteStr)
+            {
+                reminderTimes.append(TimeObject(id: UUID().uuidString, hour: hour, minute: minute))
+            }
+        }
+        updateReminders(reminders: reminderTimes)
+    }
 }
 
-extension Array where Element == WeekDayObject {
-    func getStringRepresentative() -> String {
-        return self.filter{ $0.selected }.map{ $0.id }.joined(separator: ", ")
+extension DataEntryDataModel {
+  
+    convenience init(task: TaskDataModel) {
+        self.init()
+        updateTaskId(id: task.taskID)
+        updateContextId(id: task.contextId)
+        updateTitle(with: task.title)
+        updateIsActivity(with: task.isActivity)
+        updateGoalID(with: task.goalId)
+        updatePrevention(with: task.prevention)
+        updateReason(with: task.reason)
+        updateCompletionMotivations(with: task.completionMotivations)
+        updateColor(with: task.color)
+        updateWeekDays(with: task.weekDays)
+        updateStartDate(with: task.startDate)
+        updateEndDate(with: task.endDate)
+        updateIsRepeatable(with: task.isRepeatable)
+        updateNumberOfRepeat(with: task.numberOfRepeat)
+        
     }
 }
 

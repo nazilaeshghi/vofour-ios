@@ -9,6 +9,8 @@
 import Foundation
 
 class TaskCreationStep2DataManagableMock: TaskCreationStep2DataManagable {
+    var dataManager: DataManager = DataManager(dataProvider: MockDataProvider())
+    
     func getContextName() -> String { "" }
     func isTaskActivity() -> Bool { return true }
     func updateTaskType(isRepeatable: Bool) {}

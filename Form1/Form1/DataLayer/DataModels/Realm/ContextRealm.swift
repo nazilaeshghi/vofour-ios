@@ -8,8 +8,7 @@
 
 import RealmSwift
 
-@objcMembers class ContextRealm : Object, TaskContext {
-    
+@objcMembers class ContextRealm : Object, TaskContext {    
     dynamic var id: String = "-"
     dynamic var name: String = "-"
     dynamic var iconName: String = "-"

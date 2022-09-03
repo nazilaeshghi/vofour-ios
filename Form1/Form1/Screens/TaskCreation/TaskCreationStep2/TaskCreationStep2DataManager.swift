@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TaskCreationStep2DataManagable {
+protocol TaskCreationStep2DataManagable: BaseDataManagable {
     func getContextName() -> String
     func isTaskActivity() -> Bool
     func updateTaskType(isRepeatable: Bool)
@@ -24,7 +24,7 @@ protocol TaskCreationStep2DataManagable {
 }
 
 class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
-    private let dataManager: DataManager
+    internal let dataManager: DataManager
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager

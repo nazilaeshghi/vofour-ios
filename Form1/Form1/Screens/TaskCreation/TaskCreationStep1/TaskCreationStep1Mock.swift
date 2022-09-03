@@ -11,6 +11,28 @@ import Foundation
 struct TaskCreationStep1MockGenerator {}
 
 struct TaskCreationStep1DataManagableMock: TaskCreationStep1DataManagable {
+    var dataManager: DataManager = DataManager(dataProvider: MockDataProvider())
+    
+    func getIsActivity() -> Bool {
+        return true
+    }
+    
+    func getActivityTitle() -> String {
+        return ""
+    }
+    
+    func getPrevention() -> String {
+        return ""
+    }
+    
+    func getReason() -> String {
+        return ""
+    }
+    
+    func getFor100() -> String {
+        return ""
+    }
+    
     var contextID: String?
     
     func getContextName() -> String {

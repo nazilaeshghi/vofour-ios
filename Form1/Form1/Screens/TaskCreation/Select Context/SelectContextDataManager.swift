@@ -8,19 +8,33 @@
 
 import Foundation
 
-protocol SelectContextDataManagable {
+protocol BaseDataManagable {
+    var dataManager: DataManager { get }
+    func resetDataEntry()
+}
+
+extension BaseDataManagable {
+    func resetDataEntry() {
+        dataManager.resetDataEntry()
+    }
+}
+
+protocol SelectContextDataManagable: BaseDataManagable {
     func fetchListOfContexts() -> [TaskContext]
     func filterContext(text: String) -> [TaskContext]
     func selectContext(contextID: String)
     func fetchTaskCount(for contextId: String) -> Int
+    var selectedId: String? { get }
 }
 
 class SelectContextDataManager: SelectContextDataManagable {
-    private let dataManager: DataManager
+    internal let dataManager: DataManager
     private var cacheContexts: [TaskContext] = []
+    private (set) var selectedId: String?
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
+        selectedId = dataManager.currentInputEntry.contextId
     }
     
     func fetchListOfContexts() -> [TaskContext]  {
@@ -37,6 +51,7 @@ class SelectContextDataManager: SelectContextDataManagable {
     
     func selectContext(contextID: String) {
         dataManager.currentInputEntry.updateContextId(id: contextID)
+        selectedId = contextID
     }
     
     func fetchTaskCount(for contextId: String) -> Int {

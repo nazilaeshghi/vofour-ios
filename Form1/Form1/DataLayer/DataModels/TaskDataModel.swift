@@ -24,6 +24,7 @@ protocol TaskDataModel {
     var isRepeatable: Bool { get }
     var numberOfRepeat: Int { get }
     var contextId: String { get }
+    var reminders: String { get }
 }
 
 protocol Repetition {

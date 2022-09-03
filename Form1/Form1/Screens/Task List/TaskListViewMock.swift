@@ -29,4 +29,5 @@ struct TaskDataModelMock: TaskDataModel {
     var isRepeatable: Bool = true
     var numberOfRepeat: Int = 1
     var contextId: String = "-1"
+    var reminders: String = "09:10"
 }

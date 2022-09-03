@@ -99,7 +99,10 @@ struct TaskCreationStep1View: View {
                 withAnimation(.easeIn(duration: 0.1)) { shouldShowFooter.toggle() }
             })
             .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
-            { _ in presentationMode.wrappedValue.dismiss() }
+            { _ in
+                presentationMode.wrappedValue.dismiss()
+                viewModel.reset()
+            }
             .sheet(isPresented: $showingGoalSheet, onDismiss: refreshTitle, content: makeSelectGoalView)
         }
         .onAppear(perform: {
@@ -120,6 +123,7 @@ struct TaskCreationStep1View: View {
         NotificationCenter.default.post(name: .cloceClick,
                                         object: nil,
                                         userInfo: nil)
+        viewModel.reset()
     }
     
     func primaryAction() {

@@ -17,7 +17,7 @@ class SelectContextViewModel: ObservableObject {
         fetchContexts()
     }
     
-    @Published var items =  [ContextItemDisplayModel]()
+    @Published var items = [ContextItemDisplayModel]()
     
     func fetchContexts() {
         items = dataManager.fetchListOfContexts().map(transformContext)
@@ -30,7 +30,9 @@ class SelectContextViewModel: ObservableObject {
         let imageName = context.iconName
         return ContextItemDisplayModel(title: labelDisplayModel,
                                        imageName: imageName,
-                                       contextID: context.id)
+                                       contextID: context.id,
+                                       isSelected: context.id == (dataManager.selectedId ?? "")
+        )
     }
     
     func filterContextas(with text: String) {
@@ -39,5 +41,10 @@ class SelectContextViewModel: ObservableObject {
     
     func selectContext(id: String) {
         dataManager.selectContext(contextID: id)
+        fetchContexts()
+    }
+    
+    func reset() {
+        dataManager.resetDataEntry()
     }
 }

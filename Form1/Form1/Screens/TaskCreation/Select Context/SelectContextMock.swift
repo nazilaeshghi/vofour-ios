@@ -13,7 +13,7 @@ struct SelectContextCellMockGenerator {
     static var item: ContextItemDisplayModel {
         return ContextItemDisplayModel(title: LabelDisplayModel(plainText: "خود شخصی (۲)",
                                                                 style: .regularSubtitle),
-                                       imageName: "Users_Context", contextID: "mockId")
+                                       imageName: "Users_Context", contextID: "mockId", isSelected: true)
     }
     
     static var context: TaskContext {
@@ -38,6 +38,13 @@ struct SelectContextCellMockGenerator {
 }
 
 struct SelectContextDataManagableMock: SelectContextDataManagable {
+    var dataManager: DataManager = DataManager(dataProvider: MockDataProvider())
+    
+    func resetDataEntry() {
+    }
+    
+    var selectedId: String?
+    
     func fetchListOfContexts() -> [TaskContext] {
         return SelectContextCellMockGenerator.contexts
     }

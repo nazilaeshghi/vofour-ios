@@ -24,7 +24,12 @@ class TaskCreationStep1ViewModel: ObservableObject {
     init(dataManager: TaskCreationStep1DataManagable) {
         self.dataManager = dataManager
         selectedGoalTitle = dataManager.getSelectedGoalTitle()
-    }
+        selectedType = dataManager.getIsActivity() == true ? 0 : 1
+        titleInputText = dataManager.getActivityTitle()
+        preventionInputText = dataManager.getPrevention()
+        reasonInputText = dataManager.getReason()
+        for100InputText = dataManager.getFor100()
+     }
     
     func header() -> String {
         return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
@@ -68,5 +73,9 @@ class TaskCreationStep1ViewModel: ObservableObject {
     
     func refreshGoalTitle() {
         selectedGoalTitle = dataManager.getSelectedGoalTitle()
+    }
+    
+    func reset() {
+        dataManager.resetDataEntry()
     }
 }

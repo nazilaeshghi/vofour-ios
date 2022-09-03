@@ -23,3 +23,15 @@ public extension Collection {
         return self[index]
     }
 }
+
+extension Array where Element == WeekDayObject {
+    func getStringRepresentative() -> String {
+        return self.filter{ $0.selected }.map{ $0.id }.joined(separator: ", ")
+    }
+}
+
+extension Array where Element == TimeObject {
+    func getStringRepresentative() -> String {
+        return self.map{ $0.representingString }.joined(separator: ", ")
+    }
+}

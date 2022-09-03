@@ -12,7 +12,6 @@ struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     
     @State private var showingSheet = false
-    @State private var showingTaskCreationSheet = false
     
     @State private var selectedContextID: String?
     @State private var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
@@ -38,7 +37,6 @@ struct HomeView: View {
                     ForEach($viewModel.contexs, id: \.id) { item in
                         HomeContextCellView(item: item)
                             .onTapGesture {
-                                showingTaskCreationSheet = true
                                 selectedContextID = item.contextID.wrappedValue
                             }
                     }

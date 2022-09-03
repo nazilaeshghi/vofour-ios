@@ -16,6 +16,10 @@ class DataManager {
         self.dataProvider = dataProvider
     }
     
+    func resetDataEntry(){
+        currentInputEntry = DataEntryDataModel()
+    }
+    
     // MARK: - Context
     func saveContexts() {
         dataProvider.saveContexts()
@@ -62,7 +66,7 @@ class DataManager {
     
     func saveTask() {
         dataProvider.saveTask(entry: currentInputEntry)
-        currentInputEntry = DataEntryDataModel()
+        resetDataEntry()
     }
     
     func deleteTask(id: String) {
@@ -73,6 +77,18 @@ class DataManager {
         return dataProvider.fetchTaskCount(for: contextID)
     }
     
+    func startEditTask(taskId: String) {
+        guard let task = fetchTask(taskID: taskId) else { return }
+        currentInputEntry = DataEntryDataModel(task: task)
+    }
+    
+    // MARK: - Daily Task
+    func fetchDailyTasks(for date: Date) -> [DailyTaskDataModel] {
+        let simpleDate = date.getSimpleDate()
+        let dayID = simpleDate.getWeekDayID()
+        return dataProvider.fetchTasks(for: dayID, date: simpleDate)
+    }
+        
     // MARK: - Record
     private func saveRecord(record: Record) {
         dataProvider.saveRecord(record: record)
@@ -103,17 +119,11 @@ class DataManager {
         }
     }
     
-    func fetchTaks(date: Date) -> [DailyTaskDataModel] {
-        let simpleDate = date.getSimpleDate()
-        let dayID = simpleDate.getWeekDayID()
-        return dataProvider.fetchTaks(weekDay: dayID, date: simpleDate)
-    }
-    
     func computeDayProgress(date: Date) -> Float {
         let simpleDate = date.getSimpleDate()
         let weekDay = simpleDate.getWeekDayID()
 
-        let dayTasks = dataProvider.fetchTaks(weekDay: weekDay, date: simpleDate)
+        let dayTasks = dataProvider.fetchTasks(for: weekDay, date: simpleDate)
         guard dayTasks.count > 0 else { return -1.0 }
         
         let sum = dayTasks.map { model -> Float in

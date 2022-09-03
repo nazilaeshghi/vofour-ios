@@ -24,23 +24,26 @@ import Foundation
     var weekDays: String = ""
     var contextId: String = "-1"
     var numberOfRepeat: Int = 0
+    var reminders: String = ""
     
     convenience init(task: DataEntryDataModel) {
         self.init()
         self.taskID = UUID().uuidString
+        self.contextId = task.contextId ?? "-1"
+
         self.title = task.activityTitle ?? ""
         self.isActivity = task.isActivity
         self.goalId = task.goalID
         self.prevention = task.prevention
         self.reason = task.reason
-        self.completionMotivations = task.for100
+        self.completionMotivations = task.completionMotivations
         self.color = task.color ?? StaticColors.colors.first!
         self.weekDays = (task.days ?? []).getStringRepresentative()
         self.startDate = task.startDate
         self.endDate = task.endDate
         self.isRepeatable = task.isRepeatable
         self.numberOfRepeat = task.numberOfRepeat ?? 1
-        self.contextId = task.contextId ?? "-1"
+        self.reminders = task.reminders.getStringRepresentative()
     }
     
     override class func primaryKey() -> String {

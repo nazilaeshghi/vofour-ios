@@ -33,11 +33,11 @@ struct SelectContextView: View {
                                 viewModel.filterContextas(with: searchText)
                             }
                         
-                        List(viewModel.items, id: \.id) { item in
+                        List($viewModel.items, id: \.id) { item in
                             SelectContextCell(item: item)
                                 .onTapGesture {
                                     linkIsActive = true
-                                    viewModel.selectContext(id: item.contextID)
+                                    viewModel.selectContext(id: item.contextID.wrappedValue)
                                 }
                         }
                         .applyListBasicStyle()
@@ -52,6 +52,7 @@ struct SelectContextView: View {
             .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
             { obj in
                 presentationMode.wrappedValue.dismiss()
+                viewModel.reset()
             }
         }
     }

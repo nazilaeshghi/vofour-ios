@@ -22,7 +22,7 @@ protocol DataProvider {
     func addTask()
     func fetchTasks() -> [TaskDataModel]
     func saveTask(entry: DataEntryDataModel)
-    func fetchTaks(weekDay: String, date: Date) -> [DailyTaskDataModel]
+    func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel]
     func fetchTask(id: String) -> TaskDataModel?
     func deleteTask(id: String)
     func fetchTaskCount(for contextID: String) -> Int
@@ -30,4 +30,72 @@ protocol DataProvider {
     func saveRecord(record: Record)
     func fetchRecord(taskID: String, date: Date) -> Record?
     func updateRecord(recordID: String, count: Int)
+}
+
+class MockDataProvider: DataProvider {
+    func saveContexts() {
+    }
+    
+    func findContext(id: String) -> TaskContext? {
+        return nil
+    }
+    
+    func fetchContexts() -> [TaskContext] {
+        return []
+    }
+    
+    func fetchHomeContexts() -> [HomeContextDataModel] {
+        return []
+    }
+    
+    func fetchGoals() -> [Goal] {
+        return []
+    }
+    
+    func createGoal(newEntity: Goal) {
+        
+    }
+    
+    func findGoal(with id: String) -> Goal? {
+        return nil
+    }
+    
+    func addTask() {
+        
+    }
+    
+    func fetchTasks() -> [TaskDataModel] {
+        return []
+    }
+    
+    func saveTask(entry: DataEntryDataModel) {
+        
+    }
+    
+    func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel] {
+        return []
+    }
+    
+    func fetchTask(id: String) -> TaskDataModel? {
+        return nil
+    }
+    
+    func deleteTask(id: String) {
+        
+    }
+    
+    func fetchTaskCount(for contextID: String) -> Int {
+        return 0
+    }
+    
+    func saveRecord(record: Record) {
+        
+    }
+    
+    func fetchRecord(taskID: String, date: Date) -> Record? {
+        return nil
+    }
+    
+    func updateRecord(recordID: String, count: Int) {
+    }
 }
