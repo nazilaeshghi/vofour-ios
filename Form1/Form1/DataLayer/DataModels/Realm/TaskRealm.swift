@@ -30,7 +30,6 @@ import Foundation
         self.init()
         self.taskID = UUID().uuidString
         self.contextId = task.contextId ?? "-1"
-
         self.title = task.activityTitle ?? ""
         self.isActivity = task.isActivity
         self.goalId = task.goalID
@@ -41,7 +40,7 @@ import Foundation
         self.weekDays = (task.days ?? []).getStringRepresentative()
         self.startDate = task.startDate
         self.endDate = task.endDate
-        self.isRepeatable = task.isRepeatable
+        self.isRepeatable = task.isRepeatable ?? false
         self.numberOfRepeat = task.numberOfRepeat ?? 1
         self.reminders = task.reminders.getStringRepresentative()
     }

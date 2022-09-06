@@ -17,7 +17,7 @@ class DataEntryDataModel {
     private (set) var reason: String?
     private (set) var completionMotivations: String?
     private (set) var goalID: String?
-    private (set) var isRepeatable: Bool = false
+    private (set) var isRepeatable: Bool?
     private (set) var startDate: Date?
     private (set) var endDate: Date?
     private (set) var duration: TimeInterval?
@@ -28,7 +28,6 @@ class DataEntryDataModel {
     
     func updateContextId(id: String) {
         self.contextId = id
-        self.isRepeatable = false
     }
     
     func updateTaskId(id: String) {
@@ -83,7 +82,7 @@ class DataEntryDataModel {
         let splitedDays = value.components(separatedBy: ",")
         var builtWeekDays = DateBuilder.buildWeekDays()
         for day in builtWeekDays {
-            if splitedDays.contains("") {
+            if !splitedDays.contains(day.id) {
                 builtWeekDays[day.index].selected = false
             }
         }
@@ -119,7 +118,6 @@ class DataEntryDataModel {
 }
 
 extension DataEntryDataModel {
-  
     convenience init(task: TaskDataModel) {
         self.init()
         updateTaskId(id: task.taskID)

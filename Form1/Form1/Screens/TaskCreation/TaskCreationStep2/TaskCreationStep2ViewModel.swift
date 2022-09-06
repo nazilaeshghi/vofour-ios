@@ -13,7 +13,7 @@ import Combine
 class TaskCreationStep2ViewModel: ObservableObject {
     private let dataManager: TaskCreationStep2DataManagable
     
-    @Published var isRepeatable: Int = 0
+    @Published var isRepeatable: Int
     @Published var needReminder: Int = 0
     
     private var cancellables = Set<AnyCancellable>()
@@ -21,11 +21,11 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var startDate: String?
     @Published var endDate: String?
     
-    @Published var selectedColor = StaticColors.colors.first ?? "#EA4C89"
-    @Published var repeatNum: Int = 1
-    @Published var weekDays: [WeekDayObject] = DateBuilder.buildWeekDays()
+    @Published var selectedColor: String
+    @Published var repeatNum: Int
+    @Published var weekDays: [WeekDayObject]
     @Published var selectedDuration: DurationObject?
-    @Published var reminders = [TimeObject]()
+    @Published var reminders: [TimeObject]
     
     var isItCreation: Bool {
         return dataManager.isTaskActivity()
@@ -33,6 +33,25 @@ class TaskCreationStep2ViewModel: ObservableObject {
     
     init(dataManager: TaskCreationStep2DataManagable) {
         self.dataManager = dataManager
+        if let stDate = dataManager.getStartDate() {
+            self.startDate = DateHelper.generalDateFormatter.string(from: stDate)
+        }
+        if let enDate = dataManager.getEndDate() {
+            self.endDate = DateHelper.generalDateFormatter.string(from: enDate)
+        }
+        self.repeatNum = dataManager.getNumberOfRepeat()
+        self.weekDays = dataManager.getWeekDays()
+        self.selectedColor = dataManager.getColor()
+        self.isRepeatable = dataManager.isRepeatableTask() ? 1 : 0
+        
+        if dataManager.getReminder().isEmpty {
+            self.needReminder = 0
+        } else {
+            self.needReminder = 1
+        }
+        
+        self.reminders = dataManager.getReminder()
+        self.selectedDuration = dataManager.getDuration()
     }
     
     func initBinders() {

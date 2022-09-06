@@ -9,6 +9,38 @@
 import Foundation
 
 class TaskCreationStep2DataManagableMock: TaskCreationStep2DataManagable {
+    func getDuration() -> DurationObject? {
+        return nil
+    }
+    
+    func getReminder() -> [TimeObject] {
+        return []
+    }
+    
+    func isRepeatableTask() -> Bool {
+        return true
+    }
+    
+    func getStartDate() -> Date? {
+        return nil
+    }
+    
+    func getEndDate() -> Date? {
+        return nil
+    }
+    
+    func getWeekDays() -> [WeekDayObject] {
+        return []
+    }
+    
+    func getNumberOfRepeat() -> Int {
+        return 1
+    }
+    
+    func getColor() -> String {
+        return "#EA4C89"
+    }
+    
     var dataManager: DataManager = DataManager(dataProvider: MockDataProvider())
     
     func getContextName() -> String { "" }

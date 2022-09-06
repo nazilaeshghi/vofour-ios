@@ -26,7 +26,7 @@ public extension Collection {
 
 extension Array where Element == WeekDayObject {
     func getStringRepresentative() -> String {
-        return self.filter{ $0.selected }.map{ $0.id }.joined(separator: ", ")
+        return self.filter{ $0.selected }.map{ $0.id }.joined(separator: ",")
     }
 }
 
