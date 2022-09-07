@@ -30,4 +30,5 @@ struct TaskDataModelMock: TaskDataModel {
     var numberOfRepeat: Int = 1
     var contextId: String = "-1"
     var reminders: String = "09:10"
+    var duration: TimeInterval? = TimeInterval(0.5*60*60)
 }

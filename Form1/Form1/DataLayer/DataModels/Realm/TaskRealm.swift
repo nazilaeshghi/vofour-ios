@@ -9,22 +9,23 @@
 import RealmSwift
 import Foundation
 
-@objcMembers class TaskRealm: Object, TaskDataModel {
-    var taskID: String = "-"
-    var title: String = ""
-    var isActivity: Bool = false
-    var goalId: String?
-    var prevention: String?
-    var reason: String?
-    var completionMotivations: String?
-    var color: String = StaticColors.colors.first!
-    var startDate: Date?
-    var endDate: Date?
-    var isRepeatable: Bool = false
-    var weekDays: String = ""
-    var contextId: String = "-1"
-    var numberOfRepeat: Int = 0
-    var reminders: String = ""
+class TaskRealm: Object, TaskDataModel {
+    @Persisted (primaryKey: true) var taskID: String = "-"
+    @Persisted var title: String = ""
+    @Persisted var isActivity: Bool = false
+    @Persisted var goalId: String?
+    @Persisted var prevention: String?
+    @Persisted var reason: String?
+    @Persisted var completionMotivations: String?
+    @Persisted var color: String = StaticColors.colors.first!
+    @Persisted var startDate: Date?
+    @Persisted var endDate: Date?
+    @Persisted var isRepeatable: Bool = false
+    @Persisted var weekDays: String = ""
+    @Persisted var contextId: String = "-1"
+    @Persisted var numberOfRepeat: Int = 0
+    @Persisted var reminders: String = ""
+    @Persisted var duration: Double?
     
     convenience init(task: DataEntryDataModel) {
         self.init()
@@ -40,12 +41,9 @@ import Foundation
         self.weekDays = (task.days ?? []).getStringRepresentative()
         self.startDate = task.startDate
         self.endDate = task.endDate
+        self.duration = task.duration ?? 0.0
         self.isRepeatable = task.isRepeatable ?? false
         self.numberOfRepeat = task.numberOfRepeat ?? 1
         self.reminders = task.reminders.getStringRepresentative()
-    }
-    
-    override class func primaryKey() -> String {
-        return "taskID"
     }
 }

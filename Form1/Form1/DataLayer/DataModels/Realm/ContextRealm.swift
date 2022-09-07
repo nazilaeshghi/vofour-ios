@@ -8,10 +8,10 @@
 
 import RealmSwift
 
-@objcMembers class ContextRealm : Object, TaskContext {    
-    dynamic var id: String = "-"
-    dynamic var name: String = "-"
-    dynamic var iconName: String = "-"
+class ContextRealm : Object, TaskContext {
+    @Persisted (primaryKey: true) var id: String = "-"
+    @Persisted var name: String = "-"
+    @Persisted var iconName: String = "-"
     
     convenience init(context: TaskContext) {
         self.init()

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class RecordRealm: Object, Record {
-    @Persisted var recordID: String = ""
+    @Persisted (primaryKey: true) var recordID: String = ""
     @Persisted var taskID: String = ""
     @Persisted var date: Date = Date()
     @Persisted var count: Int = 0
@@ -23,9 +23,5 @@ class RecordRealm: Object, Record {
         self.date = record.date
         self.count = record.count
         self.total = record.total
-    }
-    
-    override class func primaryKey() -> String {
-        return "recordID"
     }
 }

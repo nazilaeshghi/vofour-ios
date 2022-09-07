@@ -8,10 +8,9 @@
 
 import RealmSwift
 
-@objcMembers class GoalRealm : Object, Goal {
-    
-    dynamic var id: String = "-"
-    dynamic var title: String = "-"
+class GoalRealm : Object, Goal {
+    @Persisted (primaryKey: true) var id: String = "-"
+    @Persisted var title: String = "-"
     
     convenience init(goal: Goal) {
         self.init()

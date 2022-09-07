@@ -20,7 +20,7 @@ class DataEntryDataModel {
     private (set) var isRepeatable: Bool?
     private (set) var startDate: Date?
     private (set) var endDate: Date?
-    private (set) var duration: TimeInterval?
+    private (set) var duration: Double?
     private (set) var color: String?
     private (set) var numberOfRepeat: Int?
     private (set) var days: [WeekDayObject]?
@@ -70,7 +70,7 @@ class DataEntryDataModel {
         endDate = value
     }
     
-    func updateduration(with value: TimeInterval) {
+    func updateduration(with value: Double?) {
         duration = value
     }
     
@@ -134,7 +134,7 @@ extension DataEntryDataModel {
         updateEndDate(with: task.endDate)
         updateIsRepeatable(with: task.isRepeatable)
         updateNumberOfRepeat(with: task.numberOfRepeat)
-        
+        updateduration(with: task.duration)
     }
 }
 
