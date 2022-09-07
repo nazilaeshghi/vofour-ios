@@ -58,9 +58,6 @@ class ReqalmDataProvider: DataProvider {
         
     }
     
-    func addTask() {
-    }
-    
     func fetchTasks() -> [TaskDataModel] {
         return []
     }
@@ -149,7 +146,7 @@ class ReqalmDataProvider: DataProvider {
         do {
             let realm  = try self.realm()
             try realm.write {
-                realm.add(taskRealm)
+                realm.add(taskRealm, update: .modified)
             }
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "Saving Task faild, Something went wrong with Realm: \(error.localizedDescription)")
@@ -168,11 +165,9 @@ class ReqalmDataProvider: DataProvider {
     func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel] {
         do {
             let tasks =  try realm().objects(TaskRealm.self).where {
-                ($0.startDate == date && $0.isRepeatable == false) ||
-                ($0.startDate <= date &&
-                 $0.endDate >= date &&
-                 $0.isRepeatable == true &&
-                 $0.weekDays.contains(weekDay))
+                ($0.startDate == date && $0.isRepeatable == false) || // Activity
+                ($0.startDate <= date && $0.endDate >= date && $0.isRepeatable == true && $0.weekDays.contains(weekDay)) || // Activity with repeat
+                ($0.startDate <= date && $0.endDate >= date && $0.isActivity == false) // Quit
             }.detached
             let dayRecords = try tasks.map { task -> DailyTaskDataModel in
                 let record = try realm().objects(RecordRealm.self).where {

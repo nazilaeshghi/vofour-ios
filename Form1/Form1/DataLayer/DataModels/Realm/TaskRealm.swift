@@ -29,7 +29,7 @@ class TaskRealm: Object, TaskDataModel {
     
     convenience init(task: DataEntryDataModel) {
         self.init()
-        self.taskID = UUID().uuidString
+        self.taskID = task.taskID ?? UUID().uuidString
         self.contextId = task.contextId ?? "-1"
         self.title = task.activityTitle ?? ""
         self.isActivity = task.isActivity
