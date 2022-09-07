@@ -32,6 +32,6 @@ extension Array where Element == WeekDayObject {
 
 extension Array where Element == TimeObject {
     func getStringRepresentative() -> String {
-        return self.map{ $0.representingString }.joined(separator: ", ")
+        return self.map{ $0.representingString }.joined(separator: ",")
     }
 }

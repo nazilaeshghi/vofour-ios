@@ -9,7 +9,7 @@
 import RealmSwift
 
 class ContextRealm : Object, TaskContext {
-    @Persisted (primaryKey: true) var id: String = "-"
+    @Persisted var id: String = "-"
     @Persisted var name: String = "-"
     @Persisted var iconName: String = "-"
     

@@ -105,8 +105,8 @@ class DataEntryDataModel {
         let splitedTimes = value.components(separatedBy: ",")
         var reminderTimes: [TimeObject] = []
         for time in splitedTimes {
-            if let hourStr = time.components(separatedBy: "").first,
-               let minuteStr = time.components(separatedBy: "").last,
+            if let hourStr = time.components(separatedBy: ":").first,
+               let minuteStr = time.components(separatedBy: ":").last,
                let hour = Int(hourStr),
                let minute = Int(minuteStr)
             {
@@ -135,6 +135,7 @@ extension DataEntryDataModel {
         updateIsRepeatable(with: task.isRepeatable)
         updateNumberOfRepeat(with: task.numberOfRepeat)
         updateduration(with: task.duration)
+        updateReminders(with: task.reminders)
     }
 }
 
