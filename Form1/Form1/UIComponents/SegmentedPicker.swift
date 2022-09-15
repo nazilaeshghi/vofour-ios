@@ -15,6 +15,7 @@ struct SizePreferenceKey: PreferenceKey {
         value = nextValue()
     }
 }
+
 struct BackgroundGeometryReader: View {
     var body: some View {
         GeometryReader { geometry in
@@ -24,17 +25,23 @@ struct BackgroundGeometryReader: View {
         }
     }
 }
+
 struct SizeAwareViewModifier: ViewModifier {
     @Binding private var viewSize: CGSize
+    
     init(viewSize: Binding<CGSize>) {
         self._viewSize = viewSize
     }
+    
     func body(content: Content) -> some View {
         content
             .background(BackgroundGeometryReader())
-            .onPreferenceChange(SizePreferenceKey.self, perform: { if self.viewSize != $0 { self.viewSize = $0 }})
+            .onPreferenceChange(SizePreferenceKey.self, perform: {
+                if self.viewSize != $0 { self.viewSize = $0 }
+            })
     }
 }
+
 struct SegmentedPicker: View {
     private static let ActiveSegmentColor: Color = .primaryColor
     private static let BackgroundColor: Color = .segmentBG
@@ -56,6 +63,7 @@ struct SegmentedPicker: View {
         // This is required for `.animation()` to display properly, otherwise the animation will fire on init
         let isInitialized: Bool = segmentSize != .zero
         if !isInitialized { return EmptyView().eraseToAnyView() }
+        
         return RoundedRectangle(cornerRadius: SegmentedPicker.SegmentCornerRadius)
             .foregroundColor(SegmentedPicker.ActiveSegmentColor)
             .frame(width: self.segmentSize.width, height: self.segmentSize.height)
@@ -75,11 +83,10 @@ struct SegmentedPicker: View {
     var body: some View {
         // Align the ZStack to the leading edge to make calculating offset on activeSegmentView easier
         ZStack(alignment: .leading) {
-            // activeSegmentView indicates the current selection
-            self.activeSegmentView
+            activeSegmentView // current selection view
             HStack {
                 ForEach(0..<self.items.count, id: \.self) { index in
-                    self.getSegmentView(for: index)
+                    getSegmentView(for: index)
                 }
             }
         }
@@ -95,14 +102,17 @@ struct SegmentedPicker: View {
     
     // Gets text view for the segment
     private func getSegmentView(for index: Int) -> some View {
-        guard index < self.items.count else {
+        guard index < items.count else {
             return EmptyView().eraseToAnyView()
         }
-        let isSelected = self.selection == index
+        
+        let isSelected = (selection == index)
+        let textColor = isSelected ? SegmentedPicker.SelectedTextColor : SegmentedPicker.TextColor
+        
         return Text(self.items[index])
         // Dark test for selected segment
             .scaledFont(family: .regular, style: .subtitle)
-            .foregroundColor(isSelected ? SegmentedPicker.SelectedTextColor: SegmentedPicker.TextColor)
+            .foregroundColor(textColor)
             .lineLimit(1)
             .padding(.vertical, SegmentedPicker.yPadding)
             .padding(.horizontal, SegmentedPicker.xPadding)

@@ -24,6 +24,7 @@ extension Color {
     static var emptyTextColor: Color { return Color(hex: "6e7f91") }
     static var secondaryTextColor: Color { return Color(hex: "4B5666") }
     static var destructiveColor: Color { return Color(hex: "F03738") }
+    static var unSelectedSegmentColor: Color { return Color(hex: "B3B3B3") }
 }
 
 struct PublicTheme {

@@ -16,7 +16,7 @@ enum ButtonType {
 extension Button {
     func applyStyle(style: ButtonStyle) -> some View {
         self
-            .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
+            .padding(style.edgeInsets)
             .foregroundColor(style.labelStyle.textColor)
             .background(style.backgroundColor)
             .cornerRadius(style.cornerRaduis)

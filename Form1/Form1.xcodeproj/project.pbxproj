@@ -51,6 +51,12 @@
 		6432D3A628ABF3C500B5763A /* ReminerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A528ABF3C500B5763A /* ReminerSheet.swift */; };
 		6432D3A828AC209400B5763A /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A728AC209400B5763A /* ReminderView.swift */; };
 		6432D3AA28AC2BC800B5763A /* TaskDetailDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */; };
+		6435414228D2797300449DC3 /* LineSegmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414128D2797300449DC3 /* LineSegmentPicker.swift */; };
+		6435414528D27E9500449DC3 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414428D27E9500449DC3 /* ActivityListView.swift */; };
+		6435414728D27ED000449DC3 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414628D27ED000449DC3 /* ActivityListViewModel.swift */; };
+		6435414928D2814300449DC3 /* ActivityListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414828D2814300449DC3 /* ActivityListCoordinator.swift */; };
+		6435414B28D2816400449DC3 /* ActivityListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414A28D2816400449DC3 /* ActivityListDataManager.swift */; };
+		6435414D28D3661C00449DC3 /* ActivityListDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414C28D3661C00449DC3 /* ActivityListDataMock.swift */; };
 		6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */; };
 		643778B4281892560025D3D4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B3281892560025D3D4 /* SelectContextView.swift */; };
 		643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643778B52818AA230025D3D4 /* SelectContextCell.swift */; };
@@ -198,6 +204,12 @@
 		6432D3A528ABF3C500B5763A /* ReminerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminerSheet.swift; sourceTree = "<group>"; };
 		6432D3A728AC209400B5763A /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailDataMock.swift; sourceTree = "<group>"; };
+		6435414128D2797300449DC3 /* LineSegmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSegmentPicker.swift; sourceTree = "<group>"; };
+		6435414428D27E9500449DC3 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		6435414628D27ED000449DC3 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
+		6435414828D2814300449DC3 /* ActivityListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListCoordinator.swift; sourceTree = "<group>"; };
+		6435414A28D2816400449DC3 /* ActivityListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListDataManager.swift; sourceTree = "<group>"; };
+		6435414C28D3661C00449DC3 /* ActivityListDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListDataMock.swift; sourceTree = "<group>"; };
 		6436FDAC279DC4B300BDED6E /* TaskDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataModel.swift; sourceTree = "<group>"; };
 		643778B3281892560025D3D4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
 		643778B52818AA230025D3D4 /* SelectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextCell.swift; sourceTree = "<group>"; };
@@ -423,6 +435,18 @@
 			path = "Task Detail";
 			sourceTree = "<group>";
 		};
+		6435414328D27E6100449DC3 /* ActivityList */ = {
+			isa = PBXGroup;
+			children = (
+				6435414428D27E9500449DC3 /* ActivityListView.swift */,
+				6435414628D27ED000449DC3 /* ActivityListViewModel.swift */,
+				6435414828D2814300449DC3 /* ActivityListCoordinator.swift */,
+				6435414A28D2816400449DC3 /* ActivityListDataManager.swift */,
+				6435414C28D3661C00449DC3 /* ActivityListDataMock.swift */,
+			);
+			path = ActivityList;
+			sourceTree = "<group>";
+		};
 		643778B22818923C0025D3D4 /* TaskCreation */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +629,7 @@
 				647F293D27AF1EBF00C70874 /* Home */,
 				6483727C289597B000712190 /* Setting */,
 				642D2B31289800FD00500670 /* Task Detail */,
+				6435414328D27E6100449DC3 /* ActivityList */,
 				647F293C27AF1EB000C70874 /* Days */,
 				647F293B27AF1E9B00C70874 /* Report */,
 				647F293E27AF1EE500C70874 /* Habit */,
@@ -704,6 +729,7 @@
 				640B8E1527CECF2100177ADF /* CardTitleStackView.swift */,
 				643778B72818BDB40025D3D4 /* SearchBar.swift */,
 				64D8898E28407BC800975536 /* SegmentedPicker.swift */,
+				6435414128D2797300449DC3 /* LineSegmentPicker.swift */,
 				64D88992284080B700975536 /* CustomTextField.swift */,
 				6400D64E2841C3B5005A6F79 /* CustomTextEitor.swift */,
 				6400D6542844F4CB005A6F79 /* CustomSelector.swift */,
@@ -872,9 +898,11 @@
 				64A9330328A7D5C0006E1988 /* QuitHabitViews.swift in Sources */,
 				64DD210D2894C0FF0009FD08 /* HomeContextCellView.swift in Sources */,
 				642D2B3728980A8900500670 /* TaskDetailContext.swift in Sources */,
+				6435414728D27ED000449DC3 /* ActivityListViewModel.swift in Sources */,
 				648331DB28B7CD5300FDDB9E /* PrimarySubmitButton.swift in Sources */,
 				643D4D722839568B0033C083 /* SelectGoalView.swift in Sources */,
 				642D2B3B28980A9400500670 /* TaskDetailDataManager.swift in Sources */,
+				6435414B28D2816400449DC3 /* ActivityListDataManager.swift in Sources */,
 				64B8AEB3279DADD200BF47C5 /* DataProvider.swift in Sources */,
 				64D7467427B8CFD8006A0C1C /* ColorExtentions.swift in Sources */,
 				64B8AEC0279DB04600BF47C5 /* TaskListView.swift in Sources */,
@@ -920,6 +948,7 @@
 				64C7727E2885BCAB0066F97B /* DurationSheet.swift in Sources */,
 				647F294927AF247300C70874 /* HomeDataManager.swift in Sources */,
 				64D8898F28407BC800975536 /* SegmentedPicker.swift in Sources */,
+				6435414528D27E9500449DC3 /* ActivityListView.swift in Sources */,
 				642D2B352898012300500670 /* TaskDetailView.swift in Sources */,
 				64842BC8288F6FE700A4AA2E /* TaskHeaderView.swift in Sources */,
 				646EA78F2894FC2A00A338F4 /* CircularProgressView.swift in Sources */,
@@ -932,9 +961,11 @@
 				643778B62818AA230025D3D4 /* SelectContextCell.swift in Sources */,
 				640B8E1127CECE5A00177ADF /* LabelStyle.swift in Sources */,
 				64A932FF28A7D50F006E1988 /* TaskStepsHeader.swift in Sources */,
+				6435414928D2814300449DC3 /* ActivityListCoordinator.swift in Sources */,
 				640B8E1C27CECFA700177ADF /* TextExtensions.swift in Sources */,
 				6436FDAD279DC4B300BDED6E /* TaskDataModel.swift in Sources */,
 				642CB19C287C441F004AF8DA /* SelectGoalMock.swift in Sources */,
+				6435414228D2797300449DC3 /* LineSegmentPicker.swift in Sources */,
 				64842BCA2890175D00A4AA2E /* CalendarExtensions.swift in Sources */,
 				64A1038C28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift in Sources */,
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
@@ -960,6 +991,7 @@
 				64C5504C28609AC6000E9F61 /* TaskCreationStep1DataManager.swift in Sources */,
 				640C8716288898F900A2DBE9 /* MyCustomTabBarView.swift in Sources */,
 				6444880028876DC80020A758 /* WeekDayObject.swift in Sources */,
+				6435414D28D3661C00449DC3 /* ActivityListDataMock.swift in Sources */,
 				64D8899128407EE800975536 /* OneLineInputCell.swift in Sources */,
 				647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */,
 				64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */,

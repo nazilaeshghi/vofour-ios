@@ -124,4 +124,12 @@ struct LocalizedString {
         static let cancel = "لغو"
     }
     
+    enum ActicityList {
+        static let title = "لیست فعالیت‌ها"
+        static let golas = "اهداف"
+        static let contexts = "زمینه‌ها"
+        static let currentWeek = "هفته جاری"
+        static let allActivities = "کل کار‌ها"
+    }
+    
 }

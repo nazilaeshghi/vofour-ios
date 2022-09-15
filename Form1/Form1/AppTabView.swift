@@ -24,7 +24,7 @@ struct AppTabView: View {
             AddViewEmptyView()
                 .tabBatItem(tab: .add, selection: $tabbarSelection)
             
-            AddViewEmptyView()
+            AppCoordinator.shared.activityListView()
                 .tabBatItem(tab: .activities, selection: $tabbarSelection)
             
             AddViewEmptyView()

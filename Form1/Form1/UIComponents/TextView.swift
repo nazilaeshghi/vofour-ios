@@ -15,3 +15,15 @@ struct TextView: View {
             .applyStyle(style: model.labelStyle)
     }
 }
+
+struct ContentView: View {
+    var body: some View {
+        TabView {
+            Text("First")
+            Text("Second")
+            Text("Third")
+            Text("Fourth")
+        }
+        .tabViewStyle(.page)
+    }
+}

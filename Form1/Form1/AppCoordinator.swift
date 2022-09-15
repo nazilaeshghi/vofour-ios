@@ -67,5 +67,9 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
-    
+    // Activity List
+    func activityListView() -> ActivityListView {
+        let coordinator = ActivityListCoordinator(dataManager: dataManager)
+        return coordinator.destinationView
+    }
 }

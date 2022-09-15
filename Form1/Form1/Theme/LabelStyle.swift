@@ -83,6 +83,14 @@ struct LabelStyle {
         return .init(font: .subtitle, fontFamilty: .regular, textColor: .primaryTextColor)
     }
     
+    static var brightRegularSubtitle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .regular, textColor: .white)
+    }
+    
+    static var primaryRegularSubtitle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .regular, textColor: .primaryColor)
+    }
+    
     static var mediumSubtitle: LabelStyle {
         return .init(font: .subtitle, fontFamilty: .medium, textColor: .primaryTextColor)
     }
