@@ -31,7 +31,8 @@ struct TaskDetailView: View {
                             // Progress view
                             ZStack {
                                 CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
-                                                     color: $viewModel.item.background.wrappedValue)
+                                                     color: $viewModel.item.background.wrappedValue,
+                                                     lineWidth: 16)
                                 
                                 TaskDetailsOperandView(increment: increment,
                                                        decrement: decrement,

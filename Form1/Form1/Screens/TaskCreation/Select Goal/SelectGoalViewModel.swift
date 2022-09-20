@@ -23,7 +23,8 @@ class SelectGoalViewModel: ObservableObject {
     
     func getGoals() {
         let rawGoals = dataManager.fetchListOfGoals()
-        let goalDisplayModels = rawGoals.map { goal -> SelectGoalDisplayModel in
+        let goalDisplayModels = rawGoals.compactMap { goal -> SelectGoalDisplayModel? in
+            guard goal.id == "-1" else { return nil }
             let titleModel = LabelDisplayModel(plainText: goal.title,
                                                style: .regularSubtitle)
             return SelectGoalDisplayModel(id: goal.id,

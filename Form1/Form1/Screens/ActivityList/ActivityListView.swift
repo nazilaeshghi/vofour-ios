@@ -27,6 +27,20 @@ struct ActivityListView: View {
             }
             .applyBasicViewStyle()
             
+//            List {
+//                ForEach(viewModel.items) { item in
+//
+//                }
+//                Section {
+//                    SelectGoalCell(item: viewModel.defaultItem)
+//                        .onTapGesture {
+//                            viewModel.selectGoal(goalID: viewModel.defaultItem.id)
+//                            presentationMode.wrappedValue.dismiss()
+//                        }
+//                        .applyBasicCellStyle()
+//                }
+//            }
+            
             Spacer()
         }
         .applyBackgroundColor()

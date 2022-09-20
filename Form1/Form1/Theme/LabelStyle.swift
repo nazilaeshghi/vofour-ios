@@ -119,4 +119,9 @@ struct LabelStyle {
     static var secondaryRegularBody: LabelStyle {
         return .init(font: .body, fontFamilty: .regular, textColor: .headerSecondaryTextColor)
     }
+    
+    // Tiny Body
+    static var regularTinyBody: LabelStyle {
+        return .init(font: .tinyBody, fontFamilty: .regular, textColor: .primaryTextColor)
+    }
 }

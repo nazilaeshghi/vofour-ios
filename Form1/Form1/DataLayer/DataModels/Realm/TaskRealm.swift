@@ -13,7 +13,7 @@ class TaskRealm: Object, TaskDataModel {
     @Persisted (primaryKey: true) var taskID: String = "-"
     @Persisted var title: String = ""
     @Persisted var isActivity: Bool = false
-    @Persisted var goalId: String?
+    @Persisted var goalId: String
     @Persisted var prevention: String?
     @Persisted var reason: String?
     @Persisted var completionMotivations: String?
@@ -33,7 +33,7 @@ class TaskRealm: Object, TaskDataModel {
         self.contextId = task.contextId ?? "-1"
         self.title = task.activityTitle ?? ""
         self.isActivity = task.isActivity
-        self.goalId = task.goalID
+        self.goalId = task.goalID ?? "-1"
         self.prevention = task.prevention
         self.reason = task.reason
         self.completionMotivations = task.completionMotivations

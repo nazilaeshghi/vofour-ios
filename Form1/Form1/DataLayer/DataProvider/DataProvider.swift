@@ -71,6 +71,10 @@ class MockDataProvider: DataProvider {
         return []
     }
     
+    func fetchAllTasks(for weekDay: String, date: Date) -> [TaskDataModel] {
+        return []
+    }
+    
     func fetchTask(id: String) -> TaskDataModel? {
         return nil
     }
@@ -92,5 +96,9 @@ class MockDataProvider: DataProvider {
     }
     
     func updateRecord(recordID: String, count: Int) {
+    }
+    
+    func fetchTasks(from startDate: Date, to endDate: Date) -> [TaskDataModel] {
+        return []
     }
 }

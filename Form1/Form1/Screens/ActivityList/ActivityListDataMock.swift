@@ -10,4 +10,11 @@ import Foundation
 
 class ActivityListDataMock: ActivityListDataManagable {
     
+    func fetchGoals(currentWeek: Bool) -> [ActivityGoalDataModel] {
+       return []
+    }
+    
+    func fetchContexts(currentWeek: Bool) -> [ActivityContextDataModel] {
+        return []
+    }
 }

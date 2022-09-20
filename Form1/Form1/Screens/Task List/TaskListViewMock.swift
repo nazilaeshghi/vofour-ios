@@ -18,7 +18,7 @@ struct TaskDataModelMock: TaskDataModel {
     var taskID: String = "id"
     var isActivity: Bool = true
     var title: String = "ورزش"
-    var goalId: String?
+    var goalId: String = "-1"
     var prevention: String?
     var reason: String?
     var completionMotivations: String?

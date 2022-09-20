@@ -15,6 +15,7 @@ class AppCoordinator {
     
     private init() {
         dataManager.saveContexts()
+        dataManager.saveDefaultGoal()
     }
     
     static let shared = AppCoordinator()

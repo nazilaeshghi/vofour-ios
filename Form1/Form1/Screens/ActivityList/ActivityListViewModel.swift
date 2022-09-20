@@ -11,9 +11,19 @@ import SwiftUI
 class ActivityListViewModel: ObservableObject {
     private let dataManager: ActivityListDataManagable
     @Published var selectedType: Int = 0
+    @Published var items: [ActiviyListSectionCard] = []
     
     init(dataManager: ActivityListDataManagable) {
         self.dataManager = dataManager
+    }
+    
+    func fetchGoalItems() {
+        let activityListGoals = dataManager.fetchGoals(currentWeek: selectedType == 0 ? true : false)
+        items = transformGoals(goals: activityListGoals)
+    }
+    
+    func fetchContextItems() {
+        
     }
     
     var segmentItems: [String] {
@@ -21,6 +31,26 @@ class ActivityListViewModel: ObservableObject {
             LocalizedString.ActicityList.golas,
             LocalizedString.ActicityList.contexts
         ]
+    }
+    
+    private func transformGoals(goals: [ActivityGoalDataModel]) -> [ActiviyListSectionCard] {
+        return goals.map { item in
+            return ActiviyListSectionCard(id: item.goal.id,
+                                          title: LabelDisplayModel(plainText: item.goal.title, style: .mediumTitle),
+                                          iconName: nil,
+                                          items: transformGoalTasks(hTasks: item.tasks))
+        }
+    }
+    
+    private func transformGoalTasks(hTasks: [HashableTask]) -> [ActiviyListItemCard] {
+        return hTasks.map { hTask in
+            return ActiviyListItemCard(id: hTask.task.taskID,
+                                       title: LabelDisplayModel(plainText: hTask.task.title, style: .regularMediumTitle),
+                                       subtitle: LabelDisplayModel(plainText: hTask.context.name, style: .regularSubtitle),
+                                       color: Color(hex: hTask.task.color),
+                                       progress: hTask.progress,
+                                       iconName: hTask.context.iconName)
+        }
     }
 }
 
@@ -37,6 +67,6 @@ struct ActiviyListItemCard: Identifiable {
     var title: LabelDisplayModel
     var subtitle: LabelDisplayModel
     var color: Color
-    var progress: Float
-    var taskId: String
+    var progress: Float?
+    var iconName: String?
 }

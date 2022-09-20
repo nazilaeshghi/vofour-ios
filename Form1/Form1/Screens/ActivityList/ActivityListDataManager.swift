@@ -9,6 +9,8 @@
 import Foundation
 
 protocol ActivityListDataManagable {
+    func fetchGoals(currentWeek: Bool) -> [ActivityGoalDataModel]
+    func fetchContexts(currentWeek: Bool) -> [ActivityContextDataModel]
 }
 
 class ActivityListDataManager: ActivityListDataManagable {
@@ -16,5 +18,18 @@ class ActivityListDataManager: ActivityListDataManagable {
 
     init(dataManager: DataManager) {
         self.dataManager = dataManager
+    }
+    
+    func fetchGoals(currentWeek: Bool) -> [ActivityGoalDataModel] {
+        if currentWeek {
+            return dataManager.fetchCurrentWeekGoalsTasks()
+        }
+        else {
+            return []
+        }
+    }
+    
+    func fetchContexts(currentWeek: Bool) -> [ActivityContextDataModel] {
+        return []
     }
 }
