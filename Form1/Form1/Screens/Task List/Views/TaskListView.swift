@@ -55,7 +55,6 @@ struct TaskListView: View {
             }
             .onChange(of: selectedDate) { newValue in
                 viewModel.getTasks(date: newValue)
-                NotificationCenter.sendNotification(for: .dataChange)
             }
             .fullScreenCover(item: $taskID) {} content: { taskId in
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)

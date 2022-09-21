@@ -11,14 +11,24 @@ import SwiftUI
 class ActivityListViewModel: ObservableObject {
     private let dataManager: ActivityListDataManagable
     @Published var selectedType: Int = 0
+    @Published var selectedDuration: Durationtype = .week
     @Published var items: [ActiviyListSectionCard] = []
     
     init(dataManager: ActivityListDataManagable) {
         self.dataManager = dataManager
     }
     
+    func reloadData() {
+        if selectedType == 0 {
+            fetchGoalItems()
+        }
+        else {
+            fetchContextItems()
+        }
+    }
+    
     func fetchGoalItems() {
-        let activityListGoals = dataManager.fetchGoals(currentWeek: selectedType == 0 ? true : false)
+        let activityListGoals = dataManager.fetchGoals(currentWeek: selectedDuration == .week ? true : false)
         items = transformGoals(goals: activityListGoals)
     }
     

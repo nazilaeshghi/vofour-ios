@@ -17,7 +17,7 @@ struct SelectContextCellMockGenerator {
     }
     
     static var context: TaskContext {
-        return DecodableContext(id: "iuytdrthhgjh", name: "خود شخصی", iconName: "context_self")
+        return DecodableContext(id: "iuytdrthhgjh", name: "خود شخصی", iconName: "context_self_knowledge")
     }
     
     static var contexts: [TaskContext] {

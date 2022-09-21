@@ -182,13 +182,16 @@ extension DataManager {
         }
         
         func fillTaskProgressDict(for taskWithRecord: DailyTaskDataModel) {
-            if goalProgressDict[taskWithRecord.task.taskID] != nil {
+            if goalProgressDict[taskWithRecord.task.taskID] == nil {
                 goalProgressDict[taskWithRecord.task.taskID]  = (calculateTaskProgress(record: taskWithRecord.record), 1)
             }
             else {
+                let currentTotal = goalProgressDict[taskWithRecord.task.taskID]?.total ?? 0
                 let newTotal = (goalProgressDict[taskWithRecord.task.taskID]?.total ?? 0) + 1
-                let currentProgress = Float((goalProgressDict[taskWithRecord.task.taskID]?.progress ?? 0))
-                let newProgress = (currentProgress + calculateTaskProgress(record: taskWithRecord.record)) / Float(newTotal)
+
+                let currentProgress = Float((goalProgressDict[taskWithRecord.task.taskID]?.progress ?? 0)) * Float(currentTotal)
+                let addedProgress = calculateTaskProgress(record: taskWithRecord.record)
+                let newProgress = (currentProgress + addedProgress) / Float(newTotal)
                 goalProgressDict[taskWithRecord.task.taskID] = (progress: newProgress, total: newTotal)
             }
         }

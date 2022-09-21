@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ActivityListView: View {
     @StateObject var viewModel: ActivityListViewModel
-    @State var selectedDuration: Durationtype = .week
 
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
@@ -21,29 +20,45 @@ struct ActivityListView: View {
                               selection: $viewModel.selectedType)
             
             VStack(alignment: .leading , spacing: PublicTheme.vHeaderSpace) {
-                ActivityListFilterView(selectedDuration: $selectedDuration)
+                ActivityListFilterView(selectedDuration: $viewModel.selectedDuration)
                 Text("۲۰ شهریور" + " - " + " ۲۶ شهریور ۱۴۰۰")
                     .applyStyle(style: .secondaryRegularBody)
             }
             .applyBasicViewStyle()
             
-//            List {
-//                ForEach(viewModel.items) { item in
-//
-//                }
-//                Section {
-//                    SelectGoalCell(item: viewModel.defaultItem)
-//                        .onTapGesture {
-//                            viewModel.selectGoal(goalID: viewModel.defaultItem.id)
-//                            presentationMode.wrappedValue.dismiss()
-//                        }
-//                        .applyBasicCellStyle()
-//                }
-//            }
-            
-            Spacer()
+            List {
+                ForEach(viewModel.items, id: \.id) { sectionItem in
+                    Section {
+                        VStack(spacing: PublicTheme.collectionSpace) {
+                            HStack() {
+                                if sectionItem.iconName != nil {
+                                    Image(sectionItem.iconName ?? "").frame(width: 24, height: 24)
+                                }
+                                Text(sectionItem.title.plainText)
+                                    .applyStyle(style: sectionItem.title.labelStyle)
+                                Spacer()
+                            }
+                           
+                            
+                            ForEach(sectionItem.items, id: \.id) { item in
+                                ActivityListCellView(item: item)
+                                    .applyBasicCellStyle()
+                            }
+                        }
+                    }
+                }
+                .applyBasicCellStyle()
+            }
+            .applyListBasicStyle()
+            .applyBasicViewStyle()
         }
         .applyBackgroundColor()
+        .onAppear {
+            viewModel.reloadData()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
+            viewModel.reloadData()
+        }
     }
 }
 

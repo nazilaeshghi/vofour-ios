@@ -16,6 +16,7 @@ struct ActivityListCellView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(item.title.plainText)
                     .applyStyle(style: item.title.labelStyle)
+                    .frame( height: 26)
                 HStack {
                     if let iconName = item.iconName { Image(iconName).frame(width: 16, height: 16) }
                     Text(item.subtitle.plainText)
@@ -32,7 +33,7 @@ struct ActivityListCellView: View {
                         .applyStyle(style: .regularTinyBody)
                     CircularProgressView(progress: progress,
                                          color: item.color,
-                                         lineWidth: 1)
+                                         lineWidth: 2)
                         .frame(width: 28, height: 28)
                 }
             }
@@ -40,6 +41,7 @@ struct ActivityListCellView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
         .frame(height: 72)
+        .background(.white)
         .cornerRadius(PublicTheme.cornerRaduis)
     }
 }

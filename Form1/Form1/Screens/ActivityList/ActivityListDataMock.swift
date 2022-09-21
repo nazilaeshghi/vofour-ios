@@ -11,7 +11,15 @@ import Foundation
 class ActivityListDataMock: ActivityListDataManagable {
     
     func fetchGoals(currentWeek: Bool) -> [ActivityGoalDataModel] {
-       return []
+        return [ActivityGoalDataModel(goal: GoalEntity(id: "-200", title: "هدف من"),
+                                      tasks: [
+                                        HashableTask(task: TaskDataModelMock(),
+                                                     progress: 0.5,
+                                                     context: SelectContextCellMockGenerator.context),
+                                        HashableTask(task: TaskDataModelMock(),
+                                                     progress: 0.7,
+                                                     context: SelectContextCellMockGenerator.context)
+                                      ])]
     }
     
     func fetchContexts(currentWeek: Bool) -> [ActivityContextDataModel] {

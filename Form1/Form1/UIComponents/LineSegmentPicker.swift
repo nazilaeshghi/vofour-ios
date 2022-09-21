@@ -28,6 +28,7 @@ struct LineSegmentPicker: View {
         return RoundedRectangle(cornerRadius: LineSegmentPicker.cornerRadius)
             .foregroundColor(LineSegmentPicker.activeSegmentColor)
             .frame(width: self.segmentSize.width, height: 2)
+            .offset(x: self.computeActiveSegmentHorizontalOffset(), y: 0)
             .animation(Animation.linear(duration: LineSegmentPicker.animationDuration))
             .eraseToAnyView()
     }
