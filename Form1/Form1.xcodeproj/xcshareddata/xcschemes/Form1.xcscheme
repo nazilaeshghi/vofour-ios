@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64B8AE9E279DA3DC00BF47C5"
-               BuildableName = "Form1.app"
-               BlueprintName = "Form1"
+               BuildableName = "forMe From.app"
+               BlueprintName = "forMe From"
                ReferencedContainer = "container:Form1.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64B8AE9E279DA3DC00BF47C5"
-            BuildableName = "Form1.app"
-            BlueprintName = "Form1"
+            BuildableName = "forMe From.app"
+            BlueprintName = "forMe From"
             ReferencedContainer = "container:Form1.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64B8AE9E279DA3DC00BF47C5"
-            BuildableName = "Form1.app"
-            BlueprintName = "Form1"
+            BuildableName = "forMe From.app"
+            BlueprintName = "forMe From"
             ReferencedContainer = "container:Form1.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

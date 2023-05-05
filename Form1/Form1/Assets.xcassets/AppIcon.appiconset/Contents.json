@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Logo1024.png",
+      "filename" : "Logo1024_without_alpha.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

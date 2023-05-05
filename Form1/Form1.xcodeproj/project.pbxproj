@@ -262,7 +262,7 @@
 		64A932FE28A7D50F006E1988 /* TaskStepsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStepsHeader.swift; sourceTree = "<group>"; };
 		64A9330028A7D57E006E1988 /* ActivityCreationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCreationViews.swift; sourceTree = "<group>"; };
 		64A9330228A7D5C0006E1988 /* QuitHabitViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitHabitViews.swift; sourceTree = "<group>"; };
-		64B8AE9F279DA3DC00BF47C5 /* Form1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Form1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B8AE9F279DA3DC00BF47C5 /* forMe From.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "forMe From.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B8AEA2279DA3DC00BF47C5 /* Form1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form1App.swift; sourceTree = "<group>"; };
 		64B8AEA6279DA3E000BF47C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64B8AEA9279DA3E000BF47C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -486,20 +486,6 @@
 			path = "Extensions & Helpers";
 			sourceTree = "<group>";
 		};
-		647F293B27AF1E9B00C70874 /* Report */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Report;
-			sourceTree = "<group>";
-		};
-		647F293C27AF1EB000C70874 /* Days */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Days;
-			sourceTree = "<group>";
-		};
 		647F293D27AF1EBF00C70874 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,13 +496,6 @@
 				647F294827AF247300C70874 /* HomeDataManager.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		647F293E27AF1EE500C70874 /* Habit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Habit;
 			sourceTree = "<group>";
 		};
 		647F294527AF23E100C70874 /* ForFuture */ = {
@@ -579,7 +558,7 @@
 		64B8AEA0279DA3DC00BF47C5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64B8AE9F279DA3DC00BF47C5 /* Form1.app */,
+				64B8AE9F279DA3DC00BF47C5 /* forMe From.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -633,9 +612,6 @@
 				6483727C289597B000712190 /* Setting */,
 				642D2B31289800FD00500670 /* Task Detail */,
 				6435414328D27E6100449DC3 /* ActivityList */,
-				647F293C27AF1EB000C70874 /* Days */,
-				647F293B27AF1E9B00C70874 /* Report */,
-				647F293E27AF1EE500C70874 /* Habit */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -781,9 +757,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64B8AE9E279DA3DC00BF47C5 /* Form1 */ = {
+		64B8AE9E279DA3DC00BF47C5 /* forMe From */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64B8AEAD279DA3E000BF47C5 /* Build configuration list for PBXNativeTarget "Form1" */;
+			buildConfigurationList = 64B8AEAD279DA3E000BF47C5 /* Build configuration list for PBXNativeTarget "forMe From" */;
 			buildPhases = (
 				64B8AE9B279DA3DC00BF47C5 /* Sources */,
 				64B8AE9C279DA3DC00BF47C5 /* Frameworks */,
@@ -793,7 +769,7 @@
 			);
 			dependencies = (
 			);
-			name = Form1;
+			name = "forMe From";
 			packageProductDependencies = (
 				64B8AEB5279DAFA000BF47C5 /* Realm */,
 				64B8AEB7279DAFA000BF47C5 /* RealmSwift */,
@@ -801,7 +777,7 @@
 				64EA838728A80059005ED007 /* SwiftDate */,
 			);
 			productName = Form1;
-			productReference = 64B8AE9F279DA3DC00BF47C5 /* Form1.app */;
+			productReference = 64B8AE9F279DA3DC00BF47C5 /* forMe From.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -838,7 +814,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64B8AE9E279DA3DC00BF47C5 /* Form1 */,
+				64B8AE9E279DA3DC00BF47C5 /* forMe From */,
 			);
 		};
 /* End PBXProject section */
@@ -1133,7 +1109,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Form1/Preview Content\"";
 				DEVELOPMENT_TEAM = 3LCV6JG2JX;
 				ENABLE_PREVIEWS = YES;
@@ -1166,7 +1142,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Form1/Preview Content\"";
 				DEVELOPMENT_TEAM = 3LCV6JG2JX;
 				ENABLE_PREVIEWS = YES;
@@ -1205,7 +1181,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64B8AEAD279DA3E000BF47C5 /* Build configuration list for PBXNativeTarget "Form1" */ = {
+		64B8AEAD279DA3E000BF47C5 /* Build configuration list for PBXNativeTarget "forMe From" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64B8AEAE279DA3E000BF47C5 /* Debug */,
