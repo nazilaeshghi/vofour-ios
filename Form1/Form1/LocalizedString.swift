@@ -91,7 +91,7 @@ struct LocalizedString {
     enum Tabbar {
         static let home = "خانه"
         static let booklet = "سررسید"
-        static let activities = "فعالیت‌ها"
+        static let goals = "فرم یک"
         static let add = ""
         static let report = "گزارش"
     }
@@ -125,11 +125,25 @@ struct LocalizedString {
     }
     
     enum ActicityList {
-        static let title = "لیست فعالیت‌ها"
+        static let title = "فرم یک"
         static let golas = "اهداف"
         static let contexts = "زمینه‌ها"
         static let currentWeek = "هفته جاری"
         static let allActivities = "کل کار‌ها"
+    }
+    
+    enum Setting {
+        static let title = "تنظیمات" 
+        static let currentCalendarTitle = "تقویم فارسی"
+        static let startDate = "شروع هفته"
+        static let saturday = "شنبه"
+        static let sunday = "یکشنبه"
+        static let monday = "دوشنبه"
+        static let tuesday = "سه‌شنبه"
+        static let wednesday = "چهارشنبه"
+        static let thursday = "پنجشنبه"
+        static let friday = "جمعه"
+        static let us = "ساخته شده با عشق توسط وداد، حسین، نازیلا و مرتضی"
     }
     
 }

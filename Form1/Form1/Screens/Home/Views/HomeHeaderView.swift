@@ -35,7 +35,7 @@ struct HomeHeaderView: View {
         .sheet(isPresented: $showingSheet, onDismiss: {
             showingSheet = false
         }) {
-            SettingsView()
+            SettingsView(isPresented: $showingSheet)
         }
     }
 }

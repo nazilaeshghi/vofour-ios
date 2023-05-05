@@ -52,7 +52,7 @@ struct CustomTabBarView: View {
 }
 
 struct CustomTabBarView_Preview: PreviewProvider {
-    static let tabs: [TabBarItem] = [ .home, .booklet, .add, .activities,.report ]
+    static let tabs: [TabBarItem] = [ .home, .booklet, .add, .form1,.report ]
     
     static var previews: some View {
         VStack {
@@ -68,6 +68,12 @@ extension CustomTabBarView {
             if tab.tag == 2 {
                 Image(tab.iconName)
                     .offset(y: -16)
+            } else if tab.tag == 4 {
+                Image(tab.iconName)
+                    .disabled(true)
+                Text(tab.title)
+                    .applyStyle(style: .primaryRegularBody)
+                    .disabled(true)
             } else {
                 Image(selection.tag == tab.tag ? tab.selectedIconName : tab.iconName)
                 Text(tab.title)

@@ -69,7 +69,7 @@ class AppCoordinator {
     }
     
     // Activity List
-    func activityListView() -> ActivityListView {
+    func activityListView() -> Form1ListView {
         let coordinator = ActivityListCoordinator(dataManager: dataManager)
         return coordinator.destinationView
     }

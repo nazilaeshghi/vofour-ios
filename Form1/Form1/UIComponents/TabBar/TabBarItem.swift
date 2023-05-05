@@ -9,7 +9,7 @@
 import Foundation
 
 enum TabBarItem: Hashable {
-    case home, booklet, report, add, activities
+    case home, booklet, report, add, form1
     
     var iconName: String {
         switch self {
@@ -21,7 +21,7 @@ enum TabBarItem: Hashable {
             return "reportTabbar"
         case .add:
             return "addTabbar"
-        case .activities:
+        case .form1:
             return "activityTabbar"
         }
     }
@@ -36,7 +36,7 @@ enum TabBarItem: Hashable {
             return "reportTabbarSelected"
         case .add:
             return "addTabbar"
-        case .activities:
+        case .form1:
             return "activityTabbarSelected"
         }
     }
@@ -51,8 +51,8 @@ enum TabBarItem: Hashable {
             return LocalizedString.Tabbar.report
         case .add:
             return ""
-        case .activities:
-            return LocalizedString.Tabbar.activities
+        case .form1:
+            return LocalizedString.Tabbar.goals
         }
     }
     
@@ -67,7 +67,7 @@ enum TabBarItem: Hashable {
             return 4
         case .add:
             return 2
-        case .activities:
+        case .form1:
             return 3
         }
     }

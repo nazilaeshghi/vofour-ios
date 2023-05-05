@@ -52,7 +52,7 @@
 		6432D3A828AC209400B5763A /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A728AC209400B5763A /* ReminderView.swift */; };
 		6432D3AA28AC2BC800B5763A /* TaskDetailDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */; };
 		6435414228D2797300449DC3 /* LineSegmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414128D2797300449DC3 /* LineSegmentPicker.swift */; };
-		6435414528D27E9500449DC3 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414428D27E9500449DC3 /* ActivityListView.swift */; };
+		6435414528D27E9500449DC3 /* Form1ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414428D27E9500449DC3 /* Form1ListView.swift */; };
 		6435414728D27ED000449DC3 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414628D27ED000449DC3 /* ActivityListViewModel.swift */; };
 		6435414928D2814300449DC3 /* ActivityListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414828D2814300449DC3 /* ActivityListCoordinator.swift */; };
 		6435414B28D2816400449DC3 /* ActivityListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435414A28D2816400449DC3 /* ActivityListDataManager.swift */; };
@@ -206,7 +206,7 @@
 		6432D3A728AC209400B5763A /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		6432D3A928AC2BC800B5763A /* TaskDetailDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailDataMock.swift; sourceTree = "<group>"; };
 		6435414128D2797300449DC3 /* LineSegmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSegmentPicker.swift; sourceTree = "<group>"; };
-		6435414428D27E9500449DC3 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		6435414428D27E9500449DC3 /* Form1ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form1ListView.swift; sourceTree = "<group>"; };
 		6435414628D27ED000449DC3 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		6435414828D2814300449DC3 /* ActivityListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListCoordinator.swift; sourceTree = "<group>"; };
 		6435414A28D2816400449DC3 /* ActivityListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListDataManager.swift; sourceTree = "<group>"; };
@@ -440,7 +440,7 @@
 		6435414328D27E6100449DC3 /* ActivityList */ = {
 			isa = PBXGroup;
 			children = (
-				6435414428D27E9500449DC3 /* ActivityListView.swift */,
+				6435414428D27E9500449DC3 /* Form1ListView.swift */,
 				644D729C28D95D1D00A92F87 /* ActivityListCellView.swift */,
 				6435414628D27ED000449DC3 /* ActivityListViewModel.swift */,
 				6435414828D2814300449DC3 /* ActivityListCoordinator.swift */,
@@ -951,7 +951,7 @@
 				64C7727E2885BCAB0066F97B /* DurationSheet.swift in Sources */,
 				647F294927AF247300C70874 /* HomeDataManager.swift in Sources */,
 				64D8898F28407BC800975536 /* SegmentedPicker.swift in Sources */,
-				6435414528D27E9500449DC3 /* ActivityListView.swift in Sources */,
+				6435414528D27E9500449DC3 /* Form1ListView.swift in Sources */,
 				642D2B352898012300500670 /* TaskDetailView.swift in Sources */,
 				64842BC8288F6FE700A4AA2E /* TaskHeaderView.swift in Sources */,
 				646EA78F2894FC2A00A338F4 /* CircularProgressView.swift in Sources */,
@@ -1139,17 +1139,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Form1/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = forMe;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.form1.Form1;
+				MARKETING_VERSION = 0.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.forMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1169,17 +1172,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Form1/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = forMe;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.form1.Form1;
+				MARKETING_VERSION = 0.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.forMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

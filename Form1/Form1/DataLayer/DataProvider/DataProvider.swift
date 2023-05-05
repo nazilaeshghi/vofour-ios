@@ -25,13 +25,19 @@ protocol DataProvider {
     func fetchTask(id: String) -> TaskDataModel?
     func deleteTask(id: String)
     func fetchTaskCount(for contextID: String) -> Int
+    func fetchTasks(for goalID: String) -> [TaskDataModel]
     
     func saveRecord(record: Record)
     func fetchRecord(taskID: String, date: Date) -> Record?
+    func fetchRecords(for taskID: String) -> [Record]
     func updateRecord(recordID: String, count: Int)
 }
 
 class MockDataProvider: DataProvider {
+    func fetchRecords(for taskID: String) -> [Record] {
+        return []
+    }
+    
     func saveContexts() {
     }
     
@@ -85,6 +91,10 @@ class MockDataProvider: DataProvider {
     
     func fetchTaskCount(for contextID: String) -> Int {
         return 0
+    }
+    
+    func fetchTasks(for goalID: String) -> [TaskDataModel] {
+        []
     }
     
     func saveRecord(record: Record) {

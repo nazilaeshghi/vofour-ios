@@ -16,8 +16,8 @@ struct HomeHeadLineView: View {
         
         VStack(alignment: .leading, spacing: PublicTheme.vHeaderSpace) {
             VStack(alignment: .leading, spacing: .zero) {
-                
-                if let week = Int(weekProgress * 100), week >= 0 {
+                let week = Int(weekProgress * 100)
+                if week >= 0 {
                     Text("%\(week)".convertToPersian())
                         .applyStyle(style: .primaryRegularLargTitle)
                 } else {
@@ -33,8 +33,8 @@ struct HomeHeadLineView: View {
             }
             
             VStack(alignment: .leading, spacing: .zero) {
-                
-                if let today = Int(todayProgress * 100), today >= 0 {
+                let today = Int(todayProgress * 100)
+                if today >= 0 {
                     Text("%\(today)".convertToPersian())
                         .applyStyle(style: .greenRegularLargTitle)
                 } else {

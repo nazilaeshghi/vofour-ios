@@ -25,7 +25,7 @@ class ActivityListDataManager: ActivityListDataManagable {
             return dataManager.fetchCurrentWeekGoalsTasks()
         }
         else {
-            return []
+            return dataManager.fetchAllGoalsTasks()
         }
     }
     

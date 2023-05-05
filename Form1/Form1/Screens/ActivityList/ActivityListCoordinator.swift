@@ -11,8 +11,8 @@ import Foundation
 class ActivityListCoordinator {
     private var viewModel: ActivityListViewModel!
     
-    var destinationView: ActivityListView {
-        return ActivityListView(viewModel: self.viewModel)
+    var destinationView: Form1ListView {
+        return Form1ListView(viewModel: self.viewModel)
     }
     
     required init(dataManager: DataManager) {

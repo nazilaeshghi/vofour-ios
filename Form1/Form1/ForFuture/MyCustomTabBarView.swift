@@ -14,10 +14,10 @@ struct MyCustomTabBarView: View {
     
     var body: some View {
         NavigationView {
+            let homeView = AppCoordinator.shared.makeHomeView()
+            let taskView = AppCoordinator.shared.makeTasksListView()
             TabView {
-                if let homeView = AppCoordinator.shared.makeHomeView(),
-                   let taskView = AppCoordinator.shared.makeTasksListView()
-                {
+                
                     homeView
                         .tabItem {
                             Label("Menu", systemImage: "list.dash")
@@ -28,7 +28,6 @@ struct MyCustomTabBarView: View {
                             Label("Order", systemImage: "square.and.pencil")
                         }
                 }
-            }
         }
     }
 }

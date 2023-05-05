@@ -25,7 +25,7 @@ struct AppTabView: View {
                 .tabBatItem(tab: .add, selection: $tabbarSelection)
             
             AppCoordinator.shared.activityListView()
-                .tabBatItem(tab: .activities, selection: $tabbarSelection)
+                .tabBatItem(tab: .form1, selection: $tabbarSelection)
             
             AddViewEmptyView()
                 .tabBatItem(tab: .report, selection: $tabbarSelection)
@@ -41,6 +41,7 @@ struct AppTabView_Previews: PreviewProvider {
 
 struct AddViewEmptyView: View {
     var body: some View {
-        Text("")
+        Text("در دست احداث")
+            .applyStyle(style: .primaryTitle)
     }
 }

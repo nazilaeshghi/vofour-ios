@@ -25,24 +25,27 @@ struct ActivityListCellView: View {
                     Spacer()
                 }
             }
-            if let progress = item.progress {
-                Spacer()
-                
-                ZStack {
-                    Text(progress.relativePercentageString)
-                        .applyStyle(style: .regularTinyBody)
-                    CircularProgressView(progress: progress,
-                                         color: item.color,
-                                         lineWidth: 2)
-                        .frame(width: 28, height: 28)
-                }
-            }
+//            if let progress = item.progress {
+//                Spacer()
+//                
+//                ZStack {
+//                    Text(progress.relativePercentageString)
+//                        .applyStyle(style: .regularTinyBody)
+//                    CircularProgressView(progress: progress,
+//                                         color: item.color,
+//                                         lineWidth: 2)
+//                        .frame(width: 28, height: 28)
+//                }
+//            }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
         .frame(height: 72)
         .background(.white)
         .cornerRadius(PublicTheme.cornerRaduis)
+        .overlay(RoundedRectangle(cornerRadius: PublicTheme.cornerRaduis)
+            .stroke(item.color, lineWidth: 1))
+        .padding(.horizontal, 1)
     }
 }
 

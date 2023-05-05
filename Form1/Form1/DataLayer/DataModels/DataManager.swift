@@ -43,7 +43,7 @@ class DataManager {
     }
     
     func saveDefaultGoal() {
-        guard dataProvider.findGoal(with: "-1") != nil else { return }
+        guard dataProvider.findGoal(with: "-1") == nil else { return }
         let id = "-1"
         let entity = GoalEntity(id: id, title: LocalizedString.SelectGoalPage.defaultGoalTitle)
         return dataProvider.createGoal(newEntity: entity)
@@ -77,12 +77,12 @@ class DataManager {
     
     func updateRecord(taskID: String, date: Date, increment: Bool) {
         let simpleDate = date.getSimpleDate()
-        if let rcord = fetchRecord(taskID: taskID, date: simpleDate) {
+        if let record = fetchRecord(taskID: taskID, date: simpleDate) {
             if increment {
-                updateRecord(recordID: rcord.recordID, count: rcord.count + 1)
+                updateRecord(recordID: record.recordID, count: record.count + 1)
             } else {
-                guard (rcord.count - 1) >= 0 else { return }
-                updateRecord(recordID: rcord.recordID, count: rcord.count - 1)
+                guard (record.count - 1) >= 0 else { return }
+                updateRecord(recordID: record.recordID, count: record.count - 1)
             }
         }
         else {
@@ -188,7 +188,7 @@ extension DataManager {
             else {
                 let currentTotal = goalProgressDict[taskWithRecord.task.taskID]?.total ?? 0
                 let newTotal = (goalProgressDict[taskWithRecord.task.taskID]?.total ?? 0) + 1
-
+                
                 let currentProgress = Float((goalProgressDict[taskWithRecord.task.taskID]?.progress ?? 0)) * Float(currentTotal)
                 let addedProgress = calculateTaskProgress(record: taskWithRecord.record)
                 let newProgress = (currentProgress + addedProgress) / Float(newTotal)
@@ -201,7 +201,7 @@ extension DataManager {
         let weekDays = DateBuilder.make7Days(selectedDate: todayDate)
         var goalProgressDict = [String: (progress: Float, total: Int)]()
         
-        // Fetch tasks for evyday in current week
+        // Fetch tasks for eveyday in current week
         var tempTask = Set<HashableTask>()
         for day in weekDays {
             let goalDayTasks = dataProvider.fetchTasks(for: day.obj.id, date: day.date)
@@ -226,6 +226,24 @@ extension DataManager {
             
         }
         
+        return output
+    }
+    
+    func fetchAllGoalsTasks() -> [ActivityGoalDataModel] {
+        let goals = dataProvider.fetchGoals()
+        
+        var output = [ActivityGoalDataModel]()
+        for goal in goals {
+            let goalTasks: [HashableTask] = dataProvider.fetchTasks(for: goal.id).compactMap { task in
+                guard let context = dataProvider.findContext(id: task.contextId) else {
+                    return nil
+                }
+                return HashableTask(task: task, progress: 0, context: context)
+            }
+            
+            output.append(ActivityGoalDataModel(goal: goal,
+                                                tasks: goalTasks))
+        }
         return output
     }
 }

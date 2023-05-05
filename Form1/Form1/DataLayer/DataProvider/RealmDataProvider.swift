@@ -211,6 +211,15 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
+    func fetchTasks(for goalID: String) -> [TaskDataModel] {
+        do {
+            return try realm().objects(TaskRealm.self).where{ $0.goalId == goalID }.detached
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding tasks for a goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
     // MARK: - Record
     func saveRecord(record: Record) {
         let recordRealm = RecordRealm(record: record)
@@ -229,7 +238,7 @@ class ReqalmDataProvider: DataProvider {
         do {
             return try realm().objects(RecordRealm.self).where{ $0.taskID == taskID && $0.date == date }.first?.detached()
         } catch let error as NSError {
-            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            ErrorLogger.log(domain: .dataBase, message: "Finding Record faild, Something went wrong with Realm: \(error.localizedDescription)")
             return nil
         }
     }
@@ -246,6 +255,14 @@ class ReqalmDataProvider: DataProvider {
             
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "updating record, Something went wrong with Realm: \(error.localizedDescription)")
+        }
+    }
+    func fetchRecords(for taskID: String) -> [Record] {
+        do {
+            return try realm().objects(RecordRealm.self).where{ $0.taskID == taskID }.detached
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Records for a task  faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return []
         }
     }
 }

@@ -8,23 +8,13 @@
 
 import SwiftUI
 
-struct ActivityListView: View {
+struct Form1ListView: View {
     @StateObject var viewModel: ActivityListViewModel
 
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
             Text(LocalizedString.ActicityList.title)
                 .applyStyle(style: .mediumTitle)
-            
-            LineSegmentPicker(items: viewModel.segmentItems,
-                              selection: $viewModel.selectedType)
-            
-            VStack(alignment: .leading , spacing: PublicTheme.vHeaderSpace) {
-                ActivityListFilterView(selectedDuration: $viewModel.selectedDuration)
-                Text("۲۰ شهریور" + " - " + " ۲۶ شهریور ۱۴۰۰")
-                    .applyStyle(style: .secondaryRegularBody)
-            }
-            .applyBasicViewStyle()
             
             List {
                 ForEach(viewModel.items, id: \.id) { sectionItem in
@@ -64,7 +54,7 @@ struct ActivityListView: View {
 
 struct ActivityListView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityListView(viewModel: ActivityListViewModel(dataManager: ActivityListDataMock()))
+        Form1ListView(viewModel: ActivityListViewModel(dataManager: ActivityListDataMock()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
             .previewInterfaceOrientation(.portraitUpsideDown)

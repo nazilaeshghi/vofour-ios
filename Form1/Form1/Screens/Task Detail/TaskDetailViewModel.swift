@@ -36,7 +36,7 @@ class TaskDetailViewModel: ObservableObject {
         
         activityType = task.task.isActivity ? LocalizedString.TaskDetail.create : LocalizedString.TaskDetail.quit
         contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
-        goalName = dataManager.fetchGoal(id: task.task.goalId ?? "")?.title ?? LocalizedString.TaskDetail.independent
+        goalName = dataManager.fetchGoal(id: task.task.goalId)?.title ?? LocalizedString.TaskDetail.independent
         didFetchDate = true
     }
     
