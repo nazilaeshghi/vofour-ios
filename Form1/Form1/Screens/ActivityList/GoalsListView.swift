@@ -16,34 +16,39 @@ struct GoalsListView: View {
             Text(LocalizedString.ActicityList.title)
                 .applyStyle(style: .mediumTitle)
             
-            List {
-                ForEach(viewModel.items, id: \.id) { sectionItem in
-                    Section {
-                        VStack(spacing: PublicTheme.collectionSpace) {
-                            HStack() {
-                                if sectionItem.iconName != nil {
-                                    Image(sectionItem.iconName ?? "").frame(width: 24, height: 24)
+            if viewModel.items.isEmpty {
+              Spacer()
+                    .frame(maxWidth: .infinity)
+            }
+            else {
+                List {
+                    ForEach(viewModel.items, id: \.id) { sectionItem in
+                        Section {
+                            VStack(spacing: PublicTheme.collectionSpace) {
+                                HStack() {
+                                    if sectionItem.iconName != nil {
+                                        Image(sectionItem.iconName ?? "").frame(width: 24, height: 24)
+                                    }
+                                    Text(sectionItem.title.plainText)
+                                        .applyStyle(style: sectionItem.title.labelStyle)
+                                    Spacer()
                                 }
-                                Text(sectionItem.title.plainText)
-                                    .applyStyle(style: sectionItem.title.labelStyle)
-                                Spacer()
-                            }
-                           
-                            
-                            ForEach(sectionItem.items, id: \.id) { item in
-                                ActivityListCellView(item: item)
-                                    .applyBasicCellStyle()
+                                
+                                
+                                ForEach(sectionItem.items, id: \.id) { item in
+                                    ActivityListCellView(item: item)
+                                        .applyBasicCellStyle()
+                                }
                             }
                         }
                     }
+                    .applyBasicCellStyle()
                 }
-                .applyBasicCellStyle()
+                .applyListBasicStyle()
             }
-            .applyListBasicStyle()
-            .applyBasicViewStyle()
         }
-        .applyBackgroundColor()
-        
+        .applyBasicViewStyle()
+
         .onAppear {
             viewModel.reloadData()
         }
