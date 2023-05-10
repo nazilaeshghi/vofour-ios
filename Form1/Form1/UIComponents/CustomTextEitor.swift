@@ -62,7 +62,7 @@ struct CustomTextEditor: View {
             
             TextEditor(text: $text)
                 .padding(internalPadding)
-                .scrollContentBackground(.h)
+                .scrollContentBackground(.hidden)
             
         }.onAppear() {
             UITextView.appearance().backgroundColor = .clear
