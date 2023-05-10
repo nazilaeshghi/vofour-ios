@@ -17,7 +17,7 @@ struct TaskCreationStep2View: View {
     @State private var durationPresented = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: .zero) {
                 DeviderView()
                 
@@ -76,7 +76,6 @@ struct TaskCreationStep2View: View {
                     }
                     .applyBasicViewStyle()
                 }
-                .scrollDismissesKeyboard(.interactively)
                Spacer()
                 
                 TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
@@ -110,11 +109,9 @@ struct TaskCreationStep2View: View {
                                                 userInfo: nil)
             })
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: {
             viewModel.initBinders()
         })
-        .navigationBarHidden(true)
     }
     
     func saveAction() {

@@ -28,7 +28,7 @@ struct TaskCreationStep1View: View {
     ]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: .zero) {
                 NavigationLink(isActive: $showingNextPage) {
                     AppCoordinator.shared.makeTaskCreationStep2View()
@@ -106,7 +106,6 @@ struct TaskCreationStep1View: View {
             }
             .sheet(isPresented: $showingGoalSheet, onDismiss: refreshTitle, content: makeSelectGoalView)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: {
             viewModel.initBinders()
         })

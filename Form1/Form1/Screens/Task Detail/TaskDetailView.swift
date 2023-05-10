@@ -15,7 +15,7 @@ struct TaskDetailView: View {
     @State private var showingTaskCreationSheet = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 DeviderView()
                 VerticalSpaceView(space: .header)

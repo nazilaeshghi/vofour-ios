@@ -25,53 +25,50 @@ extension View {
     }
     
     func applyToolbarStyle(with title: String, action: @escaping () -> Void) -> some View {
-        self
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack(spacing: .zero) {
-                        Text(title)
-                            .applyStyle(style: .regularTitle)
-                    }
+        self.toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack(spacing: .zero) {
+                    Text(title)
+                        .applyStyle(style: .regularTitle)
                 }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        action()
-                    } label: {
-                        Image.closeIcon
-                    }
-                }
-                
             }
-            .navigationBarTitleDisplayMode(.inline)
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    action()
+                } label: {
+                    Image.closeIcon
+                }
+            }
+            
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     func applyToolbarBackStyle(with title: String, backAction: DismissAction) -> some View {
-        self
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack(spacing: .zero) {
-                        Text(title)
-                            .applyStyle(style: .regularTitle)
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        backAction()
-                    } label: {
-                        Image.backArrow
-                    }
+        self.toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack(spacing: .zero) {
+                    Text(title)
+                        .applyStyle(style: .regularTitle)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    backAction()
+                } label: {
+                    Image.backArrow
+                }
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     @ViewBuilder
     func applyToolbarWithBackStyle(with title: String, hideBakcButton: Bool = false, backAction: DismissAction, closeAction: @escaping () -> Void) -> some View {
         if hideBakcButton {
-            self
-                .toolbar {
+            self.toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack(spacing: .zero) {
                         Text(title)
@@ -87,34 +84,35 @@ extension View {
                     }
                 }
             }
-                .navigationBarTitleDisplayMode(.inline)
+            
+            .navigationBarTitleDisplayMode(.inline)
         } else {
-            self
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        VStack(spacing: .zero) {
-                            Text(title)
-                                .applyStyle(style: .regularTitle)
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            backAction()
-                        } label: {
-                            Image.backArrow
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            closeAction()
-                        } label: {
-                            Image.closeIcon
-                        }
+            self.toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack(spacing: .zero) {
+                        Text(title)
+                            .applyStyle(style: .regularTitle)
                     }
                 }
-                .navigationBarTitleDisplayMode(.inline)
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        backAction()
+                    } label: {
+                        Image.backArrow
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        closeAction()
+                    } label: {
+                        Image.closeIcon
+                    }
+                }
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

@@ -41,9 +41,7 @@ struct CustomTabBarView: View {
             x: 0,
             y: 0
         )
-        .fullScreenCover(isPresented: $showingSheet) {
-            
-        } content: {
+        .sheet(isPresented: $showingSheet) {
             AppCoordinator.shared.makeSelectContextView()
         }
 

@@ -17,7 +17,7 @@ struct TaskListView: View {
     let dateHelper = DateHelper()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                                 
                 // Week Header
@@ -56,7 +56,7 @@ struct TaskListView: View {
             .onChange(of: selectedDate) { newValue in
                 viewModel.getTasks(date: newValue)
             }
-            .fullScreenCover(item: $taskID) {} content: { taskId in
+            .sheet(item: $taskID) { taskId in
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
                     .environment(\.layoutDirection, .rightToLeft)
             }
@@ -73,7 +73,6 @@ struct TaskListView: View {
                 }
             }))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

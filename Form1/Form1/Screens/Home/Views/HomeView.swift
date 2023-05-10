@@ -55,6 +55,7 @@ struct HomeView: View {
         .background(Color.background)
         .sheet(item: $selectedContextID) { contextID in
             AppCoordinator.shared.makeTaskCreationStep1View(contextID: contextID)
+                .environment(\.layoutDirection, .rightToLeft)
         }
     }
 }
