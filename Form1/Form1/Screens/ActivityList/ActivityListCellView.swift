@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ActivityListCellView: View {
     let item: ActiviyListItemCard
+    //let detailAction: () -> Void
     
     var body: some View {
         HStack {

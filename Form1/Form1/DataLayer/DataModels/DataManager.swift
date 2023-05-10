@@ -240,7 +240,7 @@ extension DataManager {
                 }
                 return HashableTask(task: task, progress: 0, context: context)
             }
-            
+            guard goalTasks.count > 0 else { continue }
             output.append(ActivityGoalDataModel(goal: goal,
                                                 tasks: goalTasks))
         }

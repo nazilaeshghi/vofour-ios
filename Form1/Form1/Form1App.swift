@@ -12,6 +12,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        UIView.appearance().semanticContentAttribute = .forceRightToLeft
         return true
     }
 }
@@ -23,6 +24,7 @@ struct Form1App: App {
     var body: some Scene {
         WindowGroup {
             AppCoordinator.shared.makeTabbar()
+                .environment(\.layoutDirection, .rightToLeft)
         }
     }
 }

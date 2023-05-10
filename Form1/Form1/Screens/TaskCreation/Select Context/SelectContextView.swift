@@ -55,6 +55,7 @@ struct SelectContextView: View {
                 viewModel.reset()
             }
         }
+        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

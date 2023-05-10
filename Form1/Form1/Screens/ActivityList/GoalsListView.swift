@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct Form1ListView: View {
-    @StateObject var viewModel: ActivityListViewModel
+struct GoalsListView: View {
+    @StateObject var viewModel: GoalsListViewModel
 
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
@@ -43,6 +43,7 @@ struct Form1ListView: View {
             .applyBasicViewStyle()
         }
         .applyBackgroundColor()
+        
         .onAppear {
             viewModel.reloadData()
         }
@@ -54,7 +55,7 @@ struct Form1ListView: View {
 
 struct ActivityListView_Previews: PreviewProvider {
     static var previews: some View {
-        Form1ListView(viewModel: ActivityListViewModel(dataManager: ActivityListDataMock()))
+        GoalsListView(viewModel: GoalsListViewModel(dataManager: ActivityListDataMock()))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
             .previewInterfaceOrientation(.portraitUpsideDown)

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class ActivityListViewModel: ObservableObject {
+class GoalsListViewModel: ObservableObject {
     private let dataManager: ActivityListDataManagable
     @Published var selectedType: Int = 0
     @Published var selectedDuration: Durationtype = .all

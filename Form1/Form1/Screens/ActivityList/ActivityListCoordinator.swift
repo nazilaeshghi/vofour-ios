@@ -9,14 +9,14 @@
 import Foundation
 
 class ActivityListCoordinator {
-    private var viewModel: ActivityListViewModel!
+    private var viewModel: GoalsListViewModel!
     
-    var destinationView: Form1ListView {
-        return Form1ListView(viewModel: self.viewModel)
+    var destinationView: GoalsListView {
+        return GoalsListView(viewModel: self.viewModel)
     }
     
     required init(dataManager: DataManager) {
         let activityListDataManager = ActivityListDataManager(dataManager: dataManager)
-        self.viewModel = ActivityListViewModel(dataManager: activityListDataManager)
+        self.viewModel = GoalsListViewModel(dataManager: activityListDataManager)
     }
 }

@@ -58,6 +58,7 @@ struct TaskListView: View {
             }
             .fullScreenCover(item: $taskID) {} content: { taskId in
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
+                    .environment(\.layoutDirection, .rightToLeft)
             }
             .gesture(DragGesture(minimumDistance: 10)
                         .onEnded({ value in

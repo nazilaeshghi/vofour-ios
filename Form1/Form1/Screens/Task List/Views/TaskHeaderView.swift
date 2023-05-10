@@ -40,7 +40,7 @@ struct TaskHeaderView: View {
                 )
             }
             
-            // Dates in week
+            // Dates in a week
             HStack {
                 ForEach(sevenDays, id: \.id) { day in
                     if day.date.isToday {
@@ -57,7 +57,7 @@ struct TaskHeaderView: View {
                         .cornerRadius(circleSize/2)
                     }
                     else {
-                        if day.selected {
+                        if day.date == selectedDate {
                             Button {
                                 selectDay(index: day.index)
                             } label: {
