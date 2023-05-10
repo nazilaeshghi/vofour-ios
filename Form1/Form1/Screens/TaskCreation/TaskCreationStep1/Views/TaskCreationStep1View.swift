@@ -106,6 +106,7 @@ struct TaskCreationStep1View: View {
             }
             .sheet(isPresented: $showingGoalSheet, onDismiss: refreshTitle, content: makeSelectGoalView)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: {
             viewModel.initBinders()
         })

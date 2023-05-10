@@ -36,6 +36,7 @@ struct HomeHeaderView: View {
             showingSheet = false
         }) {
             SettingsView(isPresented: $showingSheet)
+                .environment(\.layoutDirection, .rightToLeft)
         }
     }
 }

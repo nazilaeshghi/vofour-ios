@@ -73,6 +73,7 @@ struct TaskListView: View {
                 }
             }))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
