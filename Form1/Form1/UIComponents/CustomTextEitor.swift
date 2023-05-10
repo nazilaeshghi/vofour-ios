@@ -29,6 +29,16 @@ struct CustomMultiLineTextEditor: View {
     }
 }
 
+struct CustomMultiLineTextEditor_Previews: PreviewProvider {
+    @State static var inputText: String = ""
+    
+    static var previews: some View {
+        CustomMultiLineTextEditor(text: $inputText, placeholder: LocalizedString.Input.enterHerePlaceholder)
+            .environment(\.layoutDirection, .rightToLeft)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
+    }
+}
+
 struct CustomTextEditor: View {
     let placeholder: String
     @Binding var text: String
@@ -37,14 +47,23 @@ struct CustomTextEditor: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             if text.isEmpty  {
-                Text(placeholder)
-                    .applyStyle(style: .lightTitlePlaceholder)
-                    .foregroundColor(Color.primary.opacity(0.25))
-                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                HStack {
+                    VStack {
+                        Text(placeholder)
+                            .applyStyle(style: .lightTitlePlaceholder)
+                            .foregroundColor(Color.primaryColor.opacity(0.25))
+                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                        Spacer()
+                    }
+                    Spacer()
+                }
                 
             }
+            
             TextEditor(text: $text)
                 .padding(internalPadding)
+                .scrollContentBackground(.h)
+            
         }.onAppear() {
             UITextView.appearance().backgroundColor = .clear
         }.onDisappear() {

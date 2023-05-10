@@ -78,6 +78,7 @@ struct TaskCreationStep1View: View {
                     }
                     .applyBasicViewStyle()
                 }
+                .scrollDismissesKeyboard(.interactively)
                 .applyBackgroundColor()
                 .focused($isTextFieldFocused)
                 

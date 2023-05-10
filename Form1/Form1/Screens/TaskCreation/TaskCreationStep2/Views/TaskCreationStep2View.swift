@@ -76,6 +76,7 @@ struct TaskCreationStep2View: View {
                     }
                     .applyBasicViewStyle()
                 }
+                .scrollDismissesKeyboard(.interactively)
                Spacer()
                 
                 TwoButtonsView(primaryButtonText: LocalizedString.Buttons.storeDataTitle,
