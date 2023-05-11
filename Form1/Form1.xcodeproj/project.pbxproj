@@ -74,7 +74,6 @@
 		6444880028876DC80020A758 /* WeekDayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644487FF28876DC80020A758 /* WeekDayObject.swift */; };
 		644D729D28D95D1D00A92F87 /* ActivityListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644D729C28D95D1D00A92F87 /* ActivityListCellView.swift */; };
 		6468A73B2889D18C0032DCD1 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468A73A2889D18C0032DCD1 /* AdaptsToKeyboard.swift */; };
-		6468A73F2889D9920032DCD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6468A73E2889D9920032DCD1 /* IQKeyboardManagerSwift */; };
 		646A8712287DA48D00E18CE4 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8711287DA48D00E18CE4 /* NewGoalView.swift */; };
 		646A8816287DD53F00E18CE4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8815287DD53F00E18CE4 /* StringExtensions.swift */; };
 		646A891A287E13EB00E18CE4 /* ModalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8919287E13EB00E18CE4 /* ModalHeaderView.swift */; };
@@ -320,7 +319,6 @@
 				64EA838828A80059005ED007 /* SwiftDate in Frameworks */,
 				64B8AEB8279DAFA000BF47C5 /* RealmSwift in Frameworks */,
 				64B8AEB6279DAFA000BF47C5 /* Realm in Frameworks */,
-				6468A73F2889D9920032DCD1 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,7 +771,6 @@
 			packageProductDependencies = (
 				64B8AEB5279DAFA000BF47C5 /* Realm */,
 				64B8AEB7279DAFA000BF47C5 /* RealmSwift */,
-				6468A73E2889D9920032DCD1 /* IQKeyboardManagerSwift */,
 				64EA838728A80059005ED007 /* SwiftDate */,
 			);
 			productName = Form1;
@@ -807,7 +804,6 @@
 			mainGroup = 64B8AE96279DA3DC00BF47C5;
 			packageReferences = (
 				64B8AEB4279DAFA000BF47C5 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				6468A73D2889D9920032DCD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				64EA838628A80059005ED007 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = 64B8AEA0279DA3DC00BF47C5 /* Products */;
@@ -1199,20 +1195,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6468A73D2889D9920032DCD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				kind = exactVersion;
-				version = 6.5.0;
-			};
-		};
 		64B8AEB4279DAFA000BF47C5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				kind = exactVersion;
+				version = 10.39.1;
 			};
 		};
 		64EA838628A80059005ED007 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
@@ -1226,11 +1214,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6468A73E2889D9920032DCD1 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6468A73D2889D9920032DCD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
 		64B8AEB5279DAFA000BF47C5 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 64B8AEB4279DAFA000BF47C5 /* XCRemoteSwiftPackageReference "realm-swift" */;
