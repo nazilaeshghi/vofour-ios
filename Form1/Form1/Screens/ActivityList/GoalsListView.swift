@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GoalsListView: View {
     @StateObject var viewModel: GoalsListViewModel
+    @State private var taskID: String?
 
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
@@ -37,6 +38,9 @@ struct GoalsListView: View {
                                 
                                 ForEach(sectionItem.items, id: \.id) { item in
                                     ActivityListCellView(item: item)
+                                        .onTapGesture {
+                                            taskID = item.id
+                                        }
                                         .applyBasicCellStyle()
                                 }
                             }
@@ -48,7 +52,9 @@ struct GoalsListView: View {
             }
         }
         .applyBasicViewStyle()
-
+        .sheet(item: $taskID, content: { taskId in
+            AppCoordinator.shared.makeSelectContextView(taskId: taskId)
+        })
         .onAppear {
             viewModel.reloadData()
         }
