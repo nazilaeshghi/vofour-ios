@@ -62,7 +62,7 @@ struct DateBuilder {
     
     static func make7Days(selectedDate: Date) -> [HeaderDayObject] {
         let pCalendar = DateHelper.getCurrentCalendar()
-        let days = pCalendar.daysWithSameWeekOfYear(as: Date())
+        let days = pCalendar.daysWithSameWeekOfYear(as: selectedDate)
         let solid7Days = buildWeekDays()
         let sevenDays = days.enumerated().compactMap { dayEnum -> HeaderDayObject? in
             let simplifiedDate = dayEnum.element.getSimpleDate()

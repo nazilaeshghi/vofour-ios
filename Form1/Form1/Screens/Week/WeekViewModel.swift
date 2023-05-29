@@ -14,6 +14,7 @@ class WeekViewModel: ObservableObject {
     
     init(dataManager: TaskListDataManagable) {
         self.dataManager = dataManager
+        startDate = DateHelper.generalDateFormatter.string(from: Date())
     }
     
     @Published var cards: [CardDisplayModel] = []
@@ -22,11 +23,13 @@ class WeekViewModel: ObservableObject {
     @Published var todayProgress: Float  = 0.0
     @Published var weekProgress: Float  = 0.0
     
+    @Published var startDate: String?
+    
     func getTasks(date: Date) {
         let tasks = dataManager.fetchTasks(date: date)
         cards = tasks.map { WeekViewModel.transformDataModels(dayRecord: $0) }
         calculateTodayProgress(date: date)
-        calculateWeekProgress()
+        calculateWeekProgress(selectedDate: date)
     }
     
     func increamentTask(task: CardDisplayModel, date: Date) {
@@ -86,8 +89,8 @@ class WeekViewModel: ObservableObject {
         todayProgressString = today >= 0 ? "%\(today)".convertToPersian() : "%0".convertToPersian()
     }
     
-    private func calculateWeekProgress() {
-        weekProgress = dataManager.fetchWeekProgress()
+    private func calculateWeekProgress(selectedDate: Date) {
+        weekProgress = dataManager.fetchWeekProgress(selectedDate: selectedDate)
         let week = Int(weekProgress * 100)
         weekProgressString = week >= 0 ? "%\(week)".convertToPersian() : "%0".convertToPersian()
     }

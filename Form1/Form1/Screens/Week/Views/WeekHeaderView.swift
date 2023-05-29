@@ -11,6 +11,8 @@ import SwiftUI
 struct WeekHeaderView: View {
     @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     @Binding var selectedDate: Date
+    @Binding var showDatePicker: Bool
+    
     var todayProgressString: String
     var weekProgressString: String
     var todayProgress: Float
@@ -31,6 +33,7 @@ struct WeekHeaderView: View {
                 }
 
                 Button {
+                    showDatePicker.toggle()
                 } label: {
                     HStack {
                         Text(DateHelper().getHeaderDate(for: selectedDate))
@@ -156,6 +159,7 @@ struct TaskHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         let date = Date().dateByAdding(-1, .day).date
         WeekHeaderView(selectedDate: .constant(date),
+                       showDatePicker: .constant(false),
                        todayProgressString: "%۲۱",
                        weekProgressString: "%۲۵",
                        todayProgress: 0.2,

@@ -12,7 +12,7 @@ struct MockTodayDataManagable: TaskListDataManagable {
     func fetchTasks(date: Date) -> [DailyTaskDataModel] { return [] }
     func increamentTask(taskID: String, date: Date) {}
     func fetchDateProgress(date: Date) -> Float { return 0.3 }
-    func fetchWeekProgress() -> Float { return 0.4 }
+    func fetchWeekProgress(selectedDate: Date) -> Float { return 0.4 }
 }
 
 struct TaskDataModelMock: TaskDataModel {

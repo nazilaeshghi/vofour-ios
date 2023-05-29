@@ -31,7 +31,8 @@ class HomeDataManager: HomeDataManagable {
     }
     
     func fetchWeekProgress() -> Float {
-        return dataManager.computeWeekProgress()
+        //return dataManager.computeWeekProgress()
+        return 1.0
     }
 }
 

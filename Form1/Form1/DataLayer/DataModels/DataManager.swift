@@ -118,8 +118,8 @@ class DataManager {
         return dayProgress
     }
     
-    func computeWeekProgress() -> Float {
-        let totoalProgresses = DateBuilder.make7Days(selectedDate: Date()).map {
+    func computeWeekProgress(selectedDate: Date) -> Float {
+        let totoalProgresses = DateBuilder.make7Days(selectedDate: selectedDate).map {
             return computeDayProgress(date: $0.date)
         }
         let notNanProsesses = totoalProgresses

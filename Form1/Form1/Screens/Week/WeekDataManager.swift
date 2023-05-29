@@ -12,7 +12,7 @@ protocol TaskListDataManagable {
     func fetchTasks(date: Date) -> [DailyTaskDataModel]
     func increamentTask(taskID: String, date: Date)
     func fetchDateProgress(date: Date) -> Float
-    func fetchWeekProgress() -> Float
+    func fetchWeekProgress(selectedDate: Date) -> Float
 }
 
 class WeekDataManager: TaskListDataManagable {
@@ -34,8 +34,8 @@ class WeekDataManager: TaskListDataManagable {
         return dataManager.computeDayProgress(date: date)
     }
     
-    func fetchWeekProgress() -> Float {
-        return dataManager.computeWeekProgress()
+    func fetchWeekProgress(selectedDate: Date) -> Float {
+        return dataManager.computeWeekProgress(selectedDate: selectedDate)
     }
 
 }

@@ -13,6 +13,7 @@ struct WeekView: View {
     @State private var selectedDate: Date = Date()
     @State private var showingDetailSIsActive = false
     @State private var taskID: String?
+    @State private var datePickerPresented = false
     
     let dateHelper = DateHelper()
     
@@ -23,6 +24,7 @@ struct WeekView: View {
                 // Week Header
                 VerticalSpaceView(space: .header)
                 WeekHeaderView(selectedDate: $selectedDate,
+                               showDatePicker: $datePickerPresented,
                                todayProgressString: viewModel.todayProgressString,
                                weekProgressString: viewModel.weekProgressString,
                                todayProgress: viewModel.todayProgress,
@@ -57,12 +59,25 @@ struct WeekView: View {
                 selectedDate = selectedDate
             }
             .onChange(of: selectedDate) { newValue in
+                viewModel.startDate = DateHelper.generalDateFormatter.string(from: newValue)
                 viewModel.getTasks(date: newValue)
+            }
+            .onChange(of: viewModel.startDate) { newValue in
+                guard let dateStr = newValue,
+                      let date = DateHelper.generalDateFormatter.optionalDate(from: dateStr)
+                else { return }
+                selectedDate = date
+                NotificationCenter.sendNotification(for: .dataChange)
             }
             .sheet(item: $taskID) { taskId in
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
                     .environment(\.layoutDirection, .rightToLeft)
             }
+            .sheet(isPresented: $datePickerPresented, content: {
+                CalendarSheetView(presented: $datePickerPresented,
+                                  dateString: $viewModel.startDate,
+                                  title: LocalizedString.Input.startDateSelectoreTitle)
+            })
             .gesture(DragGesture(minimumDistance: 10)
                         .onEnded({ value in
                 if value.translation.width < 0 {
