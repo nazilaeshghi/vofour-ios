@@ -26,7 +26,7 @@ class TaskDetailViewModel: ObservableObject {
     
     func fetchDetails() {
         guard let task = dataManager.fetchTaskDetail() else { return }
-        item = TaskListViewModel.transformDataModels(dayRecord: task)
+        item = WeekViewModel.transformDataModels(dayRecord: task)
         
         let subtitleStr = "از " + "\(task.record?.total ?? 0)"
         item.subtitle = LabelDisplayModel(plainText: subtitleStr.convertToPersian(), style: .lightTitle)

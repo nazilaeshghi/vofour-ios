@@ -52,9 +52,10 @@ class AppCoordinator {
     }
     
     // Task
-    func makeTasksListView() -> TaskListView {
-        let coordinator = TaskListCoordinator(dataManage: dataManager)
-        return coordinator.destinationView
+    func makeWeekView() -> WeekView {
+        let dataManager = WeekDataManager(dataManager: self.dataManager)
+        let viewModel = WeekViewModel(dataManager: dataManager)
+        return WeekView(viewModel: viewModel)
     }
     
     func makeTaskDetailsView(taskId: String, selectedDate: Date) -> TaskDetailView {
@@ -63,13 +64,13 @@ class AppCoordinator {
     }
 
     // Home
-    func makeHomeView() -> HomeView {
+    func makeContextListView() -> HomeView {
         let coordinator = HomeCoordinator(dataManage: dataManager)
         return coordinator.destinationView
     }
     
     // Activity List
-    func activityListView() -> GoalsListView {
+    func makeGoalsListView() -> GoalsListView {
         let coordinator = ActivityListCoordinator(dataManager: dataManager)
         return coordinator.destinationView
     }

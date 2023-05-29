@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class TaskListViewModel: ObservableObject {
+class WeekViewModel: ObservableObject {
     private let dataManager: TaskListDataManagable
     var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     
@@ -18,11 +18,15 @@ class TaskListViewModel: ObservableObject {
     
     @Published var cards: [CardDisplayModel] = []
     @Published var todayProgressString: String  = ""
+    @Published var weekProgressString: String  = ""
+    @Published var todayProgress: Float  = 0.0
+    @Published var weekProgress: Float  = 0.0
     
     func getTasks(date: Date) {
         let tasks = dataManager.fetchTasks(date: date)
-        cards = tasks.map { TaskListViewModel.transformDataModels(dayRecord: $0) }
-        calculateDateProgress(date: date)
+        cards = tasks.map { WeekViewModel.transformDataModels(dayRecord: $0) }
+        calculateTodayProgress(date: date)
+        calculateWeekProgress()
     }
     
     func increamentTask(task: CardDisplayModel, date: Date) {
@@ -76,10 +80,16 @@ class TaskListViewModel: ObservableObject {
         return progress
     }
     
-    private func calculateDateProgress(date: Date) {
-        let todayProgress = dataManager.fetchDateProgress(date: date)
+    private func calculateTodayProgress(date: Date) {
+        todayProgress = dataManager.fetchDateProgress(date: date)
         let today = Int(todayProgress * 100)
-        todayProgressString = today >= 0 ? "%\(today)".convertToPersian() : ""
+        todayProgressString = today >= 0 ? "%\(today)".convertToPersian() : "%0".convertToPersian()
+    }
+    
+    private func calculateWeekProgress() {
+        weekProgress = dataManager.fetchWeekProgress()
+        let week = Int(weekProgress * 100)
+        weekProgressString = week >= 0 ? "%\(week)".convertToPersian() : "%0".convertToPersian()
     }
     
     func nextDate(for currentDate: Date) -> Date? {

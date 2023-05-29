@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct TaskListView: View {
-    @StateObject var viewModel: TaskListViewModel
+struct WeekView: View {
+    @StateObject var viewModel: WeekViewModel
     @State private var selectedDate: Date = Date()
     @State private var showingDetailSIsActive = false
     @State private var taskID: String?
@@ -23,7 +23,10 @@ struct TaskListView: View {
                 // Week Header
                 VerticalSpaceView(space: .header)
                 TaskHeaderView(selectedDate: $selectedDate,
-                               todayProgressString: viewModel.todayProgressString)
+                               todayProgressString: viewModel.todayProgressString,
+                               weekProgressString: viewModel.weekProgressString,
+                               todayProgress: viewModel.todayProgress,
+                               weekProgress: viewModel.weekProgress)
                 VerticalSpaceView(space: .header)
                 
                 // Show empty state
@@ -79,6 +82,6 @@ struct TaskListView: View {
 struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
         let dataManager = MockTodayDataManagable()
-        TaskListView(viewModel: TaskListViewModel(dataManager: dataManager))
+        WeekView(viewModel: WeekViewModel(dataManager: dataManager))
     }
 }

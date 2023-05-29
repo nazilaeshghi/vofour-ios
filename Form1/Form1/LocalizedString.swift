@@ -98,6 +98,7 @@ struct LocalizedString {
     
     enum Date {
         static let today = "امروز"
+        static let week = "هفته"
     }
     
     enum Home {

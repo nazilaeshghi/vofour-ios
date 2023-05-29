@@ -14,8 +14,8 @@ struct MyCustomTabBarView: View {
     
     var body: some View {
         NavigationView {
-            let homeView = AppCoordinator.shared.makeHomeView()
-            let taskView = AppCoordinator.shared.makeTasksListView()
+            let homeView = AppCoordinator.shared.makeContextListView()
+            let taskView = AppCoordinator.shared.makeWeekView()
             TabView {
                 
                     homeView

@@ -15,16 +15,16 @@ struct AppTabView: View {
     
     var body: some View {
         CustomTabbarContainerView(selection: $tabbarSelection) {
-            AppCoordinator.shared.makeHomeView()
-                .tabBatItem(tab: .week, selection: $tabbarSelection)
+            AppCoordinator.shared.makeWeekView()
             
-            AppCoordinator.shared.makeTasksListView()
+                .tabBatItem(tab: .week, selection: $tabbarSelection)
+            AppCoordinator.shared.makeContextListView()
                 .tabBatItem(tab: .contexts, selection: $tabbarSelection)
             
             AddViewEmptyView()
                 .tabBatItem(tab: .add, selection: $tabbarSelection)
             
-            AppCoordinator.shared.activityListView()
+            AppCoordinator.shared.makeGoalsListView()
                 .tabBatItem(tab: .goals, selection: $tabbarSelection)
             
             AddViewEmptyView()
