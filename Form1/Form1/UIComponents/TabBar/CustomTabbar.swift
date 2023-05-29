@@ -50,12 +50,12 @@ struct CustomTabBarView: View {
 }
 
 struct CustomTabBarView_Preview: PreviewProvider {
-    static let tabs: [TabBarItem] = [ .home, .booklet, .add, .form1,.report ]
+    static let tabs: [TabBarItem] = [ .week, .contexts, .add, .goals,.report ]
     
     static var previews: some View {
         VStack {
             CustomTabBarView(tabs: tabs,
-                             selection: .constant(.home))
+                             selection: .constant(.week))
         }
     }
 }

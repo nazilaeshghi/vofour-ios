@@ -89,8 +89,8 @@ struct LocalizedString {
     }
     
     enum Tabbar {
-        static let home = "خانه"
-        static let booklet = "سررسید"
+        static let week = "هفته"
+        static let contexts = "زمینه‌ها"
         static let goals = "اهداف"
         static let add = ""
         static let report = "گزارش"

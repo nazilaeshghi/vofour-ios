@@ -10,22 +10,22 @@ import SwiftUI
 
 struct AppTabView: View {
     @State var selection = 0
-    @State private var tabbarSelection: TabBarItem = .home
+    @State private var tabbarSelection: TabBarItem = .week
     @State private var showingSheet = false
     
     var body: some View {
         CustomTabbarContainerView(selection: $tabbarSelection) {
             AppCoordinator.shared.makeHomeView()
-                .tabBatItem(tab: .home, selection: $tabbarSelection)
+                .tabBatItem(tab: .week, selection: $tabbarSelection)
             
             AppCoordinator.shared.makeTasksListView()
-                .tabBatItem(tab: .booklet, selection: $tabbarSelection)
+                .tabBatItem(tab: .contexts, selection: $tabbarSelection)
             
             AddViewEmptyView()
                 .tabBatItem(tab: .add, selection: $tabbarSelection)
             
             AppCoordinator.shared.activityListView()
-                .tabBatItem(tab: .form1, selection: $tabbarSelection)
+                .tabBatItem(tab: .goals, selection: $tabbarSelection)
             
             AddViewEmptyView()
                 .tabBatItem(tab: .report, selection: $tabbarSelection)

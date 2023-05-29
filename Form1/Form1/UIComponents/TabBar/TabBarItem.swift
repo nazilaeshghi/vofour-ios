@@ -9,66 +9,66 @@
 import Foundation
 
 enum TabBarItem: Hashable {
-    case home, booklet, report, add, form1
+    case week, contexts, report, add, goals
     
     var iconName: String {
         switch self {
-        case .home:
-            return "homeTabbar"
-        case .booklet:
-            return "bookletTabbar"
-        case .report:
-            return "reportTabbar"
+        case .week:
+            return "weekDeselectedTabbar"
+        case .contexts:
+            return "contextDeselectedTabbar"
         case .add:
             return "addTabbar"
-        case .form1:
-            return "activityTabbar"
+        case .goals:
+            return "targetsDeselectedTabbar"
+        case .report:
+            return "reportDeselectedTabbar"
         }
     }
     
     var selectedIconName: String {
         switch self {
-        case .home:
-            return "homeTabbarSelected"
-        case .booklet:
-            return "bookletTabbarSelected"
-        case .report:
-            return "reportTabbarSelected"
+        case .week:
+            return "weekSelectedTabbar"
+        case .contexts:
+            return "contextSelectedTabbar"
         case .add:
             return "addTabbar"
-        case .form1:
-            return "activityTabbarSelected"
+        case .goals:
+            return "targetsSelectedTabbar"
+        case .report:
+            return "reportDeselectedTabbar"
         }
     }
     
     var title: String {
         switch self {
-        case .home:
-            return LocalizedString.Tabbar.home
-        case .booklet:
-            return LocalizedString.Tabbar.booklet
-        case .report:
-            return LocalizedString.Tabbar.report
+        case .week:
+            return LocalizedString.Tabbar.week
+        case .contexts:
+            return LocalizedString.Tabbar.contexts
         case .add:
             return ""
-        case .form1:
+        case .goals:
             return LocalizedString.Tabbar.goals
+        case .report:
+            return LocalizedString.Tabbar.report
         }
     }
     
     
     var tag: Int {
         switch self {
-        case .home:
+        case .week:
             return 0
-        case .booklet:
+        case .contexts:
             return 1
-        case .report:
-            return 4
         case .add:
             return 2
-        case .form1:
+        case .goals:
             return 3
+        case .report:
+            return 4
         }
     }
 }
