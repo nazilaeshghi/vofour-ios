@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TaskListEmtyView: View {
+struct DayTaskListEmtyView: View {
     var body: some View {
         VStack{
             Spacer()
@@ -26,6 +26,6 @@ struct TaskListEmtyView: View {
 
 struct TaskListEmtyView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskListEmtyView()
+        DayTaskListEmtyView()
     }
 }

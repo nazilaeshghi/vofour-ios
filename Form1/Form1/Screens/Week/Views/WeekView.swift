@@ -22,7 +22,7 @@ struct WeekView: View {
                                 
                 // Week Header
                 VerticalSpaceView(space: .header)
-                TaskHeaderView(selectedDate: $selectedDate,
+                WeekHeaderView(selectedDate: $selectedDate,
                                todayProgressString: viewModel.todayProgressString,
                                weekProgressString: viewModel.weekProgressString,
                                todayProgress: viewModel.todayProgress,
@@ -31,7 +31,7 @@ struct WeekView: View {
                 
                 // Show empty state
                 if viewModel.cards.isEmpty {
-                    TaskListEmtyView()
+                    DayTaskListEmtyView()
                 }
                 else {
                     // Task List

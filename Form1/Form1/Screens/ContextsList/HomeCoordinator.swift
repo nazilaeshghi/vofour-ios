@@ -9,15 +9,15 @@
 import Foundation
 
 class HomeCoordinator {    
-    private var viewModel: HomeViewModel!
+    private var viewModel: SelectContextViewModel!
     
-    var destinationView: HomeView {
-        return HomeView(viewModel: self.viewModel)
+    var destinationView: ContextListView {
+        return ContextListView(viewModel: self.viewModel)
     }
     
     required init(dataManage: DataManager) {
-        let innerDataManager = HomeDataManager(dataManager: dataManage)
-        self.viewModel = HomeViewModel(dataManager: innerDataManager)
+        let innerDataManager = SelectContextDataManager(dataManager: dataManage)
+        self.viewModel = SelectContextViewModel(dataManager: innerDataManager)
     }
 }
 

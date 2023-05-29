@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TaskHeaderView: View {
+struct WeekHeaderView: View {
     @State var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     @Binding var selectedDate: Date
     var todayProgressString: String
@@ -155,7 +155,7 @@ struct TaskHeaderView: View {
 struct TaskHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         let date = Date().dateByAdding(-1, .day).date
-        TaskHeaderView(selectedDate: .constant(date),
+        WeekHeaderView(selectedDate: .constant(date),
                        todayProgressString: "%۲۱",
                        weekProgressString: "%۲۵",
                        todayProgress: 0.2,
