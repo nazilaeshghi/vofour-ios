@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import SwiftUI
+
 
 class SelectContextViewModel: ObservableObject {
     
     private let dataManager: SelectContextDataManagable
+    var tyep: ContextFilterType {
+        return ContextFilterType(rawValue: selection) ?? .all
+    }
     
     init(dataManager: SelectContextDataManagable) {
         self.dataManager = dataManager
@@ -18,25 +23,25 @@ class SelectContextViewModel: ObservableObject {
     }
     
     @Published var items = [ContextItemDisplayModel]()
+    @Published var selection: Int = 0
     
-    func fetchContexts() {
-        items = dataManager.fetchListOfContexts().map(transformContext)
+    private func fetchContexts() {
+        items = dataManager.fetchListOfContexts(type: tyep).map(transformContext)
     }
     
-    private func transformContext(context: TaskContext) -> ContextItemDisplayModel {
-        let taskCount = dataManager.fetchTaskCount(for: context.id)
-        let title = taskCount > 0 ? ("\(context.name)" + " " + "(" + "\(taskCount)" + ")") : context.name
+    private func transformContext(model: ContextListModel) -> ContextItemDisplayModel {
+        let title = model.taskCount > 0 ? ("\(model.context.name)" + " " + "(" + "\(model.taskCount)" + ")") : model.context.name
         let labelDisplayModel = LabelDisplayModel(plainText: title.convertToPersian(), style: .regularSubtitle)
-        let imageName = context.iconName
+        let imageName = model.context.iconName
         return ContextItemDisplayModel(title: labelDisplayModel,
                                        imageName: imageName,
-                                       contextID: context.id,
-                                       isSelected: context.id == (dataManager.selectedId ?? "")
+                                       contextID: model.context.id,
+                                       isSelected: model.context.id == (dataManager.selectedId ?? "")
         )
     }
     
     func filterContextas(with text: String) {
-        items = dataManager.filterContext(text: text).map(transformContext)
+        items = dataManager.filterContext(text: text, type: tyep).map(transformContext)
     }
     
     func selectContext(id: String) {

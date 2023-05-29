@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeCoordinator {    
+class ContextsListCoordinator {    
     private var viewModel: SelectContextViewModel!
     
     var destinationView: ContextListView {

@@ -18,12 +18,15 @@ struct VerticalSpaceView: View {
 enum SpaceType {
     case header
     case inlineForm
+    case pageHeade
     
     var value: CGFloat {
         switch self {
         case .header:
             return PublicTheme.vHeaderSpace
         case .inlineForm:
+            return PublicTheme.vSpace
+        case .pageHeade:
             return PublicTheme.vSpace
         }
     }

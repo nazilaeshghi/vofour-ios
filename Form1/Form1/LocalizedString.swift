@@ -15,6 +15,9 @@ struct LocalizedString {
         static let subHeader = "یکی از زمینه‌های زیر را انتخاب کنید."
         static let searchHeader = "زمینه‌ها"
         static let searchPlaceHolder = "جستجو"
+        static let allContexts = "همه زمینه‌ها"
+        static let activeContexts = "فعال‌ها"
+        static let notActiveContexts = "غیر فعال‌ها"
     }
     
     enum SelectGoalPage {

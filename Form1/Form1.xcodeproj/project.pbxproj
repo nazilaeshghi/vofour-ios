@@ -84,7 +84,7 @@
 		647F283527AEC9B000C70874 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F283427AEC9B000C70874 /* AppCoordinator.swift */; };
 		647F293A27AEFAB700C70874 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B8AEB0279DA4EF00BF47C5 /* AppTabView.swift */; };
 		647F294027AF1F3B00C70874 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F293F27AF1F3B00C70874 /* HomeViewModel.swift */; };
-		647F294227AF1F4F00C70874 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294127AF1F4F00C70874 /* HomeCoordinator.swift */; };
+		647F294227AF1F4F00C70874 /* ContextsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294127AF1F4F00C70874 /* ContextsListCoordinator.swift */; };
 		647F294427AF1FBC00C70874 /* ContextListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294327AF1FBC00C70874 /* ContextListView.swift */; };
 		647F294927AF247300C70874 /* HomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F294827AF247300C70874 /* HomeDataManager.swift */; };
 		648331D928B7CC0B00FDDB9E /* DeviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648331D828B7CC0B00FDDB9E /* DeviderView.swift */; };
@@ -235,7 +235,7 @@
 		647F26F627AC266600C70874 /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		647F283427AEC9B000C70874 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		647F293F27AF1F3B00C70874 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		647F294127AF1F4F00C70874 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		647F294127AF1F4F00C70874 /* ContextsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextsListCoordinator.swift; sourceTree = "<group>"; };
 		647F294327AF1FBC00C70874 /* ContextListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListView.swift; sourceTree = "<group>"; };
 		647F294827AF247300C70874 /* HomeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataManager.swift; sourceTree = "<group>"; };
 		648331D828B7CC0B00FDDB9E /* DeviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviderView.swift; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 			children = (
 				6402879228B17DDE00FCE2C8 /* Views */,
 				647F293F27AF1F3B00C70874 /* HomeViewModel.swift */,
-				647F294127AF1F4F00C70874 /* HomeCoordinator.swift */,
+				647F294127AF1F4F00C70874 /* ContextsListCoordinator.swift */,
 				64DD210C2894C0FF0009FD08 /* HomeContextCellView.swift */,
 				647F294827AF247300C70874 /* HomeDataManager.swift */,
 			);
@@ -864,7 +864,7 @@
 				64C773852885DFC30066F97B /* InputCellTitleView.swift in Sources */,
 				6402879428B17DF900FCE2C8 /* ProgressOverViewOverview.swift in Sources */,
 				64D7467D27B8D4B8006A0C1C /* ScaledFont.swift in Sources */,
-				647F294227AF1F4F00C70874 /* HomeCoordinator.swift in Sources */,
+				647F294227AF1F4F00C70874 /* ContextsListCoordinator.swift in Sources */,
 				64C5504828609A9F000E9F61 /* TaskCreationStep1Coordinator.swift in Sources */,
 				64C4E8B6284BADFE00502D88 /* WeekDaysView.swift in Sources */,
 				64A9330328A7D5C0006E1988 /* QuitHabitViews.swift in Sources */,

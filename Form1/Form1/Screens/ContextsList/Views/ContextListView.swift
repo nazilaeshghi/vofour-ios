@@ -13,31 +13,48 @@ struct ContextListView: View {
     
     @State private var showingSheet = false
     @State private var searchText: String = ""
-    
     @State private var selectedContextID: String?
     
     let columns = [GridItem(.adaptive(minimum: 120), spacing: PublicTheme.collectionSpace)]
     
     var body: some View {
-        VStack(spacing: PublicTheme.vHeaderSpace) {
-            Group {
-                SearchBar(searchText: $searchText)
-                
-                List($viewModel.items, id: \.id) { item in
-                    SelectContextCell(item: item)
-                        .onTapGesture {
-                            selectedContextID = item.contextID.wrappedValue
-                        }
+        VStack(spacing: 0){
+            VerticalSpaceView(space: .pageHeade)
+
+            VStack(spacing: PublicTheme.vHeaderSpace) {
+                Group {
+                    HStack {
+                        SearchBar(searchText: $searchText)
+                            .onChange(of: searchText) { newValue in
+                                viewModel.filterContextas(with: searchText)
+                            }
+                        Spacer()
+                    }
+                    
+                    LineSegmentPicker(items: [LocalizedString.ContextPage.allContexts,
+                                              LocalizedString.ContextPage.activeContexts,
+                                              LocalizedString.ContextPage.notActiveContexts],
+                                      selection: $viewModel.selection)
+                    .onChange(of: viewModel.selection) { newValue in
+                        viewModel.filterContextas(with: searchText)
+                    }
+                    
+                    List($viewModel.items, id: \.id) { item in
+                        SelectContextCell(item: item)
+                            .onTapGesture {
+                                selectedContextID = item.contextID.wrappedValue
+                            }
+                    }
+                    .applyListBasicStyle()
                 }
-                .applyListBasicStyle()
+                .applyBasicViewStyle()
             }
-            .applyBasicViewStyle()
         }
         .onAppear(perform: {
-            viewModel.fetchContexts()
+            viewModel.filterContextas(with: searchText)
         })
         .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
-            viewModel.fetchContexts()
+            viewModel.filterContextas(with: searchText)
         }
         .background(Color.background)
         .sheet(item: $selectedContextID) { contextID in

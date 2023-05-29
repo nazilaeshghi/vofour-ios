@@ -65,7 +65,7 @@ class AppCoordinator {
 
     // Home
     func makeContextListView() -> ContextListView {
-        let coordinator = HomeCoordinator(dataManage: dataManager)
+        let coordinator = ContextsListCoordinator(dataManage: dataManager)
         return coordinator.destinationView
     }
     

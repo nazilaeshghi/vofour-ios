@@ -30,3 +30,8 @@ class ContextItemDisplayModel: ObservableObject {
     var contextID: String
     var isSelected: Bool
 }
+
+struct ContextListModel {
+    let context: TaskContext
+    let taskCount: Int
+}

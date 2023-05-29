@@ -19,17 +19,23 @@ extension BaseDataManagable {
     }
 }
 
+enum ContextFilterType: Int {
+    case all = 0
+    case active = 1
+    case deactive = 2
+}
+
 protocol SelectContextDataManagable: BaseDataManagable {
-    func fetchListOfContexts() -> [TaskContext]
-    func filterContext(text: String) -> [TaskContext]
+    func fetchListOfContexts(type: ContextFilterType) -> [ContextListModel]
+    func filterContext(text: String, type: ContextFilterType) -> [ContextListModel]
     func selectContext(contextID: String)
     func fetchTaskCount(for contextId: String) -> Int
-    var selectedId: String? { get }
+    var  selectedId: String? { get }
 }
 
 class SelectContextDataManager: SelectContextDataManagable {
     internal let dataManager: DataManager
-    private var cacheContexts: [TaskContext] = []
+    private var cacheContexts: [ContextListModel] = []
     private (set) var selectedId: String?
     
     init(dataManager: DataManager) {
@@ -37,16 +43,46 @@ class SelectContextDataManager: SelectContextDataManagable {
         selectedId = dataManager.currentInputEntry.contextId
     }
     
-    func fetchListOfContexts() -> [TaskContext]  {
-        cacheContexts = dataManager.fetchContexts()
-        return cacheContexts
+    private func fetchListOfContexts() {
+        let contexts = dataManager.fetchContexts()
+        cacheContexts  = contexts.map({ context in
+            let count = fetchTaskCount(for: context.id)
+            return ContextListModel(context: context, taskCount: count)
+        })
     }
     
-    func filterContext(text: String) -> [TaskContext] {
-        guard !text.trimmingCharacters(in: .whitespaces).isEmpty else {
+    func fetchListOfContexts(type: ContextFilterType) -> [ContextListModel]  {
+        fetchListOfContexts()
+        switch type {
+        case .active:
+            return cacheContexts.filter { $0.taskCount > 0 }
+        case .deactive:
+            return cacheContexts.filter { $0.taskCount == 0}
+        case .all:
             return cacheContexts
         }
-        return cacheContexts.filter { $0.name.contains(text) }
+    }
+    
+    func filterContext(text: String, type: ContextFilterType) -> [ContextListModel] {
+        guard !text.trimmingCharacters(in: .whitespaces).isEmpty else {
+            switch type {
+            case .active:
+                return cacheContexts.filter { $0.taskCount > 0 }
+            case .deactive:
+                return cacheContexts.filter { $0.taskCount == 0}
+            case .all:
+                return cacheContexts
+            }
+        }
+        switch type {
+        case .active:
+            return cacheContexts.filter { $0.context.name.contains(text) && $0.taskCount > 0 }
+        case .deactive:
+            return cacheContexts.filter { $0.context.name.contains(text) && $0.taskCount == 0}
+        case .all:
+            return cacheContexts.filter { $0.context.name.contains(text) }
+        }
+
     }
     
     func selectContext(contextID: String) {
