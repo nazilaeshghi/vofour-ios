@@ -17,6 +17,9 @@ class SelectContextViewModel: ObservableObject {
         return ContextFilterType(rawValue: selection) ?? .all
     }
     
+    let segments = [LocalizedString.ContextPage.allContexts,
+                    LocalizedString.ContextPage.activeContexts,
+                    LocalizedString.ContextPage.notActiveContexts].enumerated().map { Segment(title: $0.element, index: $0.offset)}
     init(dataManager: SelectContextDataManagable) {
         self.dataManager = dataManager
         fetchContexts()

@@ -83,7 +83,7 @@ struct LineSegmentPicker: View {
         let textColor = isSelected ? LineSegmentPicker.selectedTextColor : LineSegmentPicker.unselectedSegmentColor
         
         return Text(self.items[index])
-            .scaledFont(family: .regular, style: .subtitle)
+            .scaledFont(family: .regular, style: .title)
             .foregroundColor(textColor)
             .lineLimit(1)
             .padding(.vertical, LineSegmentPicker.yPadding)

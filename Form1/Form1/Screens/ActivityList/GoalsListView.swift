@@ -11,45 +11,32 @@ import SwiftUI
 struct GoalsListView: View {
     @StateObject var viewModel: GoalsListViewModel
     @State private var taskID: String?
-
+    @State private var selectedSegmentIndex = 0
+    
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
-            Text(LocalizedString.ActicityList.title)
-                .applyStyle(style: .mediumTitle)
-            
-            if viewModel.items.isEmpty {
-              Spacer()
-                    .frame(maxWidth: .infinity)
+            ScrollSegmentControl(segments: viewModel.segments,
+                                 spacing: 20,
+                                 activeSegment: $selectedSegmentIndex,
+                                 style: PublicTheme.segmentStyle ) { segment in
+                
             }
-            else {
-                List {
-                    ForEach(viewModel.items, id: \.id) { sectionItem in
-                        Section {
-                            VStack(spacing: PublicTheme.collectionSpace) {
-                                HStack() {
-                                    if sectionItem.iconName != nil {
-                                        Image(sectionItem.iconName ?? "").frame(width: 24, height: 24)
-                                    }
-                                    Text(sectionItem.title.plainText)
-                                        .applyStyle(style: sectionItem.title.labelStyle)
-                                    Spacer()
+            
+            List {
+                ForEach(viewModel.items, id: \.id) { sectionItem in
+                    Section {
+                        ForEach(sectionItem.items, id: \.id) { item in
+                            ActivityListCellView(item: item)
+                                .onTapGesture {
+                                    taskID = item.id
                                 }
-                                
-                                
-                                ForEach(sectionItem.items, id: \.id) { item in
-                                    ActivityListCellView(item: item)
-                                        .onTapGesture {
-                                            taskID = item.id
-                                        }
-                                        .applyBasicCellStyle()
-                                }
-                            }
+                                .applyBasicCellStyle()
                         }
                     }
-                    .applyBasicCellStyle()
                 }
-                .applyListBasicStyle()
+                .applyBasicCellStyle()
             }
+            .applyListBasicStyle()
         }
         .applyBasicViewStyle()
         .sheet(item: $taskID, content: { taskId in

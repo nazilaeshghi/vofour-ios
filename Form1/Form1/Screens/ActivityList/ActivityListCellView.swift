@@ -19,33 +19,40 @@ struct ActivityListCellView: View {
                     .applyStyle(style: item.title.labelStyle)
                     .frame( height: 26)
                 HStack {
-                    if let iconName = item.iconName { Image(iconName).frame(width: 16, height: 16) }
+                    if let iconName = item.iconName {
+                        Image(iconName)
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(Color.headerSecondaryTextColor)
+                    }
                     Text(item.subtitle.plainText)
                         .applyStyle(style: item.subtitle.labelStyle)
                         .frame( height: 16)
                     Spacer()
                 }
             }
-//            if let progress = item.progress {
-//                Spacer()
-//                
-//                ZStack {
-//                    Text(progress.relativePercentageString)
-//                        .applyStyle(style: .regularTinyBody)
-//                    CircularProgressView(progress: progress,
-//                                         color: item.color,
-//                                         lineWidth: 2)
-//                        .frame(width: 28, height: 28)
-//                }
-//            }
+            if let progress = item.progress {
+                Spacer()
+                
+                ZStack {
+                    Text(progress.relativePercentageString)
+                        .applyStyle(style: .regularTinyBody)
+                    CircularProgressView(progress: progress,
+                                         color: item.color,
+                                         lineWidth: 2)
+                        .frame(width: 40, height: 40)
+                }
+            }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
         .frame(height: 72)
         .background(.white)
         .cornerRadius(PublicTheme.cornerRaduis)
-        .overlay(RoundedRectangle(cornerRadius: PublicTheme.cornerRaduis)
-            .stroke(item.color, lineWidth: 1))
+//        .overlay(RoundedRectangle(cornerRadius: PublicTheme.cornerRaduis)
+//            .stroke(item.color, lineWidth: 1))
         .padding(.horizontal, 1)
     }
 }

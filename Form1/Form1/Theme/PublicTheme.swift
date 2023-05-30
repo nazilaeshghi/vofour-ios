@@ -25,6 +25,8 @@ extension Color {
     static var secondaryTextColor: Color { return Color(hex: "4B5666") }
     static var destructiveColor: Color { return Color(hex: "F03738") }
     static var unSelectedSegmentColor: Color { return Color(hex: "B3B3B3") }
+    static var segmentLineColor: Color { return Color(hex: "D9E0E9") }
+
 }
 
 struct PublicTheme {
@@ -56,4 +58,10 @@ struct PublicTheme {
 
     static let circleSize: CGFloat = 38
     static let buttonHeight: CGFloat = 48
+    
+    static let segmentStyle = SegmentControlStyler(font: Font.custom("Vazir-Medium", size: 40),
+                                                   textColor: (active: Color.primaryTextColor,
+                                                               inactive: Color.primaryTextColor),
+                                                   activeBarColor: Color.primaryTextColor)
+
 }

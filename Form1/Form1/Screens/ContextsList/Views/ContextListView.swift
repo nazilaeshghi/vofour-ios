@@ -31,13 +31,13 @@ struct ContextListView: View {
                         Spacer()
                     }
                     
-                    LineSegmentPicker(items: [LocalizedString.ContextPage.allContexts,
-                                              LocalizedString.ContextPage.activeContexts,
-                                              LocalizedString.ContextPage.notActiveContexts],
-                                      selection: $viewModel.selection)
-                    .onChange(of: viewModel.selection) { newValue in
+                    ScrollSegmentControl(segments: viewModel.segments,
+                                         spacing: 20, activeSegment: $viewModel.selection,
+                                         style: PublicTheme.segmentStyle,
+                                         segmentTapped: { segment in
                         viewModel.filterContextas(with: searchText)
-                    }
+
+                    })
                     
                     List($viewModel.items, id: \.id) { item in
                         SelectContextCell(item: item)
