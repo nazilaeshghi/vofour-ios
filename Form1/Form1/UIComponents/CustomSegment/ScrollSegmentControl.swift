@@ -1,7 +1,22 @@
 import SwiftUI
 
-public struct ScrollSegmentControl: View {
+struct ScrollViewRTL<Content: View>: View {
+    @ViewBuilder var content: Content
+    @Environment(\.layoutDirection) private var layoutDirection
     
+    @ViewBuilder var body: some View {
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            content
+                .rotation3DEffect(Angle(degrees: layoutDirection == .rightToLeft ? -180 : 0), axis: (x: CGFloat(0), y: CGFloat(layoutDirection == .rightToLeft ? -10 : 0), z: CGFloat(0)))
+        }
+        .rotation3DEffect(Angle(degrees: layoutDirection == .rightToLeft ? 180 : 0), axis: (x: CGFloat(0), y: CGFloat(layoutDirection == .rightToLeft ? 10 : 0), z: CGFloat(0)))
+    }
+}
+
+public struct ScrollSegmentControl: View {
+    @Environment(\.layoutDirection) private var layoutDirection
+
     let segments: [Segment]
     var spacing: CGFloat = 16
     @Binding var activeSegment: Int
@@ -33,7 +48,7 @@ public struct ScrollSegmentControl: View {
             }
             .frame(height: 34)
             
-            ScrollView(.horizontal, showsIndicators: false)  {
+            ScrollViewRTL()  {
                 HSTackSegmentedControl(
                     spacing: spacing,
                     segments: segments,
