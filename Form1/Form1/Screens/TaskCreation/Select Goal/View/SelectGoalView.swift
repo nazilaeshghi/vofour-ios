@@ -71,6 +71,7 @@ struct SelectGoalView: View {
         .onAppear(perform: {
             UITableView.appearance().backgroundColor = .clear
         })
+        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

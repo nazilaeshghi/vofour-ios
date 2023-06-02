@@ -229,6 +229,59 @@ extension DataManager {
         return output
     }
     
+    
+    func fetchCurrentWeekGoalTasks(goalId: String) -> ActivityGoalDataModel? {
+        func calculateTaskProgress(record: Record?) -> Float {
+            guard let record = record else { return 0.0 }
+            guard record.count > 0 else { return 0.0 }
+            guard record.total > 0 else { return 0.0 }
+            let dayCalculate = Float(record.count) / Float( record.total)
+            return dayCalculate > 1.0 ? 1.0 : dayCalculate
+        }
+
+        func fillTaskProgressDict(for taskWithRecord: DailyTaskDataModel) {
+            if goalProgressDict[taskWithRecord.task.taskID] == nil {
+                goalProgressDict[taskWithRecord.task.taskID]  = (calculateTaskProgress(record: taskWithRecord.record), 1)
+            }
+            else {
+                let currentTotal = goalProgressDict[taskWithRecord.task.taskID]?.total ?? 0
+                let newTotal = (goalProgressDict[taskWithRecord.task.taskID]?.total ?? 0) + 1
+                
+                let currentProgress = Float((goalProgressDict[taskWithRecord.task.taskID]?.progress ?? 0)) * Float(currentTotal)
+                let addedProgress = calculateTaskProgress(record: taskWithRecord.record)
+                let newProgress = (currentProgress + addedProgress) / Float(newTotal)
+                goalProgressDict[taskWithRecord.task.taskID] = (progress: newProgress, total: newTotal)
+            }
+        }
+
+        guard let goal = dataProvider.findGoal(with: goalId) else { return nil }
+        
+        // Find current week days
+        let todayDate = Date().getSimpleDate()
+        let weekDays = DateBuilder.make7Days(selectedDate: todayDate)
+        var goalProgressDict = [String: (progress: Float, total: Int)]()
+        
+        // Fetch tasks for eveyday in current week
+        var tempTask = Set<HashableTask>()
+        for day in weekDays {
+            let goalDayTasks = dataProvider.fetchTasks(for: day.obj.id, date: day.date, goalId: goalId)
+            for taskWithRecord in goalDayTasks {
+                guard let context = dataProvider.findContext(id: taskWithRecord.task.contextId) else {
+                    continue
+                }
+                fillTaskProgressDict(for: taskWithRecord)
+                let hTask = HashableTask(task: taskWithRecord.task,
+                                         progress: goalProgressDict[taskWithRecord.task.taskID]?.progress ?? 0.0,
+                                         context: context)
+                tempTask.update(with: hTask)
+            }
+        }
+                
+        return ActivityGoalDataModel(goal: goal,
+                                     tasks: Array(tempTask))
+        
+    }
+    
     func fetchAllGoalsTasks() -> [ActivityGoalDataModel] {
         let goals = dataProvider.fetchGoals()
         
@@ -245,5 +298,19 @@ extension DataManager {
                                                 tasks: goalTasks))
         }
         return output
+    }
+    
+    func fetchGoalTasks(goalId: String) -> ActivityGoalDataModel? {
+        guard let goal = dataProvider.findGoal(with: goalId) else { return nil }
+        
+        let goalTasks: [HashableTask] = dataProvider.fetchTasks(for: goal.id).compactMap { task in
+            guard let context = dataProvider.findContext(id: task.contextId) else {
+                return nil
+            }
+            return HashableTask(task: task, progress: 0, context: context)
+        }
+        guard goalTasks.count > 0 else { return nil }
+        return ActivityGoalDataModel(goal: goal,
+                                     tasks: goalTasks)
     }
 }

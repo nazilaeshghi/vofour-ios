@@ -150,4 +150,8 @@ struct LocalizedString {
         static let us = "ساخته شده با عشق توسط وداد، حسین، نازیلا و مرتضی"
     }
     
+    enum GoalList {
+        static let allGoals = "همه اهداف"
+        static let currentWeekTitle = "نمایش هفته جاری"
+    }
 }

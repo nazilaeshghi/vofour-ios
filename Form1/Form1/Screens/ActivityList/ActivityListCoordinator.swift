@@ -12,7 +12,7 @@ class ActivityListCoordinator {
     private var viewModel: GoalsListViewModel!
     
     var destinationView: GoalsListView {
-        return GoalsListView(viewModel: self.viewModel)
+        return GoalsListView(viewModel: self.viewModel, currentWeekIsOn: false)
     }
     
     required init(dataManager: DataManager) {

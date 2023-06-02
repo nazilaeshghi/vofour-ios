@@ -10,8 +10,8 @@ import SwiftUI
 
 class GoalsListViewModel: ObservableObject {
     private let dataManager: ActivityListDataManagable
-    @Published var selectedType: Int = 0
-    @Published var selectedDuration: Durationtype = .all
+    @Published var selectedGoalIndex: Int = 0
+    @Published var currentWeek: Bool = false
     @Published var items: [ActiviyListSectionCard] = []
     @Published var segments: [Segment] = [Segment]()
     
@@ -20,31 +20,28 @@ class GoalsListViewModel: ObservableObject {
     }
     
     func reloadData() {
-        if selectedType == 0 {
-            fetchGoalItems()
-        }
-        else {
-            fetchContextItems()
-        }
+        buildSegment()
+        fetchGoalItems()
     }
     
     func fetchGoalItems() {
-        let activityListGoals = dataManager.fetchGoals(currentWeek: selectedDuration == .week ? true : false)
-        items = transformGoals(goals: activityListGoals)
-        segments = items.enumerated().map { Segment(title: $0.element.title.plainText,
-                                                    index: $0.offset,
+        if selectedGoalIndex == 0 {
+            let activityListGoals = dataManager.fetchGoals(currentWeek: currentWeek)
+            items = transformGoals(goals: activityListGoals)
+        } else {
+            guard let goalId = segments[safe: selectedGoalIndex]?.object else { return }
+            let activityListGoals = dataManager.fetchGoal(goalId: goalId, currentWeek: currentWeek)
+            items = transformGoals(goals: activityListGoals)
+        }
+    }
+    
+    func buildSegment() {
+        let goals = dataManager.fetchGoals()
+        segments = [Segment(title: LocalizedString.GoalList.allGoals, index: 0)]
+        let tempSegments = goals.enumerated().map { Segment(title: $0.element.title,
+                                                    index: $0.offset + 1,
                                                     object: $0.element.id) }
-    }
-    
-    func fetchContextItems() {
-        
-    }
-    
-    var segmentItems: [String] {
-        return [
-            LocalizedString.ActicityList.golas,
-            LocalizedString.ActicityList.contexts
-        ]
+        segments.append(contentsOf: tempSegments)
     }
     
     private func transformGoals(goals: [ActivityGoalDataModel]) -> [ActiviyListSectionCard] {

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ActivityListCellView: View {
     let item: ActiviyListItemCard
-    //let detailAction: () -> Void
+    let hideProgress: Bool
     
     var body: some View {
         HStack {
@@ -33,7 +33,7 @@ struct ActivityListCellView: View {
                     Spacer()
                 }
             }
-            if let progress = item.progress {
+            if let progress = item.progress, !hideProgress {
                 Spacer()
                 
                 ZStack {
@@ -64,7 +64,7 @@ struct ActivityListCellView_Previews: PreviewProvider {
                                                        subtitle: LabelDisplayModel(plainText: "ورزش", style: .regularSubtitle),
                                                        color: Color.red,
                                                        progress: 0.5,
-                                                       iconName: "context_awakeness"))
+                                                       iconName: "context_awakeness"), hideProgress: false)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
             .previewInterfaceOrientation(.portraitUpsideDown)

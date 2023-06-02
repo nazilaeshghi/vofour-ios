@@ -22,6 +22,7 @@ protocol DataProvider {
     func fetchTasks() -> [TaskDataModel]
     func saveTask(entry: DataEntryDataModel)
     func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel]
+    func fetchTasks(for weekDay: String, date: Date, goalId: String) -> [DailyTaskDataModel]
     func fetchTask(id: String) -> TaskDataModel?
     func deleteTask(id: String)
     func fetchTaskCount(for contextID: String) -> Int
@@ -34,6 +35,10 @@ protocol DataProvider {
 }
 
 class MockDataProvider: DataProvider {
+    func fetchTasks(for weekDay: String, date: Date, goalId: String) -> [DailyTaskDataModel] {
+        return []
+    }
+    
     func fetchRecords(for taskID: String) -> [Record] {
         return []
     }

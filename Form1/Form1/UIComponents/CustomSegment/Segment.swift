@@ -11,9 +11,9 @@ public struct Segment {
     
     public let title: String
     public var index: Int
-    public var object: Any?
+    public var object: String?
     
-    public init(title: String, index: Int, object: Any? = nil) {
+    public init(title: String, index: Int, object: String? = nil) {
         self.title = title
         self.index = index
         self.object = object

@@ -12,31 +12,50 @@ struct GoalsListView: View {
     @StateObject var viewModel: GoalsListViewModel
     @State private var taskID: String?
     @State private var selectedSegmentIndex = 0
+    @State var currentWeekIsOn: Bool
     
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
             ScrollSegmentControl(segments: viewModel.segments,
                                  spacing: 20,
-                                 activeSegment: $selectedSegmentIndex,
+                                 activeSegment: $viewModel.selectedGoalIndex,
                                  style: PublicTheme.segmentStyle ) { segment in
-                
+                viewModel.reloadData()
             }
             
-            List {
-                ForEach(viewModel.items, id: \.id) { sectionItem in
-                    Section {
-                        ForEach(sectionItem.items, id: \.id) { item in
-                            ActivityListCellView(item: item)
-                                .onTapGesture {
-                                    taskID = item.id
-                                }
-                                .applyBasicCellStyle()
+            HStack {
+                Toggle(isOn: $currentWeekIsOn) {
+                    Text(LocalizedString.GoalList.currentWeekTitle)
+                        .applyStyle(style: .primaryTitle)
+                }
+                .tint(Color.primaryColor)
+                .onChange(of: currentWeekIsOn) { newValue in
+                    viewModel.currentWeek.toggle()
+                    viewModel.reloadData()
+                }
+            }
+
+            
+            if !viewModel.items.isEmpty {
+                List {
+                    ForEach(viewModel.items, id: \.id) { sectionItem in
+                        Section {
+                            ForEach(sectionItem.items, id: \.id) { item in
+                                ActivityListCellView(item: item, hideProgress: !currentWeekIsOn)
+                                    .onTapGesture {
+                                        taskID = item.id
+                                    }
+                                    .applyBasicCellStyle()
+                            }
                         }
                     }
+                    .applyBasicCellStyle()
                 }
-                .applyBasicCellStyle()
+                .applyListBasicStyle()
             }
-            .applyListBasicStyle()
+            else {
+                Spacer()
+            }
         }
         .applyBasicViewStyle()
         .sheet(item: $taskID, content: { taskId in
@@ -48,12 +67,13 @@ struct GoalsListView: View {
         .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
             viewModel.reloadData()
         }
+        
     }
 }
 
 struct ActivityListView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalsListView(viewModel: GoalsListViewModel(dataManager: ActivityListDataMock()))
+        GoalsListView(viewModel: GoalsListViewModel(dataManager: ActivityListDataMock()), currentWeekIsOn: false)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
             .previewInterfaceOrientation(.portraitUpsideDown)

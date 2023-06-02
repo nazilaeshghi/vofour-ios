@@ -183,6 +183,41 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
+    func fetchTasks(for weekDay: String, date: Date, goalId: String) -> [DailyTaskDataModel] {
+        do {
+            let tasks =  try realm().objects(TaskRealm.self).where {
+                // Activity
+                ($0.startDate == date &&
+                 $0.isRepeatable == false &&
+                 $0.goalId == goalId) ||
+                
+                // Activity with repeat
+                ($0.startDate <= date &&
+                 $0.endDate >= date &&
+                 $0.isRepeatable == true &&
+                 $0.weekDays.contains(weekDay) &&
+                 $0.goalId == goalId) ||
+                
+                // Quit
+                ($0.startDate <= date
+                 && $0.endDate >= date
+                 && $0.isActivity == false
+                 && $0.goalId == goalId)
+            }.detached
+            let dayRecords = try tasks.map { task -> DailyTaskDataModel in
+                let record = try realm().objects(RecordRealm.self).where {
+                    $0.taskID == task.taskID && $0.date == date
+                }.first?.detached()
+                let dayRecord = DailyTaskDataModel(task: task, record: record)
+                return dayRecord
+            }
+            return dayRecords
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
     func fetchAllTasks(for weekDay: String, date: Date) -> [TaskDataModel] {
         do {
             let tasks =  try realm().objects(TaskRealm.self).where {
