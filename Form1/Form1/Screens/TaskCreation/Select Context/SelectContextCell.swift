@@ -17,7 +17,10 @@ struct SelectContextCell: View {
             Text(item.title.plainText)
                 .applyStyle(style: item.title.labelStyle)
             Spacer()
-            Image.arrow
+            Image
+                .plus
+                .resizable()
+                .frame(width: 16, height: 16)
         }
         .padding()
         .background(Color.contextBackgroundColor)
