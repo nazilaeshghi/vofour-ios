@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SelectorInoutCell: View {
+struct SelectorInputCell: View {
     var text: String?
     var placeholder: String
     var title: String
@@ -24,7 +24,7 @@ struct SelectorInoutCell: View {
 
 struct SelectorInoutCell_Previews: PreviewProvider {
     static var previews: some View {
-        SelectorInoutCell(placeholder: LocalizedString.Input.enterHerePlaceholder,
+        SelectorInputCell(placeholder: LocalizedString.Input.enterHerePlaceholder,
                           title: LocalizedString.Input.enterHereTitle)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))

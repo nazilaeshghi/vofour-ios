@@ -17,13 +17,13 @@ struct QuitEntirelyView: View {
     
     var body: some View {
         VStack(spacing: PublicTheme.vSpace) {
-            SelectorInoutCell(text: startDateText.convertToPersian(),
+            SelectorInputCell(text: startDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.startDateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
-            SelectorInoutCell(text: endDateText.convertToPersian(),
+            SelectorInputCell(text: endDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.endDateSelectoreTitle)
                 .onTapGesture {
@@ -43,13 +43,13 @@ struct QuitWithLimitView: View {
     
     var body: some View {
         VStack(spacing: PublicTheme.vSpace) {
-            SelectorInoutCell(text: startDateText.convertToPersian(),
+            SelectorInputCell(text: startDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.startDateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
-            SelectorInoutCell(text: endDateText.convertToPersian(),
+            SelectorInputCell(text: endDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.endDateSelectoreTitle)
                 .onTapGesture {

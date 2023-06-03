@@ -76,7 +76,7 @@ struct WeekView: View {
             .sheet(isPresented: $datePickerPresented, content: {
                 CalendarSheetView(presented: $datePickerPresented,
                                   dateString: $viewModel.startDate,
-                                  title: LocalizedString.Input.startDateSelectoreTitle)
+                                  title: LocalizedString.Home.dateSelectoreTitle)
             })
             .gesture(DragGesture(minimumDistance: 10)
                         .onEnded({ value in

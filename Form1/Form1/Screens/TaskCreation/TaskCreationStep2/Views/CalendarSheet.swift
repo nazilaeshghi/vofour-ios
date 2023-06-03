@@ -24,7 +24,7 @@ struct CalendarSheetView: View {
     
     var body: some View {
         VStack {
-            ModalHeaderView(title: LocalizedString.Input.startDateSelectoreTitle) {
+            ModalHeaderView(title: title) {
                 presented = false
             }
             .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))

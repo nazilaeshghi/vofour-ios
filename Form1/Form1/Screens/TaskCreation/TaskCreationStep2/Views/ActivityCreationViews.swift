@@ -16,13 +16,13 @@ struct TaskCreationViewNonRepeatitive: View {
     
     var body: some View {
         VStack(spacing: PublicTheme.vSpace) {
-            SelectorInoutCell(text: dateText.convertToPersian(),
+            SelectorInputCell(text: dateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.dateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
-            SelectorInoutCell(text: durationText.convertToPersian(),
+            SelectorInputCell(text: durationText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)
                 .onTapGesture {
@@ -46,20 +46,20 @@ struct TaskCreationViewRepeatitive: View {
     
     var body: some View {
         VStack (spacing: PublicTheme.vSpace) {
-            SelectorInoutCell(text: durationText.convertToPersian(),
+            SelectorInputCell(text: durationText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)
                 .onTapGesture {
                     durationPresented = true
                 }
             
-            SelectorInoutCell(text: startDateText.convertToPersian(),
+            SelectorInputCell(text: startDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.startDateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
-            SelectorInoutCell(text: endDateText.convertToPersian(),
+            SelectorInputCell(text: endDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.goalSelectorPlaceholder,
                               title: LocalizedString.Input.endDateSelectoreTitle)
                 .onTapGesture {

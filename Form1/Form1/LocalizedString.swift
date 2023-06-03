@@ -54,7 +54,7 @@ struct LocalizedString {
         static let enterHerePlaceholder = "اینجا وارد کنید"
         
         static let obstacleHeader = "پیشگیری"
-        static let obstaclePlaceholder = "چه چیز‌هایی موانع این فعالین هستن؟"
+        static let obstaclePlaceholder = "چه چیز‌هایی موانع این فعالیت هستن؟"
         
         static let reasonTitle = "علت انتخاب"
         static let reasonPlaceholder = "قصد شما چیست؟"
@@ -62,7 +62,7 @@ struct LocalizedString {
         static let for100Title = "برای ۱۰۰ شدن چه کاری انجام می‌دهم"
         
         static let goalSelectorTitle = "مستقل یا بخشی از هدف دیگر"
-        static let goalSelectorPlaceholder = "انتخاب کنید"
+        static let goalSelectorPlaceholder = "انتخاب هدف"
         
         static let dateSelectoreTitle = "تاریخ انجام فعالیت"
         static let startDateSelectoreTitle = "تاریخ آغاز"
@@ -111,6 +111,7 @@ struct LocalizedString {
         static let todayProgress = "پیشرفت این هفته"
         static let weekProgress = "پیشرفت امروز"
         static let empty = "برای قرار گرفتن در مسیر رشد\n  از اینجا شروع کن"
+        static let dateSelectoreTitle = "انتخاب تاریخ"
     }
     
     

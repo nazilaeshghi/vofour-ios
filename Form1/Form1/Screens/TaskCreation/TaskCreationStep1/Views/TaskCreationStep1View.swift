@@ -53,7 +53,7 @@ struct TaskCreationStep1View: View {
                                              placeholder: LocalizedString.Input.enterHerePlaceholder,
                                              title: LocalizedString.Input.enterHereTitle)
                             
-                            SelectorInoutCell(text: viewModel.selectedGoalTitle,
+                            SelectorInputCell(text: viewModel.selectedGoalTitle,
                                               placeholder: LocalizedString.Input.goalSelectorTitle,
                                               title: LocalizedString.Input.goalSelectorPlaceholder)
                                 .onTapGesture {
