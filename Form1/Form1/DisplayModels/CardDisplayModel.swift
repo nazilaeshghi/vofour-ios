@@ -8,7 +8,15 @@
 
 import SwiftUI
 
-struct CardDisplayModel: Identifiable {
+struct CardDisplayModel: Identifiable, Hashable {
+    static func == (lhs: CardDisplayModel, rhs: CardDisplayModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     var title: LabelDisplayModel
     var subtitle: LabelDisplayModel
     var count: LabelDisplayModel
