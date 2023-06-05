@@ -6,7 +6,7 @@
 //  Copyright © 2023 Vofour. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct ColoredToggleStyle: ToggleStyle {
     var onColor = Color.primaryColor
