@@ -16,6 +16,8 @@ class TaskDetailViewModel: ObservableObject {
     @Published var activityType: String = ""
     @Published var contextName: String = ""
     @Published var goalName: String = ""
+    @Published var startDate: String?
+    @Published var endDate: String?
     
     private let dataManager: TaskDetailDataManagable
     
@@ -37,6 +39,12 @@ class TaskDetailViewModel: ObservableObject {
         activityType = task.task.isActivity ? LocalizedString.TaskDetail.create : LocalizedString.TaskDetail.quit
         contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
         goalName = dataManager.fetchGoal(id: task.task.goalId)?.title ?? LocalizedString.TaskDetail.independent
+        if let startDate = task.task.startDate {
+            self.startDate = DateHelper.fullDateFormatter.string(from: startDate)
+        }
+        if let endDate = task.task.endDate {
+            self.endDate = DateHelper.fullDateFormatter.string(from: endDate)
+        }
         didFetchDate = true
     }
     
@@ -53,5 +61,13 @@ class TaskDetailViewModel: ObservableObject {
     func deleteTask() {
         dataManager.deleteTask()
         NotificationCenter.sendNotification(for: .dataChange)
+    }
+    
+    func hideStartDate() -> Bool {
+        return self.startDate == nil
+    }
+    
+    func hideEndDate() -> Bool {
+        return self.endDate == nil
     }
 }

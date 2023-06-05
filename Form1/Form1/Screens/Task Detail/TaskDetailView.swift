@@ -40,7 +40,7 @@ struct TaskDetailView: View {
                                                        countLabel: viewModel.item.count,
                                                        totalLabel: viewModel.item.subtitle)
                             }
-                            .frame(width: geometry.size.width * 0.7, height: geometry.size.width * 0.7)
+                            .frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
                             
                             // Details
                             VStack(spacing: PublicTheme.collectionSpace) {
@@ -50,6 +50,13 @@ struct TaskDetailView: View {
                                                    value: viewModel.contextName)
                                 TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle,
                                                    value: viewModel.goalName)
+                                TaskDetailsRowView(title: LocalizedString.Input.startDateSelectoreTitle,
+                                                   value: viewModel.startDate ?? "")
+                                .isHidden(viewModel.hideStartDate())
+                                
+                                TaskDetailsRowView(title: LocalizedString.Input.endDateSelectoreTitle,
+                                                   value: viewModel.endDate ?? "")
+                                .isHidden(viewModel.hideEndDate())
                             }
                             
                             Spacer()
