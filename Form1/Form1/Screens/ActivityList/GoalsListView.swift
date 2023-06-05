@@ -15,7 +15,7 @@ struct GoalsListView: View {
     @State var currentWeekIsOn: Bool
     
     var body: some View {
-        VStack(spacing: PublicTheme.vHeaderSpace) {
+        VStack(alignment: .leading, spacing: PublicTheme.vHeaderSpace) {
             ScrollSegmentControl(segments: viewModel.segments,
                                  spacing: 20,
                                  activeSegment: $viewModel.selectedGoalIndex,
@@ -24,15 +24,20 @@ struct GoalsListView: View {
             }
             
             HStack {
-                Toggle(isOn: $currentWeekIsOn) {
-                    Text(LocalizedString.GoalList.currentWeekTitle)
-                        .applyStyle(style: .primaryTitle)
-                }
+                Toggle("", isOn: $currentWeekIsOn)
                 .tint(Color.primaryColor)
                 .onChange(of: currentWeekIsOn) { newValue in
                     viewModel.currentWeek.toggle()
                     viewModel.reloadData()
                 }
+                .toggleStyle(ColoredToggleStyle())
+                .frame(width: 36)
+                .frame(height: 20)
+                .padding(.trailing, 8)
+                
+                Text(LocalizedString.GoalList.currentWeekTitle)
+                    .applyStyle(style: .regularSubtitle)
+
             }
 
             
