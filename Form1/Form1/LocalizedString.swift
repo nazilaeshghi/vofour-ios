@@ -18,6 +18,7 @@ struct LocalizedString {
         static let allContexts = "همه زمینه‌ها"
         static let activeContexts = "فعال‌ها"
         static let notActiveContexts = "غیر فعال‌ها"
+        static let selectContexts = "انتخاب زمنیه"
     }
     
     enum SelectGoalPage {
@@ -31,9 +32,8 @@ struct LocalizedString {
     }
     
     enum TaskCreationStep1 {
-        static func header(context: String) -> String {
-            return "ایجاد فعالیت در زمینه \(context)"
-        }
+        static let createHeader = "ایجاد فعالیت"
+        static let editHeader = "ویرایش فعالیت"
         static let header = "اطلاعات لازم وارد کنید"
         static let createHabitSegmentTitle = "انجام فعالیت"
         static let quitHabitSegmentTitle = "ترک فعالیت"
@@ -51,6 +51,7 @@ struct LocalizedString {
     
     enum Input {
         static let enterHereTitle = "عنوان فعالیت"
+        static let contextTitle = "زمینه"
         static let enterHerePlaceholder = "اینجا وارد کنید"
         
         static let obstacleHeader = "پیشگیری"
