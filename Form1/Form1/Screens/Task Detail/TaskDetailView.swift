@@ -127,8 +127,7 @@ struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
         TaskDetailView(viewModel: TaskDetailViewModel(dataManager: TaskDetailDataMock(), currentDate: Date()))
             .environment(\.layoutDirection, .rightToLeft)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-            .previewInterfaceOrientation(.portraitUpsideDown)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 6S"))
     }
 }
 

@@ -91,12 +91,14 @@ struct TaskCreationStep2View: View {
             .sheet(isPresented: $startDateCalendarPresented, content: {
                 CalendarSheetView(presented: $startDateCalendarPresented,
                                   dateString: $viewModel.startDate,
-                                  title: LocalizedString.Input.startDateSelectoreTitle)
+                                  title: LocalizedString.Input.startDateSelectoreTitle,
+                                  maxDate: viewModel.endDate)
             })
             .sheet(isPresented: $endDateCalendarPresented, content: {
                 CalendarSheetView(presented: $endDateCalendarPresented,
                                   dateString: $viewModel.endDate,
-                                  title: LocalizedString.Input.endDateSelectoreTitle)
+                                  title: LocalizedString.Input.endDateSelectoreTitle,
+                                  minDate: viewModel.startDate)
             })
             .sheet(isPresented: $durationPresented, content: {
                 DurationSheetView(presented: $durationPresented,
