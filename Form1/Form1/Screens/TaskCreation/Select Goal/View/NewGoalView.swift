@@ -37,6 +37,7 @@ struct NewGoalView: View {
             .applyBasicViewStyle()
         }
         .applyBackgroundColor()
+        .environment(\.layoutDirection, .rightToLeft)
     }
     
     func titleChanged(to value: String) {

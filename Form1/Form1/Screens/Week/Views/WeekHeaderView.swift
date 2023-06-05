@@ -27,13 +27,13 @@ struct WeekHeaderView: View {
             // Selected date and week progress
             HStack(alignment: .center) {
                 Button {
-                    showingSetting.toggle()
+                    showingSetting = true
                 } label: {
                     Image("HambergerMenu")
                 }
 
                 Button {
-                    showDatePicker.toggle()
+                    showDatePicker = true
                 } label: {
                     HStack {
                         Text(DateHelper().getHeaderDate(for: selectedDate))
