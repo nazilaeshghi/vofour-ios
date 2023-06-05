@@ -17,13 +17,13 @@ struct TaskCreationViewNonRepeatitive: View {
     var body: some View {
         VStack(spacing: PublicTheme.vSpace) {
             SelectorInputCell(text: dateText.convertToPersian(),
-                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              placeholder: LocalizedString.Input.defaultSelectorPlaceholder,
                               title: LocalizedString.Input.dateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
             SelectorInputCell(text: durationText.convertToPersian(),
-                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              placeholder: LocalizedString.Input.defaultSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)
                 .onTapGesture {
                     durationPresented = true
@@ -47,20 +47,20 @@ struct TaskCreationViewRepeatitive: View {
     var body: some View {
         VStack (spacing: PublicTheme.vSpace) {
             SelectorInputCell(text: durationText.convertToPersian(),
-                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              placeholder: LocalizedString.Input.defaultSelectorPlaceholder,
                               title: LocalizedString.Input.periodSelectorTitle)
                 .onTapGesture {
                     durationPresented = true
                 }
             
             SelectorInputCell(text: startDateText.convertToPersian(),
-                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              placeholder: LocalizedString.Input.startDateSelectoreTitle,
                               title: LocalizedString.Input.startDateSelectoreTitle)
                 .onTapGesture {
                     startDateCalendarPresented = true
                 }
             SelectorInputCell(text: endDateText.convertToPersian(),
-                              placeholder: LocalizedString.Input.goalSelectorPlaceholder,
+                              placeholder: LocalizedString.Input.defaultSelectorPlaceholder,
                               title: LocalizedString.Input.endDateSelectoreTitle)
                 .onTapGesture {
                     endtDateCalendarPresented = true

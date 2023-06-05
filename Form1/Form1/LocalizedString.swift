@@ -62,7 +62,8 @@ struct LocalizedString {
         static let for100Title = "برای ۱۰۰ شدن چه کاری انجام می‌دهم"
         
         static let goalSelectorTitle = "مستقل یا بخشی از هدف دیگر"
-        static let goalSelectorPlaceholder = "انتخاب هدف"
+        static let defaultSelectorPlaceholder = "انتخاب هدف"
+        static let goalSelectorPlaceholder = "انتخاب کنید"
         
         static let dateSelectoreTitle = "تاریخ انجام فعالیت"
         static let startDateSelectoreTitle = "تاریخ آغاز"
