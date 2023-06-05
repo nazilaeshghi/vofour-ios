@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TaskCreationStep1DataManagable: BaseDataManagable {
-    func getContextName() -> String
+    func getContextName(editMode: Bool) -> String
     
     func getIsActivity() ->  Bool
     func updateIsActivity(with value: Bool)
@@ -46,9 +46,9 @@ class TaskCreationStep1DataManager: TaskCreationStep1DataManagable {
         }
     }
     
-    func getContextName() -> String {
+    func getContextName(editMode: Bool) -> String {
         var currentContextID: String
-        if let contextID = contextID {
+        if let contextID = contextID, editMode == false {
             currentContextID = contextID
             return dataManager.context(id: contextID)?.name ?? ""
         }

@@ -58,7 +58,7 @@ struct ContextListView: View {
         }
         .background(Color.background)
         .sheet(item: $selectedContextID) { contextID in
-            AppCoordinator.shared.makeTaskCreationStep1View(contextID: contextID)
+            AppCoordinator.shared.makeTaskCreationStep1View()
                 .environment(\.layoutDirection, .rightToLeft)
         }
     }

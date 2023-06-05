@@ -18,10 +18,9 @@ struct TaskCreationStep1View: View {
     
     @State private var showingNextPage: Bool = false
     @State private var showingGoalSheet: Bool = false
+    @State private var showingContextSheet: Bool = false
     @State private var shouldShowFooter: Bool = true
-    
-    let isFirstPage: Bool
-    
+        
     private let segmentItems = [
         LocalizedString.TaskCreationStep1.createHabitSegmentTitle,
         LocalizedString.TaskCreationStep1.quitHabitSegmentTitle
@@ -31,7 +30,7 @@ struct TaskCreationStep1View: View {
         NavigationStack {
             VStack(spacing: .zero) {
                 NavigationLink(isActive: $showingNextPage) {
-                    AppCoordinator.shared.makeTaskCreationStep2View()
+                    AppCoordinator.shared.makeTaskCreationStep2View(editMode: viewModel.editMode)
                 } label: {
                     EmptyView()
                 }.opacity(0)
@@ -49,6 +48,15 @@ struct TaskCreationStep1View: View {
                         VerticalSpaceView(space: .inlineForm)
                         
                         VStack(spacing: PublicTheme.vSpace) {
+                            if viewModel.editMode {
+                                SelectorInputCell(text: viewModel.selectedContextTitle,
+                                                 placeholder: LocalizedString.Input.enterHerePlaceholder,
+                                                 title: LocalizedString.Input.contextTitle)
+                                .onTapGesture {
+                                    showingContextSheet = true
+                                }
+                            }
+                            
                             OneLineInputCell(inputText: $viewModel.titleInputText,
                                              placeholder: LocalizedString.Input.enterHerePlaceholder,
                                              title: LocalizedString.Input.enterHereTitle)
@@ -93,7 +101,7 @@ struct TaskCreationStep1View: View {
             }
             .background(Color.background)
             .applyToolbarWithBackStyle(with: viewModel.header(),
-                                       hideBakcButton: isFirstPage,
+                                       hideBakcButton: viewModel.editMode,
                                        backAction: dismiss,
                                        closeAction: closeAction)
             .onChange(of: isTextFieldFocused, perform: { a in
@@ -104,7 +112,8 @@ struct TaskCreationStep1View: View {
                 presentationMode.wrappedValue.dismiss()
                 viewModel.reset()
             }
-            .sheet(isPresented: $showingGoalSheet, onDismiss: refreshTitle, content: makeSelectGoalView)
+            .sheet(isPresented: $showingGoalSheet, onDismiss: refreshGoalTitle, content: makeSelectGoalView)
+            .sheet(isPresented: $showingContextSheet, onDismiss: refreshContextTitle, content: makeSelectContextView)
         }
         .onAppear(perform: {
             viewModel.initBinders()
@@ -112,12 +121,20 @@ struct TaskCreationStep1View: View {
         .navigationBarHidden(true)
     }
     
-    func refreshTitle() {
+    func refreshGoalTitle() {
         viewModel.refreshGoalTitle()
+    }
+    
+    func refreshContextTitle() {
+        viewModel.refreshContextTitle()
     }
     
     func makeSelectGoalView() -> some View {
         return AppCoordinator.shared.makeSelectGoalSheetView()
+    }
+    
+    func makeSelectContextView() -> some View {
+        return AppCoordinator.shared.makeSelectContextSheetView()
     }
     
     func closeAction() {
@@ -139,8 +156,8 @@ struct TaskCreationStep1View: View {
 struct TaskCreationStep1View_Previews: PreviewProvider {
     static var previews: some View {
         let dataManager = TaskCreationStep1DataManagableMock()
-        let viewModel = TaskCreationStep1ViewModel(dataManager: dataManager)
-        TaskCreationStep1View(viewModel: viewModel, isFirstPage: false)
+        let viewModel = TaskCreationStep1ViewModel(dataManager: dataManager, editMode: false)
+        TaskCreationStep1View(viewModel: viewModel)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

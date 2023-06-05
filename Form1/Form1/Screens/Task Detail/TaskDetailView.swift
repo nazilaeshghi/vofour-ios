@@ -94,8 +94,9 @@ struct TaskDetailView: View {
             .sheet(item: $taskID, onDismiss: {
                 showingTaskCreationSheet = false
                 taskID = nil
-            }, content: {  item in
-                AppCoordinator.shared.makeSelectContextView(taskId: item)
+            }, content: {  taskId in
+                AppCoordinator.shared.makeEditTaskCreationStep1View(taskId: taskId)
+                    .environment(\.layoutDirection, .rightToLeft)
             })
         }
         .navigationBarHidden(true)

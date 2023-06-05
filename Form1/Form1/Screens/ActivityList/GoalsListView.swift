@@ -64,7 +64,7 @@ struct GoalsListView: View {
         }
         .applyBasicViewStyle()
         .sheet(item: $taskID, content: { taskId in
-            AppCoordinator.shared.makeSelectContextView(taskId: taskId)
+            AppCoordinator.shared.makeEditTaskCreationStep1View(taskId: taskId)
         })
         .onAppear {
             viewModel.reloadData()

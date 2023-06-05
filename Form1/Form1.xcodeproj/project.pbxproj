@@ -102,10 +102,10 @@
 		64996B562A2578440016E59E /* SegmentControlStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B542A2578440016E59E /* SegmentControlStyler.swift */; };
 		649F07D728B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649F07D628B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift */; };
 		649FB0822A2D813E005948CC /* ColoredToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649FB0812A2D813E005948CC /* ColoredToggleStyle.swift */; };
+		649FB0842A2E879A005948CC /* SelectContextSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649FB0832A2E879A005948CC /* SelectContextSheetView.swift */; };
 		64A1038628820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038528820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift */; };
 		64A1038828820CDF000A6FE2 /* TaskCreationStep2DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038728820CDF000A6FE2 /* TaskCreationStep2DataManager.swift */; };
 		64A1038A28820CEA000A6FE2 /* TaskCreationStep2Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */; };
-		64A1038C28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038B28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift */; };
 		64A1038E28849908000A6FE2 /* CalendarSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1038D28849908000A6FE2 /* CalendarSheet.swift */; };
 		64A8A3A8284075A80056EC08 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A7284075A80056EC08 /* ButtonStyle.swift */; };
 		64A8A3AA284075EC0056EC08 /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A8A3A9284075EC0056EC08 /* ButtonExtensions.swift */; };
@@ -133,7 +133,6 @@
 		64C5503C285F7BD2000E9F61 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5503B285F7BD2000E9F61 /* DataManager.swift */; };
 		64C5503E285F8864000E9F61 /* SelectContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5503D285F8864000E9F61 /* SelectContextViewModel.swift */; };
 		64C5504128609120000E9F61 /* SelectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C550402860911F000E9F61 /* SelectContextMock.swift */; };
-		64C5504828609A9F000E9F61 /* TaskCreationStep1Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */; };
 		64C5504A28609ABE000E9F61 /* TaskCreationStep1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */; };
 		64C5504C28609AC6000E9F61 /* TaskCreationStep1DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */; };
 		64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5504D28609ADA000E9F61 /* TaskCreationStep1Mock.swift */; };
@@ -257,10 +256,10 @@
 		64996B542A2578440016E59E /* SegmentControlStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControlStyler.swift; sourceTree = "<group>"; };
 		649F07D628B9E9F000BA9AA9 /* CustomLineShapeWithAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLineShapeWithAlignment.swift; sourceTree = "<group>"; };
 		649FB0812A2D813E005948CC /* ColoredToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredToggleStyle.swift; sourceTree = "<group>"; };
+		649FB0832A2E879A005948CC /* SelectContextSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextSheetView.swift; sourceTree = "<group>"; };
 		64A1038528820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2ViewModel.swift; sourceTree = "<group>"; };
 		64A1038728820CDF000A6FE2 /* TaskCreationStep2DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2DataManager.swift; sourceTree = "<group>"; };
 		64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2Mock.swift; sourceTree = "<group>"; };
-		64A1038B28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep2Coordinator.swift; sourceTree = "<group>"; };
 		64A1038D28849908000A6FE2 /* CalendarSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSheet.swift; sourceTree = "<group>"; };
 		64A8A3A7284075A80056EC08 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		64A8A3A9284075EC0056EC08 /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
@@ -288,7 +287,6 @@
 		64C5503B285F7BD2000E9F61 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		64C5503D285F8864000E9F61 /* SelectContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextViewModel.swift; sourceTree = "<group>"; };
 		64C550402860911F000E9F61 /* SelectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextMock.swift; sourceTree = "<group>"; };
-		64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1Coordinator.swift; sourceTree = "<group>"; };
 		64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1ViewModel.swift; sourceTree = "<group>"; };
 		64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1DataManager.swift; sourceTree = "<group>"; };
 		64C5504D28609ADA000E9F61 /* TaskCreationStep1Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationStep1Mock.swift; sourceTree = "<group>"; };
@@ -541,7 +539,6 @@
 				64A1038528820CD4000A6FE2 /* TaskCreationStep2ViewModel.swift */,
 				64A1038728820CDF000A6FE2 /* TaskCreationStep2DataManager.swift */,
 				64A1038928820CEA000A6FE2 /* TaskCreationStep2Mock.swift */,
-				64A1038B28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift */,
 			);
 			path = TaskCreationStep2;
 			sourceTree = "<group>";
@@ -672,6 +669,7 @@
 			isa = PBXGroup;
 			children = (
 				643778B3281892560025D3D4 /* SelectContextView.swift */,
+				649FB0832A2E879A005948CC /* SelectContextSheetView.swift */,
 				643778B52818AA230025D3D4 /* SelectContextCell.swift */,
 				64EA8B26285F651B009027DE /* SelectContextDataManager.swift */,
 				64C5503D285F8864000E9F61 /* SelectContextViewModel.swift */,
@@ -696,7 +694,6 @@
 			isa = PBXGroup;
 			children = (
 				6402889728B5585000FCE2C8 /* Views */,
-				64C5504728609A9F000E9F61 /* TaskCreationStep1Coordinator.swift */,
 				64C5504B28609AC6000E9F61 /* TaskCreationStep1DataManager.swift */,
 				64C5504928609ABE000E9F61 /* TaskCreationStep1ViewModel.swift */,
 				64C5504D28609ADA000E9F61 /* TaskCreationStep1Mock.swift */,
@@ -886,7 +883,6 @@
 				6402879428B17DF900FCE2C8 /* ProgressOverViewOverview.swift in Sources */,
 				64D7467D27B8D4B8006A0C1C /* ScaledFont.swift in Sources */,
 				647F294227AF1F4F00C70874 /* ContextsListCoordinator.swift in Sources */,
-				64C5504828609A9F000E9F61 /* TaskCreationStep1Coordinator.swift in Sources */,
 				64C4E8B6284BADFE00502D88 /* WeekDaysView.swift in Sources */,
 				64A9330328A7D5C0006E1988 /* QuitHabitViews.swift in Sources */,
 				64DD210D2894C0FF0009FD08 /* HomeContextCellView.swift in Sources */,
@@ -961,7 +957,6 @@
 				642CB19C287C441F004AF8DA /* SelectGoalMock.swift in Sources */,
 				6435414228D2797300449DC3 /* LineSegmentPicker.swift in Sources */,
 				64842BCA2890175D00A4AA2E /* CalendarExtensions.swift in Sources */,
-				64A1038C28820CF5000A6FE2 /* TaskCreationStep2Coordinator.swift in Sources */,
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
 				642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */,
 				643D86452892DB0A0076D884 /* RecordRealm.swift in Sources */,
@@ -997,6 +992,7 @@
 				6400D6532844101A005A6F79 /* ViewExtesnion.swift in Sources */,
 				640B8E1427CECEB300177ADF /* PublicTheme.swift in Sources */,
 				64C5504128609120000E9F61 /* SelectContextMock.swift in Sources */,
+				649FB0842A2E879A005948CC /* SelectContextSheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

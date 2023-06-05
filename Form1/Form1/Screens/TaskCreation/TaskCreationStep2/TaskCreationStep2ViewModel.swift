@@ -26,12 +26,13 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var weekDays: [WeekDayObject]
     @Published var selectedDuration: DurationObject?
     @Published var reminders: [TimeObject]
+    let editMode: Bool
     
     var isItCreation: Bool {
         return dataManager.isTaskActivity()
     }
     
-    init(dataManager: TaskCreationStep2DataManagable) {
+    init(dataManager: TaskCreationStep2DataManagable, editMode: Bool) {
         self.dataManager = dataManager
         if let stDate = dataManager.getStartDate() {
             self.startDate = DateHelper.generalDateFormatter.string(from: stDate)
@@ -52,6 +53,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
         
         self.reminders = dataManager.getReminder()
         self.selectedDuration = dataManager.getDuration()
+        self.editMode = editMode
     }
     
     func initBinders() {
@@ -119,7 +121,11 @@ class TaskCreationStep2ViewModel: ObservableObject {
     }
     
     func header() -> String {
-        return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
+        if editMode {
+            return LocalizedString.TaskCreationStep1.editHeader
+        } else {
+            return LocalizedString.TaskCreationStep1.createHeader
+        }
     }
     
     func repetitionSegmentItems() -> [String] {

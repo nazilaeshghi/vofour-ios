@@ -129,7 +129,7 @@ struct TaskCreationStep2View: View {
 
 struct TaskCreationStep2View_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCreationStep2View(viewModel: TaskCreationStep2ViewModel(dataManager: TaskCreationStep2DataManagableMock()))
+        TaskCreationStep2View(viewModel: TaskCreationStep2ViewModel(dataManager: TaskCreationStep2DataManagableMock(), editMode: false))
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
     }

@@ -13,26 +13,35 @@ class TaskCreationStep1ViewModel: ObservableObject {
     private let dataManager: TaskCreationStep1DataManagable
     
     @Published private(set) var selectedGoalTitle: String?
+    @Published private(set) var selectedContextTitle: String?
     @Published var selectedType: Int = 0
     @Published var titleInputText: String = ""
+    @Published var contextInputText: String = ""
     @Published var preventionInputText: String = ""
     @Published var reasonInputText: String = ""
     @Published var for100InputText: String = ""
+    let editMode: Bool
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(dataManager: TaskCreationStep1DataManagable) {
+    init(dataManager: TaskCreationStep1DataManagable, editMode: Bool) {
         self.dataManager = dataManager
         selectedGoalTitle = dataManager.getSelectedGoalTitle()
+        selectedContextTitle = dataManager.getContextName(editMode: editMode)
         selectedType = dataManager.getIsActivity() == true ? 0 : 1
         titleInputText = dataManager.getActivityTitle()
         preventionInputText = dataManager.getPrevention()
         reasonInputText = dataManager.getReason()
         for100InputText = dataManager.getFor100()
+        self.editMode = editMode
      }
     
     func header() -> String {
-        return LocalizedString.TaskCreationStep1.header(context: dataManager.getContextName())
+        if editMode {
+            return LocalizedString.TaskCreationStep1.editHeader
+        } else {
+            return LocalizedString.TaskCreationStep1.createHeader
+        }
     }
     
     func initBinders() {
@@ -73,6 +82,10 @@ class TaskCreationStep1ViewModel: ObservableObject {
     
     func refreshGoalTitle() {
         selectedGoalTitle = dataManager.getSelectedGoalTitle()
+    }
+    
+    func refreshContextTitle() {
+        selectedContextTitle = dataManager.getContextName(editMode: editMode)
     }
     
     func reset() {

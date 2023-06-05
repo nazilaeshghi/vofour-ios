@@ -25,19 +25,31 @@ class AppCoordinator {
     }
     
     // Task Creation
-    func makeSelectContextView(taskId: String? = nil) -> SelectContextView {
-        if let taskId = taskId {
-            dataManager.startEditTask(taskId: taskId)
-        }
+    func makeSelectContextSheetView() -> SelectContextSheetView {
+        let contextDataManger = SelectContextDataManager(dataManager: dataManager)
+        let viewModel = SelectContextViewModel(dataManager: contextDataManger)
+        return SelectContextSheetView(viewModel: viewModel)
+    }
+    
+    func makeSelectContextView() -> SelectContextView {
         let contextDataManger = SelectContextDataManager(dataManager: dataManager)
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
         return SelectContextView(viewModel: viewModel)
     }
     
-    func makeTaskCreationStep1View(contextID: String? = nil) -> TaskCreationStep1View {
-        let context = TaskCreationStep1Context(contextID: contextID)
-        let coordinator = TaskCreationStep1Coordinator(context: context, dataManage: dataManager)
-        return coordinator.destinationView
+    func makeEditTaskCreationStep1View(taskId: String) -> TaskCreationStep1View {
+        dataManager.startEditTask(taskId: taskId)
+        let task = dataManager.fetchTask(taskID: taskId)
+        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManager, contextID: task?.contextId)
+        let viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager, editMode: true)
+        return TaskCreationStep1View(viewModel: viewModel)
+    }
+    
+    func makeTaskCreationStep1View() -> TaskCreationStep1View {
+        let contextID = dataManager.currentInputEntry.contextId
+        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManager, contextID: contextID)
+        let viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager, editMode: false)
+        return TaskCreationStep1View(viewModel: viewModel)
     }
     
     func makeSelectGoalSheetView() -> SelectGoalView {
@@ -46,9 +58,11 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
-    func makeTaskCreationStep2View() -> TaskCreationStep2View {
-        let coordinator = TaskCreationStep2Coordinator(dataManage: dataManager)
-        return coordinator.destinationView
+    func makeTaskCreationStep2View(editMode: Bool) -> TaskCreationStep2View {
+        let innerDataManager = TaskCreationStep2DataManager(dataManager: dataManager)
+        let viewModel = TaskCreationStep2ViewModel(dataManager: innerDataManager, editMode: editMode)
+        return TaskCreationStep2View(viewModel: viewModel)
+        
     }
     
     // Task

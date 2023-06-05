@@ -35,7 +35,7 @@ struct TaskCreationStep1DataManagableMock: TaskCreationStep1DataManagable {
     
     var contextID: String?
     
-    func getContextName() -> String {
+    func getContextName(editMode: Bool) -> String {
         return "سلامتی"
     }
     
