@@ -34,6 +34,9 @@ struct CalendarSheetView: View {
                 .environment(\.calendar, DateHelper.getCurrentCalendar())
                 .environment(\.locale, Locale.init(identifier: "fa"))
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                .accentColor(Color.primaryColor)
+                .environment(\.layoutDirection, .rightToLeft)
+            
             Button {
                 presented = false
                 dateStr = DateHelper.generalDateFormatter.string(from: calendarDate)
