@@ -43,11 +43,6 @@ class SelectGoalViewModel: ObservableObject {
                                       selected: false)
     }
     
-    func addGoal(title: String) {
-        dataManager.createGoal(title: title)
-        getGoals()
-    }
-    
     func selectGoal(goalID: String) {
         dataManager.selectGoal(with: goalID)
     }

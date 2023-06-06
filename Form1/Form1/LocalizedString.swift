@@ -72,7 +72,7 @@ struct LocalizedString {
         static let durationSelectoreTitle = "مدت زمان"
         static let reminder = "یادآور"
         
-        static let periodSelectorTitle = "مدت زمان مورد نیاز انتخاب کنید"
+        static let periodSelectorTitle = "مدت زمان مورد نیاز را انتخاب کنید"
         
         static let numberOfRepeatTitle = "چندبار در روز؟"
         
@@ -81,6 +81,7 @@ struct LocalizedString {
         
         static let titleError = "لطفا عنوان را وارد کنید"
         static let endDateError = "لطفا تاریخ پایان را وارد کنید"
+        static let duplicateGoalError = "هدف تکراری است."
     }
     
     enum Buttons {

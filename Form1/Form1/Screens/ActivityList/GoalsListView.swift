@@ -16,6 +16,7 @@ struct GoalsListView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: PublicTheme.vHeaderSpace) {
+            VerticalSpaceView(space: .title)
             ScrollSegmentControl(segments: viewModel.segments,
                                  spacing: 20,
                                  activeSegment: $viewModel.selectedGoalIndex,
@@ -65,6 +66,7 @@ struct GoalsListView: View {
         .applyBasicViewStyle()
         .sheet(item: $taskID, content: { taskId in
             AppCoordinator.shared.makeEditTaskCreationStep1View(taskId: taskId)
+                .environment(\.layoutDirection, .rightToLeft)
         })
         .onAppear {
             viewModel.reloadData()

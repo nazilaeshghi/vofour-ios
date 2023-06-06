@@ -61,6 +61,10 @@ class DataManager {
         return dataProvider.findGoal(with: id)
     }
     
+    func findGoal(title: String) -> Goal? {
+        return dataProvider.findGoal(title: title)
+    }
+    
     func findSelectedGoal() -> Goal? {
         guard let goalID = currentInputEntry.goalID else { return nil }
         return dataProvider.findGoal(with: goalID)

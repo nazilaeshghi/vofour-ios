@@ -139,6 +139,15 @@ class ReqalmDataProvider: DataProvider {
         }
     }
     
+    func findGoal(title: String) -> Goal? {
+        do {
+            return try realm().objects(GoalRealm.self).where{ $0.title == title }.first?.detached()
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "Finding Goal faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
     // MARK: - Task
     func saveTask(entry: DataEntryDataModel) {
         let taskRealm = TaskRealm(task: entry)

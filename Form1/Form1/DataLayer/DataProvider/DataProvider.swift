@@ -18,6 +18,7 @@ protocol DataProvider {
     func fetchGoals() -> [Goal]
     func createGoal(newEntity: Goal)
     func findGoal(with id: String) -> Goal?
+    func findGoal(title: String) -> Goal?
     
     func fetchTasks() -> [TaskDataModel]
     func saveTask(entry: DataEntryDataModel)
@@ -67,6 +68,10 @@ class MockDataProvider: DataProvider {
     }
     
     func findGoal(with id: String) -> Goal? {
+        return nil
+    }
+    
+    func findGoal(title: String) -> Goal? {
         return nil
     }
     

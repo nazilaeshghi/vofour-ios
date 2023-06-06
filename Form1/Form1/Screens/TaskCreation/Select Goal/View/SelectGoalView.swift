@@ -12,7 +12,6 @@ struct SelectGoalView: View {
     @StateObject var viewModel: SelectGoalViewModel
     
     @State private var showingSheet = false
-    @State private var newGoalTitle: String? = nil
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -62,11 +61,9 @@ struct SelectGoalView: View {
         }
         .background(Color.background)
         .sheet(isPresented: $showingSheet) {
-            if let title = newGoalTitle {
-                viewModel.addGoal(title: title)
-            }
+            viewModel.getGoals()
         } content: {
-            NewGoalView(goalName: $newGoalTitle, isPresented: $showingSheet)
+            AppCoordinator.shared.makeCreateGoalView(isPresented: $showingSheet)
         }
         .onAppear(perform: {
             UITableView.appearance().backgroundColor = .clear

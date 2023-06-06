@@ -11,6 +11,7 @@ import Foundation
 enum InputError {
     case activityTitle
     case endDate
+    case duplicateGoal
     
     var localizedValue: String {
         switch self {
@@ -18,6 +19,8 @@ enum InputError {
             return LocalizedString.Input.titleError
         case .endDate:
             return LocalizedString.Input.endDateError
+        case .duplicateGoal:
+            return LocalizedString.Input.duplicateGoalError
         }
     }
 }

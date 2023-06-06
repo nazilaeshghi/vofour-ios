@@ -62,5 +62,9 @@ class SelectGoalDataManagableMock: SelectGoalDataManagable {
        return nil
     }
     
+    func findGoal(title: String) -> Goal? {
+       return nil
+    }
+    
     var selectedGoalId: String? = nil
 }

@@ -58,6 +58,12 @@ class AppCoordinator {
         return coordinator.destinationView
     }
     
+    func makeCreateGoalView(isPresented: Binding<Bool>) -> NewGoalView {
+        let dataManager = CreateGoalDataManager(dataManager: dataManager)
+        let viewModel = NewGoalViewModel(dataManger: dataManager)
+        return NewGoalView(isPresented: isPresented, viewModel: viewModel)
+    }
+    
     func makeTaskCreationStep2View(editMode: Bool) -> TaskCreationStep2View {
         let innerDataManager = TaskCreationStep2DataManager(dataManager: dataManager)
         let viewModel = TaskCreationStep2ViewModel(dataManager: innerDataManager, editMode: editMode)

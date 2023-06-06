@@ -11,9 +11,13 @@ import Foundation
 protocol SelectGoalDataManagable {
     func fetchListOfGoals() -> [Goal]
     func createGoal(title: String)
-    func findGoal(with id: String) -> Goal?
     func selectGoal(with id: String)
     var selectedGoalId: String? { get }
+}
+
+protocol CreateeGoalDataManagable {
+    func createGoal(title: String) -> String
+    func findGoal(title: String) -> Goal?
 }
 
 
@@ -34,12 +38,34 @@ class SelectGoalDataManager: SelectGoalDataManagable {
         selectedGoalId = dataManager.createGoal(title: title)
     }
     
-    func findGoal(with id: String) -> Goal? {
-        return nil
-    }
-    
     func selectGoal(with id: String) {
         dataManager.currentInputEntry.updateGoalID(with: id)
     }
     
+}
+
+class CreateGoalDataManager: CreateeGoalDataManagable {
+    private let dataManager: DataManager
+    
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
+    }
+    
+    func createGoal(title: String) -> String {
+        return dataManager.createGoal(title: title)
+    }
+    
+    func findGoal(title: String) -> Goal? {
+        return dataManager.findGoal(title: title)
+    }
+}
+
+class CreateGoalDataManagerMock: CreateeGoalDataManagable {
+    func createGoal(title: String) -> String {
+        return "ورزش"
+    }
+    
+    func findGoal(title: String) -> Goal? {
+        return nil
+    }
 }

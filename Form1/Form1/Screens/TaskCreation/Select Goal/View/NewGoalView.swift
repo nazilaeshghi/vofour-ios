@@ -10,16 +10,15 @@ import SwiftUI
 
 struct NewGoalView: View {
     @State private var titleInputText = ""
-    
-    @Binding var goalName: String?
     @Binding var isPresented: Bool
+    @State private(set) var error: InputError?
+    @StateObject var viewModel: NewGoalViewModel
 
     var body: some View {
         VStack {
             Spacer()
             
             ModalHeaderView(title: LocalizedString.SelectGoalPage.newGoal) {
-                goalName = nil
                 isPresented = false
             }
             
@@ -28,10 +27,19 @@ struct NewGoalView: View {
                     OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
                                      placeholder: LocalizedString.Input.enterHerePlaceholder,
                                      title: "",
-                                     error: .constant(nil))
+                                     error: $error)
+                    .onChange(of: titleInputText) { newValue in
+                        error = nil
+                    }
+                    
                     Spacer()
                     PrimarySubmitButton(title: LocalizedString.SelectGoalPage.submitNewGoal, action: {
-                        isPresented = false
+                        if viewModel.createGoal(title: titleInputText) {
+                            isPresented = false
+                        } else {
+                            error = .duplicateGoal
+                        }
+                        
                     })
                 }
             }
@@ -43,13 +51,13 @@ struct NewGoalView: View {
     
     func titleChanged(to value: String) {
         guard !value.isBlank else { return }
-        goalName = value
     }
 }
 
 struct NewGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGoalView(goalName: .constant(""), isPresented: .constant(false))
+        NewGoalView(isPresented: .constant(false),
+                    viewModel: NewGoalViewModel(dataManger: CreateGoalDataManagerMock()))
             .environment(\.layoutDirection, .rightToLeft)
     }
 }
