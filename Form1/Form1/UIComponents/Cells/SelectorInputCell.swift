@@ -12,12 +12,27 @@ struct SelectorInputCell: View {
     var text: String?
     var placeholder: String
     var title: String
+    @Binding var error: InputError?
+    
+    init(text: String? = nil,
+         placeholder: String,
+         title: String,
+         error: Binding<InputError?> = .constant(nil)) {
+        self.text = text
+        self.placeholder = placeholder
+        self.title = title
+        _error = error
+    }
     
     var body: some View {
         VStack(spacing: PublicTheme.formInputPadding) {
             InputCellTitleView(title: title)
             CustomSelector(text: text,
-                           placeholder: placeholder)
+                           placeholder: placeholder,
+                           error: $error)
+            if error != nil {
+                InputErrorView(title: error?.localizedValue ?? "")
+            }
         }
     }
 }

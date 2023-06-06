@@ -91,4 +91,8 @@ class TaskCreationStep1ViewModel: ObservableObject {
     func reset() {
         dataManager.resetDataEntry()
     }
+    
+    func checkTitleError() -> Bool {
+        return titleInputText.trimmingCharacters(in: .whitespaces).isEmpty
+    }
 }

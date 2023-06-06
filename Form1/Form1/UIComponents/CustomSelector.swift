@@ -11,6 +11,11 @@ import SwiftUI
 struct CustomSelector: View {
     var text: String?
     var placeholder: String
+    @Binding var error: InputError?
+    
+    var borderColor: Color {
+        return error == nil ? Color.borderColor :  Color.errorBorderColor
+    }
     
     var body: some View {
         ZStack {
@@ -33,7 +38,7 @@ struct CustomSelector: View {
         .frame(height: PublicTheme.oneLineTextfieldHeight)
         .overlay(
             RoundedRectangle(cornerRadius: PublicTheme.inputTextCornerRadius)
-                .stroke(Color.borderColor, lineWidth: 1)
+                .stroke(borderColor, lineWidth: 1)
         )
     }
 }

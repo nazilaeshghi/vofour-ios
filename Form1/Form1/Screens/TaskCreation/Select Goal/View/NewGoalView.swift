@@ -27,7 +27,8 @@ struct NewGoalView: View {
                 VStack {
                     OneLineInputCell(inputText: $titleInputText.onChange(titleChanged),
                                      placeholder: LocalizedString.Input.enterHerePlaceholder,
-                                     title: "")
+                                     title: "",
+                                     error: .constant(nil))
                     Spacer()
                     PrimarySubmitButton(title: LocalizedString.SelectGoalPage.submitNewGoal, action: {
                         isPresented = false

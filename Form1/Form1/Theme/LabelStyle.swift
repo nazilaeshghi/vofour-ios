@@ -103,6 +103,10 @@ struct LabelStyle {
         return .init(font: .subtitle, fontFamilty: .medium, textColor: .homeHeaderColor)
     }
     
+    static var regularSecondarySubtitle: LabelStyle {
+        return .init(font: .subtitle, fontFamilty: .medium, textColor: .headerSecondaryTextColor)
+    }
+    
     // Body
     static var regularBody: LabelStyle {
         return .init(font: .body, fontFamilty: .regular, textColor: .primaryTextColor)

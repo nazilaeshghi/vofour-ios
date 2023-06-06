@@ -47,7 +47,8 @@ struct TaskCreationStep2View: View {
                                                             durationText: viewModel.selectedDuration?.amount.timeStr,
                                                             startDateCalendarPresented: $startDateCalendarPresented,
                                                             endtDateCalendarPresented: $endDateCalendarPresented,
-                                                            durationPresented: $durationPresented)
+                                                            durationPresented: $durationPresented,
+                                                            endDateError: $viewModel.endDateError)
                             case (false, 0):
                                 QuitEntirelyView(startDateText: viewModel.startDate,
                                                  endDateText: viewModel.endDate,
@@ -117,9 +118,10 @@ struct TaskCreationStep2View: View {
     }
     
     func saveAction() {
-        viewModel.saveTask()
-        NotificationCenter.default.post(name: .cloceClick, object: nil)
-        NotificationCenter.sendNotification(for: .dataChange)
+        if viewModel.saveTask() {
+            NotificationCenter.default.post(name: .cloceClick, object: nil)
+            NotificationCenter.sendNotification(for: .dataChange)
+        }
     }
     
     func dismissAction() {

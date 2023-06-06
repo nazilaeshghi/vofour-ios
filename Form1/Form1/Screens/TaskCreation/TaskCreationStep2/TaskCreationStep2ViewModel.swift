@@ -26,6 +26,8 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var weekDays: [WeekDayObject]
     @Published var selectedDuration: DurationObject?
     @Published var reminders: [TimeObject]
+    @Published var endDateError: InputError?
+    
     let editMode: Bool
     
     var isItCreation: Bool {
@@ -83,6 +85,9 @@ class TaskCreationStep2ViewModel: ObservableObject {
             .sink { [weak self] newValue in
                 let date = DateHelper.generalDateFormatter.optionalDate(from: newValue)
                 self?.dataManager.updatEndDate(date: date)
+                if newValue != nil {
+                    self?.endDateError = nil
+                }
             }
             .store(in: &cancellables)
         
@@ -142,8 +147,13 @@ class TaskCreationStep2ViewModel: ObservableObject {
         }
     }
     
-    func saveTask() {
+    func saveTask() -> Bool{
+        if isRepeatable == 1 && endDate == nil {
+            endDateError = .endDate
+            return false
+        }
         dataManager.saveTask()
+        return true
     }
     
     func reset() {

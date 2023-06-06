@@ -16,6 +16,7 @@ extension Color {
     static var primaryLightColor: Color { return Color(hex: "C2DDFC") }
     static var headerSecondaryTextColor: Color { return Color(hex: "6E7E91") }
     static var borderColor: Color { return Color(hex: "D9E0E9") }
+    static var errorBorderColor: Color { return Color(hex: "F03738") }
     static var primaryTextColor: Color { return Color(hex: "141D2B") }
     static var homeHeaderColor: Color { return Color(hex: "646b75") }
     static var placeholderTextColor: Color { return Color(hex: "A0AEBD") }

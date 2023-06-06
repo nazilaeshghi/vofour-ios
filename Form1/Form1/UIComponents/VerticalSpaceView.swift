@@ -19,6 +19,7 @@ enum SpaceType {
     case header
     case inlineForm
     case pageHeade
+    case title
     
     var value: CGFloat {
         switch self {
@@ -28,6 +29,8 @@ enum SpaceType {
             return PublicTheme.vSpace
         case .pageHeade:
             return PublicTheme.vSpace
+        case .title:
+            return PublicTheme.inputCellSpacing
         }
     }
 }

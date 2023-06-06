@@ -63,8 +63,8 @@ struct LocalizedString {
         static let for100Title = "برای ۱۰۰ شدن چه کاری انجام می‌دهم"
         
         static let goalSelectorTitle = "مستقل یا بخشی از هدف دیگر"
-        static let defaultSelectorPlaceholder = "انتخاب هدف"
-        static let goalSelectorPlaceholder = "انتخاب کنید"
+        static let defaultSelectorPlaceholder = "انتخاب کنید"
+        static let goalSelectorPlaceholder = "انتخاب هدف"
         
         static let dateSelectoreTitle = "تاریخ انجام فعالیت"
         static let startDateSelectoreTitle = "تاریخ آغاز"
@@ -78,6 +78,9 @@ struct LocalizedString {
         
         static let whichDays = "در چه روز‌هایی از هفته؟"
         static let color = "رنگ نمایشی کارت فعالیت"
+        
+        static let titleError = "لطفا عنوان را وارد کنید"
+        static let endDateError = "لطفا تاریخ پایان را وارد کنید"
     }
     
     enum Buttons {

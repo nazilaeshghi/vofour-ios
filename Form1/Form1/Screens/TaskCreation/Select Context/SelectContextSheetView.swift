@@ -16,7 +16,8 @@ struct SelectContextSheetView: View {
     
     var body: some View {
         VStack(spacing: PublicTheme.vHeaderSpace) {
-            Spacer()
+            VerticalSpaceView(space: .title)
+            
             ModalHeaderView(title: LocalizedString.ContextPage.selectContexts) {
                 presentationMode.wrappedValue.dismiss()
             }

@@ -21,3 +21,16 @@ struct InputCellTitleView: View {
         }
     }
 }
+
+struct InputErrorView: View {
+    var title: String
+    
+    var body: some View {
+        HStack {
+            Image("warning")
+            Text(title)
+                .applyStyle(style: .regularSecondarySubtitle)
+            Spacer()
+        }
+    }
+}
