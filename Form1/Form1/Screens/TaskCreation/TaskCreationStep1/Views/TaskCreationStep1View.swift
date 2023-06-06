@@ -40,11 +40,14 @@ struct TaskCreationStep1View: View {
                 
                 ScrollView {
                     Group {
-                        VerticalSpaceView(space: .header)
                         
-                        TaskCreationHeader(title: LocalizedString.TaskCreationStep1.header,
-                                           items: segmentItems,
-                                           selectedType: $viewModel.selectedType)
+                        if !viewModel.editMode {
+                            VerticalSpaceView(space: .header)
+
+                            TaskCreationHeader(title: LocalizedString.TaskCreationStep1.header,
+                                               items: segmentItems,
+                                               selectedType: $viewModel.selectedType)
+                        }
                         
                         VerticalSpaceView(space: .inlineForm)
                         
