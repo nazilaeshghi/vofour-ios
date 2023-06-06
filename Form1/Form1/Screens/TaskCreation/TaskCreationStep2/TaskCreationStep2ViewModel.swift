@@ -152,6 +152,11 @@ class TaskCreationStep2ViewModel: ObservableObject {
             endDateError = .endDate
             return false
         }
+        
+        if !isItCreation && endDate == nil {
+            endDateError = .endDate
+            return false
+        }
         dataManager.saveTask()
         return true
     }

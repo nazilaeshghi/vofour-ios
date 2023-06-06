@@ -53,13 +53,15 @@ struct TaskCreationStep2View: View {
                                 QuitEntirelyView(startDateText: viewModel.startDate,
                                                  endDateText: viewModel.endDate,
                                                  startDateCalendarPresented: $startDateCalendarPresented,
-                                                 endtDateCalendarPresented: $endDateCalendarPresented)
+                                                 endtDateCalendarPresented: $endDateCalendarPresented,
+                                                 endDateError: $viewModel.endDateError)
                             case (false, 1):
                                 QuitWithLimitView(repeatNum: $viewModel.repeatNum,
                                                   startDateText: viewModel.startDate,
                                                   endDateText: viewModel.endDate,
                                                   startDateCalendarPresented: $startDateCalendarPresented,
-                                                  endtDateCalendarPresented: $endDateCalendarPresented)
+                                                  endtDateCalendarPresented: $endDateCalendarPresented,
+                                                  endDateError: $viewModel.endDateError)
                                 
                             default:
                                 EmptyView()

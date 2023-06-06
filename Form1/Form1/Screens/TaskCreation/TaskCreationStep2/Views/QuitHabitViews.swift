@@ -14,6 +14,7 @@ struct QuitEntirelyView: View {
     
     @Binding var startDateCalendarPresented: Bool
     @Binding var endtDateCalendarPresented: Bool
+    @Binding var endDateError: InputError?
     
     var body: some View {
         VStack(spacing: PublicTheme.vSpace) {
@@ -25,7 +26,8 @@ struct QuitEntirelyView: View {
                 }
             SelectorInputCell(text: endDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.defaultSelectorPlaceholder,
-                              title: LocalizedString.Input.endDateSelectoreTitle)
+                              title: LocalizedString.Input.endDateSelectoreTitle,
+                              error: $endDateError)
                 .onTapGesture {
                     endtDateCalendarPresented = true
                 }
@@ -40,6 +42,7 @@ struct QuitWithLimitView: View {
     
     @Binding var startDateCalendarPresented: Bool
     @Binding var endtDateCalendarPresented: Bool
+    @Binding var endDateError: InputError?
     
     var body: some View {
         VStack(spacing: PublicTheme.vSpace) {
@@ -51,7 +54,8 @@ struct QuitWithLimitView: View {
                 }
             SelectorInputCell(text: endDateText.convertToPersian(),
                               placeholder: LocalizedString.Input.defaultSelectorPlaceholder,
-                              title: LocalizedString.Input.endDateSelectoreTitle)
+                              title: LocalizedString.Input.endDateSelectoreTitle,
+                              error: $endDateError)
                 .onTapGesture {
                     endtDateCalendarPresented = true
                 }
