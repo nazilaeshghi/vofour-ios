@@ -18,6 +18,13 @@ class TaskDetailViewModel: ObservableObject {
     @Published var goalName: String = ""
     @Published var startDate: String?
     @Published var endDate: String?
+    @Published var weekDays: String?
+    @Published var numberOfRepeat: String?
+    @Published var prevent: String?
+    @Published var reason: String?
+    @Published var for100: String?
+    @Published var duration: String?
+    var repeatTitleStr: String = ""
     
     private let dataManager: TaskDetailDataManagable
     
@@ -45,6 +52,21 @@ class TaskDetailViewModel: ObservableObject {
         if let endDate = task.task.endDate {
             self.endDate = DateHelper.fullDateFormatter().string(from: endDate)
         }
+        
+        if task.task.isRepeatable && task.task.isActivity  {
+            self.weekDays = getWeekDays(with: task.task.weekDays)
+        }
+        
+        if (task.task.numberOfRepeat != 0) {
+            self.numberOfRepeat = String(task.task.numberOfRepeat).convertToPersian()
+        }
+        
+        repeatTitleStr = task.task.isActivity ? LocalizedString.TaskDetail.repeatTitle : LocalizedString.TaskDetail.quitRepeatTitle
+        prevent = task.task.prevention
+        reason = task.task.reason
+        for100 = task.task.completionMotivations
+        duration = task.task.duration?.timeStr
+        
         didFetchDate = true
     }
     
@@ -69,5 +91,43 @@ class TaskDetailViewModel: ObservableObject {
     
     func hideEndDate() -> Bool {
         return self.endDate == nil
+    }
+    
+    func hideWeekDays() -> Bool {
+        return weekDays == nil
+    }
+    
+    func getWeekDays(with value: String) -> String {
+        let splitedDays = value.components(separatedBy: ",")
+        var builtWeekDays = DateBuilder.buildWeekDays()
+        for day in builtWeekDays {
+            if !splitedDays.contains(day.id) {
+                builtWeekDays[day.index].selected = false
+            }
+        }
+        return builtWeekDays
+            .filter{ $0.selected }
+            .map { $0.getFullTitle }
+            .joined(separator: "، ")
+    }
+    
+    func hideNumberOfRepeat() -> Bool {
+        return numberOfRepeat == nil
+    }
+    
+    func hideReason() -> Bool {
+        return reason == nil || reason?.count == 0
+    }
+    
+    func hidePrevent() -> Bool {
+        return prevent == nil || prevent?.count == 0
+    }
+    
+    func hideFor100() -> Bool {
+        return for100 == nil || for100?.count == 0
+    }
+    
+    func hideDuration() -> Bool {
+        return duration == nil || duration?.count == 0
     }
 }

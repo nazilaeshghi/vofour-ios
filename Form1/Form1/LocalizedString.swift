@@ -133,6 +133,10 @@ struct LocalizedString {
         static let deleteAlertTitle = "حذف فعالیت"
         static let deletealertSubtitle = "در صورت حذف فعالیت امکان بازیایی آن نیست"
         static let cancel = "لغو"
+        static let repeatTitle = "دفعات تکرار در روز"
+        static let quitRepeatTitle = "دفعات مجاز در روز"
+        static let weekDaysTitle = "در روز‌های"
+        static let for100 = "برای ۱۰۰ شدن"
     }
     
     enum ActicityList {

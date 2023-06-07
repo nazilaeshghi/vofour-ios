@@ -24,42 +24,74 @@ struct TaskDetailView: View {
                 if $viewModel.didFetchDate.wrappedValue {
                     GeometryReader { geometry in
                         VStack(spacing: PublicTheme.vSpace2) {
-                            
-                            // Date
-                            Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
-                                .applyStyle(style: .mediumTitle)
-                            
-                            // Progress view
-                            ZStack {
-                                CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
-                                                     color: $viewModel.item.background.wrappedValue,
-                                                     lineWidth: 16)
+                           
+                            ScrollView {
+                                // Date
+                                Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
+                                    .applyStyle(style: .mediumTitle)
                                 
-                                TaskDetailsOperandView(increment: increment,
-                                                       decrement: decrement,
-                                                       countLabel: viewModel.item.count,
-                                                       totalLabel: viewModel.item.subtitle)
-                            }
-                            .frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
-                            
-                            // Details
-                            VStack(spacing: PublicTheme.collectionSpace) {
-                                TaskDetailsRowView(title: LocalizedString.TaskDetail.taskTypeTitle,
-                                                   value: viewModel.activityType)
-                                TaskDetailsRowView(title: LocalizedString.TaskDetail.contextTitle,
-                                                   value: viewModel.contextName)
-                                TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle,
-                                                   value: viewModel.goalName)
-                                TaskDetailsRowView(title: LocalizedString.Input.startDateSelectoreTitle,
-                                                   value: viewModel.startDate ?? "")
-                                .isHidden(viewModel.hideStartDate())
+                                // Progress view
+                                ZStack {
+                                    CircularProgressView(progress: $viewModel.item.progress.wrappedValue ,
+                                                         color: $viewModel.item.background.wrappedValue,
+                                                         lineWidth: 16)
+                                    
+                                    TaskDetailsOperandView(increment: increment,
+                                                           decrement: decrement,
+                                                           countLabel: viewModel.item.count,
+                                                           totalLabel: viewModel.item.subtitle)
+                                }
+                                .frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
                                 
-                                TaskDetailsRowView(title: LocalizedString.Input.endDateSelectoreTitle,
-                                                   value: viewModel.endDate ?? "")
-                                .isHidden(viewModel.hideEndDate())
+                                // Details
+                                VStack(spacing: PublicTheme.collectionSpace) {
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.taskTypeTitle,
+                                                       value: viewModel.activityType)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.contextTitle,
+                                                       value: viewModel.contextName)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle,
+                                                       value: viewModel.goalName)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.Input.startDateSelectoreTitle,
+                                                       value: viewModel.startDate ?? "")
+                                    .isHidden(viewModel.hideStartDate(), remove: true)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.Input.endDateSelectoreTitle,
+                                                       value: viewModel.endDate ?? "")
+                                    .isHidden(viewModel.hideEndDate(), remove: true)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.Input.durationSelectoreTitle,
+                                                       value: viewModel.duration ?? "")
+                                    .isHidden(viewModel.hideDuration(), remove: true)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.weekDaysTitle,
+                                                       value: viewModel.weekDays ?? "")
+                                    .isHidden(viewModel.hideWeekDays(), remove: true)
+                                    
+                                    TaskDetailsRowView(title: viewModel.repeatTitleStr,
+                                                       value: viewModel.numberOfRepeat ?? "")
+                                    .isHidden(viewModel.hideNumberOfRepeat(), remove: true)
+                                    
+                                    TaskDetailsRowView(title: LocalizedString.Input.obstacleHeader,
+                                                       value: viewModel.prevent ?? "")
+                                    .isHidden(viewModel.hidePrevent(), remove: true)
+                                                                        
+                                    VStack(spacing: 0) {
+                                        TaskDetailsRowView(title: LocalizedString.Input.reasonTitle,
+                                                           value: viewModel.reason ?? "")
+                                        .isHidden(viewModel.hideReason(), remove: true)
+                                        
+                                        TaskDetailsRowView(title: LocalizedString.TaskDetail.for100,
+                                                           value: viewModel.for100 ?? "")
+                                        .isHidden(viewModel.hideFor100(), remove: true)
+                                    }
+                                }
+                                .applyBasicViewStyle()
+
+                                Spacer()
                             }
-                            
-                            Spacer()
                             
                             TwoButtonsView(primaryButtonText: LocalizedString.TaskDetail.editButton,
                                            secondaryButtonText: LocalizedString.TaskDetail.deleteButton,
@@ -68,7 +100,6 @@ struct TaskDetailView: View {
                                            destructive: true)
                         }
                     }
-                    .applyBasicViewStyle()
                 }
             }
             .applyBackgroundColor()
@@ -132,27 +163,6 @@ struct TaskDetailView_Previews: PreviewProvider {
     }
 }
 
-struct TaskDetailsRowView: View {
-    let title: String
-    let value: String
-    
-    var body: some View {
-        HStack(alignment: .firstTextBaseline) {
-            Text(title)
-                .applyStyle(style: .mediumSubtitle)
-                .layoutPriority(1)
-            
-            CustomLineShapeWithAlignment(stratPoint: .trailing, endPoint: .leading)
-                .stroke(Color.primaryTextColor, style: StrokeStyle(lineWidth: 1.0, dash: [4]))
-                .frame(height: 1.0)
-                .frame(minWidth: 20)
-            
-            Text(value)
-                .applyStyle(style: .regularSubtitle)
-                .layoutPriority(1)
-        }
-    }
-}
 
 struct TaskDetailsOperandView: View {
     let increment: () -> Void

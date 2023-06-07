@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import GameController
 
 struct TaskCreationStep1View: View {
     @Environment(\.dismiss) var dismiss
@@ -15,6 +16,8 @@ struct TaskCreationStep1View: View {
     @FocusState private var isTextFieldFocused: Bool
     
     @StateObject var viewModel: TaskCreationStep1ViewModel
+    
+    let isKeyboardConnected = GCKeyboard.coalesced != nil
     
     @State private var showingNextPage: Bool = false
     @State private var showingGoalSheet: Bool = false
@@ -98,23 +101,19 @@ struct TaskCreationStep1View: View {
                 .applyBackgroundColor()
                 .focused($isTextFieldFocused)
                 
-                if shouldShowFooter {
-                    TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
-                                   secondaryButtonText: LocalizedString.Buttons.previousTitle,
-                                   primaryAction: primaryAction,
-                                   secondaryAction: dismissAction,
-                                   destructive: false)
-                        .applyBasicViewStyle()
-                }
+                TwoButtonsView(primaryButtonText: LocalizedString.Buttons.nextStepTimeTitle,
+                               secondaryButtonText: LocalizedString.Buttons.previousTitle,
+                               primaryAction: primaryAction,
+                               secondaryAction: dismissAction,
+                               destructive: false)
+                .applyBasicViewStyle()
+                .isVisible(shouldShowFooter)
             }
             .background(Color.background)
             .applyToolbarWithBackStyle(with: viewModel.header(),
                                        hideBakcButton: viewModel.editMode,
                                        backAction: dismiss,
                                        closeAction: closeAction)
-            .onChange(of: isTextFieldFocused, perform: { a in
-                withAnimation(.easeIn(duration: 0.1)) { shouldShowFooter.toggle() }
-            })
             .onReceive(NotificationCenter.default.publisher(for: .cloceClick))
             { _ in
                 presentationMode.wrappedValue.dismiss()
@@ -153,6 +152,7 @@ struct TaskCreationStep1View: View {
     }
     
     func primaryAction() {
+        isTextFieldFocused = false
         if viewModel.checkTitleError() {
             titleError = .activityTitle
             return

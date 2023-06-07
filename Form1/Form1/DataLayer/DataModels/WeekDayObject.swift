@@ -16,6 +16,29 @@ struct WeekDayObject {
     var id: String
 }
 
+extension WeekDayObject {
+    var getFullTitle: String {
+        switch self.id {
+        case "week_day_1":
+            return LocalizedString.Setting.saturday
+        case "week_day_2":
+            return LocalizedString.Setting.sunday
+        case "week_day_3":
+            return LocalizedString.Setting.monday
+        case "week_day_4":
+            return LocalizedString.Setting.tuesday
+        case "week_day_5":
+            return LocalizedString.Setting.wednesday
+        case "week_day_6":
+            return LocalizedString.Setting.thursday
+        case "week_day_7":
+            return LocalizedString.Setting.friday
+        default:
+            return ""
+        }
+    }
+}
+
 struct HeaderDayObject {
     let index: Int
     let title: String
