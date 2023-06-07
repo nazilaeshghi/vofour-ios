@@ -15,31 +15,37 @@ struct SelectContextSheetView: View {
     @State private var searchText: String = ""
     
     var body: some View {
-        VStack(spacing: PublicTheme.vHeaderSpace) {
-            VerticalSpaceView(space: .title)
-            
-            ModalHeaderView(title: LocalizedString.ContextPage.selectContexts) {
-                presentationMode.wrappedValue.dismiss()
-            }
-            Group {
-                SelectContextHeaderView(searchText: $searchText)
-                    .onChange(of: searchText) { newValue in
-                        viewModel.filterContextas(with: searchText)
-                    }
+        ScrollViewReader { proxy in
+            VStack(spacing: PublicTheme.vHeaderSpace) {
+                VerticalSpaceView(space: .title)
                 
-                List($viewModel.items, id: \.id) { item in
-                    SelectContextCell(item: item)
-                        .onTapGesture {
-                            viewModel.selectContext(id: item.contextID.wrappedValue)
-                            presentationMode.wrappedValue.dismiss()
-                        }
+                ModalHeaderView(title: LocalizedString.ContextPage.selectContexts) {
+                    presentationMode.wrappedValue.dismiss()
                 }
-                .applyListBasicStyle()
+                Group {
+                    SelectContextHeaderView(searchText: $searchText)
+                        .onChange(of: searchText) { newValue in
+                            viewModel.filterContextas(with: searchText)
+                        }
+                    
+                    List($viewModel.items, id: \.id) { item in
+                        SelectContextCell(item: item, hideImage: true)
+                            .onTapGesture {
+                                viewModel.selectContext(id: item.contextID.wrappedValue)
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                            .id(item.contextID.wrappedValue)
+                    }
+                    .applyListBasicStyle()
+                }
+                .applyBasicViewStyle()
             }
-            .applyBasicViewStyle()
+            .applyBackgroundColor()
+            .environment(\.layoutDirection, .rightToLeft)
+            .onViewDidLoad {
+                proxy.scrollTo(viewModel.selectedContextID, anchor: .center)
+            }
         }
-        .applyBackgroundColor()
-        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

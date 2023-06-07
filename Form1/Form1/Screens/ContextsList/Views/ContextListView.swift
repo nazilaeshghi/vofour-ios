@@ -40,7 +40,7 @@ struct ContextListView: View {
                     })
                     
                     List($viewModel.items, id: \.id) { item in
-                        SelectContextCell(item: item)
+                        SelectContextCell(item: item, hideImage: false)
                             .onTapGesture {
                                 selectedContextID = item.contextID.wrappedValue
                             }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SelectContextCell: View {
     @Binding var item: ContextItemDisplayModel
+    var hideImage: Bool
     
     var body: some View {
         HStack {
@@ -21,6 +22,7 @@ struct SelectContextCell: View {
                 .plus
                 .resizable()
                 .frame(width: 16, height: 16)
+                .isHidden(hideImage)
         }
         .padding()
         .background(Color.contextBackgroundColor)
@@ -38,7 +40,7 @@ struct SelectContextCell: View {
 
 struct SelectContextCell_Previews: PreviewProvider {
     static var previews: some View {
-        SelectContextCell(item: .constant(SelectContextCellMockGenerator.item))
+        SelectContextCell(item: .constant(SelectContextCellMockGenerator.item), hideImage: false)
             .environment(\.layoutDirection, .rightToLeft)
     }
 }

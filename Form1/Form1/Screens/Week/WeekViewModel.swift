@@ -14,7 +14,7 @@ class WeekViewModel: ObservableObject {
     
     init(dataManager: TaskListDataManagable) {
         self.dataManager = dataManager
-        startDate = DateHelper.generalDateFormatter.string(from: Date())
+        startDate = DateHelper.generalDateFormatter().string(from: Date())
     }
     
     @Published var cards: [CardDisplayModel] = []

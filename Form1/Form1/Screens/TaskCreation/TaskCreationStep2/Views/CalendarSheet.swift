@@ -21,7 +21,7 @@ struct CalendarSheetView: View {
         _presented = presented
         _dateStr = dateString
         self.title = title
-        _calendarDate = State(initialValue: DateHelper.generalDateFormatter.optionalDate(from: dateString.wrappedValue) ?? Date())
+        _calendarDate = State(initialValue: DateHelper.generalDateFormatter().optionalDate(from: dateString.wrappedValue) ?? Date())
         self.minDate = minDate
         self.maxDate = maxDate
     }
@@ -43,7 +43,7 @@ struct CalendarSheetView: View {
                     .accentColor(Color.primaryColor)
                     .environment(\.layoutDirection, .rightToLeft)
             case (nil, let maxDateStr):
-                let maxDate = DateHelper.generalDateFormatter.optionalDate(from: maxDateStr) ?? Date()
+                let maxDate = DateHelper.generalDateFormatter().optionalDate(from: maxDateStr) ?? Date()
                 
                 DatePicker("", selection: $calendarDate, in: ...maxDate, displayedComponents: [.date])
                     .datePickerStyle(.graphical)
@@ -53,7 +53,7 @@ struct CalendarSheetView: View {
                     .accentColor(Color.primaryColor)
                     .environment(\.layoutDirection, .rightToLeft)
             case (let minDateStr, nil):
-                let minDate = DateHelper.generalDateFormatter.optionalDate(from: minDateStr) ?? Date()
+                let minDate = DateHelper.generalDateFormatter().optionalDate(from: minDateStr) ?? Date()
                 
                 DatePicker("", selection: $calendarDate, in: minDate..., displayedComponents: [.date])
                     .datePickerStyle(.graphical)
@@ -63,8 +63,8 @@ struct CalendarSheetView: View {
                     .accentColor(Color.primaryColor)
                     .environment(\.layoutDirection, .rightToLeft)
             case (let minDateStr, let maxDateStr):
-                let minDate = DateHelper.generalDateFormatter.optionalDate(from: minDateStr) ?? Date()
-                let maxDate = DateHelper.generalDateFormatter.optionalDate(from: maxDateStr) ?? Date()
+                let minDate = DateHelper.generalDateFormatter().optionalDate(from: minDateStr) ?? Date()
+                let maxDate = DateHelper.generalDateFormatter().optionalDate(from: maxDateStr) ?? Date()
 
                 DatePicker("", selection: $calendarDate, in: minDate...maxDate, displayedComponents: [.date])
                     .datePickerStyle(.graphical)
@@ -79,7 +79,7 @@ struct CalendarSheetView: View {
             
             Button {
                 presented = false
-                dateStr = DateHelper.generalDateFormatter.string(from: calendarDate)
+                dateStr = DateHelper.generalDateFormatter().string(from: calendarDate)
             } label: {
                 Spacer()
                 Text(LocalizedString.Buttons.saveTitle)

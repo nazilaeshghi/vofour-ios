@@ -40,10 +40,10 @@ class TaskDetailViewModel: ObservableObject {
         contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
         goalName = dataManager.fetchGoal(id: task.task.goalId)?.title ?? LocalizedString.TaskDetail.independent
         if let startDate = task.task.startDate {
-            self.startDate = DateHelper.fullDateFormatter.string(from: startDate)
+            self.startDate = DateHelper.fullDateFormatter().string(from: startDate)
         }
         if let endDate = task.task.endDate {
-            self.endDate = DateHelper.fullDateFormatter.string(from: endDate)
+            self.endDate = DateHelper.fullDateFormatter().string(from: endDate)
         }
         didFetchDate = true
     }

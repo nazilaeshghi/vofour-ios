@@ -55,4 +55,8 @@ class SelectContextViewModel: ObservableObject {
     func reset() {
         dataManager.resetDataEntry()
     }
+    
+    var selectedContextID: String {
+        return dataManager.selectedId ?? ""
+    }
 }

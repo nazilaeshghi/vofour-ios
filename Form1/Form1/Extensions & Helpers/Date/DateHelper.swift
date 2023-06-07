@@ -17,51 +17,51 @@ enum UserCalendar: String {
 
 struct DateHelper {
     
-    static let generalDateFormatter: DateFormatter = {
+    static func generalDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         formatter.calendar = DateHelper.getCurrentCalendar()
         return formatter
-    }()
+    }
     
-    static let fullDateFormatter: DateFormatter = {
+    static func fullDateFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE d MMM yyyy"
         dateFormatter.calendar = DateHelper.getCurrentCalendar()
         dateFormatter.locale = Locale(identifier: "fa_IR")
         return dateFormatter
-    }()
+    }
     
-    static let dayInMonthFormatter: DateFormatter = {
+    static func dayInMonthFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM"
         formatter.calendar = DateHelper.getCurrentCalendar()
         formatter.locale = Locale(identifier: "fa_IR")
         return formatter
-    }()
+    }
     
-    static let monthAndYearFormatter: DateFormatter = {
+    static func monthAndYearFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
         formatter.calendar = DateHelper.getCurrentCalendar()
         formatter.locale = Locale(identifier: "fa_IR")
         return formatter
-    }()
+    }
     
     func getHeaderDate(for date: Date) -> String {
-        let formatter = DateHelper.monthAndYearFormatter
+        let formatter = DateHelper.monthAndYearFormatter()
         let str = formatter.string(from: date)
         return str
     }
     
     func getRelativeDate(from startDate: Date?, to endDate: Date?) -> String {
-        let formatter = DateHelper.dayInMonthFormatter
+        let formatter = DateHelper.dayInMonthFormatter()
         guard let startDate = startDate, let endDate = endDate else { return "" }
         return  "از" + " " + formatter.string(from: startDate) + " " + "تا" + " " + formatter.string(from: endDate)
     }
     
     func getFullDatestring(from date: Date = Date()) -> String {
-        let monthString = DateHelper.fullDateFormatter.string(from: date).convertToPersian()
+        let monthString = DateHelper.fullDateFormatter().string(from: date).convertToPersian()
         return monthString
     }
 }

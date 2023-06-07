@@ -59,12 +59,12 @@ struct WeekView: View {
                 selectedDate = selectedDate
             }
             .onChange(of: selectedDate) { newValue in
-                viewModel.startDate = DateHelper.generalDateFormatter.string(from: newValue)
+                viewModel.startDate = DateHelper.generalDateFormatter().string(from: newValue)
                 viewModel.getTasks(date: newValue)
             }
             .onChange(of: viewModel.startDate) { newValue in
                 guard let dateStr = newValue,
-                      let date = DateHelper.generalDateFormatter.optionalDate(from: dateStr)
+                      let date = DateHelper.generalDateFormatter().optionalDate(from: dateStr)
                 else { return }
                 selectedDate = date
                 NotificationCenter.sendNotification(for: .dataChange)

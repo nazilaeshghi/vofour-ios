@@ -34,7 +34,7 @@ struct SelectContextView: View {
                             }
                         
                         List($viewModel.items, id: \.id) { item in
-                            SelectContextCell(item: item)
+                            SelectContextCell(item: item, hideImage: false)
                                 .onTapGesture {
                                     linkIsActive = true
                                     viewModel.selectContext(id: item.contextID.wrappedValue)

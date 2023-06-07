@@ -37,10 +37,10 @@ class TaskCreationStep2ViewModel: ObservableObject {
     init(dataManager: TaskCreationStep2DataManagable, editMode: Bool) {
         self.dataManager = dataManager
         if let stDate = dataManager.getStartDate() {
-            self.startDate = DateHelper.generalDateFormatter.string(from: stDate)
+            self.startDate = DateHelper.generalDateFormatter().string(from: stDate)
         }
         if let enDate = dataManager.getEndDate() {
-            self.endDate = DateHelper.generalDateFormatter.string(from: enDate)
+            self.endDate = DateHelper.generalDateFormatter().string(from: enDate)
         }
         self.repeatNum = dataManager.getNumberOfRepeat()
         self.weekDays = dataManager.getWeekDays()
@@ -76,14 +76,14 @@ class TaskCreationStep2ViewModel: ObservableObject {
         
         self.$startDate
             .sink { [weak self] newValue in
-                let date = DateHelper.generalDateFormatter.optionalDate(from: newValue)
+                let date = DateHelper.generalDateFormatter().optionalDate(from: newValue)
                 self?.dataManager.updateStartDate(date: date)
             }
             .store(in: &cancellables)
         
         self.$endDate
             .sink { [weak self] newValue in
-                let date = DateHelper.generalDateFormatter.optionalDate(from: newValue)
+                let date = DateHelper.generalDateFormatter().optionalDate(from: newValue)
                 self?.dataManager.updatEndDate(date: date)
                 if newValue != nil {
                     self?.endDateError = nil
