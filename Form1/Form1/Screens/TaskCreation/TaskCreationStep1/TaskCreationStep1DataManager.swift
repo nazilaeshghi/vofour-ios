@@ -39,8 +39,6 @@ class TaskCreationStep1DataManager: TaskCreationStep1DataManagable {
     init(dataManager: DataManager, contextID: String?) {
         self.dataManager = dataManager
         self.contextID = contextID
-        // by default all
-        updateIsActivity(with: true)
         if let contextID = contextID {
             dataManager.currentInputEntry.updateContextId(id: contextID)
         }
