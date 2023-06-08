@@ -70,7 +70,7 @@ struct WeekView: View {
                 NotificationCenter.sendNotification(for: .dataChange)
             }
             .sheet(item: $taskID) { taskId in
-                AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate)
+                AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate, isDayMode: true)
                     .environment(\.layoutDirection, .rightToLeft)
             }
             .sheet(isPresented: $datePickerPresented, content: {

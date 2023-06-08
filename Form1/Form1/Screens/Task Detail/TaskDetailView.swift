@@ -29,6 +29,7 @@ struct TaskDetailView: View {
                                 // Date
                                 Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
                                     .applyStyle(style: .mediumTitle)
+                                    .isHidden(!viewModel.isDayMode, remove: true)
                                 
                                 // Progress view
                                 ZStack {
@@ -41,6 +42,7 @@ struct TaskDetailView: View {
                                                            countLabel: viewModel.item.count,
                                                            totalLabel: viewModel.item.subtitle)
                                 }
+                                .isHidden(!viewModel.isDayMode, remove: true)
                                 .frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
                                 
                                 // Details
@@ -98,6 +100,7 @@ struct TaskDetailView: View {
                                            primaryAction: editAction,
                                            secondaryAction: deleteAction,
                                            destructive: true)
+                            .applyBasicViewStyle()
                         }
                     }
                 }

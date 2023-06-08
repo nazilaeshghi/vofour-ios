@@ -78,9 +78,12 @@ class AppCoordinator {
         return WeekView(viewModel: viewModel)
     }
     
-    func makeTaskDetailsView(taskId: String, selectedDate: Date) -> TaskDetailView {
-        let coordinator = TaskDetailCoordinator(context: TaskDetailContext(taskId: taskId, selectedDate: selectedDate), dataManage: dataManager)
-        return coordinator.destinationView
+    func makeTaskDetailsView(taskId: String, selectedDate: Date, isDayMode: Bool = false) -> TaskDetailView {
+        let dataManager = TaskDetailDataManager(taskID: taskId,
+                                                currentDate: selectedDate,
+                                                dataManager: self.dataManager)
+        let viewModel = TaskDetailViewModel(dataManager: dataManager, currentDate: selectedDate, isDayMode: isDayMode)
+        return TaskDetailView(viewModel: viewModel)
     }
 
     // Home

@@ -65,7 +65,7 @@ struct GoalsListView: View {
         }
         .applyBasicViewStyle()
         .sheet(item: $taskID, content: { taskId in
-            AppCoordinator.shared.makeEditTaskCreationStep1View(taskId: taskId)
+            AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: Date())
                 .environment(\.layoutDirection, .rightToLeft)
         })
         .onAppear {

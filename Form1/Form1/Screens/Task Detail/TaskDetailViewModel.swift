@@ -24,13 +24,15 @@ class TaskDetailViewModel: ObservableObject {
     @Published var reason: String?
     @Published var for100: String?
     @Published var duration: String?
+    var isDayMode: Bool
     var repeatTitleStr: String = ""
     
     private let dataManager: TaskDetailDataManagable
     
-    init(dataManager: TaskDetailDataManagable, currentDate: Date) {
+    init(dataManager: TaskDetailDataManagable, currentDate: Date, isDayMode: Bool = false) {
         self.dataManager = dataManager
         self.currentDate = currentDate
+        self.isDayMode = isDayMode
     }
     
     func fetchDetails() {
