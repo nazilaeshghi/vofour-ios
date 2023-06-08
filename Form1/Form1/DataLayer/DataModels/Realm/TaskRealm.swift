@@ -43,7 +43,7 @@ class TaskRealm: Object, TaskDataModel {
         self.endDate = task.endDate
         self.duration = task.duration ?? 0.0
         self.isRepeatable = task.isRepeatable ?? false
-        self.numberOfRepeat = task.numberOfRepeat ?? 1
+        self.numberOfRepeat = task.numberOfRepeat ?? (task.isActivity ? 1 : 0)
         self.reminders = task.reminders.getStringRepresentative()
     }
 }
