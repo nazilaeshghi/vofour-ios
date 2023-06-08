@@ -12,6 +12,7 @@ enum InputError {
     case activityTitle
     case endDate
     case duplicateGoal
+    case missingReminder
     
     var localizedValue: String {
         switch self {
@@ -21,6 +22,8 @@ enum InputError {
             return LocalizedString.Input.endDateError
         case .duplicateGoal:
             return LocalizedString.Input.duplicateGoalError
+        case .missingReminder:
+            return LocalizedString.Input.reminderError
         }
     }
 }

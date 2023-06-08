@@ -29,7 +29,7 @@ struct TaskDetailView: View {
                                 // Date
                                 Text(DateHelper().getFullDatestring(from: viewModel.currentDate))
                                     .applyStyle(style: .mediumTitle)
-                                    .isHidden(!viewModel.isDayMode, remove: true)
+                                    .isHidden(!viewModel.isDayMode)
                                 
                                 // Progress view
                                 ZStack {
@@ -42,7 +42,7 @@ struct TaskDetailView: View {
                                                            countLabel: viewModel.item.count,
                                                            totalLabel: viewModel.item.subtitle)
                                 }
-                                .isHidden(!viewModel.isDayMode, remove: true)
+                                .isHidden(!viewModel.isDayMode)
                                 .frame(width: geometry.size.width * 0.5, height: geometry.size.width * 0.5)
                                 
                                 // Details
@@ -58,36 +58,36 @@ struct TaskDetailView: View {
                                     
                                     TaskDetailsRowView(title: LocalizedString.Input.startDateSelectoreTitle,
                                                        value: viewModel.startDate ?? "")
-                                    .isHidden(viewModel.hideStartDate(), remove: true)
+                                    .isHidden(viewModel.hideStartDate())
                                     
                                     TaskDetailsRowView(title: LocalizedString.Input.endDateSelectoreTitle,
                                                        value: viewModel.endDate ?? "")
-                                    .isHidden(viewModel.hideEndDate(), remove: true)
+                                    .isHidden(viewModel.hideEndDate())
                                     
                                     TaskDetailsRowView(title: LocalizedString.Input.durationSelectoreTitle,
                                                        value: viewModel.duration ?? "")
-                                    .isHidden(viewModel.hideDuration(), remove: true)
+                                    .isHidden(viewModel.hideDuration())
                                     
                                     TaskDetailsRowView(title: LocalizedString.TaskDetail.weekDaysTitle,
                                                        value: viewModel.weekDays ?? "")
-                                    .isHidden(viewModel.hideWeekDays(), remove: true)
+                                    .isHidden(viewModel.hideWeekDays())
                                     
                                     TaskDetailsRowView(title: viewModel.repeatTitleStr,
                                                        value: viewModel.numberOfRepeat ?? "")
-                                    .isHidden(viewModel.hideNumberOfRepeat(), remove: true)
+                                    .isHidden(viewModel.hideNumberOfRepeat())
                                     
                                     TaskDetailsRowView(title: LocalizedString.Input.obstacleHeader,
                                                        value: viewModel.prevent ?? "")
-                                    .isHidden(viewModel.hidePrevent(), remove: true)
+                                    .isHidden(viewModel.hidePrevent())
                                                                         
                                     VStack(spacing: 0) {
                                         TaskDetailsRowView(title: LocalizedString.Input.reasonTitle,
                                                            value: viewModel.reason ?? "")
-                                        .isHidden(viewModel.hideReason(), remove: true)
+                                        .isHidden(viewModel.hideReason())
                                         
                                         TaskDetailsRowView(title: LocalizedString.TaskDetail.for100,
                                                            value: viewModel.for100 ?? "")
-                                        .isHidden(viewModel.hideFor100(), remove: true)
+                                        .isHidden(viewModel.hideFor100())
                                     }
                                 }
                                 .applyBasicViewStyle()

@@ -82,6 +82,7 @@ struct LocalizedString {
         static let titleError = "لطفا عنوان را وارد کنید"
         static let endDateError = "لطفا تاریخ پایان را وارد کنید"
         static let duplicateGoalError = "هدف تکراری است."
+        static let reminderError = "لطفا یادآور اضافه کنید"
     }
     
     enum Buttons {

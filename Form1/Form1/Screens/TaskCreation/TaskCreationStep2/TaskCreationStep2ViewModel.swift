@@ -27,6 +27,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
     @Published var selectedDuration: DurationObject?
     @Published var reminders: [TimeObject]
     @Published var endDateError: InputError?
+    @Published var reminderError: InputError?
     
     let editMode: Bool
     
@@ -121,6 +122,7 @@ class TaskCreationStep2ViewModel: ObservableObject {
         self.$reminders
             .sink { [weak self] newValue in
                 self?.dataManager.updateReminder(intervals: newValue)
+                self?.reminderError = nil
             }
             .store(in: &cancellables)
     }
@@ -150,13 +152,20 @@ class TaskCreationStep2ViewModel: ObservableObject {
     func saveTask() -> Bool{
         if isRepeatable == 1 && endDate == nil {
             endDateError = .endDate
-            return false
         }
         
         if !isItCreation && endDate == nil {
             endDateError = .endDate
+        }
+        
+        if needReminder == 1 && reminders.count == 0 {
+            reminderError = .missingReminder
+        }
+        
+        if reminderError != nil || endDateError != nil {
             return false
         }
+        
         dataManager.saveTask()
         return true
     }

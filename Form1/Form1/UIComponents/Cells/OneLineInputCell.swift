@@ -20,9 +20,8 @@ struct OneLineInputCell: View {
             CustomTextField(text: $inputText,
                             placeholder: placeholder,
                             error: $error)
-            if error != nil {
-                InputErrorView(title: error?.localizedValue ?? "")
-            }
+                InputErrorView(error: error)
+                    .isHidden(error == nil)
         }
     }
 }

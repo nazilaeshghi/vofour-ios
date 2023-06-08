@@ -30,9 +30,9 @@ struct SelectorInputCell: View {
             CustomSelector(text: text,
                            placeholder: placeholder,
                            error: $error)
-            if error != nil {
-                InputErrorView(title: error?.localizedValue ?? "")
-            }
+            
+                InputErrorView(error: error)
+                    .isHidden(error == nil)
         }
     }
 }

@@ -15,6 +15,7 @@ struct TaskCreationStep2View: View {
     @State private var startDateCalendarPresented = false
     @State private var endDateCalendarPresented = false
     @State private var durationPresented = false
+    @State private var showreminderError = false
     
     var body: some View {
         NavigationStack {
@@ -68,8 +69,14 @@ struct TaskCreationStep2View: View {
                             }
                             
                             // Reminder Section
-                            ReminderView(needReminder: $viewModel.needReminder,
-                                         reminders: $viewModel.reminders)
+                            VStack (spacing: 0) {
+                                ReminderView(needReminder: $viewModel.needReminder,
+                                             reminders: $viewModel.reminders)
+                                
+                                InputErrorView(error: viewModel.reminderError)
+                                    .isHidden(viewModel.reminderError == nil)
+                            }
+                            
                             
                             // Color Section
                             ColorSelectorView(selectedColor: $viewModel.selectedColor)
