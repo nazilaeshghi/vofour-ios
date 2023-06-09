@@ -61,6 +61,7 @@ struct SelectGoalView: View {
         }
         .background(Color.background)
         .sheet(isPresented: $showingSheet) {
+            showingSheet = false
             viewModel.getGoals()
         } content: {
             AppCoordinator.shared.makeCreateGoalView(isPresented: $showingSheet)

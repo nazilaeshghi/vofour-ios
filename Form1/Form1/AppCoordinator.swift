@@ -59,9 +59,9 @@ class AppCoordinator {
     }
     
     func makeSelectGoalSheetView() -> SelectGoalView {
-        let context = SelectGoalContext()
-        let coordinator = SelectGoalCoordinator(context: context, dataManage: dataManager)
-        return coordinator.destinationView
+        let innerDataManager = SelectGoalDataManager(dataManager: dataManager)
+        let viewModel = SelectGoalViewModel(dataManager: innerDataManager)
+        return SelectGoalView(viewModel: viewModel)
     }
     
     func makeCreateGoalView(isPresented: Binding<Bool>) -> NewGoalView {

@@ -13,6 +13,7 @@ struct NewGoalView: View {
     @Binding var isPresented: Bool
     @State private(set) var error: InputError?
     @StateObject var viewModel: NewGoalViewModel
+    @FocusState private var keyboardFocused: Bool
 
     var body: some View {
         VStack {
@@ -28,6 +29,7 @@ struct NewGoalView: View {
                                      placeholder: LocalizedString.Input.enterHerePlaceholder,
                                      title: "",
                                      error: $error)
+                    .focused($keyboardFocused)
                     .onChange(of: titleInputText) { newValue in
                         error = nil
                     }
@@ -45,8 +47,13 @@ struct NewGoalView: View {
             }
             .applyBasicViewStyle()
         }
+        .onAppear {
+            keyboardFocused = true
+        }
         .applyBackgroundColor()
         .environment(\.layoutDirection, .rightToLeft)
+        .navigationViewStyle(.stack)
+
     }
     
     func titleChanged(to value: String) {

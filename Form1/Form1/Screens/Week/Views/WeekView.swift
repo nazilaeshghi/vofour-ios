@@ -18,7 +18,6 @@ struct WeekView: View {
     let dateHelper = DateHelper()
     
     var body: some View {
-        NavigationStack {
             VStack {
                                 
                 // Week Header
@@ -73,7 +72,9 @@ struct WeekView: View {
                 AppCoordinator.shared.makeTaskDetailsView(taskId: taskId, selectedDate: selectedDate, isDayMode: true)
                     .environment(\.layoutDirection, .rightToLeft)
             }
-            .sheet(isPresented: $datePickerPresented, content: {
+            .sheet(isPresented: $datePickerPresented, onDismiss: {
+                datePickerPresented = false
+            }, content: {
                 CalendarSheetView(presented: $datePickerPresented,
                                   dateString: $viewModel.startDate,
                                   title: LocalizedString.Home.dateSelectoreTitle)
@@ -90,7 +91,6 @@ struct WeekView: View {
                     selectedDate = nextDate
                 }
             }))
-        }
     }
 }
 

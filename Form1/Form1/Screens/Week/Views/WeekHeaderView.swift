@@ -19,7 +19,7 @@ struct WeekHeaderView: View {
     var weekProgress: Float
     
     let circleSize: CGFloat = PublicTheme.circleSize
-    let headerHeight: CGFloat = 36
+    let headerHeight: CGFloat = 40
     @State private var showingSetting = false
     
     var body: some View {
@@ -30,7 +30,10 @@ struct WeekHeaderView: View {
                     showingSetting = true
                 } label: {
                     Image("HambergerMenu")
+                        .resizable()
+                        .frame(width: 32, height: 32)
                 }
+                .frame(height: 32)
 
                 Button {
                     showDatePicker = true
@@ -39,6 +42,8 @@ struct WeekHeaderView: View {
                         Text(DateHelper().getHeaderDate(for: selectedDate))
                             .applyStyle(style: .regularMediumTitle)
                         Image("ArrowDown")
+                            .resizable()
+                            .frame(width: 24, height: 24)
                     }
                 }
                 

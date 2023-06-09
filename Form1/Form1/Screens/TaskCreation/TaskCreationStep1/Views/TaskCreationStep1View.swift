@@ -129,10 +129,12 @@ struct TaskCreationStep1View: View {
     }
     
     func refreshGoalTitle() {
+        showingGoalSheet = false
         viewModel.refreshGoalTitle()
     }
     
     func refreshContextTitle() {
+        showingContextSheet = false
         viewModel.refreshContextTitle()
     }
     

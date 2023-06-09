@@ -121,6 +121,7 @@ struct TaskCreationStep2View: View {
                                                 userInfo: nil)
             })
         }
+        .navigationViewStyle(.stack)
         .onAppear(perform: {
             viewModel.initBinders()
         })

@@ -19,10 +19,11 @@ struct ProgressBar: View {
                 .frame(width: geometry.size.width , height: geometry.size.height)
                 .foregroundColor(backgroundcolor)
             
-            let progressValue = min(CGFloat(self.value) * geometry.size.width, geometry.size.width)
-            
-            Rectangle().frame(width: progressValue,
-                              height: geometry.size.height)
+            var progressValue = min(CGFloat(self.value) * geometry.size.width, geometry.size.width)
+           
+            Rectangle()
+                .frame(width: progressValue.isNaN ? 0 : progressValue,
+                       height: geometry.size.height)
                     .foregroundColor(color)
         }
     }

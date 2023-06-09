@@ -39,7 +39,6 @@
 		642CB19E287C451D004AF8DA /* DataEntryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB19D287C451D004AF8DA /* DataEntryDataModel.swift */; };
 		642CB1A0287C453D004AF8DA /* ContextDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB19F287C453D004AF8DA /* ContextDataModel.swift */; };
 		642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB1A1287C4573004AF8DA /* GoalDataModel.swift */; };
-		642CB1A4287C4645004AF8DA /* SelectGoalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */; };
 		642D2B2B2897297F00500670 /* DateExtension_forfuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B2A2897297F00500670 /* DateExtension_forfuture.swift */; };
 		642D2B2D289729AA00500670 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B2C289729AA00500670 /* DateHelper.swift */; };
 		642D2B2F28972A2500500670 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D2B2E28972A2500500670 /* DateFormatterExtensions.swift */; };
@@ -198,7 +197,6 @@
 		642CB19D287C451D004AF8DA /* DataEntryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryDataModel.swift; sourceTree = "<group>"; };
 		642CB19F287C453D004AF8DA /* ContextDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataModel.swift; sourceTree = "<group>"; };
 		642CB1A1287C4573004AF8DA /* GoalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataModel.swift; sourceTree = "<group>"; };
-		642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalCoordinator.swift; sourceTree = "<group>"; };
 		642D2B2A2897297F00500670 /* DateExtension_forfuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension_forfuture.swift; sourceTree = "<group>"; };
 		642D2B2C289729AA00500670 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		642D2B2E28972A2500500670 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
@@ -691,7 +689,6 @@
 			isa = PBXGroup;
 			children = (
 				642CB1A5287C4656004AF8DA /* View */,
-				642CB1A3287C4645004AF8DA /* SelectGoalCoordinator.swift */,
 				642CB197287C4407004AF8DA /* SelectGoalDataManager.swift */,
 				642CB199287C4410004AF8DA /* SelectGoalViewModel.swift */,
 				642CB19B287C441F004AF8DA /* SelectGoalMock.swift */,
@@ -923,7 +920,6 @@
 				64EA838A28A94266005ED007 /* AddReminderCellView.swift in Sources */,
 				64C5504E28609ADA000E9F61 /* TaskCreationStep1Mock.swift in Sources */,
 				644487F9288707970020A758 /* MainTabView.swift in Sources */,
-				642CB1A4287C4645004AF8DA /* SelectGoalCoordinator.swift in Sources */,
 				643778B4281892560025D3D4 /* SelectContextView.swift in Sources */,
 				64A1038A28820CEA000A6FE2 /* TaskCreationStep2Mock.swift in Sources */,
 				64B8AECB279DB13100BF47C5 /* TodayModelTransformer.swift in Sources */,
