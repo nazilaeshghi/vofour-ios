@@ -17,7 +17,7 @@ class SelectGoalViewModel: ObservableObject {
     
     init(dataManager: SelectGoalDataManagable) {
         self.dataManager = dataManager
-        defaultItem = SelectGoalViewModel.getDefaultGoal()
+        defaultItem = SelectGoalViewModel.getDefaultGoal(currentSelectedID: dataManager.selectedGoalId)
         getGoals()
     }
     
@@ -35,12 +35,12 @@ class SelectGoalViewModel: ObservableObject {
         items = goalDisplayModels
     }
     
-    private static func getDefaultGoal() -> SelectGoalDisplayModel {
+    private static func getDefaultGoal(currentSelectedID: String?) -> SelectGoalDisplayModel {
         let titleModel = LabelDisplayModel(plainText: LocalizedString.SelectGoalPage.defaultGoalTitle,
                                            style: .regularSubtitle)
         return SelectGoalDisplayModel(id: "-1",
                                       title: titleModel,
-                                      selected: false)
+                                      selected: currentSelectedID == "-1" ? true : false)
     }
     
     func selectGoal(goalID: String) {

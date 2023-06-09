@@ -670,7 +670,6 @@
 			children = (
 				64B8AEB2279DADD200BF47C5 /* DataProvider.swift */,
 				64B8AEBA279DAFF500BF47C5 /* RealmDataProvider.swift */,
-				642CB195287C42F5004AF8DA /* DetachableObject.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -774,6 +773,7 @@
 				642CB193287C4202004AF8DA /* GoalRealm.swift */,
 				644487FD288768F80020A758 /* TaskRealm.swift */,
 				643D86442892DB0A0076D884 /* RecordRealm.swift */,
+				642CB195287C42F5004AF8DA /* DetachableObject.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
