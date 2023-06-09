@@ -43,8 +43,8 @@ class SelectContextViewModel: ObservableObject {
         )
     }
     
-    func filterContextas(with text: String) {
-        items = dataManager.filterContext(text: text, type: tyep).map(transformContext)
+    func filterContextas(with text: String, forceUpdate: Bool = false) {
+        items = dataManager.filterContext(text: text, type: tyep, forceUpdate: forceUpdate).map(transformContext)
     }
     
     func selectContext(id: String) {

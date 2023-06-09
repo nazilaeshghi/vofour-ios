@@ -27,7 +27,7 @@ enum ContextFilterType: Int {
 
 protocol SelectContextDataManagable: BaseDataManagable {
     func fetchListOfContexts(type: ContextFilterType) -> [ContextListModel]
-    func filterContext(text: String, type: ContextFilterType) -> [ContextListModel]
+    func filterContext(text: String, type: ContextFilterType, forceUpdate: Bool) -> [ContextListModel]
     func selectContext(contextID: String)
     func fetchTaskCount(for contextId: String) -> Int
     var  selectedId: String? { get }
@@ -63,7 +63,10 @@ class SelectContextDataManager: SelectContextDataManagable {
         }
     }
     
-    func filterContext(text: String, type: ContextFilterType) -> [ContextListModel] {
+    func filterContext(text: String, type: ContextFilterType, forceUpdate: Bool) -> [ContextListModel] {
+        if forceUpdate {
+            fetchListOfContexts()
+        }
         guard !text.trimmingCharacters(in: .whitespaces).isEmpty else {
             switch type {
             case .active:

@@ -45,8 +45,14 @@ class AppCoordinator {
         return TaskCreationStep1View(viewModel: viewModel)
     }
     
-    func makeTaskCreationStep1View() -> TaskCreationStep1View {
-        let contextID = dataManager.currentInputEntry.contextId
+    func makeTaskCreationStep1View(contextId: String? = nil) -> TaskCreationStep1View {
+        let contextID: String?
+        if let contextId = contextId {
+            contextID = contextId
+            dataManager.currentInputEntry.updateContextId(id: contextId)
+        } else {
+            contextID = dataManager.currentInputEntry.contextId
+        }
         let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManager, contextID: contextID)
         let viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager, editMode: false)
         return TaskCreationStep1View(viewModel: viewModel)

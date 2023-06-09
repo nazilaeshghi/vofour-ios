@@ -54,11 +54,11 @@ struct ContextListView: View {
             viewModel.filterContextas(with: searchText)
         })
         .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
-            viewModel.filterContextas(with: searchText)
+            viewModel.filterContextas(with: searchText, forceUpdate: true)
         }
         .background(Color.background)
         .sheet(item: $selectedContextID) { contextID in
-            AppCoordinator.shared.makeTaskCreationStep1View()
+            AppCoordinator.shared.makeTaskCreationStep1View(contextId: contextID)
                 .environment(\.layoutDirection, .rightToLeft)
         }
     }

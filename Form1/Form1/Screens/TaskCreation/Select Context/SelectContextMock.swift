@@ -49,7 +49,7 @@ struct SelectContextDataManagableMock: SelectContextDataManagable {
         return SelectContextCellMockGenerator.contexts.map{ ContextListModel(context: $0, taskCount: 0)}
     }
     
-    func filterContext(text: String, type: ContextFilterType) -> [ContextListModel] { return  [] }
+    func filterContext(text: String, type: ContextFilterType, forceUpdate: Bool) -> [ContextListModel] { return  [] }
     func selectContext(contextID: String) {}
     func fetchTaskCount(for contextId: String) -> Int { return 0 }
 }
