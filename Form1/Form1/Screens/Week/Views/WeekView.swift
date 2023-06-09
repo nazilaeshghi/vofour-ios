@@ -56,6 +56,7 @@ struct WeekView: View {
             .onReceive(NotificationCenter.default.publisher(for: .dataChange)) { obj in
                 viewModel.getTasks(date: selectedDate)
                 selectedDate = selectedDate
+                viewModel.startDate = DateHelper.generalDateFormatter().string(from: selectedDate)
             }
             .onChange(of: selectedDate) { newValue in
                 viewModel.startDate = DateHelper.generalDateFormatter().string(from: newValue)
