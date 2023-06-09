@@ -24,7 +24,7 @@ struct SelectGoalView: View {
             }
 
             List {
-                Section {
+                Section(header: Text("")) {
                     SelectGoalCell(item: viewModel.defaultItem)
                         .onTapGesture {
                             viewModel.selectGoal(goalID: viewModel.defaultItem.id)
@@ -49,7 +49,6 @@ struct SelectGoalView: View {
             }
             .applyListBasicStyle()
             .applyBasicViewStyle()
-            .applyScrollViewPadding()
             
             Spacer()
 

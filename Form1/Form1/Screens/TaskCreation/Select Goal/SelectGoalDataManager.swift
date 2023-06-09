@@ -23,11 +23,13 @@ protocol CreateeGoalDataManagable {
 
 class SelectGoalDataManager: SelectGoalDataManagable {
     private let dataManager: DataManager
-    private (set) var selectedGoalId: String? = nil
+    
+    var selectedGoalId: String? {
+        return dataManager.currentInputEntry.goalID
+    }
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
-        self.selectedGoalId = dataManager.currentInputEntry.goalID
     }
     
     func fetchListOfGoals() -> [Goal] {
@@ -35,7 +37,7 @@ class SelectGoalDataManager: SelectGoalDataManagable {
     }
     
     func createGoal(title: String) {
-        selectedGoalId = dataManager.createGoal(title: title)
+        let _ = dataManager.createGoal(title: title)
     }
     
     func selectGoal(with id: String) {
