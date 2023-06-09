@@ -20,7 +20,8 @@ struct CardDisplayModel: Identifiable, Hashable {
     var title: LabelDisplayModel
     var subtitle: LabelDisplayModel
     var count: LabelDisplayModel
-    var background: Color
+    var color: Color
+    var backgroundColor: Color
     let state: CardState
     var progress: Float
     var id: String
@@ -31,6 +32,7 @@ enum CardState {
     case wip
     case done
     case quit
+    case quitWip
     
     var iconName: String {
         switch self {
@@ -40,6 +42,8 @@ enum CardState {
             return "done"
         case .quit:
             return "stop"
+        case .quitWip:
+            return "stop_wip"
         }
     }
 }

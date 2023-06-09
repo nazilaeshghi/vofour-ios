@@ -47,16 +47,35 @@ class WeekViewModel: ObservableObject {
         let state: CardState
         if progress >= 1 && dayRecord.task.isActivity == true {
             state = .done
-        } else if dayRecord.task.isActivity == false {
+        } else if dayRecord.task.isActivity == false,
+                  dayRecord.task.numberOfRepeat > 0,
+                  (dayRecord.record?.count ?? 0) < (dayRecord.record?.total ?? 0) {
+            state = .quitWip
+        }
+        else if dayRecord.task.isActivity == false,
+                dayRecord.task.numberOfRepeat > 0,
+                (dayRecord.record?.count ?? 0) >= (dayRecord.record?.total ?? 0) {
+            state = .quit
+        } else if dayRecord.task.isActivity == false,
+                 dayRecord.task.numberOfRepeat == 0,
+                (dayRecord.record?.total ?? 0) == 0 {
+            state = .quitWip
+        }
+        else if dayRecord.task.isActivity == false,
+                dayRecord.task.numberOfRepeat == 0,
+                (dayRecord.record?.total ?? 0) >= 0  {
             state = .quit
         }
         else {
             state = .wip
         }
+        let backhground: Color = dayRecord.task.isActivity ? Color.cellBackgroundColor : Color.disabledColor
+        
         let displayModel = CardDisplayModel(title: title,
                                             subtitle: subtitle,
                                             count: count,
-                                            background: Color(hex: dayRecord.task.color),
+                                            color: Color(hex: dayRecord.task.color),
+                                            backgroundColor: backhground,
                                             state: state,
                                             progress: progress,
                                             id: dayRecord.task.taskID,

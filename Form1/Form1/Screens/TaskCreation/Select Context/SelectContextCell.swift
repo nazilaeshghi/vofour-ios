@@ -25,7 +25,7 @@ struct SelectContextCell: View {
                 .isHidden(hideImage)
         }
         .padding()
-        .background(Color.contextBackgroundColor)
+        .background(Color.cellBackgroundColor)
         .cornerRadius(PublicTheme.cornerRaduis)
         .applyBasicCellStyle()
         .if(item.isSelected, transform: { view in

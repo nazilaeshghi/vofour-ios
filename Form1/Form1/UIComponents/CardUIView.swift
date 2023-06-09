@@ -16,7 +16,8 @@ struct CardUIView: View {
     var body: some View {
             ZStack {
                 ProgressBar(value: $viewModel.progress,
-                            color: viewModel.background)
+                            color: viewModel.color,
+                            backgroundcolor: viewModel.backgroundColor)
                 
                 HStack {
                     CardTitleStackView(title: viewModel.title,
@@ -73,7 +74,8 @@ struct CardMockGenerator {
         return CardDisplayModel(title: LabelDisplayModel(plainText: "نیم ساعت پیاده‌روی"),
                                 subtitle: LabelDisplayModel(plainText: "این هفته: ۴ بار", style: .secondaryRegularSubtitle),
                                 count: LabelDisplayModel(plainText: "۳", style: .regularTitle),
-                                background: Color(hex:"EA4C89"),
+                                color: Color(hex:"EA4C89"),
+                                backgroundColor: Color(hex:"BBC7D3"),
                                 state: .done,
                                 progress: 0.5,
                                 id: "taskID")

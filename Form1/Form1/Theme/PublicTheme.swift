@@ -10,7 +10,7 @@ import SwiftUI
 
 extension Color {
     static var disabledColor: Color { return Color(hex: "BBC7D3") }
-    static var contextBackgroundColor: Color { return Color(hex: "EFF3F6") }
+    static var cellBackgroundColor: Color { return Color(hex: "EFF3F6") }
     static var background: Color { return Color(hex: "FAFBFC") }
     static var primaryColor: Color { return Color(hex: "1757A6") }
     static var primaryLightColor: Color { return Color(hex: "C2DDFC") }
