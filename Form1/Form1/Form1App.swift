@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let center  = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -17,7 +17,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
+        center.delegate = self
         return true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.banner, .sound])
     }
 }
 
