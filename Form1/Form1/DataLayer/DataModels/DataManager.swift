@@ -365,7 +365,8 @@ extension DataManager {
                     dateComponents.minute = reminder.minute
                     
                     let trigger = UNCalendarNotificationTrigger(
-                             dateMatching: dateComponents, repeats: true)
+                             dateMatching: dateComponents,
+                             repeats: false)
                     
                     let content = UNMutableNotificationContent()
                     content.title = LocalizedString.Reminder.title
@@ -395,7 +396,8 @@ extension DataManager {
                 dateComponents.minute = reminder.minute
                 
                 let trigger = UNCalendarNotificationTrigger(
-                         dateMatching: dateComponents, repeats: true)
+                         dateMatching: dateComponents,
+                         repeats: false)
                 
                 let content = UNMutableNotificationContent()
                 content.title = LocalizedString.Reminder.title
