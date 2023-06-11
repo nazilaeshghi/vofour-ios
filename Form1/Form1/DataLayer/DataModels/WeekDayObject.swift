@@ -105,62 +105,25 @@ struct DateBuilder {
     }
 }
 
-enum WeekDay {
-    case sat, sun, mon, tue, wed, thu, fri
-    
-    var index: Int {
-        switch self {
-        case .sat:
-            return 0
-        case .sun:
-            return 1
-        case .mon:
-            return 2
-        case .tue:
-            return 3
-        case .wed:
-            return 4
-        case .thu:
-            return 5
-        case .fri:
-            return 6
-        }
-    }
-    var name: String {
-        switch self {
-        case .sat:
-            return "ش"
-        case .sun:
-            return "ی"
-        case .mon:
-            return "د"
-        case .tue:
-            return "س"
-        case .wed:
-            return "چ"
-        case .thu:
-            return "پ"
-        case .fri:
-            return "ج"
-        }
-    }
-    
-    var id: String {
-        switch self {
-        case .sat:
-            return "week_day_1"
-        case .sun:
-            return "week_day_2"
-        case .mon:
-            return "week_day_3"
-        case .tue:
-            return "week_day_4"
-        case .wed:
-            return "week_day_5"
-        case .thu:
-            return "week_day_6"
-        case .fri:
-            return "week_day_7"
+extension WeekDayObject {
+    var weekDay: WeekDay {
+        switch self.id {
+        case "week_day_1":
+            return .saturday
+        case "week_day_2":
+            return .sunday
+        case "week_day_3":
+            return .monday
+        case "week_day_4":
+            return .tuesday
+        case "week_day_5":
+            return .wednesday
+        case "week_day_6":
+            return .thursday
+        case "week_day_7":
+            return .friday
+        default:
+            return .sunday
         }
     }
 }

@@ -140,4 +140,17 @@ extension DateHelper {
         pCalendar.firstWeekday = DateHelper.getCurrentStartWeekDay()
         return pCalendar
     }
+    
+    func getDatesBetween(startDate: Date, endDate: Date, weekDays: [WeekDayObject]) -> [Date] {
+        DateHelper.setDateRegion()
+        let startDateInRange = DateInRegion(startDate, region: SwiftDate.defaultRegion)
+        let endDateInRange = DateInRegion(endDate, region: SwiftDate.defaultRegion)
+        
+        var outputDates = [Date]()
+        for day in weekDays {
+            let dates = DateInRegion.datesForWeekday(day.weekDay, from: startDateInRange, to: endDateInRange).map { $0.date }
+            outputDates.append(contentsOf: dates)
+        }
+        return outputDates
+    }
 }
