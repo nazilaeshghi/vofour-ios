@@ -26,6 +26,7 @@ struct LocalizedString {
         static let pageHeader = "انتخاب هدف"
         static let buttonTitle = "افزودن هدف جدید"
         static let defaultGoalTitle = "مستقل"
+        static let defaultGoalSectionTitle = "پیشفرض"
         static let newGoal = "هدف جدید"
         static let submitNewGoal = "تایید و افزودن"
         static let selectGoalPageTitle = "انتخاب هدف"

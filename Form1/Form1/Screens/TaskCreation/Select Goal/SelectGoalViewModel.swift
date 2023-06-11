@@ -8,21 +8,29 @@
 
 import Foundation
 
+struct GoalSectionDisplayModel {
+    let items: [SelectGoalDisplayModel]
+    let isDefault: Bool
+    let title: String
+    let id: String
+}
+
 class SelectGoalViewModel: ObservableObject {
-    
     private let dataManager: SelectGoalDataManagable
-    
-    @Published private(set) var items: [SelectGoalDisplayModel] = []
-    @Published private(set) var defaultItem: SelectGoalDisplayModel
+    @Published private(set) var items: [GoalSectionDisplayModel] = []
     
     init(dataManager: SelectGoalDataManagable) {
         self.dataManager = dataManager
-        defaultItem = SelectGoalViewModel.getDefaultGoal(currentSelectedID: dataManager.selectedGoalId)
         getGoals()
     }
     
     func getGoals() {
+        
+        var displayItems = [GoalSectionDisplayModel]()
+        displayItems.append(makeFirstSection())
+        
         let rawGoals = dataManager.fetchListOfGoals()
+
         let goalDisplayModels = rawGoals.compactMap { goal -> SelectGoalDisplayModel? in
             guard goal.id != "-1" else { return nil }
             let titleModel = LabelDisplayModel(plainText: goal.title,
@@ -32,15 +40,27 @@ class SelectGoalViewModel: ObservableObject {
                                           selected: dataManager.selectedGoalId == goal.id ? true : false)
         }
         
-        items = goalDisplayModels
+        let secondSection = GoalSectionDisplayModel(items: goalDisplayModels,
+                                                    isDefault: false,
+                                                    title: LocalizedString.SelectGoalPage.sectionHeader,
+                                                    id: UUID().uuidString)
+        displayItems.append(secondSection)
+        
+        items = displayItems
     }
     
-    private static func getDefaultGoal(currentSelectedID: String?) -> SelectGoalDisplayModel {
-        let titleModel = LabelDisplayModel(plainText: LocalizedString.SelectGoalPage.defaultGoalTitle,
-                                           style: .regularSubtitle)
-        return SelectGoalDisplayModel(id: "-1",
-                                      title: titleModel,
-                                      selected: currentSelectedID == "-1" ? true : false)
+    func makeFirstSection() -> GoalSectionDisplayModel {
+        let defaultTitleModel = LabelDisplayModel(plainText: LocalizedString.SelectGoalPage.defaultGoalTitle,
+                                                  style: .regularSubtitle)
+        let sectionTitle = LocalizedString.SelectGoalPage.defaultGoalSectionTitle
+        let defaultItem = SelectGoalDisplayModel(id: "-1",
+                                                 title: defaultTitleModel,
+                                                 selected: dataManager.selectedGoalId == "-1" ? true : false)
+        
+        return GoalSectionDisplayModel(items: [defaultItem],
+                                       isDefault: true,
+                                       title: sectionTitle,
+                                       id: UUID().uuidString)
     }
     
     func selectGoal(goalID: String) {

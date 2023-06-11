@@ -24,19 +24,9 @@ struct SelectGoalView: View {
             }
 
             List {
-                Section(header: Text("")) {
-                    SelectGoalCell(item: viewModel.defaultItem)
-                        .onTapGesture {
-                            viewModel.selectGoal(goalID: viewModel.defaultItem.id)
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                        .applyBasicCellStyle()
-                }
-                
-                if !viewModel.items.isEmpty {
-                    Section(header: Text(LocalizedString.SelectGoalPage.sectionHeader)
-                                .applyStyle(style: .mediumSubtitle)) {
-                        ForEach(viewModel.items, id: \.id) { item in
+                ForEach(viewModel.items, id: \.id) { section in
+                    Section(header: Text(section.title).applyStyle(style: .mediumSubtitle)) {
+                        ForEach(section.items, id: \.id) { item in
                             SelectGoalCell(item: item)
                                 .onTapGesture {
                                     viewModel.selectGoal(goalID: item.id)
