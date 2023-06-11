@@ -167,4 +167,8 @@ struct LocalizedString {
         static let allGoals = "همه اهداف"
         static let currentWeekTitle = "نمایش هفته جاری"
     }
+    
+    enum Reminder {
+        static let title = "یادآور"
+    }
 }

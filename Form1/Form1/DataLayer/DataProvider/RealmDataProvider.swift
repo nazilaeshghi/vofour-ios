@@ -149,7 +149,8 @@ class ReqalmDataProvider: DataProvider {
     }
     
     // MARK: - Task
-    func saveTask(entry: DataEntryDataModel) {
+    @discardableResult
+    func saveTask(entry: DataEntryDataModel) -> String? {
         let taskRealm = TaskRealm(task: entry)
         
         do {
@@ -157,8 +158,10 @@ class ReqalmDataProvider: DataProvider {
             try realm.write {
                 realm.add(taskRealm, update: .modified)
             }
+            return taskRealm.taskID
         } catch let error as NSError {
             ErrorLogger.log(domain: .dataBase, message: "Saving Task faild, Something went wrong with Realm: \(error.localizedDescription)")
+            return nil
         }
     }
     

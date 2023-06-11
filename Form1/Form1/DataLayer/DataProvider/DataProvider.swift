@@ -21,7 +21,9 @@ protocol DataProvider {
     func findGoal(title: String) -> Goal?
     
     func fetchTasks() -> [TaskDataModel]
-    func saveTask(entry: DataEntryDataModel)
+    
+    @discardableResult
+    func saveTask(entry: DataEntryDataModel) -> String?
     func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel]
     func fetchTasks(for weekDay: String, date: Date, goalId: String) -> [DailyTaskDataModel]
     func fetchTask(id: String) -> TaskDataModel?
@@ -79,9 +81,11 @@ class MockDataProvider: DataProvider {
         return []
     }
     
-    func saveTask(entry: DataEntryDataModel) {
-        
+    @discardableResult
+    func saveTask(entry: DataEntryDataModel) -> String? {
+        return nil
     }
+
     
     func fetchTasks(for weekDay: String, date: Date) -> [DailyTaskDataModel] {
         return []

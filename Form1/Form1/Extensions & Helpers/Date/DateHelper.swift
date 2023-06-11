@@ -79,6 +79,16 @@ extension DateHelper {
         return builtDate?.date ?? Date()
     }
     
+    static func change(date: Date, hour: Int, minute: Int) -> Date {
+        var modifiedDate = DateInRegion(components: {
+            $0.year = date.year
+            $0.month = date.month
+            $0.day = date.day
+            $0.hour = hour
+            $0.minute = minute
+        }, region: .current)
+        return modifiedDate?.date ?? Date()
+    }
     
     static func setDateRegion() {
         let myRegion = Region(calendar: DateHelper.getCurrentCalendar(),
@@ -142,7 +152,6 @@ extension DateHelper {
     }
     
     func getDatesBetween(startDate: Date, endDate: Date, weekDays: [WeekDayObject]) -> [Date] {
-        DateHelper.setDateRegion()
         let startDateInRange = DateInRegion(startDate, region: SwiftDate.defaultRegion)
         let endDateInRange = DateInRegion(endDate, region: SwiftDate.defaultRegion)
         

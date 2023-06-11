@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import UserNotifications
 
 class DataManager {
     private let dataProvider: DataProvider
     private(set) var currentInputEntry: DataEntryDataModel = DataEntryDataModel()
+    let notificationCenter = UNUserNotificationCenter.current()
     
     init(dataProvider: DataProvider) {
         self.dataProvider = dataProvider
@@ -150,7 +152,6 @@ class DataManager {
         let simpleDate = date.getSimpleDate()
         return dataProvider.fetchRecord(taskID: taskID, date: simpleDate)
     }
-
 }
 
 extension DataManager {
@@ -167,7 +168,11 @@ extension DataManager {
     }
     
     func saveTask() {
-        dataProvider.saveTask(entry: currentInputEntry)
+        let id = dataProvider.saveTask(entry: currentInputEntry)
+        if let taskId = id {
+            removeScheduleNotifications(taskId: taskId)
+            scheduleNotifications(taskId: taskId)
+        }
         resetDataEntry()
     }
     
@@ -325,5 +330,90 @@ extension DataManager {
         guard goalTasks.count > 0 else { return nil }
         return ActivityGoalDataModel(goal: goal,
                                      tasks: goalTasks)
+    }
+}
+
+
+extension DataManager {
+    func removeScheduleNotifications(taskId: String) {
+        let prefixNotificationID = taskId + "_notification_date"
+        notificationCenter.getPendingNotificationRequests { [weak self] (notifications) in
+            let foundNotifications = notifications.filter{ $0.identifier.hasPrefix(prefixNotificationID) }.map{ $0.identifier}
+            self?.notificationCenter.removeDeliveredNotifications(withIdentifiers: foundNotifications)
+            self?.notificationCenter.removePendingNotificationRequests(withIdentifiers: foundNotifications)
+        }
+    }
+    
+    func scheduleNotifications(taskId: String) {
+        var requests = [UNNotificationRequest]()
+                
+        if let startDate = currentInputEntry.startDate,
+           let endDate = currentInputEntry.endDate,
+           currentInputEntry.isActivity,
+           !currentInputEntry.reminders.isEmpty,
+           let weekDays = currentInputEntry.days
+        {
+            let dates = DateHelper().getDatesBetween(startDate: startDate, endDate: endDate, weekDays: weekDays)
+            for (dateIndex, date) in dates.enumerated() {
+                for (index, reminder) in currentInputEntry.reminders.enumerated() {
+                    
+                    var dateComponents = DateComponents()
+                    dateComponents.year = date.year
+                    dateComponents.month = date.month
+                    dateComponents.day = date.day
+                    dateComponents.hour = reminder.hour
+                    dateComponents.minute = reminder.minute
+                    
+                    let trigger = UNCalendarNotificationTrigger(
+                             dateMatching: dateComponents, repeats: true)
+                    
+                    let content = UNMutableNotificationContent()
+                    content.title = LocalizedString.Reminder.title
+                    content.body = currentInputEntry.activityTitle ?? ""
+
+                    
+                    let uuidString = taskId + "_notification" + "_date" + String(dateIndex) + "_reminder_" + String(index)
+                    let request = UNNotificationRequest(identifier: uuidString,
+                                                        content: content,
+                                                        trigger: trigger)
+                    requests.append(request)
+                }
+            }
+        }
+        
+        else if let startDate = currentInputEntry.startDate,
+           currentInputEntry.endDate == nil,
+           currentInputEntry.isActivity,
+           !currentInputEntry.reminders.isEmpty
+        {
+            for (index, reminder) in currentInputEntry.reminders.enumerated() {
+                var dateComponents = DateComponents()
+                dateComponents.year = startDate.year
+                dateComponents.month = startDate.month
+                dateComponents.day = startDate.day
+                dateComponents.hour = reminder.hour
+                dateComponents.minute = reminder.minute
+                
+                let trigger = UNCalendarNotificationTrigger(
+                         dateMatching: dateComponents, repeats: true)
+                
+                let content = UNMutableNotificationContent()
+                content.title = LocalizedString.Reminder.title
+                content.body = currentInputEntry.activityTitle ?? ""
+
+                
+                let uuidString = taskId + "_notification" + "_date0" + "_reminder" + String(index)
+                let request = UNNotificationRequest(identifier: uuidString,
+                                                    content: content,
+                                                    trigger: trigger)
+                requests.append(request)
+            }
+        }
+        
+        for request in requests {
+            notificationCenter.add(request) { (error) in
+               if error != nil {}
+            }
+        }
     }
 }
