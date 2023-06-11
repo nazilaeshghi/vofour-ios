@@ -4,6 +4,8 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>برای یادآوری انجام فعالیت‌ها لطفا دسترسی بدهید</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Vazir-Light.ttf</string>
