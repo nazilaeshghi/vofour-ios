@@ -34,12 +34,12 @@ protocol SelectContextDataManagable: BaseDataManagable {
 }
 
 class SelectContextDataManager: SelectContextDataManagable {
-    internal let dataManager: DataManager
+    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
+
     private var cacheContexts: [ContextListModel] = []
     private (set) var selectedId: String?
     
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
+    init() {
         selectedId = dataManager.currentInputEntry.contextId
     }
     

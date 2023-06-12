@@ -16,11 +16,9 @@ protocol ActivityListDataManagable {
 }
 
 class ActivityListDataManager: ActivityListDataManagable {
-    private let dataManager: DataManager
+    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
 
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
-    }
+    init() {}
     
     func fetchGoals() -> [Goal] {
         return dataManager.fetchGoals()

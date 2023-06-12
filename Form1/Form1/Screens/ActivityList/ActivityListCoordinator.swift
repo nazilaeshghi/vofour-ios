@@ -15,8 +15,8 @@ class ActivityListCoordinator {
         return GoalsListView(viewModel: self.viewModel, currentWeekIsOn: false)
     }
     
-    required init(dataManager: DataManager) {
-        let activityListDataManager = ActivityListDataManager(dataManager: dataManager)
+    required init() {
+        let activityListDataManager = ActivityListDataManager()
         self.viewModel = GoalsListViewModel(dataManager: activityListDataManager)
     }
 }

@@ -32,12 +32,12 @@ protocol TaskCreationStep1DataManagable: BaseDataManagable {
 }
 
 class TaskCreationStep1DataManager: TaskCreationStep1DataManagable {
-    internal let dataManager: DataManager
+    @Injected(\.dataManagerProvider) var dataManager: DataManager
+
 
     private (set) var contextID: String?
     
-    init(dataManager: DataManager, contextID: String?) {
-        self.dataManager = dataManager
+    init(contextID: String?) {
         self.contextID = contextID
         if let contextID = contextID {
             dataManager.currentInputEntry.updateContextId(id: contextID)

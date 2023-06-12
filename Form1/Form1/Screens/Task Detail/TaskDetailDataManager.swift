@@ -20,10 +20,9 @@ protocol TaskDetailDataManagable {
 class TaskDetailDataManager: TaskDetailDataManagable {
     private let taskID: String
     private let currentDate: Date
-    private let dataManager: DataManager
+    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
 
-    init(taskID: String, currentDate: Date, dataManager: DataManager) {
-        self.dataManager = dataManager
+    init(taskID: String, currentDate: Date) {
         self.taskID = taskID
         self.currentDate = currentDate
     }

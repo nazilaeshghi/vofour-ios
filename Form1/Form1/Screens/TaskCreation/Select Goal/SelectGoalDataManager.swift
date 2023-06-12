@@ -22,15 +22,13 @@ protocol CreateeGoalDataManagable {
 
 
 class SelectGoalDataManager: SelectGoalDataManagable {
-    private let dataManager: DataManager
+    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
     
     var selectedGoalId: String? {
         return dataManager.currentInputEntry.goalID
     }
     
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
-    }
+    init() {}
     
     func fetchListOfGoals() -> [Goal] {
         return dataManager.fetchGoals()
@@ -47,11 +45,9 @@ class SelectGoalDataManager: SelectGoalDataManagable {
 }
 
 class CreateGoalDataManager: CreateeGoalDataManagable {
-    private let dataManager: DataManager
+    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
     
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
-    }
+    init() {}
     
     func createGoal(title: String) -> String {
         return dataManager.createGoal(title: title)

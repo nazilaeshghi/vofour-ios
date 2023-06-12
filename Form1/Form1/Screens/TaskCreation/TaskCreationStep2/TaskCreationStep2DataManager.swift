@@ -41,11 +41,9 @@ protocol TaskCreationStep2DataManagable: BaseDataManagable {
 }
 
 class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
-    internal let dataManager: DataManager
-    
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
-    }
+    @Injected(\.dataManagerProvider) var dataManager: DataManager
+
+    init() { }
     
     func getContextName() -> String{
         guard let contextId = dataManager.currentInputEntry.contextId else { return "" }

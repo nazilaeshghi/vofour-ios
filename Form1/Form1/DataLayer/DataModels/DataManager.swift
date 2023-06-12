@@ -7,15 +7,25 @@
 //
 
 import Foundation
-import UserNotifications
 
 class DataManager {
+    @Injected(\.localNotificationProvider) var notificationProvider: NotificationManagable
+
     private let dataProvider: DataProvider
     private(set) var currentInputEntry: DataEntryDataModel = DataEntryDataModel()
-    let notificationCenter = UNUserNotificationCenter.current()
     
-    init(dataProvider: DataProvider) {
+    init(dataProvider: DataProvider)  {
         self.dataProvider = dataProvider
+        askForNotificationAccess()
+    }
+    
+    @discardableResult
+    func askForNotificationAccess() -> Task <Void, Never>{
+        return Task {
+            do {
+                try await notificationProvider.requestAuthorization()
+            } catch {}
+        }
     }
     
     func resetDataEntry(){
@@ -172,8 +182,8 @@ extension DataManager {
         let id = dataProvider.saveTask(entry: currentInputEntry)
         if let taskId = id {
             DateHelper.setDateRegion()
-            removeScheduleNotifications(taskId: taskId)
-            scheduleNotifications(taskId: taskId)
+            notificationProvider.removeScheduleNotifications(taskId: taskId)
+            notificationProvider.scheduleNotifications(taskId: taskId, task: currentInputEntry)
         }
         resetDataEntry()
     }
@@ -352,96 +362,5 @@ extension DataManager {
         guard goalTasks.count > 0 else { return nil }
         return ActivityGoalDataModel(goal: goal,
                                      tasks: goalTasks)
-    }
-}
-
-
-extension DataManager {
-    func removeScheduleNotifications(taskId: String) {
-        let prefixNotificationID = taskId + "_notification_date"
-        notificationCenter.getPendingNotificationRequests { [weak self] (notifications) in
-            let foundNotifications = notifications.filter{ $0.identifier.hasPrefix(prefixNotificationID) }.map{ $0.identifier}
-            self?.notificationCenter.removeDeliveredNotifications(withIdentifiers: foundNotifications)
-            self?.notificationCenter.removePendingNotificationRequests(withIdentifiers: foundNotifications)
-        }
-    }
-    
-    func scheduleNotifications(taskId: String) {
-        var requests = [UNNotificationRequest]()
-                
-        if let startDate = currentInputEntry.startDate,
-           let endDate = currentInputEntry.endDate,
-           currentInputEntry.isActivity,
-           !currentInputEntry.reminders.isEmpty,
-           let weekDays = currentInputEntry.days
-        {
-            let dates = DateHelper().getDatesBetween(startDate: startDate, endDate: endDate, weekDays: weekDays)
-            for (dateIndex, date) in dates.enumerated() {
-                for (index, reminder) in currentInputEntry.reminders.enumerated() {
-                    
-                    var dateComponents = DateComponents()
-                    dateComponents.year = date.year
-                    dateComponents.month = date.month
-                    dateComponents.day = date.day
-                    dateComponents.hour = reminder.hour
-                    dateComponents.minute = reminder.minute
-                    
-                    let trigger = UNCalendarNotificationTrigger(
-                             dateMatching: dateComponents,
-                             repeats: false)
-                    
-                    let content = UNMutableNotificationContent()
-                    content.title = LocalizedString.Reminder.title
-                    content.body = currentInputEntry.activityTitle ?? ""
-
-                    
-                    let uuidString = taskId + "_notification" + "_date" + String(dateIndex) + "_reminder_" + String(index)
-                    let request = UNNotificationRequest(identifier: uuidString,
-                                                        content: content,
-                                                        trigger: trigger)
-                    requests.append(request)
-                }
-            }
-        }
-        
-        else if let startDate = currentInputEntry.startDate,
-           currentInputEntry.endDate == nil,
-           currentInputEntry.isActivity,
-           !currentInputEntry.reminders.isEmpty
-        {
-            let formatter = DateHelper.generalDateFormatterWithDefaultCalendar()
-            let DateStr = formatter.string(from: startDate)
-            let fixedDate = DateHelper.generalDateFormatter().optionalDate(from: DateStr) ?? Date()
-            
-            for (index, reminder) in currentInputEntry.reminders.enumerated() {
-                var dateComponents = DateComponents()
-                dateComponents.year = fixedDate.year
-                dateComponents.month = fixedDate.month
-                dateComponents.day = fixedDate.day
-                dateComponents.hour = reminder.hour
-                dateComponents.minute = reminder.minute
-                
-                let trigger = UNCalendarNotificationTrigger(
-                         dateMatching: dateComponents,
-                         repeats: false)
-                
-                let content = UNMutableNotificationContent()
-                content.title = LocalizedString.Reminder.title
-                content.body = currentInputEntry.activityTitle ?? ""
-
-                
-                let uuidString = taskId + "_notification" + "_date0" + "_reminder" + String(index)
-                let request = UNNotificationRequest(identifier: uuidString,
-                                                    content: content,
-                                                    trigger: trigger)
-                requests.append(request)
-            }
-        }
-        
-        for request in requests {
-            notificationCenter.add(request) { (error) in
-               if error != nil {}
-            }
-        }
     }
 }

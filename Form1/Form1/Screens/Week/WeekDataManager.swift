@@ -16,11 +16,10 @@ protocol TaskListDataManagable {
 }
 
 class WeekDataManager: TaskListDataManagable {
-    private let dataManager: DataManager
+    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
+
     
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
-    }
+    init() {}
     
     func fetchTasks(date: Date) -> [DailyTaskDataModel] {
         return dataManager.fetchDailyTasks(for: date)

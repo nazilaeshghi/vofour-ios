@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class WeekViewModel: ObservableObject {
+class WeekViewModel: ObservableObject {    
     private let dataManager: TaskListDataManagable
     var sevenDays: [HeaderDayObject] = DateBuilder.make7Days(selectedDate: Date())
     

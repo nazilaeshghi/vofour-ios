@@ -10,9 +10,8 @@ import Foundation
 import SwiftUI
 
 class AppCoordinator {
-    
-    let dataManager = DataManager(dataProvider: ReqalmDataProvider())
-    
+    @Injected(\.dataManagerProvider) var dataManager: DataManager
+
     private init() {
         dataManager.saveContexts()
         dataManager.saveDefaultGoal()
@@ -26,13 +25,13 @@ class AppCoordinator {
     
     // Task Creation
     func makeSelectContextSheetView() -> SelectContextSheetView {
-        let contextDataManger = SelectContextDataManager(dataManager: dataManager)
+        let contextDataManger = SelectContextDataManager()
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
         return SelectContextSheetView(viewModel: viewModel)
     }
     
     func makeSelectContextView() -> SelectContextView {
-        let contextDataManger = SelectContextDataManager(dataManager: dataManager)
+        let contextDataManger = SelectContextDataManager()
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
         return SelectContextView(viewModel: viewModel)
     }
@@ -40,7 +39,7 @@ class AppCoordinator {
     func makeEditTaskCreationStep1View(taskId: String) -> TaskCreationStep1View {
         dataManager.startEditTask(taskId: taskId)
         let task = dataManager.fetchTask(taskID: taskId)
-        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManager, contextID: task?.contextId)
+        let innerDataManager = TaskCreationStep1DataManager(contextID: task?.contextId)
         let viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager, editMode: true)
         return TaskCreationStep1View(viewModel: viewModel)
     }
@@ -53,25 +52,25 @@ class AppCoordinator {
         } else {
             contextID = dataManager.currentInputEntry.contextId
         }
-        let innerDataManager = TaskCreationStep1DataManager(dataManager: dataManager, contextID: contextID)
+        let innerDataManager = TaskCreationStep1DataManager(contextID: contextID)
         let viewModel = TaskCreationStep1ViewModel(dataManager: innerDataManager, editMode: false)
         return TaskCreationStep1View(viewModel: viewModel)
     }
     
     func makeSelectGoalSheetView() -> SelectGoalView {
-        let innerDataManager = SelectGoalDataManager(dataManager: dataManager)
+        let innerDataManager = SelectGoalDataManager()
         let viewModel = SelectGoalViewModel(dataManager: innerDataManager)
         return SelectGoalView(viewModel: viewModel)
     }
     
     func makeCreateGoalView(isPresented: Binding<Bool>) -> NewGoalView {
-        let dataManager = CreateGoalDataManager(dataManager: dataManager)
+        let dataManager = CreateGoalDataManager()
         let viewModel = NewGoalViewModel(dataManger: dataManager)
         return NewGoalView(isPresented: isPresented, viewModel: viewModel)
     }
     
     func makeTaskCreationStep2View(editMode: Bool) -> TaskCreationStep2View {
-        let innerDataManager = TaskCreationStep2DataManager(dataManager: dataManager)
+        let innerDataManager = TaskCreationStep2DataManager()
         let viewModel = TaskCreationStep2ViewModel(dataManager: innerDataManager, editMode: editMode)
         return TaskCreationStep2View(viewModel: viewModel)
         
@@ -79,28 +78,27 @@ class AppCoordinator {
     
     // Task
     func makeWeekView() -> WeekView {
-        let dataManager = WeekDataManager(dataManager: self.dataManager)
+        let dataManager = WeekDataManager()
         let viewModel = WeekViewModel(dataManager: dataManager)
         return WeekView(viewModel: viewModel)
     }
     
     func makeTaskDetailsView(taskId: String, selectedDate: Date, isDayMode: Bool = false) -> TaskDetailView {
         let dataManager = TaskDetailDataManager(taskID: taskId,
-                                                currentDate: selectedDate,
-                                                dataManager: self.dataManager)
+                                                currentDate: selectedDate)
         let viewModel = TaskDetailViewModel(dataManager: dataManager, currentDate: selectedDate, isDayMode: isDayMode)
         return TaskDetailView(viewModel: viewModel)
     }
 
     // Home
     func makeContextListView() -> ContextListView {
-        let coordinator = ContextsListCoordinator(dataManage: dataManager)
+        let coordinator = ContextsListCoordinator()
         return coordinator.destinationView
     }
     
     // Activity List
     func makeGoalsListView() -> GoalsListView {
-        let coordinator = ActivityListCoordinator(dataManager: dataManager)
+        let coordinator = ActivityListCoordinator()
         return coordinator.destinationView
     }
 }

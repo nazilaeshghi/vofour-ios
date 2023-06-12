@@ -15,8 +15,8 @@ class ContextsListCoordinator {
         return ContextListView(viewModel: self.viewModel)
     }
     
-    required init(dataManage: DataManager) {
-        let innerDataManager = SelectContextDataManager(dataManager: dataManage)
+    required init() {
+        let innerDataManager = SelectContextDataManager()
         self.viewModel = SelectContextViewModel(dataManager: innerDataManager)
     }
 }
