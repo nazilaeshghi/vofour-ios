@@ -16,7 +16,8 @@ class NewGoalViewModel: ObservableObject {
     }
     
     func createGoal(title: String) -> Bool {
-        guard dataManger.findGoal(title: title) != nil else {
+        let fixedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard dataManger.findGoal(title: fixedTitle) != nil else {
             let _ = dataManger.createGoal(title: title)
             return true
         }

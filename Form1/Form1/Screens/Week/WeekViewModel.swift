@@ -47,23 +47,12 @@ class WeekViewModel: ObservableObject {
         let state: CardState
         if progress >= 1 && dayRecord.task.isActivity == true {
             state = .done
-        } else if dayRecord.task.isActivity == false,
-                  dayRecord.task.numberOfRepeat > 0,
-                  (dayRecord.record?.count ?? 0) < (dayRecord.record?.total ?? 0) {
-            state = .quitWip
         }
         else if dayRecord.task.isActivity == false,
-                dayRecord.task.numberOfRepeat > 0,
-                (dayRecord.record?.count ?? 0) >= (dayRecord.record?.total ?? 0) {
-            state = .quit
-        } else if dayRecord.task.isActivity == false,
-                 dayRecord.task.numberOfRepeat == 0,
-                (dayRecord.record?.total ?? 0) == 0 {
+                progress == 1  {
             state = .quitWip
-        }
-        else if dayRecord.task.isActivity == false,
-                dayRecord.task.numberOfRepeat == 0,
-                (dayRecord.record?.total ?? 0) >= 0  {
+        } else if dayRecord.task.isActivity == false,
+                  progress == 0 {
             state = .quit
         }
         else {
@@ -89,11 +78,10 @@ class WeekViewModel: ObservableObject {
             let devide = Float(Float(record.count) / Float(record.total))
             progress = devide > 1 ? 1 : devide
         } else if dayRecord.task.isActivity == false {
-            if let record = dayRecord.record {
-                let devide = (1.0 - Float(Float(record.count) / Float(record.total)))
-                progress = devide < 0 ? 0 : devide
+            if dayRecord.task.isRepeatable {
+                return (dayRecord.record?.count ?? 0) <= (dayRecord.record?.total ?? 0) ? 1 : 0
             } else {
-                progress = 1
+                return (dayRecord.record?.count ?? 0) >= 1 ? 0 : 1
             }
         }
         else {

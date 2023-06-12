@@ -109,7 +109,7 @@ class TaskDetailViewModel: ObservableObject {
         }
         return builtWeekDays
             .filter{ $0.selected }
-            .map { $0.getFullTitle }
+            .map { $0.name }
             .joined(separator: "، ")
     }
     

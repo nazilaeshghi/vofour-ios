@@ -53,7 +53,7 @@ class DataManager {
     
     func createGoal(title: String) -> String {
         let id = UUID().uuidString
-        let entity = GoalEntity(id: id, title: title)
+        let entity = GoalEntity(id: id, title: title.trimmingCharacters(in: .whitespacesAndNewlines))
         dataProvider.createGoal(newEntity: entity)
         currentInputEntry.updateGoalID(with: id)
         return id
@@ -168,12 +168,33 @@ extension DataManager {
     }
     
     func saveTask() {
+        fixStringsBeforeSaving()
         let id = dataProvider.saveTask(entry: currentInputEntry)
         if let taskId = id {
             removeScheduleNotifications(taskId: taskId)
             scheduleNotifications(taskId: taskId)
         }
         resetDataEntry()
+    }
+    
+    func fixStringsBeforeSaving() {
+        let fixedTitle = currentInputEntry.activityTitle?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        currentInputEntry.updateTitle(with: fixedTitle)
+        
+        if let reason = currentInputEntry.reason {
+            let fixedReason = reason.trimmingCharacters(in: .whitespacesAndNewlines)
+            currentInputEntry.updateReason(with: fixedReason)
+        }
+        
+        if let for100 = currentInputEntry.completionMotivations {
+            let fixedFor100 = for100.trimmingCharacters(in: .whitespacesAndNewlines)
+            currentInputEntry.updateReason(with: fixedFor100)
+        }
+        
+        if let prevention = currentInputEntry.prevention {
+            let fixedprevention = prevention.trimmingCharacters(in: .whitespacesAndNewlines)
+            currentInputEntry.updateReason(with: fixedprevention)
+        }
     }
     
     func deleteTask(id: String) {

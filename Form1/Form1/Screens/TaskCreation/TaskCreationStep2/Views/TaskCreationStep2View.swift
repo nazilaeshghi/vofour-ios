@@ -15,7 +15,7 @@ struct TaskCreationStep2View: View {
     @State private var startDateCalendarPresented = false
     @State private var endDateCalendarPresented = false
     @State private var durationPresented = false
-    @State private var showreminderError = false
+    @State private var showReminderError = false
     
     var body: some View {
         NavigationStack {

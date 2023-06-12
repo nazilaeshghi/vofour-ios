@@ -19,27 +19,29 @@ struct ReminderView: View {
             SegmentedPicker(items: [LocalizedString.TaskCreationStep2.dontNeedReminder,
                                     LocalizedString.TaskCreationStep2.needReminder],
                             selection: $needReminder)
-            if needReminder == 1 {
-                VStack {
-                    ForEach($reminders, id: \.id) { reminder in
-                        ReminderCellView(time: reminder) {
-                            self.reminders.removeAll(where: {$0.id == reminder.id})
-                        }
-                        .onTapGesture {
-                            selectedTimeID = reminder.id
-                            timePresented = true
-                        }
+            VStack {
+                ForEach($reminders, id: \.id) { reminder in
+                    ReminderCellView(time: reminder) {
+                        self.reminders.removeAll(where: {$0.id == reminder.id})
                     }
-                    
-                    AddReminderCellView()
-                        .onTapGesture {
-                            reminders.append(TimeObject.createObject())
-                        }
+                    .onTapGesture {
+                        selectedTimeID = reminder.id
+                        timePresented = true
+                    }
                 }
+                
+                AddReminderCellView()
+                    .onTapGesture {
+                        let reminder = TimeObject.createObject()
+                        reminders.append(reminder)
+                        selectedTimeID = reminder.id
+                        timePresented = true
+                    }
             }
+            .isHidden(needReminder == 0)
         }
         .sheet(isPresented: $timePresented, content: {
-            if let selectedTime = $reminders.first(where: {$0.id == selectedTimeID}) {
+            if let selectedTime = $reminders.first(where: { $0.id == selectedTimeID} ) {
                 ReminerSheet(presented: $timePresented, timeObj: selectedTime)
             }
         })

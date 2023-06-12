@@ -31,6 +31,31 @@ struct TaskDetailsRowView: View {
         }
     }
 }
+
+struct TaskDetailsDoubleRowView: View {
+    let title: String
+    let value: String
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            HStack {
+                Text(title)
+                    .applyStyle(style: .mediumSubtitle)
+                    .layoutPriority(1)
+                Spacer()
+            }
+            
+            HStack {
+                Text(value)
+                    .applyStyle(style: .regularSubtitle)
+                    .layoutPriority(1)
+                    .lineLimit(3)
+                Spacer()
+            }
+        }
+    }
+}
+
 struct TaskDetailsRowView_Previews: PreviewProvider {
     static var previews: some View {
         TaskDetailsRowView(title: "ksdjskf", value: "asbfhkasbfj,asbfjabsfkas faskfjasf askjf asjnchasdjas")

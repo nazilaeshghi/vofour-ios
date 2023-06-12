@@ -74,18 +74,18 @@ struct TaskDetailView: View {
                                     
                                     TaskDetailsRowView(title: viewModel.repeatTitleStr,
                                                        value: viewModel.numberOfRepeat ?? "")
-                                    .isHidden(viewModel.hideNumberOfRepeat())
-                                    
-                                    TaskDetailsRowView(title: LocalizedString.Input.obstacleHeader,
-                                                       value: viewModel.prevent ?? "")
-                                    .isHidden(viewModel.hidePrevent())
+                                    .isHidden(viewModel.hideNumberOfRepeat())                                    
                                                                         
-                                    VStack(spacing: 0) {
-                                        TaskDetailsRowView(title: LocalizedString.Input.reasonTitle,
+                                    VStack(alignment: .leading, spacing: PublicTheme.collectionSpace) {
+                                        TaskDetailsDoubleRowView(title: LocalizedString.Input.obstacleHeader,
+                                                           value: viewModel.prevent ?? "")
+                                        .isHidden(viewModel.hidePrevent())
+                                        
+                                        TaskDetailsDoubleRowView(title: LocalizedString.Input.reasonTitle,
                                                            value: viewModel.reason ?? "")
                                         .isHidden(viewModel.hideReason())
                                         
-                                        TaskDetailsRowView(title: LocalizedString.TaskDetail.for100,
+                                        TaskDetailsDoubleRowView(title: LocalizedString.TaskDetail.for100,
                                                            value: viewModel.for100 ?? "")
                                         .isHidden(viewModel.hideFor100())
                                     }
