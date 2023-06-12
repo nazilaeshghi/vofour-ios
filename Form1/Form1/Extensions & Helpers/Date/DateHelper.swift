@@ -91,10 +91,7 @@ extension DateHelper {
     }
     
     static func setDateRegion() {
-        let myRegion = Region(calendar: DateHelper.getCurrentCalendar(),
-                              zone: Zones.current,
-                              locale: Locales.persian)
-        SwiftDate.defaultRegion = myRegion
+        SwiftDate.defaultRegion = .local
     }
     
     static func getCurrentCalendar() -> Calendar {
@@ -162,4 +159,9 @@ extension DateHelper {
         }
         return outputDates
     }
-}
+    
+    func getDayFromDate(date: Date) -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd"
+        return Int(formatter.string(from: date)) ?? 1
+    }}

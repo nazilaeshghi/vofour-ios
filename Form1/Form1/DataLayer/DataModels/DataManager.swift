@@ -171,6 +171,7 @@ extension DataManager {
         fixStringsBeforeSaving()
         let id = dataProvider.saveTask(entry: currentInputEntry)
         if let taskId = id {
+            DateHelper.setDateRegion()
             removeScheduleNotifications(taskId: taskId)
             scheduleNotifications(taskId: taskId)
         }
