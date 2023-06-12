@@ -97,6 +97,7 @@
 		64842BD028901E7600A4AA2E /* ContestsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64842BCF28901E7600A4AA2E /* ContestsList.plist */; };
 		6496DA282A37669300BB08EA /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6496DA272A37669300BB08EA /* LocalNotificationManager.swift */; };
 		6496DA2A2A37A86C00BB08EA /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6496DA292A37A86C00BB08EA /* Injected.swift */; };
+		6496DB4C2A37BCF600BB08EA /* reminder.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6496DB4B2A37BCF600BB08EA /* reminder.wav */; };
 		64996B522A25783C0016E59E /* ScrollSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B512A25783C0016E59E /* ScrollSegmentControl.swift */; };
 		64996B552A2578440016E59E /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B532A2578440016E59E /* Segment.swift */; };
 		64996B562A2578440016E59E /* SegmentControlStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B542A2578440016E59E /* SegmentControlStyler.swift */; };
@@ -256,6 +257,7 @@
 		64842BCF28901E7600A4AA2E /* ContestsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ContestsList.plist; sourceTree = "<group>"; };
 		6496DA272A37669300BB08EA /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		6496DA292A37A86C00BB08EA /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		6496DB4B2A37BCF600BB08EA /* reminder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reminder.wav; sourceTree = "<group>"; };
 		64996B512A25783C0016E59E /* ScrollSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollSegmentControl.swift; sourceTree = "<group>"; };
 		64996B532A2578440016E59E /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		64996B542A2578440016E59E /* SegmentControlStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControlStyler.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				64B8AEBC279DB02200BF47C5 /* Screens */,
 				64B8AEB9279DAFD500BF47C5 /* DataLayer */,
 				64B8AEA6279DA3E000BF47C5 /* Assets.xcassets */,
+				6496DB4B2A37BCF600BB08EA /* reminder.wav */,
 				647F294527AF23E100C70874 /* ForFuture */,
 				64B8AEA8279DA3E000BF47C5 /* Preview Content */,
 			);
@@ -853,6 +856,7 @@
 				64B8AEAA279DA3E000BF47C5 /* Preview Assets.xcassets in Resources */,
 				64D7467B27B8D451006A0C1C /* Vazir-Light.ttf in Resources */,
 				64842BD028901E7600A4AA2E /* ContestsList.plist in Resources */,
+				6496DB4C2A37BCF600BB08EA /* reminder.wav in Resources */,
 				64B8AEA7279DA3E000BF47C5 /* Assets.xcassets in Resources */,
 				64D7467927B8D451006A0C1C /* Vazir-Medium.ttf in Resources */,
 			);
@@ -1161,7 +1165,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.24;
+				MARKETING_VERSION = 0.8.25;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.forMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1197,7 +1201,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.24;
+				MARKETING_VERSION = 0.8.25;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.forMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

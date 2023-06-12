@@ -68,7 +68,6 @@ class LocalNotificationManager: NSObject, NotificationManagable, UNUserNotificat
     
     func scheduleNotifications(taskId: String, task: DataEntryDataModel) {
         var requests = [UNNotificationRequest]()
-        let formatter = DateHelper.generalDateFormatterWithDefaultCalendar()
 
         if let startDate = task.startDate,
            let endDate = task.endDate,
@@ -93,6 +92,7 @@ class LocalNotificationManager: NSObject, NotificationManagable, UNUserNotificat
                     let content = UNMutableNotificationContent()
                     content.title = LocalizedString.Reminder.title
                     content.body = task.activityTitle ?? ""
+                    content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "reminder.wav"))
                     
                     
                     let uuidString = taskId + "_notification" + "_date" + String(dateIndex) + "_reminder_" + String(index)
@@ -123,6 +123,7 @@ class LocalNotificationManager: NSObject, NotificationManagable, UNUserNotificat
                 let content = UNMutableNotificationContent()
                 content.title = LocalizedString.Reminder.title
                 content.body = task.activityTitle ?? ""
+                content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "reminder.wav"))
                 
                 
                 let uuidString = taskId + "_notification" + "_date0" + "_reminder" + String(index)
