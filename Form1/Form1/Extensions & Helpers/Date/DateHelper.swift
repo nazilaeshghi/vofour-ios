@@ -24,6 +24,13 @@ struct DateHelper {
         return formatter
     }
     
+    static func generalDateFormatterWithDefaultCalendar() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.calendar = .autoupdatingCurrent
+        return formatter
+    }
+    
     static func fullDateFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE d MMM yyyy"

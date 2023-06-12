@@ -409,11 +409,15 @@ extension DataManager {
            currentInputEntry.isActivity,
            !currentInputEntry.reminders.isEmpty
         {
+            let formatter = DateHelper.generalDateFormatterWithDefaultCalendar()
+            let DateStr = formatter.string(from: startDate)
+            let fixedDate = DateHelper.generalDateFormatter().optionalDate(from: DateStr) ?? Date()
+            
             for (index, reminder) in currentInputEntry.reminders.enumerated() {
                 var dateComponents = DateComponents()
-                dateComponents.year = startDate.year
-                dateComponents.month = startDate.month
-                dateComponents.day = startDate.day
+                dateComponents.year = fixedDate.year
+                dateComponents.month = fixedDate.month
+                dateComponents.day = fixedDate.day
                 dateComponents.hour = reminder.hour
                 dateComponents.minute = reminder.minute
                 
