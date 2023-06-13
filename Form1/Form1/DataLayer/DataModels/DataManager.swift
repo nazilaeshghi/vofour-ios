@@ -103,11 +103,20 @@ class DataManager {
         }
         else {
             guard let task = fetchTask(taskID: taskID) else { return }
-            let record = RecordEntry(recordID: UUID().uuidString,
+            let record: RecordEntry
+            if increment {
+                record = RecordEntry(recordID: UUID().uuidString,
                                      taskID: taskID,
                                      date: simpleDate,
                                      count: 1,
                                      total: task.numberOfRepeat)
+            } else {
+                record = RecordEntry(recordID: UUID().uuidString,
+                                     taskID: taskID,
+                                     date: simpleDate,
+                                     count: 0,
+                                     total: task.numberOfRepeat)
+            }
             saveRecord(record: record)
         }
     }

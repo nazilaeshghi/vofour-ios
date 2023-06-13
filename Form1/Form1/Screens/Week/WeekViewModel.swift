@@ -106,14 +106,14 @@ class WeekViewModel: ObservableObject {
         for (index, item) in sevenDays.enumerated() {
             if item.date == currentDate.getSimpleDate(), let nextDay = sevenDays[safe: index + 1]?.date { return nextDay.date }
         }
-        return nil
+        return sevenDays.first?.date
     }
     
     func previousDate(for currentDate: Date) -> Date? {
         for (index, item) in sevenDays.enumerated() {
             if item.date == currentDate.getSimpleDate(), let previousDay = sevenDays[safe: index - 1]?.date { return previousDay.date }
         }
-        return nil
+        return sevenDays.last?.date
     }
 
 }
