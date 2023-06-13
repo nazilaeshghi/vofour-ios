@@ -8,26 +8,22 @@
 
 import Foundation
 
+struct TaskDetailAttribite: Identifiable {
+    let id = UUID().uuidString
+    let title: String
+    let value: String
+}
+
 class TaskDetailViewModel: ObservableObject {
+    private let dataManager: TaskDetailDataManagable
+    
+    let currentDate: Date
+    var isDayMode: Bool
     
     @Published var item: CardDisplayModel!
-    let currentDate: Date
     @Published var didFetchDate: Bool = false
-    @Published var activityType: String = ""
-    @Published var contextName: String = ""
-    @Published var goalName: String = ""
-    @Published var startDate: String?
-    @Published var endDate: String?
-    @Published var weekDays: String?
-    @Published var numberOfRepeat: String?
-    @Published var prevent: String?
-    @Published var reason: String?
-    @Published var for100: String?
-    @Published var duration: String?
-    var isDayMode: Bool
-    var repeatTitleStr: String = ""
-    
-    private let dataManager: TaskDetailDataManagable
+    @Published var attributes: [TaskDetailAttribite] = []
+    @Published var longAttributes: [TaskDetailAttribite] = []
     
     init(dataManager: TaskDetailDataManagable, currentDate: Date, isDayMode: Bool = false) {
         self.dataManager = dataManager
@@ -38,38 +34,18 @@ class TaskDetailViewModel: ObservableObject {
     func fetchDetails() {
         guard let task = dataManager.fetchTaskDetail() else { return }
         item = WeekViewModel.transformDataModels(dayRecord: task)
-        
-        let subtitleStr = "از " + "\(task.record?.total ?? 0)"
+        makeUI(task)
+        didFetchDate = true
+    }
+    
+    func makeUI(_ task: DailyTaskDataModel) {
+        let subtitleStr = "از " + "\(task.task.numberOfRepeat)"
         item.subtitle = LabelDisplayModel(plainText: subtitleStr.convertToPersian(), style: .lightTitle)
         
         item.count.labelStyle = .regularGiantTitleStyle
         item.count.plainText =  item.count.plainText.convertToPersian()
-        
-        activityType = task.task.isActivity ? LocalizedString.TaskDetail.create : LocalizedString.TaskDetail.quit
-        contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
-        goalName = dataManager.fetchGoal(id: task.task.goalId)?.title ?? LocalizedString.TaskDetail.independent
-        if let startDate = task.task.startDate {
-            self.startDate = DateHelper.fullDateFormatter().string(from: startDate)
-        }
-        if let endDate = task.task.endDate {
-            self.endDate = DateHelper.fullDateFormatter().string(from: endDate)
-        }
-        
-        if task.task.isRepeatable && task.task.isActivity  {
-            self.weekDays = getWeekDays(with: task.task.weekDays)
-        }
-        
-        if (task.task.numberOfRepeat != 0) {
-            self.numberOfRepeat = String(task.task.numberOfRepeat).convertToPersian()
-        }
-        
-        repeatTitleStr = task.task.isActivity ? LocalizedString.TaskDetail.repeatTitle : LocalizedString.TaskDetail.quitRepeatTitle
-        prevent = task.task.prevention
-        reason = task.task.reason
-        for100 = task.task.completionMotivations
-        duration = task.task.duration?.timeStr
-        
-        didFetchDate = true
+        makeAttributes(task)
+        makeLongAttributes(task)
     }
     
     func increment() {
@@ -87,18 +63,6 @@ class TaskDetailViewModel: ObservableObject {
         NotificationCenter.sendNotification(for: .dataChange)
     }
     
-    func hideStartDate() -> Bool {
-        return self.startDate == nil
-    }
-    
-    func hideEndDate() -> Bool {
-        return self.endDate == nil
-    }
-    
-    func hideWeekDays() -> Bool {
-        return weekDays == nil
-    }
-    
     func getWeekDays(with value: String) -> String {
         let splitedDays = value.components(separatedBy: ",")
         var builtWeekDays = DateBuilder.buildWeekDays()
@@ -113,23 +77,65 @@ class TaskDetailViewModel: ObservableObject {
             .joined(separator: "، ")
     }
     
-    func hideNumberOfRepeat() -> Bool {
-        return numberOfRepeat == nil
+    fileprivate func makeAttributes(_ task: DailyTaskDataModel) {
+        let activityType = task.task.isActivity ? LocalizedString.TaskDetail.create : LocalizedString.TaskDetail.quit
+        let activityAtt = TaskDetailAttribite(title: LocalizedString.TaskDetail.taskTypeTitle, value: activityType)
+        attributes.append(activityAtt)
+        
+        let contextName = dataManager.fetchContext(id: task.task.contextId)?.name ?? ""
+        let contextAtt = TaskDetailAttribite(title: LocalizedString.TaskDetail.contextTitle, value: contextName)
+        attributes.append(contextAtt)
+        
+        let goalName = dataManager.fetchGoal(id: task.task.goalId)?.title ?? LocalizedString.TaskDetail.independent
+        let goalAtt = TaskDetailAttribite(title: LocalizedString.TaskDetail.goalTitle, value: goalName)
+        attributes.append(goalAtt)
+        
+        if let startDate = task.task.startDate {
+            let startDate = DateHelper.fullDateFormatter().string(from: startDate)
+            let att = TaskDetailAttribite(title: LocalizedString.Input.startDateSelectoreTitle, value: startDate)
+            attributes.append(att)
+        }
+        
+        if let endDate = task.task.endDate {
+            let endDate = DateHelper.fullDateFormatter().string(from: endDate)
+            let att = TaskDetailAttribite(title: LocalizedString.Input.endDateSelectoreTitle, value: endDate)
+            attributes.append(att)
+        }
+        
+        if let duration = task.task.duration?.timeStr {
+            let att = TaskDetailAttribite(title: LocalizedString.Input.durationSelectoreTitle, value: duration)
+            attributes.append(att)
+        }
+        
+        if task.task.isRepeatable && task.task.isActivity  {
+            let weekDays = getWeekDays(with: task.task.weekDays)
+            let att = TaskDetailAttribite(title: LocalizedString.TaskDetail.weekDaysTitle, value: weekDays)
+            attributes.append(att)
+        }
+        
+        if (task.task.numberOfRepeat != 0) {
+            let repeatTitleStr = task.task.isActivity ? LocalizedString.TaskDetail.repeatTitle : LocalizedString.TaskDetail.quitRepeatTitle
+            let numberOfRepeat = String(task.task.numberOfRepeat).convertToPersian()
+            let att = TaskDetailAttribite(title: repeatTitleStr, value: numberOfRepeat)
+            attributes.append(att)
+        }
     }
     
-    func hideReason() -> Bool {
-        return reason == nil || reason?.count == 0
-    }
-    
-    func hidePrevent() -> Bool {
-        return prevent == nil || prevent?.count == 0
-    }
-    
-    func hideFor100() -> Bool {
-        return for100 == nil || for100?.count == 0
-    }
-    
-    func hideDuration() -> Bool {
-        return duration == nil || duration?.count == 0
+    fileprivate func makeLongAttributes(_ task: DailyTaskDataModel) {
+        if let prevent = task.task.prevention, !prevent.isEmpty {
+            let att = TaskDetailAttribite(title: LocalizedString.Input.obstacleHeader, value: prevent)
+            longAttributes.append(att)
+        }
+        
+        if let reason = task.task.reason, !reason.isEmpty {
+            let att = TaskDetailAttribite(title: LocalizedString.Input.reasonTitle, value: reason)
+            longAttributes.append(att)
+            
+        }
+        
+        if let for100 = task.task.completionMotivations, !for100.isEmpty {
+            let att = TaskDetailAttribite(title: LocalizedString.TaskDetail.for100, value: for100)
+            longAttributes.append(att)
+        }
     }
 }

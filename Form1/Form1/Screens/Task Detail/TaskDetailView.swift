@@ -47,47 +47,16 @@ struct TaskDetailView: View {
                                 
                                 // Details
                                 VStack(spacing: PublicTheme.collectionSpace) {
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.taskTypeTitle,
-                                                       value: viewModel.activityType)
+                                    ForEach(viewModel.attributes, id: \.id) { att in
+                                        TaskDetailsRowView(title: att.title,
+                                                           value: att.value)
+                                    }
                                     
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.contextTitle,
-                                                       value: viewModel.contextName)
-                                    
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.goalTitle,
-                                                       value: viewModel.goalName)
-                                    
-                                    TaskDetailsRowView(title: LocalizedString.Input.startDateSelectoreTitle,
-                                                       value: viewModel.startDate ?? "")
-                                    .isHidden(viewModel.hideStartDate())
-                                    
-                                    TaskDetailsRowView(title: LocalizedString.Input.endDateSelectoreTitle,
-                                                       value: viewModel.endDate ?? "")
-                                    .isHidden(viewModel.hideEndDate())
-                                    
-                                    TaskDetailsRowView(title: LocalizedString.Input.durationSelectoreTitle,
-                                                       value: viewModel.duration ?? "")
-                                    .isHidden(viewModel.hideDuration())
-                                    
-                                    TaskDetailsRowView(title: LocalizedString.TaskDetail.weekDaysTitle,
-                                                       value: viewModel.weekDays ?? "")
-                                    .isHidden(viewModel.hideWeekDays())
-                                    
-                                    TaskDetailsRowView(title: viewModel.repeatTitleStr,
-                                                       value: viewModel.numberOfRepeat ?? "")
-                                    .isHidden(viewModel.hideNumberOfRepeat())                                    
-                                                                        
                                     VStack(alignment: .leading, spacing: PublicTheme.collectionSpace) {
-                                        TaskDetailsDoubleRowView(title: LocalizedString.Input.obstacleHeader,
-                                                           value: viewModel.prevent ?? "")
-                                        .isHidden(viewModel.hidePrevent())
-                                        
-                                        TaskDetailsDoubleRowView(title: LocalizedString.Input.reasonTitle,
-                                                           value: viewModel.reason ?? "")
-                                        .isHidden(viewModel.hideReason())
-                                        
-                                        TaskDetailsDoubleRowView(title: LocalizedString.TaskDetail.for100,
-                                                           value: viewModel.for100 ?? "")
-                                        .isHidden(viewModel.hideFor100())
+                                        ForEach(viewModel.longAttributes, id: \.id) { att in
+                                            TaskDetailsDoubleRowView(title: att.title,
+                                                                     value: att.value)
+                                        }
                                     }
                                 }
                                 .applyBasicViewStyle()
