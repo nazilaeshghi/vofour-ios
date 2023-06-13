@@ -20,6 +20,8 @@ class TaskCreationStep1ViewModel: ObservableObject {
     @Published var preventionInputText: String = ""
     @Published var reasonInputText: String = ""
     @Published var for100InputText: String = ""
+    @Published var titleError: InputError?
+
     let editMode: Bool
     
     private var cancellables = Set<AnyCancellable>()
@@ -92,7 +94,22 @@ class TaskCreationStep1ViewModel: ObservableObject {
         dataManager.resetDataEntry()
     }
     
-    func checkTitleError() -> Bool {
-        return titleInputText.trimmingCharacters(in: .whitespaces).isEmpty
+    func saveStep1() -> Bool {
+        checkTitleError()
+        if titleError != nil { return false }
+        dataManager.updateIsActivity(with: selectedType == 0)
+        dataManager.updateActivityTitle(with: titleInputText)
+        dataManager.updatePrevention(with: preventionInputText)
+        dataManager.updateReason(with: reasonInputText)
+        dataManager.updateFor100(with: for100InputText)
+        return true
+    }
+    
+    func checkTitleError() {
+        if titleInputText.trimmingCharacters(in: .whitespaces).isEmpty {
+            titleError = .activityTitle
+        } else {
+            titleError = nil
+        }
     }
 }

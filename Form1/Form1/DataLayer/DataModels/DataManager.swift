@@ -128,24 +128,7 @@ class DataManager {
         let dayTasks = dataProvider.fetchTasks(for: weekDay, date: simpleDate)
         guard dayTasks.count > 0 else { return -1.0 }
         
-        let sum = dayTasks.map { dayTask -> Float in
-            if dayTask.task.isActivity {
-                //If there is no record simply return 0
-                if (dayTask.record?.total ?? 0) == 0 {
-                    return 0
-                }
-                else {
-                    let dayCalculate = Float(dayTask.record?.count ?? 0) / Float(dayTask.record?.total ?? 0)
-                    return dayCalculate > 1.0 ? 1.0 : dayCalculate
-                }
-            } else {
-                if dayTask.task.isRepeatable {
-                    return (dayTask.record?.count ?? 0) <= (dayTask.record?.total ?? 0) ? 1 : 0
-                } else {
-                    return (dayTask.record?.count ?? 0) >= 1 ? 0 : 1
-                }
-            }
-        }.reduce(0, +)
+        let sum = dayTasks.map { $0.progress }.reduce(0, +)
         var dayProgress = sum / Float(dayTasks.count)
         if dayProgress.isNaN { dayProgress = 0 }
         if dayProgress > 1.0  { dayProgress = 1.0 }

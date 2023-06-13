@@ -10,16 +10,9 @@ import Foundation
 
 protocol SelectGoalDataManagable {
     func fetchListOfGoals() -> [Goal]
-    func createGoal(title: String)
     func selectGoal(with id: String)
     var selectedGoalId: String? { get }
 }
-
-protocol CreateeGoalDataManagable {
-    func createGoal(title: String) -> String
-    func findGoal(title: String) -> Goal?
-}
-
 
 class SelectGoalDataManager: SelectGoalDataManagable {
     @Injected(\.dataManagerProvider) internal var dataManager: DataManager
@@ -34,36 +27,10 @@ class SelectGoalDataManager: SelectGoalDataManagable {
         return dataManager.fetchGoals()
     }
     
-    func createGoal(title: String) {
-        let _ = dataManager.createGoal(title: title)
-    }
-    
     func selectGoal(with id: String) {
         dataManager.currentInputEntry.updateGoalID(with: id)
     }
     
 }
 
-class CreateGoalDataManager: CreateeGoalDataManagable {
-    @Injected(\.dataManagerProvider) internal var dataManager: DataManager
-    
-    init() {}
-    
-    func createGoal(title: String) -> String {
-        return dataManager.createGoal(title: title)
-    }
-    
-    func findGoal(title: String) -> Goal? {
-        return dataManager.findGoal(title: title)
-    }
-}
 
-class CreateGoalDataManagerMock: CreateeGoalDataManagable {
-    func createGoal(title: String) -> String {
-        return "ورزش"
-    }
-    
-    func findGoal(title: String) -> Goal? {
-        return nil
-    }
-}

@@ -25,27 +25,9 @@ class SelectGoalViewModel: ObservableObject {
     }
     
     func getGoals() {
-        
         var displayItems = [GoalSectionDisplayModel]()
         displayItems.append(makeFirstSection())
-        
-        let rawGoals = dataManager.fetchListOfGoals()
-
-        let goalDisplayModels = rawGoals.compactMap { goal -> SelectGoalDisplayModel? in
-            guard goal.id != "-1" else { return nil }
-            let titleModel = LabelDisplayModel(plainText: goal.title,
-                                               style: .regularSubtitle)
-            return SelectGoalDisplayModel(id: goal.id,
-                                          title: titleModel,
-                                          selected: dataManager.selectedGoalId == goal.id ? true : false)
-        }
-        
-        let secondSection = GoalSectionDisplayModel(items: goalDisplayModels,
-                                                    isDefault: false,
-                                                    title: LocalizedString.SelectGoalPage.sectionHeader,
-                                                    id: UUID().uuidString)
-        displayItems.append(secondSection)
-        
+        displayItems.optionalAppend(makeSecondSection())
         items = displayItems
     }
     
@@ -60,6 +42,25 @@ class SelectGoalViewModel: ObservableObject {
         return GoalSectionDisplayModel(items: [defaultItem],
                                        isDefault: true,
                                        title: sectionTitle,
+                                       id: UUID().uuidString)
+    }
+    
+    func makeSecondSection() -> GoalSectionDisplayModel? {
+        let rawGoals = dataManager.fetchListOfGoals()
+        
+        let goalDisplayModels = rawGoals.compactMap { goal -> SelectGoalDisplayModel? in
+            guard goal.id != "-1" else { return nil }
+            let titleModel = LabelDisplayModel(plainText: goal.title,
+                                               style: .regularSubtitle)
+            return SelectGoalDisplayModel(id: goal.id,
+                                          title: titleModel,
+                                          selected: dataManager.selectedGoalId == goal.id ? true : false)
+        }
+        
+        guard !goalDisplayModels.isEmpty else { return nil}
+        return GoalSectionDisplayModel(items: goalDisplayModels,
+                                       isDefault: false,
+                                       title: LocalizedString.SelectGoalPage.sectionHeader,
                                        id: UUID().uuidString)
     }
     

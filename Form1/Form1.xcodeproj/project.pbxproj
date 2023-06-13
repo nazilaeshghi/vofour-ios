@@ -98,6 +98,7 @@
 		6496DA282A37669300BB08EA /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6496DA272A37669300BB08EA /* LocalNotificationManager.swift */; };
 		6496DA2A2A37A86C00BB08EA /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6496DA292A37A86C00BB08EA /* Injected.swift */; };
 		6496DB4C2A37BCF600BB08EA /* reminder.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6496DB4B2A37BCF600BB08EA /* reminder.wav */; };
+		6496DB4E2A37FA0800BB08EA /* CreateGoalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6496DB4D2A37FA0800BB08EA /* CreateGoalDataManager.swift */; };
 		64996B522A25783C0016E59E /* ScrollSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B512A25783C0016E59E /* ScrollSegmentControl.swift */; };
 		64996B552A2578440016E59E /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B532A2578440016E59E /* Segment.swift */; };
 		64996B562A2578440016E59E /* SegmentControlStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64996B542A2578440016E59E /* SegmentControlStyler.swift */; };
@@ -258,6 +259,7 @@
 		6496DA272A37669300BB08EA /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		6496DA292A37A86C00BB08EA /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		6496DB4B2A37BCF600BB08EA /* reminder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reminder.wav; sourceTree = "<group>"; };
+		6496DB4D2A37FA0800BB08EA /* CreateGoalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalDataManager.swift; sourceTree = "<group>"; };
 		64996B512A25783C0016E59E /* ScrollSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollSegmentControl.swift; sourceTree = "<group>"; };
 		64996B532A2578440016E59E /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		64996B542A2578440016E59E /* SegmentControlStyler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControlStyler.swift; sourceTree = "<group>"; };
@@ -699,6 +701,7 @@
 			children = (
 				642CB1A5287C4656004AF8DA /* View */,
 				642CB197287C4407004AF8DA /* SelectGoalDataManager.swift */,
+				6496DB4D2A37FA0800BB08EA /* CreateGoalDataManager.swift */,
 				642CB199287C4410004AF8DA /* SelectGoalViewModel.swift */,
 				642CB19B287C441F004AF8DA /* SelectGoalMock.swift */,
 				649FB0872A2F9312005948CC /* NewGoalViewModel.swift */,
@@ -981,6 +984,7 @@
 				64842BCA2890175D00A4AA2E /* CalendarExtensions.swift in Sources */,
 				647F26F527AC214D00C70874 /* Destination.swift in Sources */,
 				642CB1A2287C4573004AF8DA /* GoalDataModel.swift in Sources */,
+				6496DB4E2A37FA0800BB08EA /* CreateGoalDataManager.swift in Sources */,
 				643D86452892DB0A0076D884 /* RecordRealm.swift in Sources */,
 				6402889928B5617F00FCE2C8 /* VerticalSpaceView.swift in Sources */,
 				649FB08A2A3012F8005948CC /* ViewModifiers.swift in Sources */,

@@ -154,7 +154,17 @@ class TaskCreationStep2ViewModel: ObservableObject {
         }
     }
     
-    func saveTask() -> Bool{
+    func saveTask() -> Bool {
+        validate()
+        if reminderError != nil || endDateError != nil {
+            return false
+        }
+        
+        dataManager.saveTask()
+        return true
+    }
+    
+    private func validate()  {
         if isRepeatable == 1 && endDate == nil {
             endDateError = .endDate
         }
@@ -166,13 +176,6 @@ class TaskCreationStep2ViewModel: ObservableObject {
         if needReminder == 1 && reminders.count == 0 {
             reminderError = .missingReminder
         }
-        
-        if reminderError != nil || endDateError != nil {
-            return false
-        }
-        
-        dataManager.saveTask()
-        return true
     }
     
     func reset() {

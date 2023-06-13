@@ -60,6 +60,26 @@ struct DailyTaskDataModel {
     let record: Record?
 }
 
+extension DailyTaskDataModel {
+    var progress: Float {
+        let progress: Float
+        if let record = record, task.isActivity {
+            let devide = Float(Float(record.count) / Float(record.total))
+            progress = devide > 1 ? 1 : devide
+        } else if task.isActivity == false {
+            if task.isRepeatable {
+                return (record?.count ?? 0) <= (record?.total ?? 0) ? 1 : 0
+            } else {
+                return (record?.count ?? 0) >= 1 ? 0 : 1
+            }
+        }
+        else {
+            progress = 0.0
+        }
+        return progress
+    }
+}
+
 struct HomeContextDataModel {
     let context: TaskContext
     let activityCount: Int

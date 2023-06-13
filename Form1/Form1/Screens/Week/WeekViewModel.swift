@@ -43,21 +43,6 @@ class WeekViewModel: ObservableObject {
         let subtitle = LabelDisplayModel(plainText: subtitleText, style: .secondaryRegularSubtitle)
         let count = LabelDisplayModel(plainText: String(dayRecord.record?.count ?? 0), style: .regularTitle)
         
-        let progress = calculateProgress(dayRecord: dayRecord)
-        let state: CardState
-        if progress >= 1 && dayRecord.task.isActivity == true {
-            state = .done
-        }
-        else if dayRecord.task.isActivity == false,
-                progress == 1  {
-            state = .quitWip
-        } else if dayRecord.task.isActivity == false,
-                  progress == 0 {
-            state = .quit
-        }
-        else {
-            state = .wip
-        }
         let backhground: Color = dayRecord.task.isActivity ? Color.cellBackgroundColor : Color.disabledColor
         
         let displayModel = CardDisplayModel(title: title,
@@ -65,29 +50,11 @@ class WeekViewModel: ObservableObject {
                                             count: count,
                                             color: Color(hex: dayRecord.task.color),
                                             backgroundColor: backhground,
-                                            state: state,
-                                            progress: progress,
+                                            state: dayRecord.state,
+                                            progress: dayRecord.progress,
                                             id: dayRecord.task.taskID,
                                             recordID: dayRecord.record?.recordID)
         return displayModel
-    }
-    
-    static func calculateProgress(dayRecord: DailyTaskDataModel) -> Float {
-        let progress: Float
-        if let record = dayRecord.record, dayRecord.task.isActivity {
-            let devide = Float(Float(record.count) / Float(record.total))
-            progress = devide > 1 ? 1 : devide
-        } else if dayRecord.task.isActivity == false {
-            if dayRecord.task.isRepeatable {
-                return (dayRecord.record?.count ?? 0) <= (dayRecord.record?.total ?? 0) ? 1 : 0
-            } else {
-                return (dayRecord.record?.count ?? 0) >= 1 ? 0 : 1
-            }
-        }
-        else {
-            progress = 0.0
-        }
-        return progress
     }
     
     private func calculateTodayProgress(date: Date) {
@@ -116,4 +83,23 @@ class WeekViewModel: ObservableObject {
         return sevenDays.last?.date
     }
 
+}
+
+
+extension DailyTaskDataModel {
+    var state: CardState {
+        if progress >= 1 && task.isActivity == true {
+            return .done
+        }
+        else if task.isActivity == false,
+                progress == 1  {
+            return .quitWip
+        } else if task.isActivity == false,
+                  progress == 0 {
+            return .quit
+        }
+        else {
+            return .wip
+        }
+    }
 }

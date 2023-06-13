@@ -35,3 +35,13 @@ extension Array where Element == TimeObject {
         return self.map{ $0.representingString }.joined(separator: ",")
     }
 }
+
+public extension Array {
+    /// This function helps you to get rid of checking an optional value
+    /// before adding to a non-optional array
+    /// - Parameter newElement: Element?
+    mutating func optionalAppend(_ newElement: Element?) {
+        guard let newElement = newElement else { return }
+        append(newElement)
+    }
+}

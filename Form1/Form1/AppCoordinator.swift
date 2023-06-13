@@ -23,7 +23,6 @@ class AppCoordinator {
         return AppTabView()
     }
     
-    // Task Creation
     func makeSelectContextSheetView() -> SelectContextSheetView {
         let contextDataManger = SelectContextDataManager()
         let viewModel = SelectContextViewModel(dataManager: contextDataManger)
@@ -76,7 +75,6 @@ class AppCoordinator {
         
     }
     
-    // Task
     func makeWeekView() -> WeekView {
         let dataManager = WeekDataManager()
         let viewModel = WeekViewModel(dataManager: dataManager)
@@ -90,13 +88,11 @@ class AppCoordinator {
         return TaskDetailView(viewModel: viewModel)
     }
 
-    // Home
     func makeContextListView() -> ContextListView {
         let coordinator = ContextsListCoordinator()
         return coordinator.destinationView
     }
     
-    // Activity List
     func makeGoalsListView() -> GoalsListView {
         let coordinator = ActivityListCoordinator()
         return coordinator.destinationView

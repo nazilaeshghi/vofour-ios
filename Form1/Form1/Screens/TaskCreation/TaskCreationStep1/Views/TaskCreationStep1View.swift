@@ -23,7 +23,6 @@ struct TaskCreationStep1View: View {
     @State private var showingGoalSheet: Bool = false
     @State private var showingContextSheet: Bool = false
     @State private var shouldShowFooter: Bool = true
-    @State private var titleError: InputError? = nil
         
     private let segmentItems = [
         LocalizedString.TaskCreationStep1.createHabitSegmentTitle,
@@ -67,9 +66,9 @@ struct TaskCreationStep1View: View {
                             OneLineInputCell(inputText: $viewModel.titleInputText,
                                              placeholder: LocalizedString.Input.enterHerePlaceholder,
                                              title: LocalizedString.Input.enterHereTitle,
-                                             error: $titleError)
+                                             error: $viewModel.titleError)
                             .onChange(of: viewModel.titleInputText) { newValue in
-                                titleError = nil
+                                viewModel.titleError = nil
                             }
                             
                             SelectorInputCell(text: viewModel.selectedGoalTitle,
@@ -155,11 +154,9 @@ struct TaskCreationStep1View: View {
     
     func primaryAction() {
         isTextFieldFocused = false
-        if viewModel.checkTitleError() {
-            titleError = .activityTitle
-            return
+        if viewModel.saveStep1() {
+            showingNextPage = true
         }
-        showingNextPage = true
     }
     
     func dismissAction() {
