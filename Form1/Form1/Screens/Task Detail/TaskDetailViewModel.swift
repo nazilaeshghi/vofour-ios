@@ -44,6 +44,9 @@ class TaskDetailViewModel: ObservableObject {
         
         item.count.labelStyle = .regularGiantTitleStyle
         item.count.plainText =  item.count.plainText.convertToPersian()
+        
+        attributes = []
+        longAttributes = []
         makeAttributes(task)
         makeLongAttributes(task)
     }
