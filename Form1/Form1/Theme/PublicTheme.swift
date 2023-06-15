@@ -27,7 +27,7 @@ extension Color {
     static var destructiveColor: Color { return Color(hex: "F03738") }
     static var unSelectedSegmentColor: Color { return Color(hex: "B3B3B3") }
     static var segmentLineColor: Color { return Color(hex: "D9E0E9") }
-
+    static var textBackground: Color { return Color(hex: "F7F9FC") }
 }
 
 struct PublicTheme {
@@ -44,6 +44,7 @@ struct PublicTheme {
     static let vSpace: CGFloat = 32
     static let vSpace2: CGFloat = 40
     static let vHeaderSpace: CGFloat = 24
+    static let modalVHeaderSpace: CGFloat = 16
     static let vHeaderSpace2: CGFloat = 20
     static let inputCellSpacing: CGFloat = 6
     static let collectionSpace: CGFloat = 16

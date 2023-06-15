@@ -1,16 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "Heart, Favorite, Love.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Frame 12688@2x.png",
+      "filename" : "Heart, Favorite, Love@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Frame 12688@3x.png",
+      "filename" : "Heart, Favorite, Love@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

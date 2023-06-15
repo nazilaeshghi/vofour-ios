@@ -27,11 +27,11 @@ class GoalsListViewModel: ObservableObject {
     func fetchGoalItems() {
         if selectedGoalIndex == 0 {
             let activityListGoals = dataManager.fetchGoals(currentWeek: currentWeek)
-            items = transformGoals(goals: activityListGoals)
+            items = transformGoals(goals: activityListGoals, isAll: true)
         } else {
             guard let goalId = segments[safe: selectedGoalIndex]?.object else { return }
             let activityListGoals = dataManager.fetchGoal(goalId: goalId, currentWeek: currentWeek)
-            items = transformGoals(goals: activityListGoals)
+            items = transformGoals(goals: activityListGoals, isAll: false)
         }
     }
     
@@ -44,23 +44,25 @@ class GoalsListViewModel: ObservableObject {
         segments.append(contentsOf: tempSegments)
     }
     
-    private func transformGoals(goals: [ActivityGoalDataModel]) -> [ActiviyListSectionCard] {
+    private func transformGoals(goals: [ActivityGoalDataModel], isAll: Bool) -> [ActiviyListSectionCard] {
         return goals.map { item in
             return ActiviyListSectionCard(id: item.goal.id,
                                           title: LabelDisplayModel(plainText: item.goal.title, style: .mediumTitle),
                                           iconName: nil,
-                                          items: transformGoalTasks(hTasks: item.tasks, goal: item.goal))
+                                          items: transformGoalTasks(hTasks: item.tasks, goal: item.goal, isAll: isAll))
         }
     }
     
-    private func transformGoalTasks(hTasks: [HashableTask], goal: Goal) -> [ActiviyListItemCard] {
-        return hTasks.map { hTask in
-            return ActiviyListItemCard(id: hTask.task.taskID,
-                                       title: LabelDisplayModel(plainText: hTask.task.title, style: .regularMediumTitle),
-                                       subtitle: LabelDisplayModel(plainText: hTask.context.name + " | " + goal.title, style: .secondaryRegularBody),
-                                       color: Color(hex: hTask.task.color),
-                                       progress: hTask.progress,
-                                       iconName: hTask.context.iconName)
+    private func transformGoalTasks(hTasks: [HashableTask], goal: Goal, isAll: Bool) -> [ActiviyListItemCard] {
+        return hTasks.map { hashableTask in
+            let subtitleStr = isAll ? hashableTask.context.name + " | " + goal.title : hashableTask.context.name
+            return ActiviyListItemCard(id: hashableTask.task.taskID,
+                                       title: LabelDisplayModel(plainText: hashableTask.task.title, style: .regularMediumTitle),
+                                       subtitle: LabelDisplayModel(plainText: subtitleStr, style: .secondaryRegularBody),
+                                       color: Color(hex: hashableTask.task.color),
+                                       progress: hashableTask.progress,
+                                       iconName: hashableTask.context.iconName,
+                                       isQuit: !hashableTask.task.isActivity)
         }
     }
 }
@@ -80,4 +82,5 @@ struct ActiviyListItemCard: Identifiable {
     var color: Color
     var progress: Float?
     var iconName: String?
+    let isQuit: Bool
 }

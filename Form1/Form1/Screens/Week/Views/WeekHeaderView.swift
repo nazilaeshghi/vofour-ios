@@ -29,11 +29,11 @@ struct WeekHeaderView: View {
                 Button {
                     showingSetting = true
                 } label: {
-                    Image("HambergerMenu")
+                    Image("settings")
                         .resizable()
-                        .frame(width: 32, height: 32)
+                        .frame(width: 24, height: 24)
+                        .tint(Color.primaryTextColor)
                 }
-                .frame(height: 32)
 
                 Button {
                     showDatePicker = true

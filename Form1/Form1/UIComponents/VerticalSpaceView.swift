@@ -17,6 +17,7 @@ struct VerticalSpaceView: View {
 
 enum SpaceType {
     case header
+    case modalHeader
     case inlineForm
     case pageHeade
     case title
@@ -26,6 +27,8 @@ enum SpaceType {
         switch self {
         case .header:
             return PublicTheme.vHeaderSpace
+        case .modalHeader:
+            return PublicTheme.modalVHeaderSpace
         case .inlineForm:
             return PublicTheme.vSpace
         case .pageHeade:

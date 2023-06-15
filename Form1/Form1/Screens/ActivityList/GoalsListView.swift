@@ -40,28 +40,26 @@ struct GoalsListView: View {
                     .applyStyle(style: .regularSubtitle)
 
             }
-
             
-            if !viewModel.items.isEmpty {
-                List {
-                    ForEach(viewModel.items, id: \.id) { sectionItem in
-                        Section {
-                            ForEach(sectionItem.items, id: \.id) { item in
-                                ActivityListCellView(item: item, hideProgress: !currentWeekIsOn)
-                                    .onTapGesture {
-                                        taskID = item.id
-                                    }
-                                    .applyBasicCellStyle()
-                            }
+            List {
+                ForEach(viewModel.items, id: \.id) { sectionItem in
+                    Section {
+                        ForEach(sectionItem.items, id: \.id) { item in
+                            ActivityListCellView(item: item, hideProgress: !currentWeekIsOn)
+                                .onTapGesture {
+                                    taskID = item.id
+                                }
+                                .applyBasicCellStyle()
                         }
                     }
-                    .applyBasicCellStyle()
                 }
-                .applyListBasicStyle()
+                .applyBasicCellStyle()
             }
-            else {
-                Spacer()
-            }
+            .applyListBasicStyle()
+            .isHidden(viewModel.items.isEmpty)
+            
+            Spacer()
+                .isHidden(!viewModel.items.isEmpty)
         }
         .applyBasicViewStyle()
         .sheet(item: $taskID, content: { taskId in

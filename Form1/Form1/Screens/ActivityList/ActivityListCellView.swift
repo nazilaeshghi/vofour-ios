@@ -15,9 +15,18 @@ struct ActivityListCellView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
-                Text(item.title.plainText)
-                    .applyStyle(style: item.title.labelStyle)
-                    .frame( height: 26)
+                HStack(alignment: .center) {
+                    Text(item.title.plainText)
+                        .applyStyle(style: item.title.labelStyle)
+                    
+                    Text(LocalizedString.TaskDetail.quit)
+                        .applyStyle(style: .regularBody)
+                        .padding(4)
+                        .background(Color.textBackground)
+                        .cornerRadius(4, corners: .allCorners)
+                        .isHidden(!item.isQuit)
+                }
+                
                 HStack {
                     if let iconName = item.iconName {
                         Image(iconName)
@@ -27,12 +36,16 @@ struct ActivityListCellView: View {
                             .aspectRatio(contentMode: .fit)
                             .foregroundColor(Color.headerSecondaryTextColor)
                     }
+                    
                     Text(item.subtitle.plainText)
                         .applyStyle(style: item.subtitle.labelStyle)
                         .frame( height: 16)
+                    
+                    
                     Spacer()
                 }
             }
+            
             if let progress = item.progress, !hideProgress {
                 Spacer()
                 
@@ -51,8 +64,6 @@ struct ActivityListCellView: View {
         .frame(height: 72)
         .background(.white)
         .cornerRadius(PublicTheme.cornerRaduis)
-//        .overlay(RoundedRectangle(cornerRadius: PublicTheme.cornerRaduis)
-//            .stroke(item.color, lineWidth: 1))
         .padding(.horizontal, 1)
     }
 }
@@ -64,7 +75,9 @@ struct ActivityListCellView_Previews: PreviewProvider {
                                                        subtitle: LabelDisplayModel(plainText: "ورزش", style: .regularSubtitle),
                                                        color: Color.red,
                                                        progress: 0.5,
-                                                       iconName: "context_awakeness"), hideProgress: false)
+                                                       iconName: "context_awakeness",
+                                                       isQuit: true),
+                             hideProgress: false)
             .environment(\.layoutDirection, .rightToLeft)
             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
             .previewInterfaceOrientation(.portraitUpsideDown)

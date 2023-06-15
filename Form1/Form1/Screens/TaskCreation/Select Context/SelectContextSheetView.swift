@@ -17,7 +17,7 @@ struct SelectContextSheetView: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(spacing: PublicTheme.vHeaderSpace) {
-                VerticalSpaceView(space: .title)
+                VerticalSpaceView(space: .modalHeader)
                 
                 ModalHeaderView(title: LocalizedString.ContextPage.selectContexts) {
                     presentationMode.wrappedValue.dismiss()

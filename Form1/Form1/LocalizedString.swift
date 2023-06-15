@@ -125,7 +125,7 @@ struct LocalizedString {
     
     enum TaskDetail {
         static let create = "ایجاد"
-        static let quit = "ترک"
+        static let quit = "تَرک"
         static let independent = "مستقل"
         static let taskTypeTitle = "نوع فعالیت"
         static let contextTitle = "زمینه"
@@ -151,8 +151,9 @@ struct LocalizedString {
     
     enum Setting {
         static let title = "تنظیمات" 
-        static let currentCalendarTitle = "تقویم فارسی"
-        static let startDate = "شروع هفته"
+        static let persianCalendarTitle = "تقویم شمسی"
+        static let georgianCalendarTitle = "تقویم میلادی"
+        static let startDate = "انتخاب روز شروع هفته"
         static let saturday = "شنبه"
         static let sunday = "یکشنبه"
         static let monday = "دوشنبه"
@@ -161,6 +162,11 @@ struct LocalizedString {
         static let thursday = "پنجشنبه"
         static let friday = "جمعه"
         static let us = "ساخته شده با عشق توسط وداد، حسین، نازیلا و مرتضی"
+        static let calendarType = "نوع تقویم"
+        static let notificationTitle = "اعلان‌های فورمی"
+        static let notificationDisabled = "دریافت نمی‌کنم"
+        static let notificationEnabled = "دریافت می‌کنم"
+        
     }
     
     enum GoalList {

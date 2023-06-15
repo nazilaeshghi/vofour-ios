@@ -9,156 +9,66 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State var persianCalendarIsOn: Bool
+    @State var persianCalendarIsOn: Int
     @State var currentDate: Int
     @Binding var isPresented: Bool
     
     init(isPresented : Binding<Bool>) {
-        persianCalendarIsOn = DateHelper.getCurrentCalendarEnum() == .persian ? true : false
+        persianCalendarIsOn = DateHelper.getCurrentCalendarEnum() == .persian ? 0 : 1
         currentDate = DateHelper.getCurrentStartWeekDay()
         _isPresented = isPresented
     }
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Spacer()
-                Text(LocalizedString.Setting.title)
-                    .applyStyle(style: .mediumTitle)
-                Spacer()
-                Button {
-                    isPresented  = false
-                } label: {
-                    Image.closeIcon
-                }
-                
-            }
-            .padding([.top, .bottom], PublicTheme.vHeaderSpace)
+        VStack(alignment: .leading) {
+            VerticalSpaceView(space: .modalHeader)
+            ModalHeaderView(title: LocalizedString.Setting.title) { isPresented  = false }
             
-            HStack {
-                Text(LocalizedString.Setting.currentCalendarTitle)
-                    .applyStyle(style: .primaryTitle)
-                
-                Spacer()
-                
-                Toggle("", isOn: $persianCalendarIsOn)
-                    .tint(Color.primaryColor)
+            VerticalSpaceView(space: .header)
+            VStack(alignment: .leading, spacing: SpaceType.inlineForm.value) {
+                VStack(spacing: 6) {
+                    HStack {
+                        Text(LocalizedString.Setting.calendarType)
+                            .applyStyle(style: .regularSubtitle)
+                        Spacer()
+                    }
+                    
+                    SegmentedPicker(items: [LocalizedString.Setting.persianCalendarTitle,
+                                            LocalizedString.Setting.georgianCalendarTitle],
+                                    selection: $persianCalendarIsOn)
                     .onChange(of: persianCalendarIsOn) { newValue in
-                        DateHelper.changeCurrentCalenterTo(selected: newValue == true ? .persian : .gregorian)
+                        DateHelper.changeCurrentCalenterTo(selected: newValue == 0 ? .persian : .gregorian)
                         NotificationCenter.sendNotification(for: .dataChange)
                     }
-                    .padding(.bottom, 10)
-            }
-                        
-            VStack(alignment: .leading, spacing: 5) {
-                Text(LocalizedString.Setting.startDate)
-                    .applyStyle(style: .mediumTitle)
-                
-                Button {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 7)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 7
-                } label: {
-                    Image(currentDate == 7 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.saturday)
-                        .applyStyle(style: .primaryTitle)
-                    
                 }
                 
-                Button {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 1)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 1
-                } label: {
-                    Image(currentDate == 1 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.sunday)
-                        .applyStyle(style: .primaryTitle)
-                    
-                }
+                SingleSelectWeekDaysView(title: LocalizedString.Setting.startDate, currentIndex: $currentDate)
+                    .onChange(of: currentDate) { newValue in
+                        DateHelper.changeCurrentWeekStartDayTo(selected: newValue)
+                        NotificationCenter.sendNotification(for: .dataChange)
+                    }
                 
-                Button() {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 2)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 2
-                } label: {
-                    Image(currentDate == 2 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.monday)
-                        .applyStyle(style: .primaryTitle)
-                    
-                }
-                
-                Button {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 3)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 3
-                } label: {
-                    Image(currentDate == 3 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.tuesday)
-                        .applyStyle(style: .primaryTitle)
-                    
-                }
-                
-                Button {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 4)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 4
-                } label: {
-                    Image(currentDate == 4 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.wednesday)
-                        .applyStyle(style: .primaryTitle)
-                    
-                }
-                
-                Button {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 5)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 5
-                } label: {
-                    Image(currentDate == 5 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.thursday)
-                        .applyStyle(style: .primaryTitle)
-                    
-                }
-                
-                Button {
-                    DateHelper.changeCurrentWeekStartDayTo(selected: 6)
-                    NotificationCenter.sendNotification(for: .dataChange)
-                    currentDate = 6
-                } label: {
-                    Image(currentDate == 6 ? "Activated_on": "Activated_off")
-                           .renderingMode(.original)
-                           .padding(0)
-                    Text(LocalizedString.Setting.friday)
-                        .applyStyle(style: .primaryTitle)
-                    
-                }
-            }
-            
-            Spacer()
-            HStack {
                 Spacer()
-                Text(LocalizedString.Setting.us)
-                    .applyStyle(style: .greenRegularBody)
-                Spacer()
+                VStack {
+                    Image("heartImg")
+                    
+                    HStack {
+                        Spacer()
+                        Text(LocalizedString.Setting.us)
+                            .applyStyle(style: .secondaryRegularBody)
+                        Spacer()
+                    }
+                }
             }
+            .applyBasicViewStyle()
         }
-        .applyBasicViewStyle()
+        .applyBackgroundColor()
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(isPresented: .constant(true))
+            .environment(\.layoutDirection, .rightToLeft)
     }
 }
