@@ -9,12 +9,30 @@
 import Foundation
 import NotificationCenter
 
+enum NotificationState {
+    case on
+    case off
+    case notGranted
+    
+    var localizedString: String {
+        switch self {
+        case .on:
+            return LocalizedString.Setting.notificationEnabled
+        case .off:
+            return LocalizedString.Setting.notificationEnabled
+        case .notGranted:
+            return LocalizedString.Setting.notificationNotGranted
+        }
+    }
+}
+
 protocol NotificationManagable {
     func requestAuthorization() async throws
-    func getCurrentSettings() async
+    func getCurrentSettings() -> Task<Void, Never>
     func openSettings() async
     func scheduleNotifications(taskId: String, task: DataEntryDataModel)
-    func removeScheduleNotifications(taskId: String)
+    func removeAndScheduleNotifications(taskId: String, task: DataEntryDataModel)
+    func getNotificationState() -> NotificationState
 }
 
 class LocalNotificationManager: NSObject, NotificationManagable, UNUserNotificationCenterDelegate {
@@ -35,12 +53,21 @@ class LocalNotificationManager: NSObject, NotificationManagable, UNUserNotificat
     func requestAuthorization() async throws {
         try await notificationCenter
             .requestAuthorization(options: [.sound, .badge, .alert])
-        await getCurrentSettings()
+        getCurrentSettings()
     }
     
-    func getCurrentSettings() async {
-        let currentSettings = await notificationCenter.notificationSettings()
-        isGranted = (currentSettings.authorizationStatus == .authorized)
+    @discardableResult
+    func getCurrentSettings() -> Task<Void, Never>  {
+        return Task {
+            let currentSettings = await notificationCenter.notificationSettings()
+            isGranted = (currentSettings.authorizationStatus == .authorized)
+        }
+    }
+    
+    func getNotificationState() -> NotificationState {
+        getCurrentSettings()
+        guard !isGranted else { return .notGranted }
+        return SettingHelper.isNotificationON() ? .on : .off
     }
     
     func openSettings() {
@@ -57,12 +84,13 @@ class LocalNotificationManager: NSObject, NotificationManagable, UNUserNotificat
         notificationCenter.removeAllPendingNotificationRequests()
     }
     
-    func removeScheduleNotifications(taskId: String) {
+    func removeAndScheduleNotifications(taskId: String, task: DataEntryDataModel) {
         let prefixNotificationID = taskId + "_notification_date"
         notificationCenter.getPendingNotificationRequests { [weak self] (notifications) in
-            let foundNotifications = notifications.filter{ $0.identifier.hasPrefix(prefixNotificationID) }.map{ $0.identifier}
+            let foundNotifications = notifications.filter{ $0.identifier.hasPrefix(prefixNotificationID) }.map{ $0.identifier }
             self?.notificationCenter.removeDeliveredNotifications(withIdentifiers: foundNotifications)
             self?.notificationCenter.removePendingNotificationRequests(withIdentifiers: foundNotifications)
+            self?.scheduleNotifications(taskId: taskId, task: task)
         }
     }
     

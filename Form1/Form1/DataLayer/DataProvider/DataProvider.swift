@@ -35,6 +35,7 @@ protocol DataProvider {
     func fetchRecord(taskID: String, date: Date) -> Record?
     func fetchRecords(for taskID: String) -> [Record]
     func updateRecord(recordID: String, count: Int)
+    func updateRecord(taskID: String, total: Int)
 }
 
 class MockDataProvider: DataProvider {
@@ -124,5 +125,9 @@ class MockDataProvider: DataProvider {
     
     func fetchTasks(from startDate: Date, to endDate: Date) -> [TaskDataModel] {
         return []
+    }
+    
+    func updateRecord(taskID: String, total: Int) {
+        
     }
 }

@@ -304,6 +304,23 @@ class ReqalmDataProvider: DataProvider {
             ErrorLogger.log(domain: .dataBase, message: "updating record, Something went wrong with Realm: \(error.localizedDescription)")
         }
     }
+    
+    func updateRecord(taskID: String, total: Int) {
+        do {
+            let realm  = try self.realm()
+            
+            let records = realm.objects(RecordRealm.self).where({ $0.taskID == taskID })
+            for record in records {
+                try realm.write {
+                    record.total = total
+                }
+            }
+            
+        } catch let error as NSError {
+            ErrorLogger.log(domain: .dataBase, message: "updating record, Something went wrong with Realm: \(error.localizedDescription)")
+        }
+    }
+    
     func fetchRecords(for taskID: String) -> [Record] {
         do {
             return try realm().objects(RecordRealm.self).where{ $0.taskID == taskID }.detached

@@ -18,7 +18,7 @@ class DataEntryDataModel {
     private (set) var completionMotivations: String?
     private (set) var goalID: String?
     private (set) var isRepeatable: Bool?
-    private (set) var startDate: Date? = Date()
+    private (set) var startDate: Date? = Date().getSimpleDate()
     private (set) var endDate: Date?
     private (set) var duration: Double?
     private (set) var color: String?

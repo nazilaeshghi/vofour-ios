@@ -22,7 +22,8 @@ struct WeekView: View {
                                 
                 // Week Header
                 VerticalSpaceView(space: .header)
-                WeekHeaderView(selectedDate: $selectedDate,
+                WeekHeaderView(sevenDays: $viewModel.sevenDays,
+                               selectedDate: $selectedDate,
                                showDatePicker: $datePickerPresented,
                                todayProgressString: viewModel.todayProgressString,
                                weekProgressString: viewModel.weekProgressString,

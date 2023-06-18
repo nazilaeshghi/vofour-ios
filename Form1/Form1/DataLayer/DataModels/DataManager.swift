@@ -173,9 +173,9 @@ extension DataManager {
         fixStringsBeforeSaving()
         let id = dataProvider.saveTask(entry: currentInputEntry)
         if let taskId = id {
+            dataProvider.updateRecord(taskID: taskId, total: currentInputEntry.numberOfRepeat ?? 0)
             DateHelper.setDateRegion()
-            notificationProvider.removeScheduleNotifications(taskId: taskId)
-            notificationProvider.scheduleNotifications(taskId: taskId, task: currentInputEntry)
+            notificationProvider.removeAndScheduleNotifications(taskId: taskId, task: currentInputEntry)
         }
         resetDataEntry()
     }
@@ -191,12 +191,12 @@ extension DataManager {
         
         if let for100 = currentInputEntry.completionMotivations {
             let fixedFor100 = for100.trimmingCharacters(in: .whitespacesAndNewlines)
-            currentInputEntry.updateReason(with: fixedFor100)
+            currentInputEntry.updateCompletionMotivations(with: fixedFor100)
         }
         
         if let prevention = currentInputEntry.prevention {
             let fixedprevention = prevention.trimmingCharacters(in: .whitespacesAndNewlines)
-            currentInputEntry.updateReason(with: fixedprevention)
+            currentInputEntry.updatePrevention(with: fixedprevention)
         }
     }
     

@@ -166,7 +166,7 @@ struct LocalizedString {
         static let notificationTitle = "اعلان‌های فورمی"
         static let notificationDisabled = "دریافت نمی‌کنم"
         static let notificationEnabled = "دریافت می‌کنم"
-        
+        static let notificationNotGranted = "اعلان از تنظیمات غیر فعال است"
     }
     
     enum GoalList {

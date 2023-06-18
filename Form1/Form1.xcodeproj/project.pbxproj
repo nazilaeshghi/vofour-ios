@@ -76,6 +76,7 @@
 		646A8816287DD53F00E18CE4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8815287DD53F00E18CE4 /* StringExtensions.swift */; };
 		646A891A287E13EB00E18CE4 /* ModalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646A8919287E13EB00E18CE4 /* ModalHeaderView.swift */; };
 		646EA78F2894FC2A00A338F4 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646EA78E2894FC2A00A338F4 /* CircularProgressView.swift */; };
+		6477EC0E2A3CC519007FB58E /* SettingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6477EC0D2A3CC519007FB58E /* SettingHelper.swift */; };
 		647F26F327AC203F00C70874 /* CoordinatorRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F227AC203F00C70874 /* CoordinatorRegistration.swift */; };
 		647F26F527AC214D00C70874 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F427AC214D00C70874 /* Destination.swift */; };
 		647F26F727AC266600C70874 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647F26F627AC266600C70874 /* Presentation.swift */; };
@@ -238,6 +239,7 @@
 		646A8815287DD53F00E18CE4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		646A8919287E13EB00E18CE4 /* ModalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderView.swift; sourceTree = "<group>"; };
 		646EA78E2894FC2A00A338F4 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		6477EC0D2A3CC519007FB58E /* SettingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHelper.swift; sourceTree = "<group>"; };
 		647F26F227AC203F00C70874 /* CoordinatorRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorRegistration.swift; sourceTree = "<group>"; };
 		647F26F427AC214D00C70874 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		647F26F627AC266600C70874 /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				64C773822885DABC0066F97B /* CollectionExtension.swift */,
 				646A8815287DD53F00E18CE4 /* StringExtensions.swift */,
 				644487FB28875E9A0020A758 /* NotificationExtensions.swift */,
+				6477EC0D2A3CC519007FB58E /* SettingHelper.swift */,
 				642D2B3028972A7300500670 /* Date */,
 				6496DA292A37A86C00BB08EA /* Injected.swift */,
 			);
@@ -942,6 +945,7 @@
 				64A8A3AA284075EC0056EC08 /* ButtonExtensions.swift in Sources */,
 				6400D64F2841C3B5005A6F79 /* CustomTextEitor.swift in Sources */,
 				642D2B2F28972A2500500670 /* DateFormatterExtensions.swift in Sources */,
+				6477EC0E2A3CC519007FB58E /* SettingHelper.swift in Sources */,
 				64EA837E28A7F986005ED007 /* ImageIcons.swift in Sources */,
 				644487F0288646DD0020A758 /* CustomTabbar.swift in Sources */,
 				6400D65A28450B56005A6F79 /* TwoButtonsView.swift in Sources */,
@@ -1169,7 +1173,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.29;
+				MARKETING_VERSION = 0.8.30;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.forMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1205,7 +1209,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.29;
+				MARKETING_VERSION = 0.8.30;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vofour.forMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

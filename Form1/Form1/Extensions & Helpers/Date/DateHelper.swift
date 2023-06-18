@@ -157,7 +157,7 @@ extension DateHelper {
     
     func getDatesBetween(startDate: Date, endDate: Date, weekDays: [WeekDayObject]) -> [Date] {
         let startDateInRange = DateInRegion(startDate, region: SwiftDate.defaultRegion)
-        let endDateInRange = DateInRegion(endDate, region: SwiftDate.defaultRegion)
+        let endDateInRange = DateInRegion(endDate.dateAt(.tomorrow), region: SwiftDate.defaultRegion)
         
         var outputDates = [Date]()
         for day in weekDays {
