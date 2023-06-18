@@ -63,6 +63,9 @@ class TaskCreationStep2ViewModel: ObservableObject {
         self.$isRepeatable
             .sink { [weak self] newValue in
                 self?.dataManager.updateTaskType(isRepeatable: newValue == 0 ? false : true )
+                if let num = self?.dataManager.getNumberOfRepeat() {
+                    self?.repeatNum = num
+                }
             }
             .store(in: &cancellables)
         
@@ -102,7 +105,6 @@ class TaskCreationStep2ViewModel: ObservableObject {
         self.$repeatNum
             .sink { [weak self] newValue in
                 self?.dataManager.updateNumberOfRepeat(int: newValue)
-
             }
             .store(in: &cancellables)
         

@@ -106,7 +106,16 @@ class TaskCreationStep2DataManager: TaskCreationStep2DataManagable {
     }
     
     func getNumberOfRepeat() -> Int {
-        return dataManager.currentInputEntry.numberOfRepeat ?? (dataManager.currentInputEntry.isActivity ? 1 : 0)
+        if let numberOfRepeat = dataManager.currentInputEntry.numberOfRepeat {
+            return numberOfRepeat
+        }
+        else {
+            if dataManager.currentInputEntry.isRepeatable ?? false {
+                return 1
+            } else {
+                return dataManager.currentInputEntry.isActivity ? 1 : 0
+            }
+        }
     }
     func updateNumberOfRepeat(int: Int) {
         dataManager.currentInputEntry.updateNumberOfRepeat(with: int)
